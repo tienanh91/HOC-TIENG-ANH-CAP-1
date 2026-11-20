@@ -220,6 +220,10 @@ ul.tips a{color:var(--sky)}
 @keyframes rise{from{top:100%}to{top:-42%}}
 @keyframes boom{to{transform:scale(1.8);opacity:0}}
 
+/* nâng cao */
+.advbox{margin-top:26px;border:3px dashed var(--c);border-radius:28px;padding:18px;background:color-mix(in srgb,var(--c) 8%,var(--bg))}
+.unit.adv{border-style:solid;border-color:color-mix(in srgb,var(--c) 60%,var(--line))}
+tr.advrow td{background:color-mix(in srgb,var(--grape) 8%,transparent)}
 /* stickers */
 .stickers{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:12px}
 .st{aspect-ratio:1;border-radius:22px;background:var(--card);border:2px solid var(--line);display:grid;place-items:center;font-size:2.8rem;box-shadow:0 4px 0 var(--shadow);max-width:100%}
@@ -370,6 +374,72 @@ const LEVELS = [
   s:["Always wear a helmet.|Luôn luôn đội mũ bảo hiểm.","Stop at the red light.|Dừng lại khi đèn đỏ."]}
 ]}
 ];
+/* ================== PHẦN NÂNG CAO (3 bài mỗi khối) ================== */
+const ADV={
+mn:{goal:"Dành cho bé đã thuộc 6 bài cơ bản: từ trái nghĩa, côn trùng và sinh vật biển, rau củ. Câu dài hơn, 4–6 từ.",
+ grammar:["It is big. It is small.","Stand up! Sit down!","I can see a bee."],
+ units:[
+ {t:"Opposites",vi:"Từ trái nghĩa",em:"↔️",w:"big|🐘|to;small|🐭|nhỏ;hot|🔥|nóng;cold|🧊|lạnh;happy|😄|vui;sad|😢|buồn;up|⬆️|lên trên;down|⬇️|xuống dưới",
+  s:["The elephant is big.|Con voi thì to.","Stand up! Sit down!|Đứng lên! Ngồi xuống!","The ice is cold.|Đá thì lạnh."]},
+ {t:"Bugs and sea animals",vi:"Côn trùng và sinh vật biển",em:"🐞",w:"bee|🐝|con ong;ant|🐜|con kiến;butterfly|🦋|con bướm;ladybird|🐞|bọ rùa;crab|🦀|con cua;octopus|🐙|bạch tuộc;whale|🐳|cá voi;turtle|🐢|con rùa",
+  s:["I can see a butterfly.|Con nhìn thấy một con bướm.","The whale is in the sea.|Cá voi ở dưới biển.","A ladybird is red and black.|Bọ rùa màu đỏ và đen."]},
+ {t:"Vegetables",vi:"Rau củ",em:"🥕",w:"carrot|🥕|cà rốt;tomato|🍅|cà chua;potato|🥔|khoai tây;corn|🌽|bắp ngô;onion|🧅|củ hành;broccoli|🥦|bông cải xanh;cucumber|🥒|dưa leo;pumpkin|🎃|bí ngô",
+  s:["I like carrots.|Con thích cà rốt.","The tomato is red.|Quả cà chua màu đỏ.","Eat your broccoli, please.|Con ăn bông cải xanh đi nào."]}
+]},
+l1:{goal:"Số đếm 11–20, thú cưng, đồ dùng nhà bếp. Câu có hai ý nối bằng and, mẫu câu have got.",
+ grammar:["I have got a rabbit and a parrot.","How many…? There are fifteen.","Can I have a spoon, please?"],
+ units:[
+ {t:"Numbers 11–20",vi:"Số đếm 11–20",em:"🔢",w:"eleven|11|mười một;twelve|12|mười hai;thirteen|13|mười ba;fourteen|14|mười bốn;fifteen|15|mười lăm;sixteen|16|mười sáu;seventeen|17|mười bảy;eighteen|18|mười tám;nineteen|19|mười chín;twenty|20|hai mươi",
+  s:["How many pencils are there? There are fifteen.|Có bao nhiêu bút chì? Có mười lăm cái.","My brother is twelve years old.|Anh trai mình mười hai tuổi.","Count from eleven to twenty.|Đếm từ mười một đến hai mươi."]},
+ {t:"Pets",vi:"Thú cưng",em:"🐰",w:"rabbit|🐰|con thỏ;hamster|🐹|chuột hamster;parrot|🦜|con vẹt;goldfish|🐠|cá vàng;puppy|🐶|chó con;kitten|🐱|mèo con;tortoise|🐢|rùa cạn;mouse|🐭|con chuột",
+  s:["I have got a rabbit and a parrot.|Mình có một con thỏ và một con vẹt.","Has she got a kitten? Yes, she has.|Bạn ấy có mèo con không? Có.","My goldfish is orange.|Con cá vàng của mình màu cam."]},
+ {t:"In the kitchen",vi:"Đồ dùng nhà bếp",em:"🥄",w:"spoon|🥄|cái thìa;fork|🍴|cái nĩa;knife|🔪|con dao;plate|🍽️|cái đĩa;bowl|🥣|cái bát;cup|☕|cái tách;teapot|🫖|ấm trà;chopsticks|🥢|đôi đũa",
+  s:["Can I have a spoon, please?|Cho con xin một cái thìa được không ạ?","We eat rice with chopsticks.|Chúng mình ăn cơm bằng đũa.","Put the plates on the table.|Đặt những cái đĩa lên bàn nhé."]}
+]},
+l2:{goal:"Thì hiện tại tiếp diễn (đang làm gì), nói giờ, cuộc sống nông trại. Câu 6–8 từ.",
+ grammar:["What are you doing? I am reading.","What time is it? It is seven o'clock.","There are three sheep on the farm."],
+ units:[
+ {t:"What are you doing?",vi:"Bạn đang làm gì?",em:"🍳",w:"eating|🍔|đang ăn;drinking|🥤|đang uống;sleeping|😴|đang ngủ;reading|📖|đang đọc;cooking|🍳|đang nấu ăn;painting|🎨|đang vẽ;playing|🎮|đang chơi;cleaning|🧹|đang dọn dẹp",
+  s:["What are you doing? I am reading a book.|Bạn đang làm gì? Mình đang đọc sách.","She is cooking dinner.|Cô ấy đang nấu bữa tối.","They are playing in the park.|Họ đang chơi trong công viên."]},
+ {t:"On the farm",vi:"Ở nông trại",em:"🚜",w:"horse|🐴|con ngựa;sheep|🐑|con cừu;goat|🐐|con dê;rooster|🐓|gà trống;buffalo|🐃|con trâu;turkey|🦃|gà tây;tractor|🚜|máy kéo;rice field|🌾|cánh đồng lúa",
+  s:["There are three sheep on the farm.|Có ba con cừu ở nông trại.","The rooster wakes me up every morning.|Con gà trống đánh thức mình mỗi sáng.","My grandfather has a buffalo.|Ông mình có một con trâu."]},
+ {t:"Telling the time",vi:"Xem giờ",em:"🕐",w:"one o'clock|🕐|một giờ;two o'clock|🕑|hai giờ;three o'clock|🕒|ba giờ;four o'clock|🕓|bốn giờ;five o'clock|🕔|năm giờ;six o'clock|🕕|sáu giờ;half past seven|🕢|bảy giờ rưỡi;half past eight|🕣|tám giờ rưỡi",
+  s:["What time is it? It is seven o'clock.|Mấy giờ rồi? Bảy giờ rồi.","I have lunch at half past eleven.|Mình ăn trưa lúc mười một giờ rưỡi.","School starts at seven o'clock.|Trường bắt đầu học lúc bảy giờ."]}
+]},
+l3:{goal:"Nghề nghiệp mở rộng, mua sắm và hỏi giá, khám phá vũ trụ. Câu hỏi What does… do? và How much…?",
+ grammar:["What does your mother do?","How much is this T-shirt?","We live on planet Earth."],
+ units:[
+ {t:"More jobs",vi:"Nghề nghiệp mở rộng",em:"🧑‍🔬",w:"dentist|🦷|nha sĩ;vet|🐾|bác sĩ thú y;postman|📮|người đưa thư;mechanic|🔧|thợ sửa máy;astronaut|🧑‍🚀|phi hành gia;scientist|🧑‍🔬|nhà khoa học;artist|🧑‍🎨|họa sĩ;engineer|👷|kỹ sư",
+  s:["What does your mother do? She is a scientist.|Mẹ bạn làm nghề gì? Mẹ mình là nhà khoa học.","A vet looks after sick animals.|Bác sĩ thú y chăm sóc các con vật bị ốm.","An astronaut flies into space.|Phi hành gia bay vào vũ trụ."]},
+ {t:"Shopping",vi:"Mua sắm",em:"🛍️",w:"money|💵|tiền;price|🏷️|giá tiền;cheap|🪙|rẻ;expensive|💎|đắt;shopping bag|🛍️|túi mua sắm;basket|🧺|cái giỏ;receipt|🧾|hóa đơn;wallet|👛|cái ví",
+  s:["How much is this T-shirt? It is fifty thousand dong.|Cái áo phông này giá bao nhiêu? Năm mươi nghìn đồng.","Can I have a bag, please?|Cho mình xin một cái túi được không?","This dress is too expensive.|Cái váy này đắt quá."]},
+ {t:"Space",vi:"Vũ trụ",em:"🚀",w:"planet|🪐|hành tinh;rocket|🚀|tên lửa;Earth|🌍|Trái Đất;star|🌟|ngôi sao;comet|☄️|sao chổi;telescope|🔭|kính thiên văn;alien|👽|người ngoài hành tinh;satellite|🛰️|vệ tinh",
+  s:["We live on planet Earth.|Chúng ta sống trên hành tinh Trái Đất.","The rocket is flying to the Moon.|Tên lửa đang bay lên Mặt Trăng.","I can see the stars with a telescope.|Mình nhìn thấy các vì sao bằng kính thiên văn."]}
+]},
+l4:{goal:"Hỏi và chỉ đường, tính cách con người, môi trường sống của động vật. Dùng was/were, câu ghép với and, but.",
+ grammar:["Excuse me, where is the post office?","Go straight and turn left.","He was shy on his first day."],
+ units:[
+ {t:"Directions",vi:"Chỉ đường",em:"🧭",w:"turn left|⬅️|rẽ trái;turn right|➡️|rẽ phải;go straight|⬆️|đi thẳng;crossroads|➕|ngã tư;bridge|🌉|cây cầu;post office|🏤|bưu điện;bus stop|🚏|trạm xe buýt;museum|🏛️|bảo tàng",
+  s:["Excuse me, where is the post office?|Xin lỗi, bưu điện ở đâu ạ?","Go straight and turn left at the crossroads.|Đi thẳng rồi rẽ trái ở ngã tư.","The museum is next to the bridge.|Bảo tàng ở cạnh cây cầu."]},
+ {t:"Personality",vi:"Tính cách",em:"🤗",w:"brave|🦁|dũng cảm;kind|🤗|tốt bụng;funny|🤡|vui tính;clever|🧠|thông minh;shy|🙈|ngại ngùng;lazy|🦥|lười biếng;friendly|👋|thân thiện;careful|⚠️|cẩn thận",
+  s:["My best friend is kind and funny.|Bạn thân của mình tốt bụng và vui tính.","He was shy on his first day at school.|Ngày đầu đi học bạn ấy rất ngại ngùng.","Be careful when you cross the road.|Hãy cẩn thận khi qua đường."]},
+ {t:"Animal homes",vi:"Môi trường sống",em:"🏝️",w:"desert|🏜️|sa mạc;jungle|🌴|rừng rậm;ocean|🌊|đại dương;the Arctic|🐻‍❄️|Bắc Cực;cave|🦇|hang động;island|🏝️|hòn đảo;volcano|🌋|núi lửa;lake|🛶|hồ nước",
+  s:["Camels live in the desert.|Lạc đà sống ở sa mạc.","Polar bears live in the Arctic.|Gấu Bắc Cực sống ở Bắc Cực.","Bats sleep in caves during the day.|Dơi ngủ trong hang vào ban ngày."]}
+]},
+l5:{goal:"Dự định tương lai (be going to), công nghệ và an toàn trên mạng, thiên tai. Câu điều kiện đơn giản với If, hướng tới Cambridge A2 Flyers.",
+ grammar:["I am going to visit Ha Long Bay.","When I grow up, I want to be…","If there is lightning, don't…"],
+ units:[
+ {t:"Future plans",vi:"Dự định tương lai",em:"🎯",w:"travel|✈️|đi du lịch;build|🏗️|xây dựng;invent|💡|phát minh;explore|🧭|khám phá;study abroad|🎓|đi du học;save money|🐷|tiết kiệm tiền;learn to drive|🚗|học lái xe;help people|🤝|giúp đỡ mọi người",
+  s:["What are you going to do this summer?|Hè này bạn định làm gì?","I am going to visit Ha Long Bay with my family.|Mình sẽ đi thăm vịnh Hạ Long cùng gia đình.","When I grow up, I want to be an engineer.|Khi lớn lên, mình muốn trở thành kỹ sư."]},
+ {t:"Technology",vi:"Công nghệ",em:"💻",w:"computer|💻|máy tính;smartphone|📱|điện thoại thông minh;internet|🌐|mạng internet;email|📧|thư điện tử;camera|📷|máy ảnh;printer|🖨️|máy in;keyboard|⌨️|bàn phím;password|🔑|mật khẩu",
+  s:["I use the internet to do my homework.|Mình dùng internet để làm bài tập.","Never share your password with strangers.|Đừng bao giờ chia sẻ mật khẩu với người lạ.","How often do you use a computer?|Bạn có hay dùng máy tính không?"]},
+ {t:"Natural disasters",vi:"Thiên tai",em:"🌪️",w:"flood|🌊|lũ lụt;storm|🌀|cơn bão;earthquake|🏚️|động đất;drought|🏜️|hạn hán;wildfire|🔥|cháy rừng;landslide|⛰️|sạt lở đất;lightning|⚡|tia sét;tornado|🌪️|lốc xoáy",
+  s:["During a storm, we should stay indoors.|Khi có bão, chúng ta nên ở trong nhà.","The flood damaged many houses.|Lũ lụt đã làm hư hại nhiều ngôi nhà.","If there is lightning, don't stand under a tree.|Khi có sét, đừng đứng dưới gốc cây."]}
+]}
+};
+LEVELS.forEach(L=>{const a=ADV[L.id];if(!a)return;L.advGoal=a.goal;L.advGrammar=a.grammar;a.units.forEach(u=>u.adv=true);L.units=L.units.concat(a.units)});
+const basicUnits=L=>L.units.filter(u=>!u.adv),advUnits=L=>L.units.filter(u=>u.adv);
+const ulabel=u=>u.adv?"Nâng cao "+(u.ui-basicUnits(LEVELS[u.li]).length+1):"Bài "+(u.ui+1);
 LEVELS.forEach((L,li)=>L.units.forEach((u,ui)=>{
   u.words=u.w.split(";").map(x=>{const [en,pic,vi]=x.split("|");return{en:en.trim(),pic:pic.trim(),vi:vi.trim()}});
   u.sent=u.s.map(x=>{const [en,vi]=x.split("|");return{en,vi}});
@@ -451,7 +521,7 @@ function addStars(n){
 }
 function markDone(key,act){const p=P();p.done[key]=p.done[key]||{};p.done[key][act]=1;save()}
 function unitDone(u){const d=P().done[u.key]||{};return actsFor(u.li).filter(a=>d[a.id]).length}
-function levelPct(li){const L=LEVELS[li];let t=0,d=0;L.units.forEach(u=>{t+=actsFor(li).length;d+=unitDone(u)});return t?Math.round(d/t*100):0}
+function levelPct(li,adv=false){const L=LEVELS[li];let t=0,d=0;L.units.filter(u=>!!u.adv===adv).forEach(u=>{t+=actsFor(li).length;d+=unitDone(u)});return t?Math.round(d/t*100):0}
 
 /* ================== ĐIỀU HƯỚNG ================== */
 function go(h){if(location.hash==="#"+h||(!h&&!location.hash))route();else location.hash=h}
@@ -492,13 +562,13 @@ function route(){
   if(m[0]==="lv")return level(+m[1]);
   if(m[0]==="u")return unit(+m[1],+m[2]);
   if(m[0]==="g")return game(m[1],+m[2],+m[3]);
-  if(m[0]==="thu-thach")return challenge(+m[1]);
+  const cm=h.match(/^thu-thach-(\d+)(-nc)?$/);if(cm)return challenge(+cm[1],!!cm[2]);
   home();
 }
 
 /* ================== MÀN HÌNH ================== */
 function nextUnit(){
-  for(let li=0;li<LEVELS.length;li++)for(const u of LEVELS[li].units)if(unitDone(u)<actsFor(li).length)return u;
+  for(let li=0;li<LEVELS.length;li++)for(const u of basicUnits(LEVELS[li]))if(unitDone(u)<actsFor(li).length)return u;
   return null;
 }
 function home(){
@@ -527,17 +597,26 @@ function home(){
       <button class="island" style="--c:${lvColor(li)}" data-go="lv-${li}">
         <div class="top"><span class="em">${L.em}</span><span class="badge">${L.age}</span></div>
         <h3>${L.name}</h3>
-        <span class="muted">${L.units.map(u=>u.t).join(" · ")}</span>
+        <span class="muted">${basicUnits(L).map(u=>u.t).join(" · ")}</span>
         <div class="bar" aria-label="Tiến độ ${levelPct(li)}%"><i style="width:${levelPct(li)}%"></i></div>
-        <small class="muted"><b>${levelPct(li)}%</b> hoàn thành · ${L.units.reduce((s,u)=>s+u.words.length,0)} từ</small>
+        <small class="muted"><b>${levelPct(li)}%</b> hoàn thành · ${basicUnits(L).reduce((s,u)=>s+u.words.length,0)} từ · 🚀 +${advUnits(L).length} bài nâng cao</small>
       </button>`).join("")}
     </div>
   </section>`);
 }
 
+function unitCard(u,li){const d=unitDone(u),n=actsFor(li).length;return`
+      <button class="unit${u.adv?" adv":""}" style="--c:${lvColor(li)}" data-go="u-${li}-${u.ui}">
+        <span class="em">${u.em}</span>
+        <span class="n">${u.adv?"🚀 ":""}${ulabel(u)} · ${u.words.length} từ</span>
+        <h3>${esc(u.t)}</h3>
+        <span class="muted">${esc(u.vi)}</span>
+        <div class="dots">${actsFor(li).map((a,i)=>`<b class="${i<d?"on":""}"></b>`).join("")}</div>
+        <small class="muted">${d===n?"✅ Đã xong":d+"/"+n+" hoạt động"}</small>
+      </button>`}
 function level(li){
   const L=LEVELS[li];if(!L)return home();
-  const cup=P().done[L.id+"-cup"];
+  const cup=P().done[L.id+"-cup"],cupA=P().done[L.id+"-cupnc"];
   render(`
   <button class="btn ghost sm back" data-go="">← Bản đồ</button>
   <div class="lvhead" style="--c:${lvColor(li)}">
@@ -549,22 +628,22 @@ function level(li){
     </div>
   </div>
   <section>
-    <div class="units">
-      ${L.units.map((u,ui)=>{const d=unitDone(u),n=actsFor(li).length;return`
-      <button class="unit" style="--c:${lvColor(li)}" data-go="u-${li}-${ui}">
-        <span class="em">${u.em}</span>
-        <span class="n">Bài ${ui+1} · ${u.words.length} từ</span>
-        <h3>${esc(u.t)}</h3>
-        <span class="muted">${esc(u.vi)}</span>
-        <div class="dots">${actsFor(li).map((a,i)=>`<b class="${i<d?"on":""}"></b>`).join("")}</div>
-        <small class="muted">${d===n?"✅ Đã xong":d+"/"+n+" hoạt động"}</small>
-      </button>`}).join("")}
-    </div>
+    <div class="units">${basicUnits(L).map(u=>unitCard(u,li)).join("")}</div>
   </section>
   <section class="card row" style="justify-content:space-between">
     <div><h2 style="font-size:1.35rem">🏆 Thử thách cuối đảo</h2>
-    <span class="muted">10 câu hỏi trộn từ cả 6 bài. ${cup?`Kỷ lục của bé: <b>${cup}/10</b>`:"Làm sau khi học xong các bài nhé."}</span></div>
+    <span class="muted">10 câu hỏi trộn từ 6 bài cơ bản. ${cup?`Kỷ lục của bé: <b>${cup}/10</b>`:"Làm sau khi học xong các bài nhé."}</span></div>
     <button class="btn" style="--c:${lvColor(li)}" data-go="thu-thach-${li}">Bắt đầu</button>
+  </section>
+  <section class="advbox" style="--c:${lvColor(li)}">
+    <div class="eyebrow">Phần nâng cao · khó hơn</div>
+    <h2 style="font-size:1.6rem">🚀 Nâng cao ${L.name}</h2>
+    <p class="muted" style="margin:4px 0 12px;max-width:66ch">${L.advGoal} Từ khó hơn, câu dài hơn; Bắn bóng bay dùng chữ thay hình, Đánh vần có thêm chữ cái gây nhiễu. Tiến độ phần nâng cao: <b>${levelPct(li,true)}%</b>.</p>
+    <div class="units">${advUnits(L).map(u=>unitCard(u,li)).join("")}</div>
+    <div class="row" style="justify-content:space-between;margin-top:14px">
+      <span class="muted">🏆 Thử thách nâng cao: 10 câu từ 3 bài nâng cao. ${cupA?`Kỷ lục: <b>${cupA}/10</b>`:""}</span>
+      <button class="btn" style="--c:var(--grape)" data-go="thu-thach-${li}-nc">Thử thách nâng cao</button>
+    </div>
   </section>`);
 }
 
@@ -576,7 +655,7 @@ function unit(li,ui){
   <div class="lvhead" style="--c:${lvColor(li)}">
     <div class="em">${u.em}</div>
     <div style="min-width:0;flex:1">
-      <div class="eyebrow">${L.name} · Bài ${ui+1}</div>
+      <div class="eyebrow">${L.name} · ${u.adv?"🚀 ":""}${ulabel(u)}</div>
       <h1><button class="btn ghost sm" ${sv(u.t)} aria-label="Nghe">🔊</button> ${esc(u.t)}</h1>
       <span class="muted">${esc(u.vi)}</span>
     </div>
@@ -814,7 +893,7 @@ function gSpell(u,L,back,act){
   const show=()=>{
     SAY=[];setProg(r);const w=ws[r],chars=[...w.en];let pos=0,miss=false;
     const need=()=>{while(pos<chars.length&&!/[A-Za-z]/.test(chars[pos]))pos++;return chars[pos]};
-    const extra=u.li>=3?shuffle("abcdefghijklmnoprstuwy".split("").filter(c=>!w.en.toLowerCase().includes(c))).slice(0,2):[];
+    const extra=(u.adv||u.li>=3)?shuffle("abcdefghijklmnoprstuwy".split("").filter(c=>!w.en.toLowerCase().includes(c))).slice(0,u.adv?3:2):[];
     const tiles=shuffle([...chars.filter(c=>/[A-Za-z]/.test(c)).map(c=>c.toLowerCase()),...extra]);
     $("#stage").innerHTML=`<div class="prompt">Xếp chữ cái thành từ <span class="vi">(${esc(w.vi)})</span></div>
       <div class="bigpic" style="width:min(180px,50vw)">${pic(w.pic)}</div>
@@ -1007,7 +1086,7 @@ function gVideo(u,L,back,act){
 
 /* 8. Bắn bóng bay */
 function gBalloon(u,L,back,act){
-  const rounds=shuffle(u.words).slice(0,6),useWord=u.li>=3;
+  const rounds=shuffle(u.words).slice(0,6),useWord=u.li>=3||!!u.adv;
   render(shell(`🎈 Bắn bóng bay · ${esc(u.t)}`,back,rounds.length));
   const cols=["--berry","--sun","--leaf","--orange","--grape","--sky"];
   let r=0,score=0;
@@ -1057,14 +1136,14 @@ function gTF(u,L,back,act){
 }
 
 /* Thử thách cuối đảo */
-function challenge(li){
+function challenge(li,adv=false){
   const L=LEVELS[li];if(!L)return home();
-  const all=L.units.flatMap(u=>u.words);
+  const all=(adv?advUnits(L):basicUnits(L)).flatMap(u=>u.words);
   const rounds=shuffle(all).slice(0,10).map((w,k)=>({w,mode:k%2?"look":"listen"}));
   const back="lv-"+li;
-  gChoose({t:L.name,words:all,li},L,back,"listen",{pool:all,rounds,title:`🏆 Thử thách đảo ${L.name}`,onEnd:(score,n)=>{
-    const p=P(),k=L.id+"-cup";p.done[k]=Math.max(p.done[k]||0,score);save();
-    finish({stars:score,max:n,back,again:()=>challenge(li),label:"Kết quả thử thách:"});
+  gChoose({t:L.name,words:all,li},L,back,"listen",{pool:all,rounds,title:`🏆 Thử thách ${adv?"nâng cao":"đảo"} ${L.name}`,onEnd:(score,n)=>{
+    const p=P(),k=L.id+(adv?"-cupnc":"-cup");p.done[k]=Math.max(p.done[k]||0,score);save();
+    finish({stars:score,max:n,back,again:()=>challenge(li,adv),label:"Kết quả thử thách:"});
   }});
 }
 
@@ -1090,13 +1169,13 @@ function program(){
   <section>
     <div class="eyebrow">Dành cho phụ huynh và thầy cô</div>
     <h1 style="font-size:clamp(1.8rem,5vw,2.4rem)">Chương trình học Mầm non – Lớp 5</h1>
-    <p class="muted" style="max-width:68ch">6 cấp độ, mỗi cấp 6 bài, tổng cộng <b>${LEVELS.length*6} bài</b> và <b>${total} từ vựng</b> kèm mẫu câu. Chủ đề đi từ gần gũi (màu sắc, con vật, gia đình) đến mở rộng (lễ hội, môi trường, an toàn giao thông). Mỗi bài học trong khoảng một tuần.</p>
+    <p class="muted" style="max-width:68ch">6 cấp độ, mỗi cấp 6 bài cơ bản và 3 bài nâng cao, tổng cộng <b>${LEVELS.reduce((s,L)=>s+L.units.length,0)} bài</b> và <b>${total} từ vựng</b> kèm mẫu câu. Chủ đề đi từ gần gũi (màu sắc, con vật, gia đình) đến mở rộng (lễ hội, môi trường, an toàn giao thông). Mỗi bài học trong khoảng một tuần.</p>
   </section>
   <section class="card">
     <h2 style="font-size:1.3rem">Lịch học gợi ý cho mỗi bài (1 tuần)</h2>
     <div class="tbl"><table><thead><tr><th>Ngày</th><th>Hoạt động</th><th>Mục đích</th></tr></thead>
     <tbody>${days.map(d=>`<tr><td><b>${d[0]}</b></td><td>${d[1]}</td><td class="muted">${d[2]}</td></tr>`).join("")}</tbody></table></div>
-    <p class="muted" style="margin-bottom:0">Mầm non bỏ Đánh vần và Xếp câu; thay bằng chơi lại Thẻ từ và Lật thẻ. Cuối mỗi đảo làm <b>Thử thách 10 câu</b> để ôn tổng hợp.</p>
+    <p class="muted" style="margin-bottom:0">Mầm non bỏ Đánh vần và Xếp câu; thay bằng chơi lại Thẻ từ và Lật thẻ. Cuối mỗi đảo làm <b>Thử thách 10 câu</b> để ôn tổng hợp. Bé học xong 6 bài cơ bản và làm thử thách đạt từ 8/10 thì chuyển sang <b>🚀 Nâng cao</b>, mỗi bài nâng cao cũng học khoảng một tuần.</p>
   </section>
   ${LEVELS.map((L,li)=>`
   <section class="card lvprog" style="--c:${lvColor(li)}">
@@ -1105,8 +1184,9 @@ function program(){
     <div class="meta"><div><b>Độ tuổi</b>${L.age}</div><div><b>Thời lượng</b>${L.time}</div><div><b>Kỹ năng</b>${L.skills}</div></div>
     <div style="margin:8px 0"><b>Một buổi học mẫu (${L.plan.reduce((s,p)=>s+p[1],0)} phút):</b> <div class="pat" style="margin-top:4px">${L.plan.map(p=>`<span>${p[0]} · ${p[1]} phút</span>`).join("")}</div></div>
     <div style="margin:8px 0"><b>Mẫu câu trọng tâm:</b> <div class="pat" style="margin-top:4px">${L.grammar.map(g=>`<span>${esc(g)}</span>`).join("")}</div></div>
+    <div style="margin:8px 0"><b>🚀 Nâng cao:</b> ${L.advGoal} <div class="pat" style="margin-top:4px">${L.advGrammar.map(g=>`<span>${esc(g)}</span>`).join("")}</div></div>
     <div class="tbl"><table><thead><tr><th>Bài</th><th>Chủ đề</th><th>Tiếng Việt</th><th style="text-align:right">Số từ</th></tr></thead>
-    <tbody>${L.units.map((u,ui)=>`<tr><td>${ui+1}</td><td><b>${esc(u.t)}</b></td><td>${esc(u.vi)}</td><td class="num">${u.words.length}</td></tr>`).join("")}</tbody></table></div>
+    <tbody>${L.units.map((u,ui)=>`<tr${u.adv?' class="advrow"':""}><td>${u.adv?"🚀 NC"+(ui-basicUnits(L).length+1):ui+1}</td><td><b>${esc(u.t)}</b></td><td>${esc(u.vi)}</td><td class="num">${u.words.length}</td></tr>`).join("")}</tbody></table></div>
   </section>`).join("")}
   <section class="card">
     <h2 style="font-size:1.3rem">Mẹo giúp bé học vui và nhớ lâu</h2>
