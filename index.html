@@ -267,6 +267,29 @@ ul.tips a{color:var(--sky)}
 .poemlines{display:flex;flex-direction:column;gap:4px;margin:6px 0}
 .pl{padding:4px 10px;border-radius:10px;font-size:1.08rem;transition:background .15s}
 .poem{border-color:color-mix(in srgb,var(--berry) 45%,var(--line))}
+/* Đảo Toán Học */
+.mq{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;max-width:40ch;font-size:clamp(1.05rem,4vw,1.3rem);font-weight:700;line-height:1.45}
+.mq p{margin:0}
+.mbig{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,8.5vw,3rem);line-height:1.2;margin:0;font-variant-numeric:tabular-nums}
+.objs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:420px;font-size:2.1rem;line-height:1}
+.grp{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 12px;border:2px dashed var(--line);border-radius:16px}
+.shp svg{width:110px;height:110px}
+.qbox{display:inline-grid;place-items:center;min-width:1.4em;height:1.3em;padding:0 .2em;border:3px solid var(--berry);border-radius:10px;color:var(--berry);font-family:var(--display);font-weight:800}
+.clock{font-size:5.5rem;line-height:1;margin:0}
+.em2{font-size:2.2rem}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.05;margin:0 .15em;font-family:var(--display);font-weight:800}
+.frac span:first-child{border-bottom:3px solid currentColor;padding:0 .2em}
+.frbar{display:flex;gap:4px;width:min(320px,100%)}
+.frbar i{flex:1;height:44px;border:3px solid var(--ink);border-radius:6px;background:var(--card)}
+.frbar i.on{background:var(--orange)}
+.kdisp{min-width:180px;min-height:64px;padding:6px 18px;border:3px solid var(--line);border-radius:18px;background:var(--card);font-family:var(--display);font-weight:800;font-size:2.2rem;display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.kdisp.good{border-color:var(--good);background:color-mix(in srgb,var(--good) 18%,var(--card))}
+.kpad{display:grid;grid-template-columns:repeat(3,64px);gap:10px;justify-content:center}
+.kb{width:64px;height:58px;padding:0;font-size:1.6rem}
+.exbox .mq{font-size:1rem;align-items:flex-start;text-align:left}
+.exbox .mbig{font-size:1.6rem}
+.exbox .objs{font-size:1.4rem;justify-content:flex-start}
+.exbox .clock{font-size:3rem}
 /* sai phải làm lại */
 .redo{position:fixed;inset:0;z-index:28;background:rgba(10,18,34,.55);display:grid;place-items:center;padding:16px}
 .redobox{background:var(--card);border:3px solid var(--bad);border-radius:28px;padding:20px 24px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;max-width:360px;box-shadow:0 8px 0 var(--shadow);animation:pop .35s}
@@ -649,6 +672,7 @@ function route(){
   if(h==="ta")return home();
   if(/^tv(-|$)/.test(h))return vRoute(h);
   if(/^cc(-|$)/.test(h))return ccRoute(h);
+  if(/^toan(-|$)/.test(h))return mRoute(h);
   if(h==="nhan-dan")return stickers();
   if(h==="chuong-trinh")return program();
   if(h==="vui-choi")return playground();
@@ -1951,7 +1975,7 @@ function vRace(u,o={}){
 /* ---------- các trang ---------- */
 function hub(){
   const p=P(),ne=nextUnit(),nv=vNextUnit();
-  const ePct=Math.round(LEVELS.reduce((s,L,i)=>s+levelPct(i),0)/LEVELS.length),vPct=Math.round(VLEVELS.reduce((s,L,i)=>s+vLevelPct(i),0)/VLEVELS.length),cPct=Math.round([2,3,4,5,6,7,8,9].reduce((s,n)=>s+ccDone(n),0)/56*100);
+  const ePct=Math.round(LEVELS.reduce((s,L,i)=>s+levelPct(i),0)/LEVELS.length),vPct=Math.round(VLEVELS.reduce((s,L,i)=>s+vLevelPct(i),0)/VLEVELS.length),cPct=Math.round(([2,3,4,5,6,7,8,9].reduce((s,n)=>s+ccDone(n),0)/56*100+MLEVELS.reduce((s,L,i)=>s+mLevelPct(i),0))/(MLEVELS.length+1));
   render(`
   <div class="hero">
     <div class="mascot" aria-hidden="true">🦉</div>
@@ -1976,10 +2000,10 @@ function hub(){
       <div class="bar"><i style="width:${vPct}%"></i></div>
       <small class="muted"><b>${vPct}%</b> hoàn thành${nv?` · Học tiếp: ${esc(nv.t)}`:""}</small>
     </button>
-    <button class="island hubisland" style="--c:var(--orange)" data-go="cc">
-      <div class="top"><span class="em">🔢</span><span class="badge">× ÷</span></div>
-      <h3>Đảo Cửu Chương</h3>
-      <span class="muted">Bảng nhân, bảng chia 2–9 · vè, thơ, mẹo nhớ · 7 trò chơi</span>
+    <button class="island hubisland" style="--c:var(--orange)" data-go="toan">
+      <div class="top"><span class="em">🔢</span><span class="badge">+ − × ÷</span></div>
+      <h3>Đảo Toán Học</h3>
+      <span class="muted">Toán Mầm non – Lớp 5 · cơ bản và nâng cao · bảng cửu chương</span>
       <div class="bar"><i style="width:${cPct}%"></i></div>
       <small class="muted"><b>${cPct}%</b> hoàn thành</small>
     </button>
@@ -2050,7 +2074,7 @@ function vProgram(){
   const days=[["Thứ Hai","🃏 Thẻ học · 👂 Nghe & chọn","Làm quen nội dung mới"],["Thứ Ba","🧩 Lật thẻ · 🔨 Đập chuột","Nhớ mặt chữ, mặt từ"],["Thứ Tư","〽️ Dấu thanh · 🔤 Ghép tiếng · ✏️ Điền chữ","Luyện kĩ năng chính của bài"],["Thứ Năm","🗂️ Phân loại · ❓ Đố vui","Hiểu và vận dụng"],["Thứ Sáu","🧱 Xếp câu · 🎙️ Bé đọc to","Đọc và viết câu"],["Thứ Bảy","🏎️ Đua xe · 🏆 Thử thách","Ôn tổng hợp, thi đua"],["Chủ nhật","Nghỉ hoặc ôn","Chơi lại trò bé thích"]];
   render(`
   <button class="btn ghost sm back" data-go="tv">← Đảo Tiếng Việt</button>
-  <div class="row" style="margin-top:12px"><button class="chip" data-go="chuong-trinh">🏝️ Tiếng Anh</button><button class="chip on">🌾 Tiếng Việt</button><button class="chip" data-go="cc">🔢 Cửu chương</button></div>
+  <div class="row" style="margin-top:12px"><button class="chip" data-go="chuong-trinh">🏝️ Tiếng Anh</button><button class="chip on">🌾 Tiếng Việt</button><button class="chip" data-go="toan-chuong-trinh">🔢 Toán</button></div>
   <section>
     <div class="eyebrow">Dành cho phụ huynh và thầy cô</div>
     <h1 style="font-size:clamp(1.8rem,5vw,2.4rem)">Chương trình Tiếng Việt Mầm non – Lớp 5</h1>
@@ -2081,7 +2105,7 @@ function vRoute(h){
 }
 
 /* ======================================================================
-   ĐẢO CỬU CHƯƠNG — bảng nhân, chia 2–9 (Lớp 2: bảng 2, 5 · Lớp 3: 3, 4, 6, 7, 8, 9)
+   BẢNG CỬU CHƯƠNG (thuộc Đảo Toán Học) — bảng nhân, chia 2–9 (Lớp 2: bảng 2, 5 · Lớp 3: 3, 4, 6, 7, 8, 9)
    Vè và thơ do Cú Bông sáng tác; phần phép tính trong vè do máy tự tính.
    ====================================================================== */
 const VN_DIGIT=["không","một","hai","ba","bốn","năm","sáu","bảy","tám","chín"];
@@ -2207,9 +2231,9 @@ function readLines(btn,rows,texts){
 }
 function ccHome(){
   render(`
-  <button class="btn ghost sm back" data-go="">← Trang đầu</button>
-  <div class="lvhead" style="--c:var(--orange)"><div class="em">🔢</div>
-    <div style="min-width:0;flex:1"><div class="eyebrow">Toán Lớp 2 – Lớp 3</div><h1>Đảo Cửu Chương</h1>
+  <button class="btn ghost sm back" data-go="toan">← Đảo Toán Học</button>
+  <div class="lvhead" style="--c:var(--orange)"><div class="em">✖️</div>
+    <div style="min-width:0;flex:1"><div class="eyebrow">Đảo Toán Học · Lớp 2 – Lớp 3</div><h1>Bảng cửu chương</h1>
     <p class="muted" style="margin:4px 0 0;max-width:62ch">Học bảng nhân, bảng chia từ 2 đến 9 bằng vè, thơ và trò chơi. Lớp 2 học bảng 2 và 5; Lớp 3 học các bảng 3, 4, 6, 7, 8, 9.</p></div></div>
   <section class="card poem">
     <div class="row" style="justify-content:space-between"><h2 style="font-size:1.3rem">📜 Bài thơ Cửu chương</h2><button class="btn sm" style="--c:var(--leaf)" id="poemBtn">▶ Đọc thơ</button></div>
@@ -2229,7 +2253,7 @@ function ccHome(){
 function ccTable(n){
   const c=CC[n];if(!c)return ccHome();const d=P().done["cc-"+n]||{};const K=[1,2,3,4,5,6,7,8,9,10];
   render(`
-  <button class="btn ghost sm back" data-go="cc">← Đảo Cửu Chương</button>
+  <button class="btn ghost sm back" data-go="cc">← Bảng cửu chương</button>
   <div class="lvhead" style="--c:var(--orange)"><div class="em ccbig">×${n}</div>
     <div style="min-width:0;flex:1"><div class="eyebrow">${c.grade}</div><h1>Bảng nhân ${n}</h1></div></div>
   <section class="cc2">
@@ -2257,6 +2281,354 @@ function ccRoute(h){
   ccHome();
 }
 
+/* ======================================================================
+   ĐẢO TOÁN HỌC — Mầm non đến Lớp 5 (bám Chương trình môn Toán 2018)
+   Mỗi bài có hai bộ tạo đề: b() cơ bản, a() nâng cao. Đáp án do máy tính.
+   ====================================================================== */
+const Rn=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const pk=a=>a[Math.random()*a.length|0];
+const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
+function fmtN(n){const neg=n<0;n=Math.abs(n);let s=String(Math.round(n*1000)/1000);let [i,f]=s.split(".");
+  if(i.length>=4)i=i.replace(/\B(?=(\d{3})+(?!\d))/g," ");return (neg?"-":"")+i+(f?","+f:"")}
+const frS=(a,b)=>{const g=gcd(a,b);a/=g;b/=g;return b===1?String(a):`${a}/${b}`};
+const FR=(a,b)=>`<span class="frac"><span>${a}</span><span>${b}</span></span>`;
+const frHTML=s=>{const m=String(s).match(/^(\d+)\/(\d+)$/);return m?FR(m[1],m[2]):esc(s)};
+const romanBig=n=>{let o="";[[1000,"M"],[900,"CM"],[500,"D"],[400,"CD"],[100,"C"],[90,"XC"],[50,"L"],[40,"XL"],[10,"X"],[9,"IX"],[5,"V"],[4,"IV"],[1,"I"]].forEach(([v,r])=>{while(n>=v){o+=r;n-=v}});return o};
+function nearInt(x,step=1){return [...new Set([x+step,x-step,x+1,x-1,x+2,x-2,x+10,x-10,x+2*step])].filter(v=>v>=0&&v!==x)}
+const QN=(q,ans,d)=>{const a=fmtN(ans);const ds=[...new Set((d||nearInt(ans)).filter(v=>v!==ans&&v>=0).map(fmtN))].filter(x=>x!==a);return{q:`<div class="mq">${q}</div>`,a,opts:pickOpts(a,ds),num:true}};
+const QT=(q,ans,choices,render)=>({q:`<div class="mq">${q}</div>`,a:ans,opts:choices.length<=4&&choices.includes(ans)?choices.slice():pickOpts(ans,choices),render});
+const QF=(q,ans,d)=>({q:`<div class="mq">${q}</div>`,a:ans,opts:pickOpts(ans,[...new Set(d)].filter(x=>x!==ans)),render:frHTML,num:true});
+const QD=(q,ans,d)=>QN(q,ans,(d||[ans+.1,ans-.1,ans+1,ans*10,ans/10,ans+.01]).map(v=>Math.round(v*1000)/1000));
+const NAMES=["An","Bình","Lan","Hoa","Minh","Nam","Mai","Hùng","Linh","Tú"];
+const two=()=>{const a=pk(NAMES);let b=pk(NAMES);while(b===a)b=pk(NAMES);return[a,b]};
+const OBJ=[["🍎","quả táo"],["🐟","con cá"],["⭐","ngôi sao"],["🐥","chú gà con"],["🎈","quả bóng bay"],["🌸","bông hoa"],["🚗","chiếc ô tô"],["🍬","viên kẹo"]];
+const objs=(e,n)=>`<div class="objs">${Array(n).fill(`<span>${e}</span>`).join("")}</div>`;
+const SHN={tron:"hình tròn",vuong:"hình vuông",tamgiac:"hình tam giác",chunhat:"hình chữ nhật"};
+const SHC=["var(--sky)","var(--berry)","var(--leaf)","var(--orange)","var(--grape)"];
+const shp=(t,c)=>{c=c||pk(SHC);const f=`style="fill:${c}"`;return `<svg viewBox="0 0 60 60" width="52" height="52" aria-hidden="true">${
+  t==="tron"?`<circle cx="30" cy="30" r="24" ${f}/>`:t==="vuong"?`<rect x="8" y="8" width="44" height="44" ${f}/>`:t==="tamgiac"?`<polygon points="30,5 55,52 5,52" ${f}/>`:`<rect x="3" y="16" width="54" height="28" ${f}/>`}</svg>`};
+const CLK=["🕐","🕑","🕒","🕓","🕔","🕕","🕖","🕗","🕘","🕙","🕚","🕛"];
+const DAYS=["Thứ Hai","Thứ Ba","Thứ Tư","Thứ Năm","Thứ Sáu","Thứ Bảy","Chủ nhật"];
+const SYM=[">","<","="];const cmp=(a,b)=>a>b?">":a<b?"<":"=";
+const big=s=>`<p class="mbig">${s}</p>`;
+const bar=(k,n)=>`<div class="frbar">${Array.from({length:n},(_,i)=>`<i class="${i<k?"on":""}"></i>`).join("")}</div>`;
+
+const MLEVELS=[
+{id:"mn",name:"Mầm non",em:"🐣",age:"5–6 tuổi",time:"15–20 phút/ngày",goal:"Đếm và nhận biết số đến 10, so sánh nhiều – ít, nhận biết hình, gộp tách trong phạm vi 10, tìm quy luật. Nâng cao: đếm đến 20, nhiều hơn mấy.",units:[
+ {t:"Đếm đến 10",em:"🍎",tip:"Đếm lần lượt từng đồ vật, mỗi đồ vật đếm một lần. Số cuối cùng đếm được là số lượng của cả nhóm.",
+  b(){const n=Rn(1,10),[e,nm]=pk(OBJ);return QN(`${objs(e,n)}<p>Có bao nhiêu ${nm}?</p>`,n,[n+1,n-1,n+2,n-2].filter(x=>x>0))},
+  a(){const n=Rn(11,20),[e,nm]=pk(OBJ);return QN(`${objs(e,n)}<p>Có bao nhiêu ${nm}?</p>`,n,[n+1,n-1,n+2,n-2])}},
+ {t:"Nhiều hơn, ít hơn",em:"⚖️",tip:"Ghép từng cái của nhóm này với từng cái của nhóm kia. Nhóm còn thừa ra là nhóm nhiều hơn.",
+  b(){let x=Rn(1,9),y=Rn(1,9);while(y===x)y=Rn(1,9);const more=Math.random()<.5;
+   return QT(`<div class="grp"><b>Nhóm A</b>${objs("🍎",x)}</div><div class="grp"><b>Nhóm B</b>${objs("🍊",y)}</div><p>Nhóm nào ${more?"nhiều hơn":"ít hơn"}?</p>`,(more?x>y:x<y)?"Nhóm A":"Nhóm B",["Nhóm A","Nhóm B"])},
+  a(){let x=Rn(2,10),y=Rn(1,10);while(y===x)y=Rn(1,10);
+   return QN(`<div class="grp"><b>Nhóm A</b>${objs("🍎",x)}</div><div class="grp"><b>Nhóm B</b>${objs("🍊",y)}</div><p>Nhóm ${x>y?"A":"B"} nhiều hơn nhóm kia mấy quả?</p>`,Math.abs(x-y))}},
+ {t:"Nhận biết hình",em:"🔺",tip:"Hình tròn không có góc. Hình vuông có 4 cạnh bằng nhau. Hình tam giác có 3 cạnh. Hình chữ nhật có 4 cạnh, 2 cạnh dài và 2 cạnh ngắn.",
+  b(){const t=pk(Object.keys(SHN));return QT(`<div class="shp">${shp(t)}</div><p>Đây là hình gì?</p>`,SHN[t],Object.values(SHN))},
+  a(){const t=pk(Object.keys(SHN)),ks=Object.keys(SHN);const row=Array.from({length:8},()=>pk(ks));if(!row.includes(t))row[Rn(0,7)]=t;
+   return QN(`<div class="objs">${row.map(x=>shp(x)).join("")}</div><p>Có bao nhiêu ${SHN[t]}?</p>`,row.filter(x=>x===t).length)}},
+ {t:"Gộp và tách trong phạm vi 10",em:"➕",tip:"Gộp hai nhóm lại thì được nhiều hơn. Tách bớt đi thì còn lại ít hơn. Ví dụ: 5 gồm 2 và 3.",
+  b(){const x=Rn(1,6),y=Rn(1,10-x),[e,nm]=pk(OBJ);return QN(`<div class="row" style="justify-content:center">${objs(e,x)}<b class="mbig">và</b>${objs(e,y)}</div><p>Gộp lại có tất cả bao nhiêu ${nm}?</p>`,x+y)},
+  a(){const t=Rn(4,10),k=Rn(1,t-1),[e,nm]=pk(OBJ);
+   return Math.random()<.5?QN(`${objs(e,t)}<p>Có ${t} ${nm}, bớt đi ${k}. Còn lại mấy ${nm}?</p>`,t-k):QN(big(`${t} gồm ${k} và <span class="qbox">?</span>`),t-k)}},
+ {t:"Tìm quy luật",em:"🔁",tip:"Nhìn xem các hình lặp lại theo thứ tự nào, rồi đoán hình tiếp theo.",
+  b(){const [A,B,C]=shuffle(["🔴","🔵","🟡","🟢","⭐","🌸"]);const s=[A,B,A,B,A,B];
+   return QT(`<div class="objs">${s.slice(0,5).map(x=>`<span>${x}</span>`).join("")}<span class="qbox">?</span></div><p>Hình tiếp theo là gì?</p>`,s[5],[A,B,C],x=>`<span class="em2">${x}</span>`)},
+  a(){const [A,B,C]=shuffle(["🔴","🔵","🟡","🟢","⭐","🌸"]);const p=pk([[A,B,C],[A,A,B],[A,B,B]]);const s=[...p,...p,...p];const cut=Rn(6,8);
+   return QT(`<div class="objs">${s.slice(0,cut).map(x=>`<span>${x}</span>`).join("")}<span class="qbox">?</span></div><p>Hình tiếp theo là gì?</p>`,s[cut],[A,B,C],x=>`<span class="em2">${x}</span>`)}}
+]},
+{id:"l1",name:"Lớp 1",em:"🌱",age:"6–7 tuổi",time:"20–25 phút/ngày",goal:"Số đến 100, so sánh số; cộng trừ trong phạm vi 10 và phạm vi 100 (không nhớ); xem giờ đúng, ngày trong tuần; bài toán có lời văn thêm – bớt.",units:[
+ {t:"Số đến 10 và so sánh",em:"🔢",tip:"Dấu > đọc là lớn hơn, dấu < đọc là bé hơn, dấu = đọc là bằng. Đầu nhọn của dấu luôn chỉ về số bé hơn.",
+  b(){const a=Rn(0,10),b=Rn(0,10);return QT(big(`${a} <span class="qbox">?</span> ${b}`)+"<p>Chọn dấu thích hợp</p>",cmp(a,b),SYM)},
+  a(){const r=Rn(0,2);if(r===0){const s=shuffle([0,1,2,3,4,5,6,7,8,9,10]).slice(0,4);const m=Math.max(...s);return QN(`<p>Số lớn nhất trong các số <b>${s.join(", ")}</b> là:</p>`,m,s.filter(x=>x!==m))}
+   const x=Rn(1,9);return r===1?QN(`<p>Số liền sau của <b>${x}</b> là:</p>`,x+1):QN(`<p>Số liền trước của <b>${x}</b> là:</p>`,x-1)}},
+ {t:"Cộng, trừ trong phạm vi 10",em:"➕",tip:"Phép cộng: gộp thêm vào. Phép trừ: bớt đi. Có thể đếm thêm hoặc đếm bớt trên ngón tay.",
+  b(){if(Math.random()<.5){const a=Rn(0,10),b=Rn(0,10-a);return QN(big(`${a} + ${b} = ?`),a+b)}const a=Rn(1,10),b=Rn(0,a);return QN(big(`${a} − ${b} = ?`),a-b)},
+  a(){const r=Rn(0,2),s=Rn(3,10),x=Rn(0,s);
+   if(r===0)return QN(big(`<span class="qbox">?</span> + ${x} = ${s}`),s-x);
+   if(r===1)return QN(big(`${s} − <span class="qbox">?</span> = ${s-x}`),x);
+   const a=Rn(1,6),b=Rn(1,10-a),c=Rn(0,a+b);return QN(big(`${a} + ${b} − ${c} = ?`),a+b-c)}},
+ {t:"Các số đến 100",em:"💯",tip:"Số có hai chữ số gồm chục và đơn vị. Ví dụ: 47 gồm 4 chục và 7 đơn vị.",
+  b(){const t=Rn(1,9),u=Rn(0,9),n=t*10+u;
+   return Math.random()<.5?QN(`<p>Số gồm <b>${t}</b> chục và <b>${u}</b> đơn vị là:</p>`,n,[u*10+t,n+1,n-1,t+u,n+10].filter(x=>x!==n)):QN(`<p>Số <b>${n}</b> gồm mấy chục?</p>`,t,[u,t+1,t-1,n].filter(x=>x!==t&&x>=0))},
+  a(){const r=Rn(0,2);if(r===0){const a=Rn(10,99),b=Rn(10,99);return QT(big(`${a} <span class="qbox">?</span> ${b}`)+"<p>Chọn dấu thích hợp</p>",cmp(a,b),SYM)}
+   if(r===1){const n=Rn(11,89);const nx=Math.floor(n/10)*10+10;return QN(`<p>Số tròn chục liền sau của <b>${n}</b> là:</p>`,nx,[nx-10,nx+10,n+1])}
+   const s=shuffle([...Array(90)].map((_,i)=>i+10)).slice(0,4),m=Math.min(...s);return QN(`<p>Số bé nhất trong các số <b>${s.join(", ")}</b> là:</p>`,m,s.filter(x=>x!==m))}},
+ {t:"Cộng, trừ phạm vi 100 (không nhớ)",em:"🧮",tip:"Đặt tính thẳng cột: đơn vị thẳng đơn vị, chục thẳng chục. Tính từ phải sang trái: cộng (trừ) đơn vị trước, chục sau.",
+  b(){if(Math.random()<.5){const t1=Rn(1,8),t2=Rn(0,9-t1),u1=Rn(0,9),u2=Rn(0,9-u1);const a=t1*10+u1,b=Math.max(1,t2*10+u2);return QN(big(`${a} + ${b} = ?`),a+b)}
+   const t1=Rn(1,9),u1=Rn(0,9),t2=Rn(0,t1),u2=Rn(0,u1);const a=t1*10+u1,b=t2*10+u2;return QN(big(`${a} − ${b} = ?`),a-b)},
+  a(){const t1=Rn(1,7),t2=Rn(1,8-t1),u1=Rn(0,8),u2=Rn(0,9-u1);const a=t1*10+u1,b=t2*10+u2;
+   return Math.random()<.5?QN(big(`${a} + <span class="qbox">?</span> = ${a+b}`),b):QN(big(`<span class="qbox">?</span> − ${b} = ${a}`),a+b)}},
+ {t:"Xem giờ, ngày trong tuần",em:"🕐",tip:"Kim ngắn chỉ giờ, kim dài chỉ phút. Khi kim dài chỉ số 12 là giờ đúng. Một tuần có 7 ngày: thứ Hai đến Chủ nhật.",
+  b(){const h=Rn(1,12);return QN(`<p class="clock">${CLK[h-1]}</p><p>Đồng hồ chỉ mấy giờ?</p>`,h,[h+1,h-1,h+2,12-h||6].filter(x=>x>0&&x<=12&&x!==h))},
+  a(){if(Math.random()<.6){const d=Rn(0,6),k=pk([1,2,-1]);return QT(`<p>Hôm nay là <b>${DAYS[d]}</b>. ${k===1?"Ngày mai":k===2?"Ngày kia":"Hôm qua"} là ngày nào?</p>`,DAYS[(d+k+7)%7],DAYS)}
+   const x=Rn(6,10),y=Rn(x+1,12);return QN(`<p>Bé học từ <b>${x} giờ</b> đến <b>${y} giờ</b>. Bé học trong mấy giờ?</p>`,y-x)}},
+ {t:"Bài toán có lời văn",em:"📖",tip:"Đọc kĩ đề: «thêm», «tất cả» thường làm phép cộng; «bớt», «bay đi», «còn lại» thường làm phép trừ.",
+  b(){const[A]=two();if(Math.random()<.5){const x=Rn(2,9),y=Rn(1,9);return QN(`<p>${A} có ${x} bông hoa, mẹ cho thêm ${y} bông. Hỏi ${A} có tất cả mấy bông hoa?</p>`,x+y)}
+   const x=Rn(5,19),y=Rn(1,x-1);return QN(`<p>Trên cành có ${x} con chim, ${y} con bay đi. Hỏi trên cành còn lại mấy con chim?</p>`,x-y)},
+  a(){if(Math.random()<.5){const t1=Rn(1,5),t2=Rn(1,4),u1=Rn(0,5),u2=Rn(0,4);const a=t1*10+u1,b=t2*10+u2;return QN(`<p>Tổ Một trồng được ${a} cây, tổ Hai trồng được ${b} cây. Hỏi cả hai tổ trồng được bao nhiêu cây?</p>`,a+b)}
+   const t1=Rn(3,9),u1=Rn(2,9),t2=Rn(1,t1-1),u2=Rn(0,u1);const a=t1*10+u1,b=t2*10+u2;return QN(`<p>Cửa hàng có ${a} quả cam, đã bán ${b} quả. Hỏi cửa hàng còn lại bao nhiêu quả cam?</p>`,a-b)}}
+]},
+{id:"l2",name:"Lớp 2",em:"🌼",age:"7–8 tuổi",time:"25–30 phút/ngày",goal:"Cộng trừ có nhớ phạm vi 100; số có ba chữ số; cộng trừ phạm vi 1000; phép nhân, phép chia (bảng 2, 5); ki-lô-gam, lít, giờ – phút, tiền Việt Nam; bài toán nhiều hơn, ít hơn.",units:[
+ {t:"Cộng có nhớ phạm vi 100",em:"➕",tip:"Cộng đơn vị trước: nếu được 10 trở lên thì viết hàng đơn vị, nhớ 1 sang hàng chục.",
+  b(){const u1=Rn(1,9),u2=Rn(10-u1,9),t1=Rn(1,7),t2=Rn(0,8-t1);const a=t1*10+u1,b=t2*10+u2;return QN(big(`${a} + ${b} = ?`),a+b,[a+b-10,a+b+10,a+b+1,a+b-1])},
+  a(){const u1=Rn(1,9),u2=Rn(10-u1,9),t1=Rn(1,6),t2=Rn(1,7-t1);const a=t1*10+u1,b=t2*10+u2,[A,B]=two();
+   return pk([()=>QN(big(`${a} + <span class="qbox">?</span> = ${a+b}`),b),()=>QN(`<p>Lớp 2A có ${a} bạn, lớp 2B có ${b} bạn. Hỏi cả hai lớp có bao nhiêu bạn?</p>`,a+b),()=>{const c=Rn(1,9);return QN(big(`${a} + ${b} + ${c} = ?`),a+b+c)}])()}},
+ {t:"Trừ có nhớ phạm vi 100",em:"➖",tip:"Đơn vị trên bé hơn đơn vị dưới thì mượn 1 chục (thêm 10 vào đơn vị), rồi trả 1 vào hàng chục của số trừ.",
+  b(){const t1=Rn(2,9),u1=Rn(0,8),u2=Rn(u1+1,9),t2=Rn(0,t1-1);const a=t1*10+u1,b=t2*10+u2;return QN(big(`${a} − ${b} = ?`),a-b,[a-b+10,a-b-10,a-b+1,a-b-1].filter(x=>x>=0))},
+  a(){const t1=Rn(3,9),u1=Rn(0,8),u2=Rn(u1+1,9),t2=Rn(1,t1-1);const a=t1*10+u1,b=t2*10+u2;
+   return pk([()=>QN(big(`<span class="qbox">?</span> − ${b} = ${a-b}`),a),()=>QN(`<p>Thư viện có ${a} quyển truyện, các bạn đã mượn ${b} quyển. Hỏi thư viện còn lại bao nhiêu quyển truyện?</p>`,a-b),()=>QN(big(`${a} − <span class="qbox">?</span> = ${a-b}`),b)])()}},
+ {t:"Số có ba chữ số",em:"💯",tip:"Số có ba chữ số gồm trăm, chục, đơn vị. Ví dụ: 352 gồm 3 trăm, 5 chục và 2 đơn vị. So sánh từ hàng trăm.",
+  b(){const h=Rn(1,9),t=Rn(0,9),u=Rn(0,9),n=h*100+t*10+u;
+   if(Math.random()<.5)return QN(`<p>Số gồm <b>${h}</b> trăm, <b>${t}</b> chục và <b>${u}</b> đơn vị là:</p>`,n,[h*100+u*10+t,h*10+t,n+10,n+100,n-1].filter(x=>x!==n&&x>0));
+   const m=n+pk([-100,-10,-1,1,10,100,0]);return QT(big(`${n} <span class="qbox">?</span> ${Math.max(100,m)}`)+"<p>Chọn dấu thích hợp</p>",cmp(n,Math.max(100,m)),SYM)},
+  a(){const r=Rn(0,1);if(r===0){const ds=shuffle([1,2,3,4,5,6,7,8,9]).slice(0,3),mx=+ds.slice().sort((a,b)=>b-a).join(""),mn=+ds.slice().sort((a,b)=>a-b).join("");const isMax=Math.random()<.5;
+   return QN(`<p>Từ ba chữ số <b>${ds.join(", ")}</b>, lập số <b>${isMax?"lớn nhất":"bé nhất"}</b> có ba chữ số khác nhau:</p>`,isMax?mx:mn,[[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]].map(p=>+p.map(i=>ds[i]).join("")))}
+   const n=Rn(101,889);const nx=Math.floor(n/100)*100+100;return QN(`<p>Số tròn trăm liền sau của <b>${n}</b> là:</p>`,nx,[nx-100,nx+100,Math.floor(n/10)*10+10])}},
+ {t:"Cộng, trừ phạm vi 1000",em:"🧮",tip:"Đặt tính thẳng cột theo hàng đơn vị, chục, trăm. Tính từ phải sang trái, nhớ (hoặc mượn) khi cần.",
+  b(){if(Math.random()<.5){const a=Rn(100,899),b=Rn(10,999-a);return QN(big(`${a} + ${b} = ?`),a+b,[a+b+10,a+b-10,a+b+100,a+b+1])}
+   const a=Rn(200,999),b=Rn(10,a-100);return QN(big(`${a} − ${b} = ?`),a-b,[a-b+10,a-b-10,a-b+100,a-b-1])},
+  a(){const a=Rn(150,600),d=Rn(15,300);
+   return pk([()=>QN(`<p>Thùng thứ nhất có ${a} lít nước, thùng thứ hai nhiều hơn thùng thứ nhất ${d} lít. Hỏi thùng thứ hai có bao nhiêu lít nước?</p>`,a+d),()=>QN(big(`<span class="qbox">?</span> − ${d} = ${a}`),a+d),()=>QN(`<p>Một trường có ${a+d} học sinh, trong đó có ${d} học sinh lớp Một. Hỏi trường có bao nhiêu học sinh các lớp khác?</p>`,a)])()}},
+ {t:"Phép nhân, phép chia",em:"✖️",cc:1,tip:"Phép nhân là cộng nhiều số giống nhau: 5 × 3 = 5 + 5 + 5 = 15. Phép chia là chia đều: 15 : 5 = 3. Học thuộc bảng 2 và bảng 5 ở phần Bảng cửu chương.",
+  b(){const n=pk([2,5]),k=Rn(1,10);return Math.random()<.6?QN(big(`${n} × ${k} = ?`),n*k,nearInt(n*k,n)):QN(big(`${n*k} : ${n} = ?`),k)},
+  a(){const k=Rn(2,10);return pk([()=>QN(`<p>Mỗi hộp có 5 cái bút chì. Hỏi ${k} hộp như thế có bao nhiêu cái bút chì?</p>`,5*k,nearInt(5*k,5)),()=>QN(`<p>Có ${2*k} quả cam chia đều vào 2 đĩa. Hỏi mỗi đĩa có mấy quả cam?</p>`,k),()=>QN(`<p>Có ${5*k} bạn xếp đều thành 5 hàng. Hỏi mỗi hàng có mấy bạn?</p>`,k),()=>QN(`<p>Mỗi con gà có 2 chân. Hỏi ${k} con gà có bao nhiêu chân?</p>`,2*k,nearInt(2*k,2))])()}},
+ {t:"Ki-lô-gam, lít, giờ, tiền",em:"⚖️",tip:"1 giờ = 60 phút. Ki-lô-gam (kg) đo cân nặng, lít (l) đo lượng nước. Tiền Việt Nam có các tờ 1 000, 2 000, 5 000, 10 000 đồng…",
+  b(){return pk([()=>{const a=Rn(2,40),b=Rn(2,40);return QN(big(`${a} kg + ${b} kg = ? kg`),a+b)},()=>{const a=Rn(10,60),b=Rn(2,a-1);return QN(big(`${a} l − ${b} l = ? l`),a-b)},()=>QN(big("1 giờ = ? phút"),60,[30,100,24,15]),
+   ()=>{const p=Rn(1,9)*1000;return QN(`<p>Mẹ đưa ${pk(NAMES)} tờ 10 000 đồng để mua bút hết ${fmtN(p)} đồng. Hỏi còn lại bao nhiêu đồng?</p>`,10000-p,[p,10000-p+1000,10000-p-1000,10000].filter(x=>x>0))}])()},
+  a(){return pk([()=>{const k=Rn(2,4);return QN(big(`${k} giờ = ? phút`),60*k,[60*k+60,60*k-60,k*100,k*10])},()=>{const d=Rn(1,22);return QN(`<p>Thứ Hai tuần này là ngày ${d}. Hỏi thứ Hai tuần sau là ngày bao nhiêu?</p>`,d+7,[d+1,d+6,d+8,d+14])},
+   ()=>{const c=Rn(3,6),n=Rn(2,c*2-1);return QN(`<p>Một can có ${c*2} lít dầu. Rót ra ${n} lít. Hỏi trong can còn lại bao nhiêu lít dầu?</p>`,c*2-n)},
+   ()=>{const a=Rn(2,5)*1000,b=Rn(1,4)*1000;return QN(`<p>Một quyển vở giá ${fmtN(a)} đồng, một cái bút giá ${fmtN(b)} đồng. Mua một quyển vở và một cái bút hết bao nhiêu đồng?</p>`,a+b,[a+b+1000,a+b-1000,a-b>0?a-b:a*2])}])()}},
+ {t:"Bài toán nhiều hơn, ít hơn",em:"📖",tip:"«Nhiều hơn» thì lấy số đã biết cộng thêm. «Ít hơn» thì lấy số đã biết trừ đi. Đọc kĩ ai nhiều hơn ai.",
+  b(){const[A,B]=two(),x=Rn(15,60),d=Rn(3,14);return Math.random()<.5?QN(`<p>${A} có ${x} viên bi, ${B} có nhiều hơn ${A} ${d} viên bi. Hỏi ${B} có bao nhiêu viên bi?</p>`,x+d,[x-d,x+d+1,x+d-1,x+d+10]):QN(`<p>${A} có ${x} viên bi, ${B} có ít hơn ${A} ${d} viên bi. Hỏi ${B} có bao nhiêu viên bi?</p>`,x-d,[x+d,x-d+1,x-d-1,x-d-10])},
+  a(){const[A,B]=two(),x=Rn(25,80),d=Rn(5,19);return pk([()=>QN(`<p>${A} có ${x} nhãn vở. ${A} có nhiều hơn ${B} ${d} nhãn vở. Hỏi ${B} có bao nhiêu nhãn vở?</p>`,x-d,[x+d,x-d+1,x-d-1]),
+   ()=>QN(`<p>${A} có ${x} nhãn vở. ${A} có ít hơn ${B} ${d} nhãn vở. Hỏi ${B} có bao nhiêu nhãn vở?</p>`,x+d,[x-d,x+d+1,x+d-1]),
+   ()=>QN(`<p>${A} hái được ${x} quả, ${B} hái được ${x+d} quả. Hỏi ${B} hái nhiều hơn ${A} bao nhiêu quả?</p>`,d,[x+d,x,d+1,d-1])])()}}
+]},
+{id:"l3",name:"Lớp 3",em:"🌳",age:"8–9 tuổi",time:"30 phút/ngày",goal:"Bảng nhân, chia 3–9; nhân, chia số có nhiều chữ số với số có một chữ số; chia có dư; gấp lên, giảm đi, một phần mấy; biểu thức; chu vi, diện tích hình chữ nhật và hình vuông; số đến 100 000.",units:[
+ {t:"Bảng nhân, chia 3–9",em:"✖️",cc:1,tip:"Học thuộc bảng nhân, chia ở phần Bảng cửu chương. Nhớ: a × b = b × a, và nếu a × b = c thì c : a = b.",
+  b(){const n=Rn(3,9),k=Rn(1,10);return QN(big(`${n} × ${k} = ?`),n*k,nearInt(n*k,n))},
+  a(){const n=Rn(3,9),k=Rn(2,10);return pk([()=>QN(big(`${n*k} : ${n} = ?`),k,nearInt(k)),()=>QN(big(`${n} × <span class="qbox">?</span> = ${n*k}`),k,nearInt(k)),()=>QN(`<p>Mỗi tuần có 7 ngày. Hỏi ${k} tuần có bao nhiêu ngày?</p>`,7*k,nearInt(7*k,7)),()=>QN(`<p>Có ${n*k} học sinh xếp đều vào ${n} xe. Hỏi mỗi xe có bao nhiêu học sinh?</p>`,k,nearInt(k))])()}},
+ {t:"Nhân với số có một chữ số",em:"🧮",tip:"Đặt tính rồi nhân từ phải sang trái: nhân đơn vị trước, nhớ sang hàng chục nếu được 10 trở lên.",
+  b(){const a=Rn(11,49),k=Rn(2,9);return QN(big(`${a} × ${k} = ?`),a*k,[a*k+k,a*k-k,a*k+10,a+k])},
+  a(){return Math.random()<.5?(()=>{const a=Rn(102,329),k=Rn(2,3);return QN(big(`${fmtN(a)} × ${k} = ?`),a*k,[a*k+k,a*k-10,a*k+100])})():(()=>{const a=Rn(1012,2400),k=Rn(2,4);return QN(big(`${fmtN(a)} × ${k} = ?`),a*k,[a*k+k,a*k-100,a*k+1000])})()}},
+ {t:"Chia hết và chia có dư",em:"➗",tip:"Trong phép chia có dư, số dư luôn bé hơn số chia. Ví dụ: 47 : 5 = 9 (dư 2), vì 5 × 9 + 2 = 47.",
+  b(){const k=Rn(2,9),q=Rn(11,30);return QN(big(`${k*q} : ${k} = ?`),q,[q+1,q-1,q+10,q*2])},
+  a(){const k=Rn(3,9),q=Rn(3,15),r=Rn(1,k-1),n=k*q+r;return pk([()=>QN(big(`${n} : ${k} = ${q} (dư <span class="qbox">?</span>)`),r,[...Array(k)].map((_,i)=>i).filter(x=>x!==r)),()=>QN(big(`${n} : ${k} = <span class="qbox">?</span> (dư ${r})`),q,[q+1,q-1,q+r]),()=>QN(`<p>Trong phép chia cho ${k}, số dư lớn nhất có thể là:</p>`,k-1,[k,k+1,k-2,1])])()}},
+ {t:"Gấp lên, giảm đi, một phần mấy",em:"🔁",tip:"Gấp một số lên n lần: nhân với n. Giảm một số đi n lần: chia cho n. Tìm 1/n của một số: chia số đó cho n.",
+  b(){const a=Rn(2,12),k=Rn(2,9);return pk([()=>QN(`<p>Gấp <b>${a}</b> lên <b>${k}</b> lần được:</p>`,a*k,[a+k,a*k+k,a*k-a]),()=>QN(`<p>Giảm <b>${a*k}</b> đi <b>${k}</b> lần được:</p>`,a,[a*k-k,a+1,a-1,k].filter(x=>x>0)),()=>QN(`<p>${FR(1,k)} của <b>${a*k}</b> là:</p>`,a,[a*k-k,a+1,a-1,k].filter(x=>x>0))])()},
+  a(){const k=Rn(3,6),a=Rn(4,12);return pk([()=>QN(`<p>Mẹ hái được ${a*k} quả cam, mẹ biếu bà ${FR(1,k)} số cam. Hỏi mẹ biếu bà bao nhiêu quả cam?</p>`,a,[a*k-a,a+1,k]),()=>QN(`<p>Số lớn là ${a*k}, số bé là ${a}. Số lớn gấp mấy lần số bé?</p>`,k,[a*k-a,k+1,k-1]),()=>{const c=Rn(6,10),m=Rn(4,5);return QN(`<p>Năm nay con ${c} tuổi, tuổi bố gấp ${m} lần tuổi con. Hỏi năm nay bố bao nhiêu tuổi?</p>`,c*m,[c+m,c*m+c,c*m-c])}])()}},
+ {t:"Tính giá trị biểu thức",em:"🧩",tip:"Biểu thức có ngoặc: tính trong ngoặc trước. Có cả cộng, trừ và nhân, chia: nhân, chia trước; cộng, trừ sau. Chỉ có cộng, trừ (hoặc nhân, chia): tính từ trái sang phải.",
+  b(){const a=Rn(2,9),b=Rn(2,9),c=Rn(2,9);return pk([()=>QN(big(`${a*5} + ${b} × ${c} = ?`),a*5+b*c,[(a*5+b)*c,a*5+b+c,a*5+b*c+1]),()=>QN(big(`(${a} + ${b}) × ${c} = ?`),(a+b)*c,[a+b*c,a+b+c,(a+b)*c+c]),()=>QN(big(`${b*c} : ${c} + ${a} = ?`),b+a,[b*c/(c+a)|0,b+a+1,b*c+a])])()},
+  a(){const a=Rn(2,9),b=Rn(2,9),c=Rn(2,6),d=Rn(2,20);return pk([()=>QN(big(`(${a+b} − ${b}) × ${c} + ${d} = ?`),a*c+d,[a*c+d+c,(a+b)*c+d,a*(c+d)]),()=>QN(big(`${a} × ${b*c} : ${c} = ?`),a*b,[a*b+a,a*b*c,a+b]),()=>QN(big(`${d+a*b} − ${a} × ${b} = ?`),d,[(d+a*b-a)*b,d+1,d+a])])()}},
+ {t:"Chu vi, diện tích",em:"📐",tip:"Hình chữ nhật: chu vi = (dài + rộng) × 2; diện tích = dài × rộng. Hình vuông: chu vi = cạnh × 4; diện tích = cạnh × cạnh. Đơn vị diện tích: cm².",
+  b(){const l=Rn(4,15),w=Rn(2,l-1),s=Rn(2,12);return pk([()=>QN(`<p>Hình chữ nhật có chiều dài ${l} cm, chiều rộng ${w} cm. Chu vi hình chữ nhật là bao nhiêu xăng-ti-mét?</p>`,2*(l+w),[l+w,l*w,2*l+w]),()=>QN(`<p>Hình chữ nhật có chiều dài ${l} cm, chiều rộng ${w} cm. Diện tích là bao nhiêu xăng-ti-mét vuông?</p>`,l*w,[2*(l+w),l+w,l*w+l]),()=>QN(`<p>Hình vuông có cạnh ${s} cm. Chu vi là bao nhiêu xăng-ti-mét?</p>`,4*s,[s*s,2*s,4*s+4].filter(x=>x!==4*s)),()=>QN(`<p>Hình vuông có cạnh ${s} cm. Diện tích là bao nhiêu xăng-ti-mét vuông?</p>`,s*s,[4*s,2*s,s*s+s].filter(x=>x!==s*s))])()},
+  a(){const s=Rn(3,12),l=Rn(6,15),w=Rn(2,l-1);return pk([()=>QN(`<p>Hình vuông có chu vi ${4*s} cm. Diện tích hình vuông là bao nhiêu xăng-ti-mét vuông?</p>`,s*s,[4*s,s,s*s+s].filter(x=>x!==s*s)),()=>QN(`<p>Hình chữ nhật có chu vi ${2*(l+w)} cm, chiều dài ${l} cm. Chiều rộng là bao nhiêu xăng-ti-mét?</p>`,w,[l,l+w,2*(l+w)-l].filter(x=>x!==w)),()=>QN(`<p>Hình chữ nhật có diện tích ${l*w} cm², chiều rộng ${w} cm. Chu vi là bao nhiêu xăng-ti-mét?</p>`,2*(l+w),[l,l+w,l*w])])()}},
+ {t:"Các số đến 100 000",em:"🔟",tip:"So sánh hai số: số nào nhiều chữ số hơn thì lớn hơn; cùng số chữ số thì so sánh từ hàng cao nhất. Làm tròn đến hàng nghìn: xét chữ số hàng trăm, từ 5 trở lên thì làm tròn lên.",
+  b(){if(Math.random()<.5){const a=Rn(10000,99999),b=a+pk([-1000,-100,-10,1,10,100,1000,0]);return QT(big(`${fmtN(a)} <span class="qbox">?</span> ${fmtN(b)}`)+"<p>Chọn dấu thích hợp</p>",cmp(a,b),SYM)}
+   const d=[Rn(1,9),Rn(0,9),Rn(0,9),Rn(0,9),Rn(0,9)],n=+d.join("");return QN(`<p>Số gồm ${d[0]} chục nghìn, ${d[1]} nghìn, ${d[2]} trăm, ${d[3]} chục và ${d[4]} đơn vị là:</p>`,n,[n+1000,n+10,+d.slice().reverse().join("")||n+1,n-100])},
+  a(){if(Math.random()<.6){const n=Rn(10100,98900),r=Math.round(n/1000)*1000;return QN(`<p>Làm tròn số <b>${fmtN(n)}</b> đến hàng nghìn ta được:</p>`,r,[r+1000,r-1000,Math.round(n/100)*100,Math.floor(n/1000)*1000===r?r+1000:Math.floor(n/1000)*1000])}
+   const n=pk([9999,99999,19999,49999]);return QN(`<p>Số liền sau của <b>${fmtN(n)}</b> là:</p>`,n+1,[n-1,n+10,n*10])}}
+]},
+{id:"l4",name:"Lớp 4",em:"🌊",age:"9–10 tuổi",time:"30–35 phút/ngày",goal:"Số có nhiều chữ số, lớp triệu; nhân, chia với số có hai chữ số; trung bình cộng; tìm hai số khi biết tổng và hiệu; phân số và các phép tính với phân số; yến, tạ, tấn, giây, thế kỉ, mét vuông.",units:[
+ {t:"Số có nhiều chữ số",em:"🔢",tip:"Từ phải sang trái: đơn vị, chục, trăm (lớp đơn vị); nghìn, chục nghìn, trăm nghìn (lớp nghìn); triệu… (lớp triệu).",
+  b(){const n=Rn(100000,999999),s=String(n),HN=["đơn vị","chục","trăm","nghìn","chục nghìn","trăm nghìn"],p=Rn(0,5),d=+s[5-p];
+   return Math.random()<.5?QN(`<p>Trong số <b>${fmtN(n)}</b>, chữ số ở hàng <b>${HN[p]}</b> là:</p>`,d,[...new Set(s.split("").map(Number))].filter(x=>x!==d).concat([(d+1)%10,(d+9)%10,(d+5)%10])):QN(`<p>Trong số <b>${fmtN(n)}</b>, giá trị của chữ số ở hàng <b>${HN[p]}</b> là:</p>`,d*10**p,[d,d*10**((p+1)%6),d*10**(p?p-1:1),((d+1)%10)*10**p,((d+2)%10)*10**p].filter(x=>x!==d*10**p))},
+  a(){if(Math.random()<.5){const n=Rn(1050000,9940000),r=Math.round(n/100000)*100000;return QN(`<p>Làm tròn số <b>${fmtN(n)}</b> đến hàng trăm nghìn:</p>`,r,[r+100000,r-100000,Math.round(n/10000)*10000,Math.round(n/1000000)*1000000].filter(x=>x!==r))}
+   const a=Rn(1000000,9999999),b=a+pk([-100000,-10000,-1,1,10000,100000]);return QT(big(`${fmtN(a)} <span class="qbox">?</span> ${fmtN(b)}`)+"<p>Chọn dấu thích hợp</p>",cmp(a,b),SYM)}},
+ {t:"Nhân, chia với số có hai chữ số",em:"🧮",tip:"Nhân với số có hai chữ số: nhân lần lượt với hàng đơn vị và hàng chục, rồi cộng hai tích riêng (tích thứ hai viết lùi sang trái một cột).",
+  b(){const a=Rn(12,99),b=Rn(11,49);return QN(big(`${a} × ${b} = ?`),a*b,[a*b+a,a*b-b,a*b+10,a*(b%10)+a])},
+  a(){const b=Rn(12,45),q=Rn(11,99);return Math.random()<.6?QN(big(`${fmtN(b*q)} : ${b} = ?`),q,[q+1,q-1,q+10,q*10]):(()=>{const r=Rn(1,b-1),n=b*q+r;return QN(big(`${fmtN(n)} : ${b} = ${q} (dư <span class="qbox">?</span>)`),r,[r+1,r-1,b,b-r].filter(x=>x>=0&&x!==r))})()}},
+ {t:"Trung bình cộng",em:"📊",tip:"Muốn tìm trung bình cộng của nhiều số, ta tính tổng các số đó rồi chia cho số các số hạng.",
+  b(){const k=pk([2,3,4]),m=Rn(10,60),xs=[];let s=0;for(let i=0;i<k-1;i++){const x=Math.max(1,m+Rn(-12,12));xs.push(x);s+=x}const last=m*k-s;if(last<1)return this.b();xs.push(last);
+   return QN(`<p>Trung bình cộng của các số <b>${xs.join("; ")}</b> là:</p>`,m,[m+1,m-1,m*k,m+k])},
+  a(){const m=Rn(15,60),x=Rn(5,2*m-5);return pk([()=>QN(`<p>Trung bình cộng của hai số là ${m}. Một số là ${x}. Tìm số kia.</p>`,2*m-x,[m-x>0?m-x:m+x,2*m,m+x,2*m-x+1]),()=>{const a=Rn(20,50),b=Rn(20,50);let c=Rn(20,50);c+=(3-(a+b+c)%3)%3;return QN(`<p>Ba ngày cửa hàng bán được ${a} kg, ${b} kg và ${c} kg gạo. Trung bình mỗi ngày bán được bao nhiêu ki-lô-gam?</p>`,(a+b+c)/3,[a+b+c,(a+b+c)/3+1,(a+b)/2|0])}])()}},
+ {t:"Tổng và hiệu",em:"⚖️",tip:"Số lớn = (Tổng + Hiệu) : 2. Số bé = (Tổng − Hiệu) : 2.",
+  b(){const s=Rn(10,80),d=Rn(2,40),L=s+d;return Math.random()<.5?QN(`<p>Tổng hai số là ${L+s}, hiệu hai số là ${d}. Số lớn là:</p>`,L,[s,L+s,(L+s+d),L+1]):QN(`<p>Tổng hai số là ${L+s}, hiệu hai số là ${d}. Số bé là:</p>`,s,[L,L+s-d,s+1,d])},
+  a(){return pk([()=>{const con=Rn(5,15),d=Rn(22,35),bo=con+d;return QN(`<p>Bố hơn con ${d} tuổi. Tổng số tuổi của hai bố con là ${bo+con}. Hỏi con bao nhiêu tuổi?</p>`,con,[bo,con+1,d-con>0?d-con:con+2])},
+   ()=>{const b=Rn(30,60),d=Rn(4,20);return QN(`<p>Hai lớp trồng được ${2*b+d} cây. Lớp 4A trồng nhiều hơn lớp 4B ${d} cây. Hỏi lớp 4A trồng được bao nhiêu cây?</p>`,b+d,[b,b+2*d,2*b])}])()}},
+ {t:"Phân số",em:"🍕",tip:"Phân số gồm tử số (ở trên) và mẫu số (ở dưới). Rút gọn: chia cả tử và mẫu cho cùng một số lớn hơn 1. Hai phân số cùng mẫu: tử lớn hơn thì lớn hơn.",
+  b(){if(Math.random()<.5){const n=Rn(3,8),k=Rn(1,n-1);return QF(`${bar(k,n)}<p>Phân số chỉ phần đã tô màu là:</p>`,`${k}/${n}`,[`${n}/${k}`,`${k}/${n+1}`,`${n-k}/${n}`,`${k+1}/${n}`].filter(x=>x!==`${k}/${n}`))}
+   let x=Rn(1,6),y=Rn(x+1,9);while(gcd(x,y)>1){x=Rn(1,6);y=Rn(x+1,9)}const m=Rn(2,5);return QF(`<p>Rút gọn phân số ${FR(x*m,y*m)} ta được:</p>`,`${x}/${y}`,[`${x*m}/${y}`,`${x+1}/${y}`,`${y}/${x}`,`${x}/${y*m}`])},
+  a(){if(Math.random()<.5){const a=Rn(1,5),b=Rn(a+1,8),c=Rn(1,5),d=Rn(c+1,8);const L=a*d,Rr=c*b;return QT(big(`${FR(a,b)} <span class="qbox">?</span> ${FR(c,d)}`)+"<p>Chọn dấu thích hợp</p>",cmp(L,Rr),SYM)}
+   let x=Rn(1,4),y=Rn(x+1,6);const m=Rn(2,4);return QN(`<p>Điền số thích hợp: ${FR(x,y)} = ${FR('?',y*m)}</p>`,x*m,[x+m,x*m+1,y*m-x,x])}},
+ {t:"Cộng, trừ, nhân phân số",em:"➕",tip:"Cùng mẫu số: cộng (trừ) tử số, giữ nguyên mẫu số. Khác mẫu số: quy đồng rồi cộng (trừ). Nhân: tử nhân tử, mẫu nhân mẫu. Nhớ rút gọn kết quả.",
+  b(){const d=Rn(3,12);if(Math.random()<.5){const a=Rn(1,d-2),b=Rn(1,d-1-a);return QF(big(`${FR(a,d)} + ${FR(b,d)} = ?`)+"<p>(rút gọn nếu được)</p>",frS(a+b,d),[`${a+b}/${2*d}`,frS(a+b+1,d),`${a*b}/${d}`,frS(a+b,d+1)])}
+   const a=Rn(2,d-1),b=Rn(1,a-1);return QF(big(`${FR(a,d)} − ${FR(b,d)} = ?`)+"<p>(rút gọn nếu được)</p>",frS(a-b,d),[`${a-b}/0`.replace("/0","/"+(d*2)),frS(a+b,d),frS(a-b+1,d),`${a-b}`])},
+  a(){const r=Rn(0,1);if(r===0){const b=Rn(2,6),d=Rn(2,6),a=Rn(1,b-1||1),c=Rn(1,d-1||1);return QF(big(`${FR(a,b)} + ${FR(c,d)} = ?`)+"<p>(rút gọn nếu được)</p>",frS(a*d+c*b,b*d),[frS(a+c,b+d),frS(a*d+c*b+1,b*d),frS(a*c,b*d),`${a+c}/${b*d}`,frS(a*d+c*b+2,b*d),frS(a*d+c*b,b*d+1)])}
+   const b=Rn(2,7),a=Rn(1,b-1),d=Rn(2,7),c=Rn(1,d-1);return QF(big(`${FR(a,b)} × ${FR(c,d)} = ?`)+"<p>(rút gọn nếu được)</p>",frS(a*c,b*d),[frS(a*d,b*c),frS(a+c,b+d),frS(a*c+1,b*d),frS(a*c,b+d),frS(a*c+2,b*d),frS(a*c,b*d+1)])}},
+ {t:"Đơn vị đo",em:"📏",tip:"1 yến = 10 kg; 1 tạ = 100 kg; 1 tấn = 1 000 kg. 1 phút = 60 giây. 1 thế kỉ = 100 năm. 1 m² = 100 dm².",
+  b(){const k=Rn(2,9);const U=[["yến","kg",10],["tạ","kg",100],["tấn","kg",1000],["phút","giây",60],["thế kỉ","năm",100],["m²","dm²",100]];const[u1,u2,f]=pk(U);
+   return QN(big(`${k} ${u1} = ? ${u2}`),k*f,[k*10,k*100,k*1000,k*60].filter(x=>x!==k*f))},
+  a(){return pk([()=>{const a=Rn(1,9),b=Rn(5,950);return QN(big(`${a} tấn ${b} kg = ? kg`),a*1000+b,[a*100+b,a*1000+b*10,a+b,a*10000+b])},()=>{const a=Rn(1,9),b=Rn(5,55);return QN(big(`${a} phút ${b} giây = ? giây`),a*60+b,[a*100+b,a+b,a*60,a*60+b+10])},
+   ()=>{const y=Rn(1001,2099),c=Math.ceil(y/100);return QT(`<p>Năm <b>${y}</b> thuộc thế kỉ nào?</p>`,"Thế kỉ "+romanBig(c),[c-1,c+1,c+2].map(x=>"Thế kỉ "+romanBig(x)))}])()}}
+]},
+{id:"l5",name:"Lớp 5",em:"🚀",age:"10–11 tuổi",time:"35–40 phút/ngày",goal:"Số thập phân và bốn phép tính với số thập phân; tỉ số phần trăm; diện tích tam giác, hình thang, hình tròn; thể tích hình hộp chữ nhật, hình lập phương; chuyển động đều.",units:[
+ {t:"Số thập phân",em:"🔣",tip:"Số thập phân gồm phần nguyên và phần thập phân, ngăn cách bởi dấu phẩy. Ví dụ: 37/100 = 0,37. So sánh: so phần nguyên trước, rồi lần lượt từng hàng của phần thập phân.",
+  b(){if(Math.random()<.5){const k=Rn(1,99);return QD(`<p>Viết ${FR(k,100)} dưới dạng số thập phân:</p>`,k/100,[k/10,k/1000,k,k/100+1])}
+   const a=Rn(100,999)/100,b=pk([a+.1,a-.01,Math.round(a*10)/10,a,a+1]);return QT(big(`${fmtN(a)} <span class="qbox">?</span> ${fmtN(Math.round(b*100)/100)}`)+"<p>Chọn dấu thích hợp</p>",cmp(Math.round(a*100),Math.round(b*100)),SYM)},
+  a(){if(Math.random()<.5){const m=Rn(1,9),c=Rn(1,99);return QD(`<p>Viết số thích hợp: <b>${m} m ${c} cm = ? m</b></p>`,m+c/100,[m+c/10,m+c/1000,m*100+c,m+c/100+1])}
+   const s=shuffle([Rn(100,999),Rn(100,999),Rn(10,99)*10,Rn(100,999)]).map(x=>x/100),M=Math.max(...s);return QD(`<p>Số lớn nhất trong các số <b>${s.map(fmtN).join("; ")}</b> là:</p>`,M,s.filter(x=>x!==M))}},
+ {t:"Cộng, trừ số thập phân",em:"➕",tip:"Đặt tính sao cho các dấu phẩy thẳng cột, các chữ số cùng hàng thẳng cột. Cộng (trừ) như số tự nhiên rồi đặt dấu phẩy thẳng cột.",
+  b(){const a=Rn(110,9999),b=Rn(11,a-1);return Math.random()<.5?QD(big(`${fmtN(a/100)} + ${fmtN(b/100)} = ?`),(a+b)/100,[(a+b)/10,(a+b+10)/100,(a+b-1)/100,(a+b)/100+1]):QD(big(`${fmtN(a/100)} − ${fmtN(b/100)} = ?`),(a-b)/100,[(a-b)/10,(a-b+10)/100,(a+b)/100,(a-b)/100+1])},
+  a(){const a=Rn(110,5000),b=Rn(11,3000),c=Rn(11,Math.min(999,a+b*10-1));return Math.random()<.5?QD(big(`${fmtN(a/100)} + ${fmtN(b/10)} − ${fmtN(c/100)} = ?`),(a+b*10-c)/100,[(a+b-c)/100,(a+b*10+c)/100,(a+b*10-c)/10]):QD(big(`${fmtN(a/100)} + <span class="qbox">?</span> = ${fmtN((a+b)/100)}`),b/100,[b/10,b/1000,(a+b)/100])}},
+ {t:"Nhân, chia số thập phân",em:"✖️",tip:"Nhân với 10, 100, 1 000: dời dấu phẩy sang phải 1, 2, 3 chữ số. Nhân hai số thập phân: nhân như số tự nhiên, rồi đếm tổng số chữ số ở phần thập phân để đặt dấu phẩy.",
+  b(){return pk([()=>{const a=Rn(11,999),k=Rn(2,9);return QD(big(`${fmtN(a/100)} × ${k} = ?`),a*k/100,[a*k/10,a*k/1000,a*k/100+k,(a+k)/100])},()=>{const a=Rn(11,9999),p=pk([10,100,1000]);return QD(big(`${fmtN(a/100)} × ${fmtN(p)} = ?`),a*p/100,[a*p/1000,a*p/10,a/100])}])()},
+  a(){return pk([()=>{const a=Rn(11,99),b=Rn(11,99);return QD(big(`${fmtN(a/10)} × ${fmtN(b/10)} = ?`),a*b/100,[a*b/10,a*b/1000,(a+b)/10])},()=>{const q=Rn(11,999),k=Rn(2,9);return QD(big(`${fmtN(q*k/100)} : ${k} = ?`),q/100,[q/10,q/1000,q*k/100-k>0?q*k/100-k:q/100+1])}])()}},
+ {t:"Tỉ số phần trăm",em:"💯",tip:"Tìm p% của một số: lấy số đó nhân với p rồi chia cho 100. Tỉ số phần trăm của a và b: lấy a chia cho b, nhân với 100 rồi thêm kí hiệu %.",
+  b(){if(Math.random()<.5){const p=pk([10,20,25,50,75]),n=Rn(1,12)*(p===25||p===75?4:p===20?5:10)*(p===50?1:1);return QN(`<p>${p}% của <b>${n}</b> là:</p>`,n*p/100,[n*p/10,n-n*p/100,n*p/100+p].filter(x=>x%1===0))}
+   const b=pk([20,25,40,50,80,100,200]),p=pk([10,20,25,50,75]),a=b*p/100;if(a%1)return this.b();return {...QN(`<p>Tỉ số phần trăm của <b>${a}</b> và <b>${b}</b> là bao nhiêu phần trăm?</p>`,p,[p*2,100-p,p/2%1?p+5:p/2,a]),render:x=>x+"%"}},
+  a(){return pk([()=>{const price=Rn(10,90)*10000,p=pk([10,15,20,25,30]);return QN(`<p>Một chiếc áo giá ${fmtN(price)} đồng, nay giảm giá ${p}%. Hỏi giá chiếc áo sau khi giảm là bao nhiêu đồng?</p>`,price*(100-p)/100,[price*p/100,price-p*1000,price*(100+p)/100])},
+   ()=>{const n=pk([20,25,40,50]),p=pk(n===25?[20,40,60]:[40,50,60,70]),g=n*p/100;if(g%1)return QN(`<p>Lớp có 40 bạn, trong đó 60% là bạn nữ. Hỏi lớp có bao nhiêu bạn nam?</p>`,16,[24,20,14]);return QN(`<p>Lớp có ${n} bạn, trong đó ${p}% là bạn nữ. Hỏi lớp có bao nhiêu bạn nam?</p>`,n-g,[g,n-g+1,n-g-1,n-g+2,n])}])()}},
+ {t:"Diện tích tam giác, hình thang, hình tròn",em:"🔺",tip:"Tam giác: S = đáy × chiều cao : 2. Hình thang: S = (đáy lớn + đáy bé) × chiều cao : 2. Hình tròn: S = r × r × 3,14; chu vi C = d × 3,14 (hoặc r × 2 × 3,14).",
+  b(){if(Math.random()<.5){let a=Rn(3,20),h=Rn(2,20);if(a*h%2)h++;return QN(`<p>Tam giác có độ dài đáy ${a} cm, chiều cao ${h} cm. Diện tích tam giác là bao nhiêu xăng-ti-mét vuông?</p>`,a*h/2,[a*h,a+h,a*h/2+a])}
+   let a=Rn(6,20),b=Rn(2,a-1),h=Rn(2,12);if((a+b)*h%2)h++;return QN(`<p>Hình thang có đáy lớn ${a} cm, đáy bé ${b} cm, chiều cao ${h} cm. Diện tích hình thang là bao nhiêu xăng-ti-mét vuông?</p>`,(a+b)*h/2,[(a+b)*h,a*b*h/2,(a-b)*h/2])},
+  a(){const r=Rn(1,10);return Math.random()<.5?QD(`<p>Hình tròn có bán kính ${r} cm. Diện tích hình tròn là bao nhiêu xăng-ti-mét vuông?</p>`,r*r*314/100,[r*2*314/100,r*314/100,r*r*314/1000]):QD(`<p>Hình tròn có bán kính ${r} cm. Chu vi hình tròn là bao nhiêu xăng-ti-mét?</p>`,r*2*314/100,[r*r*314/100,r*314/100,r*2*314/1000])}},
+ {t:"Thể tích",em:"📦",tip:"Hình hộp chữ nhật: V = dài × rộng × cao. Hình lập phương: V = cạnh × cạnh × cạnh. 1 dm³ = 1 lít; 1 m³ = 1 000 dm³.",
+  b(){if(Math.random()<.5){const a=Rn(2,12),b=Rn(2,10),c=Rn(2,10);return QN(`<p>Hình hộp chữ nhật có chiều dài ${a} cm, chiều rộng ${b} cm, chiều cao ${c} cm. Thể tích là bao nhiêu xăng-ti-mét khối?</p>`,a*b*c,[a+b+c,(a+b)*c*2,a*b*c+a*b])}
+   const a=Rn(2,10);return QN(`<p>Hình lập phương có cạnh ${a} cm. Thể tích là bao nhiêu xăng-ti-mét khối?</p>`,a*a*a,[a*a,a*a*6,a*3])},
+  a(){const a=Rn(3,12),b=Rn(2,10),c=Rn(2,10);return Math.random()<.5?QN(`<p>Một bể nước dạng hình hộp chữ nhật dài ${a} dm, rộng ${b} dm, cao ${c} dm. Bể chứa đầy được bao nhiêu lít nước?</p>`,a*b*c,[a*b*c*10,a*b*c/10|0||1,a*b+c]):QN(`<p>Hình hộp chữ nhật có thể tích ${a*b*c} cm³, chiều dài ${a} cm, chiều rộng ${b} cm. Chiều cao là bao nhiêu xăng-ti-mét?</p>`,c,[a*b,c+1,a*b*c/a])}},
+ {t:"Chuyển động đều",em:"🚗",tip:"Quãng đường = vận tốc × thời gian (s = v × t). Vận tốc = quãng đường : thời gian. Thời gian = quãng đường : vận tốc. Chú ý đổi phút sang giờ.",
+  b(){const v=Rn(3,12)*5,t=Rn(1,5);return QN(`<p>Một ô tô đi với vận tốc ${v} km/giờ trong ${t} giờ. Hỏi ô tô đi được bao nhiêu ki-lô-mét?</p>`,v*t,[v+t,v*t+v,v*(t+1)])},
+  a(){const r=Rn(0,2);if(r===0){const v=Rn(3,12)*5,t=Rn(2,5);return QN(`<p>Quãng đường AB dài ${v*t} km. Một xe máy đi với vận tốc ${v} km/giờ. Hỏi xe máy đi hết quãng đường AB trong bao nhiêu giờ?</p>`,t,[v,t+1,v*t-v])}
+   if(r===1){const v=Rn(3,12)*5,t=Rn(2,5);return QN(`<p>Một người đi xe máy được ${v*t} km trong ${t} giờ. Vận tốc của người đó là bao nhiêu ki-lô-mét/giờ?</p>`,v,[v*t,v+t,v+5])}
+   const m=pk([30,15,45,20,12]),st=60/gcd(m,60),v=st*Rn(Math.ceil(20/st),Math.floor(60/st));const s=v*m/60;return QN(`<p>Một người đi xe máy với vận tốc ${v} km/giờ trong ${m} phút. Hỏi người đó đi được bao nhiêu ki-lô-mét?</p>`,s,[v*m,v-m>0?v-m:v+m,s*2].filter(x=>x%1===0))}}
+]}
+];
+MLEVELS.forEach((L,li)=>L.units.forEach((u,ui)=>{u.li=li;u.ui=ui;u.key=`toan-${li}-${ui}`;u.back=`toan-u-${li}-${ui}`}));
+
+const MA={
+ coban:{n:"Bài tập cơ bản",em:"📝",lv:1,d:"10 câu chọn đáp án đúng"},
+ dungsai:{n:"Đúng hay sai",em:"✅",lv:1,d:"Xem đáp án đúng hay sai"},
+ tudien:{n:"Tự điền đáp án",em:"⌨️",lv:2,d:"Tự tính rồi gõ kết quả"},
+ nangcao:{n:"Bài tập nâng cao",em:"🚀",lv:3,d:"Toán lời văn, tìm số chưa biết"},
+ ncdien:{n:"Nâng cao: tự điền",em:"🧠",lv:3,d:"Tự giải bài nâng cao, gõ kết quả"},
+ dua:{n:"Đua xe",em:"🏎️",lv:3,d:"Tính nhanh, thắng Cú Bông"}
+};
+const genN=(f,n,numOnly)=>{const out=[],seen=new Set();let t=0;while(out.length<n&&t<n*25){t++;let q;try{q=f()}catch(e){continue}if(!q||!q.opts||q.opts.length<2)continue;if(numOnly&&!q.num)continue;const k=q.q+q.a;if(seen.has(k)&&t<n*15)continue;seen.add(k);out.push(q)}return out};
+function mActs(u){if(u._acts)return u._acts;const share=f=>genN(f.bind(u),16).filter(q=>q.num).length/16;
+  const a=["coban","dungsai"];if(u.li>0&&share(u.b)>=.5)a.push("tudien");a.push("nangcao");if(u.li>0&&share(u.a)>=.5)a.push("ncdien");a.push("dua");return u._acts=a}
+const mDone=u=>{const d=P().done[u.key]||{};return mActs(u).filter(a=>d[a]).length};
+const mLevelPct=li=>{let t=0,d=0;MLEVELS[li].units.forEach(u=>{t+=mActs(u).length;d+=mDone(u)});return t?Math.round(d/t*100):0};
+const mNext=(u,act)=>{const l=mActs(u),i=l.indexOf(act),n=i<0?null:l[i+1];return n?{go:`toan-g-${n}-${u.li}-${u.ui}`,em:MA[n].em,name:MA[n].n}:null};
+
+/* Bàn phím số để bé tự điền đáp án */
+function kRun(u,act,qs){
+  const back=u.back;render(shell(`${MA[act].em} ${MA[act].n} · ${esc(u.t)}`,back,qs.length));
+  let r=0,score=0;const hasFrac=qs.some(q=>q.a.includes("/")),hasDec=qs.some(q=>q.a.includes(","));
+  const norm=s=>String(s).replace(/[\s .]/g,"");
+  const eq=(x,a)=>{x=norm(x);a=norm(a);if(!x)return false;if(a.includes("/")||x.includes("/"))return x===a;const nx=parseFloat(x.replace(",",".")),na=parseFloat(a.replace(",","."));return !isNaN(nx)&&Math.abs(nx-na)<1e-9};
+  const show=()=>{SAY=[];setProg(r);const q=qs[r];let val="",miss=false,locked=false;
+    const keys=["7","8","9","4","5","6","1","2","3",hasDec?",":"",  "0","⌫"];
+    $("#stage").innerHTML=`${q.q}<div class="kdisp" id="kd" aria-live="polite">?</div>
+      <div class="kpad">${keys.map(k=>k?`<button class="btn kb" data-k="${k}" style="--c:${k==="⌫"?"var(--card)":"var(--sun)"}">${k}</button>`:"<span></span>").join("")}${hasFrac?`<button class="btn kb" data-k="/" style="--c:var(--sky)">/</button>`:""}</div>
+      <button class="btn big" style="--c:var(--leaf)" id="kok">✓ Kiểm tra</button><div class="prompt" id="fb" style="min-height:1.4em"></div>`;
+    const kd=$("#kd");const draw=()=>{kd.innerHTML=val?(val.includes("/")&&/^\d+\/\d+$/.test(val)?FR(...val.split("/")):esc(val)):"?"};
+    document.querySelectorAll(".kb").forEach(b=>b.onclick=()=>{if(locked)return;const k=b.dataset.k;if(k==="⌫")val=val.slice(0,-1);else if(val.length<12)val+=k;tone(600,.03);draw()});
+    $("#kok").onclick=()=>{if(locked||!val)return;
+      if(eq(val,q.a)){locked=true;kd.classList.add("good","pop");sGood();if(!miss){score++;$("#gs").textContent=score}$("#fb").innerHTML="✅ Đúng rồi!";setTimeout(()=>{r++;r<qs.length?show():finish({stars:score,max:qs.length,back,key:u.key,act,again:()=>mPlay(act,u),vi:true,next:mNext(u,act)})},1100)}
+      else{miss=true;sBad();bump(kd);if(strictFail(()=>mPlay(act,u),`Đáp án đúng: <b>${frHTML(q.a)}</b>`))return;$("#fb").textContent="Chưa đúng, bé tính lại nhé!";val="";draw()}};
+  };
+  show();
+}
+function mPlay(act,u){
+  const again=()=>mPlay(act,u),o={again,next:mNext(u,act),title:`${MA[act].em} ${MA[act].n} · ${esc(u.t)}`,autoSay:false,back:u.back};
+  if(act==="coban")return vRun(u,act,genN(u.b.bind(u),10),o);
+  if(act==="nangcao")return vRun(u,act,genN(u.a.bind(u),8),o);
+  if(act==="tudien")return kRun(u,act,genN(u.b.bind(u),8,true));
+  if(act==="ncdien")return kRun(u,act,genN(u.a.bind(u),6,true));
+  if(act==="dungsai")return vRun(u,act,genN(u.b.bind(u),8).map(q=>{const ok=Math.random()<.5,cand=ok?q.a:shuffle(q.opts.filter(x=>x!==q.a))[0],show=x=>q.render?q.render(x):esc(x);
+    return{q:`${q.q}<div class="prompt">Đáp án: <span class="cand">${show(cand)}</span></div>`,a:ok?"Đúng":"Sai",opts:["Đúng","Sai"],after:"Đáp án đúng: "+q.a.replace("/"," phần ")}}),o);
+  if(act==="dua")return vRace(u,{back:u.back,act:"dua",qs:[...genN(u.b.bind(u),12),...genN(u.a.bind(u),4)]});
+}
+
+/* ---------- trang ---------- */
+function toanHome(){
+  render(`
+  <button class="btn ghost sm back" data-go="">← Trang đầu</button>
+  <div class="lvhead" style="--c:var(--orange)"><div class="em">🔢</div>
+    <div style="min-width:0;flex:1"><div class="eyebrow">Chương trình Toán 2018</div><h1>Đảo Toán Học</h1>
+    <p class="muted" style="margin:4px 0 0;max-width:62ch">Toán Mầm non đến Lớp 5, mỗi bài có bài tập cơ bản và nâng cao. Đề do máy tự tạo, mỗi lần chơi là một đề mới.</p></div></div>
+  <section class="card funbanner" style="border-color:var(--orange)">
+    <div style="min-width:0;flex:1"><h2 style="font-size:1.4rem">✖️ Bảng cửu chương</h2><span class="muted">Bảng nhân, bảng chia 2–9 · vè, thơ, mẹo nhớ · 7 trò chơi · Siêu tốc 60 giây</span></div>
+    <button class="btn" style="--c:var(--orange)" data-go="cc">Vào học ▶</button>
+  </section>
+  <section><div class="islands">
+    ${MLEVELS.map((L,li)=>`<button class="island" style="--c:${lvColor(li)}" data-go="toan-lv-${li}">
+      <div class="top"><span class="em">${L.em}</span><span class="badge">${L.age}</span></div>
+      <h3>Toán ${L.name}</h3><span class="muted">${L.units.map(u=>u.t).join(" · ")}</span>
+      <div class="bar"><i style="width:${mLevelPct(li)}%"></i></div><small class="muted"><b>${mLevelPct(li)}%</b> hoàn thành · ${L.units.length} bài</small>
+    </button>`).join("")}
+  </div></section>
+  <section class="row"><button class="btn ghost" data-go="toan-chuong-trinh">📘 Chương trình Toán</button></section>`);
+}
+function toanLevel(li){
+  const L=MLEVELS[li];if(!L)return toanHome();const cup=P().done["toan-"+L.id+"-cup"];
+  render(`
+  <button class="btn ghost sm back" data-go="toan">← Đảo Toán Học</button>
+  <div class="lvhead" style="--c:${lvColor(li)}"><div class="em">${L.em}</div>
+    <div style="min-width:0;flex:1"><div class="eyebrow">${L.age} · ${L.time}</div><h1>Toán ${L.name}</h1>
+    <p class="muted" style="margin:4px 0 0;max-width:62ch">${L.goal}</p></div></div>
+  <section><div class="units">${L.units.map(u=>{const d=mDone(u),n=mActs(u).length;return`
+    <button class="unit" style="--c:${lvColor(li)}" data-go="toan-u-${li}-${u.ui}"><span class="em">${u.em}</span><span class="n">Bài ${u.ui+1}</span>
+      <h3>${esc(u.t)}</h3><div class="dots">${mActs(u).map((a,i)=>`<b class="${i<d?"on":""}"></b>`).join("")}</div>
+      <small class="muted">${d===n?"✅ Đã xong":d+"/"+n+" phần"}</small></button>`}).join("")}</div></section>
+  <section class="card row" style="justify-content:space-between">
+    <div><h2 style="font-size:1.35rem">🏆 Thử thách cuối đảo</h2><span class="muted">10 câu cơ bản và nâng cao trộn từ tất cả các bài. ${cup?`Kỷ lục của bé: <b>${cup}/10</b>`:""}</span></div>
+    <button class="btn" style="--c:${lvColor(li)}" data-go="toan-thu-thach-${li}">Bắt đầu</button>
+  </section>`);
+}
+function toanUnit(li,ui){
+  const L=MLEVELS[li],u=L&&L.units[ui];if(!u)return toanHome();const d=P().done[u.key]||{};
+  const ex=genN(u.b.bind(u),1)[0],exA=genN(u.a.bind(u),1)[0];
+  const ans=q=>q.render?q.render(q.a):esc(q.a);
+  render(`
+  <button class="btn ghost sm back" data-go="toan-lv-${li}">← Toán ${L.name}</button>
+  <div class="lvhead" style="--c:${lvColor(li)}"><div class="em">${u.em}</div>
+    <div style="min-width:0;flex:1"><div class="eyebrow">Toán ${L.name} · Bài ${ui+1}</div><h1>${esc(u.t)}</h1></div></div>
+  <section class="card tipcard"><b>💡 Ghi nhớ</b><p style="margin:6px 0 0">${esc(u.tip)}</p>${u.cc?`<button class="btn sm" style="--c:var(--orange);margin-top:8px" data-go="cc">✖️ Học bảng cửu chương</button>`:""}</section>
+  <section class="cc2">
+    ${ex?`<div class="card exbox"><div class="eyebrow">Ví dụ cơ bản</div>${ex.q}<p>Đáp án: <span class="cand">${ans(ex)}</span></p></div>`:""}
+    ${exA?`<div class="card exbox"><div class="eyebrow">Ví dụ nâng cao</div>${exA.q}<p>Đáp án: <span class="cand">${ans(exA)}</span></p></div>`:""}
+  </section>
+  <section><h2 style="font-size:1.3rem;margin-bottom:10px">Luyện tập từ dễ đến khó</h2>
+    <div class="acts">${mActs(u).map(a=>{const x=MA[a];return`<button class="act" data-go="toan-g-${a}-${li}-${ui}">${d[a]?'<span class="ok">✓</span>':""}<span class="em">${x.em}</span><b>${x.n}</b><small>${x.d}</small><span class="diff">${diffStars(x.lv)} ${diffName(x.lv)}</span></button>`}).join("")}</div>
+  </section>`);
+}
+function toanChallenge(li){
+  const L=MLEVELS[li];if(!L)return toanHome();
+  const qs=shuffle([...L.units.flatMap(u=>genN(u.b.bind(u),1)),...L.units.flatMap(u=>genN(u.a.bind(u),1))]).slice(0,10),pu={t:L.name,li,ui:-1,key:null,back:"toan-lv-"+li};
+  vRun(pu,"coban",qs,{back:"toan-lv-"+li,title:`🏆 Thử thách Toán ${L.name}`,again:()=>toanChallenge(li),autoSay:false,onEnd:(score,n)=>{
+    const p=P(),k="toan-"+L.id+"-cup";p.done[k]=Math.max(p.done[k]||0,score);save();
+    finish({stars:score,max:n,back:"toan-lv-"+li,again:()=>toanChallenge(li),vi:true,next:null,label:"Kết quả thử thách:"})}});
+}
+function toanProgram(){
+  render(`
+  <button class="btn ghost sm back" data-go="toan">← Đảo Toán Học</button>
+  <div class="row" style="margin-top:12px"><button class="chip" data-go="chuong-trinh">🏝️ Tiếng Anh</button><button class="chip" data-go="tv-chuong-trinh">🌾 Tiếng Việt</button><button class="chip on">🔢 Toán</button></div>
+  <section><div class="eyebrow">Dành cho phụ huynh và thầy cô</div>
+    <h1 style="font-size:clamp(1.8rem,5vw,2.4rem)">Chương trình Toán Mầm non – Lớp 5</h1>
+    <p class="muted" style="max-width:68ch">Bám các yêu cầu cần đạt của Chương trình môn Toán 2018 (Mầm non theo chương trình làm quen với toán). Tổng cộng <b>${MLEVELS.reduce((s,L)=>s+L.units.length,0)} bài</b>, mỗi bài có bài tập <b>cơ bản</b> và <b>nâng cao</b> do máy tự tạo nên không bao giờ hết đề. Thêm <b>bảng cửu chương</b> 2–9 với vè, thơ và trò chơi. Đây là bài luyện tập bổ trợ, không thay thế sách giáo khoa.</p></section>
+  <section class="card"><h2 style="font-size:1.3rem">Cách luyện mỗi bài</h2>
+    <ul class="tips"><li>⭐ <b>Bài tập cơ bản</b> và <b>Đúng hay sai</b>: nắm chắc kiến thức của bài.</li><li>⭐⭐ <b>Tự điền đáp án</b>: bé tự tính rồi gõ kết quả, không có đáp án gợi ý.</li><li>⭐⭐⭐ <b>Nâng cao</b>: toán có lời văn, tìm số chưa biết, bài nhiều bước. <b>Đua xe</b>: luyện tính nhanh.</li><li>Cuối mỗi lớp có <b>Thử thách 10 câu</b> trộn cơ bản và nâng cao.</li></ul></section>
+  ${MLEVELS.map((L,li)=>`<section class="card lvprog" style="--c:${lvColor(li)}">
+    <div class="row"><span style="font-size:2.2rem">${L.em}</span><h2 style="font-size:1.5rem">Toán ${L.name}</h2></div>
+    <p style="margin:6px 0">${L.goal}</p>
+    <div class="meta"><div><b>Độ tuổi</b>${L.age}</div><div><b>Thời lượng</b>${L.time}</div><div><b>Số bài</b>${L.units.length}</div></div>
+    <div class="tbl"><table><thead><tr><th>Bài</th><th>Nội dung</th><th>Ghi nhớ</th></tr></thead>
+    <tbody>${L.units.map(u=>`<tr><td>${u.ui+1}</td><td><b>${esc(u.t)}</b></td><td class="muted">${esc(u.tip)}</td></tr>`).join("")}</tbody></table></div></section>`).join("")}`);
+}
+function mRoute(h){
+  let m;
+  if(h==="toan")return toanHome();
+  if(h==="toan-chuong-trinh")return toanProgram();
+  if(m=h.match(/^toan-lv-(\d+)$/))return toanLevel(+m[1]);
+  if(m=h.match(/^toan-u-(\d+)-(\d+)$/))return toanUnit(+m[1],+m[2]);
+  if(m=h.match(/^toan-thu-thach-(\d+)$/))return toanChallenge(+m[1]);
+  if(m=h.match(/^toan-g-([a-z]+)-(\d+)-(\d+)$/)){const L=MLEVELS[+m[2]],u=L&&L.units[+m[3]];if(u&&MA[m[1]]&&mActs(u).includes(m[1]))return mPlay(m[1],u);return u?toanUnit(+m[2],+m[3]):toanHome()}
+  toanHome();
+}
+
 /* Nhãn dán */
 function stickers(){
   const p=P(),got=Math.min(Math.floor(p.stars/STAR_PER_STICKER),STICKERS.length),left=STAR_PER_STICKER-(p.stars%STAR_PER_STICKER);
@@ -2276,7 +2648,7 @@ function program(){
   const CH=[["Super Simple Songs","Bài hát ngắn, chậm, hợp Mầm non – Lớp 2"],["Dream English Kids","Bài hát theo chủ đề, nhiều động tác"],["Maple Leaf Learning","Hát và luyện mẫu câu, hợp Lớp 1 – 3"],["British Council LearnEnglish Kids","Truyện và bài hát cho Lớp 3 – 5"]];
   render(`
   <button class="btn ghost sm back" data-go="ta">← Đảo Tiếng Anh</button>
-  <div class="row" style="margin-top:12px"><button class="chip on">🏝️ Tiếng Anh</button><button class="chip" data-go="tv-chuong-trinh">🌾 Tiếng Việt</button><button class="chip" data-go="cc">🔢 Cửu chương</button></div>
+  <div class="row" style="margin-top:12px"><button class="chip on">🏝️ Tiếng Anh</button><button class="chip" data-go="tv-chuong-trinh">🌾 Tiếng Việt</button><button class="chip" data-go="toan-chuong-trinh">🔢 Toán</button></div>
   <section>
     <div class="eyebrow">Dành cho phụ huynh và thầy cô</div>
     <h1 style="font-size:clamp(1.8rem,5vw,2.4rem)">Chương trình học Mầm non – Lớp 5</h1>
