@@ -220,6 +220,17 @@ ul.tips a{color:var(--sky)}
 @keyframes rise{from{top:100%}to{top:-42%}}
 @keyframes boom{to{transform:scale(1.8);opacity:0}}
 
+.strictrow{display:flex;gap:10px;align-items:flex-start;margin:6px 0 4px;padding:10px 12px;border:2px solid var(--line);border-radius:14px;background:var(--soft);cursor:pointer}
+.strictrow input{width:22px;height:22px;margin-top:2px;flex:none;accent-color:var(--leaf)}
+/* sai phải làm lại */
+.redo{position:fixed;inset:0;z-index:28;background:rgba(10,18,34,.55);display:grid;place-items:center;padding:16px}
+.redobox{background:var(--card);border:3px solid var(--bad);border-radius:28px;padding:20px 24px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;max-width:360px;box-shadow:0 8px 0 var(--shadow);animation:pop .35s}
+.redobox b{font-family:var(--display);font-size:1.8rem;color:var(--bad)}
+.redobox span{font-weight:700;font-size:1.1rem}
+.redoem{font-size:3.5rem;line-height:1}
+.redobar{width:100%;height:8px;border-radius:99px;background:var(--soft);overflow:hidden;margin-top:6px}
+.redobar i{display:block;height:100%;background:var(--bad);animation:fillbar 2.6s linear forwards}
+@keyframes fillbar{from{width:0}to{width:100%}}
 /* trò chơi vui */
 .funbanner{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:22px;border-color:var(--berry)}
 .act.fun{border-style:dashed}
@@ -787,6 +798,19 @@ function finish({stars,max,back,key,act,again,label}){
   setProg(99,false);
 }
 
+/* Chế độ "sai phải làm lại từ đầu" (phụ huynh bật/tắt trong hồ sơ bé, mặc định bật) */
+const strictOn=()=>P().strict!==false;
+function strictFail(again,msg){
+  if(!strictOn())return false;
+  stopMedia();try{speechSynthesis.cancel()}catch(e){}
+  const ov=document.createElement("div");ov.className="redo";
+  ov.innerHTML=`<div class="redobox"><div class="redoem">🙈</div><b>Sai rồi!</b>${msg?`<span>${msg}</span>`:""}<span>Bé làm lại từ đầu nhé!</span><div class="redobar"><i></i></div></div>`;
+  document.body.appendChild(ov);
+  const t=setTimeout(()=>{ov.remove();again()},2600);
+  stopMedia=()=>{clearTimeout(t);ov.remove()};
+  return true;
+}
+
 /* 1. Thẻ từ: bé đọc đúng thì thẻ tự lật */
 function gFlash(u,L,back,act){
   render(shell(`🃏 Thẻ từ · ${esc(u.t)}`,back,u.words.length));
@@ -888,7 +912,7 @@ function gChoose(u,L,back,act,opt={}){
         if(mode==="listen"){t.innerHTML=`<span>${pic(o.pic)}<br><small style="font-size:1.1rem">${esc(o.en)}</small></span>`}
         else{t.innerHTML=`<span>${pic(o.pic)} ${esc(o.en)}</span>`}
         setTimeout(()=>{r++;r<rounds.length?show():done()},1300);
-      }else{miss=true;t.classList.add("bad");bump(t);sBad();if(mode==="look")say(o.en)}
+      }else{miss=true;t.classList.add("bad");bump(t);sBad();if(strictFail(opt.again||(()=>gChoose(u,L,back,act)),`Đáp án đúng: <b>${esc(w.en)}</b> ${pic(w.pic)}`))return;if(mode==="look")say(o.en)}
     });
   };
   const done=()=>{
@@ -948,7 +972,7 @@ function gSpell(u,L,back,act){
       if(tiles[+b.dataset.t]===want.toLowerCase()){
         const s=document.querySelector(`[data-s="${pos}"]`);s.textContent=want;s.classList.add("f","pop");b.disabled=true;tone(520+pos*40,.08);pos++;
         if(!need()){sGood();if(!miss){score++;$("#gs").textContent=score}setTimeout(()=>say(w.en),200);setTimeout(()=>{r++;r<ws.length?show():finish({stars:score,max:ws.length,back,key:u.key,act,again:()=>gSpell(u,L,back,act)})},1400)}
-      }else{miss=true;bump(b);sBad()}
+      }else{miss=true;bump(b);sBad();strictFail(()=>gSpell(u,L,back,act),`Từ đúng là: <b>${esc(w.en)}</b> ${pic(w.pic)}`)}
     });
   };
   show();
@@ -976,7 +1000,7 @@ function gSent(u,L,back,act){
       if(bank.length)return;
       if(ans.map(a=>a.t).join(" ")===s.en){locked=true;$("#ans").classList.add("good");sGood();if(!miss){score++;$("#gs").textContent=score}say(s.en);
         setTimeout(()=>{r++;r<ss.length?show():finish({stars:score,max:ss.length,back,key:u.key,act,again:()=>gSent(u,L,back,act)})},2200)}
-      else{miss=true;sBad();bump($("#ans"));toast("Chưa đúng rồi, chạm vào từ để đổi chỗ nhé!",1800)}
+      else{miss=true;sBad();bump($("#ans"));if(strictFail(()=>gSent(u,L,back,act),`Câu đúng là: <b>${esc(s.en)}</b>`))return;toast("Chưa đúng rồi, chạm vào từ để đổi chỗ nhé!",1800)}
     };
     draw();
   };
@@ -1147,7 +1171,7 @@ function gBalloon(u,L,back,act){
         if(!miss){score++;$("#gs").textContent=score}
         setTimeout(()=>el.remove(),380);setTimeout(()=>say(w.en),250);
         setTimeout(()=>{r++;r<rounds.length?show():finish({stars:score,max:rounds.length,back,key:u.key,act,again:()=>gBalloon(u,L,back,act)})},1300);
-      }else{miss=true;el.classList.add("bad");sBad()}
+      }else{miss=true;el.classList.add("bad");sBad();strictFail(()=>gBalloon(u,L,back,act),`Đáp án đúng: <b>${esc(w.en)}</b> ${pic(w.pic)}`)}
     });
   };
   show();
@@ -1169,7 +1193,7 @@ function gTF(u,L,back,act){
     document.querySelectorAll("[data-v]").forEach(el=>el.onclick=()=>{
       if(locked)return;locked=true;const right=(el.dataset.v==="1")===ok;
       if(right){sGood();score++;$("#gs").textContent=score;$("#fb").textContent=ok?`Đúng rồi! Đây là “${w.en}”.`:`Giỏi lắm! Hình này là “${w.en}”, không phải “${shown.en}”.`}
-      else{sBad();bump(el);$("#fb").textContent=ok?`Hình này đúng là “${w.en}” đó!`:`Chưa đúng. Hình này là “${w.en}”.`}
+      else{sBad();bump(el);if(strictFail(()=>gTF(u,L,back,act),`Hình này là <b>${esc(w.en)}</b> ${pic(w.pic)}`))return;$("#fb").textContent=ok?`Hình này đúng là “${w.en}” đó!`:`Chưa đúng. Hình này là “${w.en}”.`}
       $("#bp").classList.add("pop");setTimeout(()=>say(w.en),600);
       setTimeout(()=>{r++;r<rounds.length?show():finish({stars:score,max:rounds.length,back,key:u.key,act,again:()=>gTF(u,L,back,act)})},2300);
     });
@@ -1216,12 +1240,13 @@ function gWhack(u,L,back,act){
         if(done)return;
         if(m.dataset.t==="1"){done=true;m.classList.add("bonk");tone(260,.08,"square",0,.15);sGood();
           if(!miss){score++;$("#gs").textContent=score}say(w.en);nextRound(1100)}
-        else{miss=true;m.classList.add("ouch");sBad();timers.push(setTimeout(()=>m.remove(),300))}
+        else{miss=true;m.classList.add("ouch");sBad();if(strictFail(()=>gWhack(u,L,back,act),`Bé cần đập chuột cầm hình <b>${esc(w.en)}</b> ${pic(w.pic)}`))return;timers.push(setTimeout(()=>m.remove(),300))}
       };
       h.appendChild(m);timers.push(setTimeout(()=>{if(m.isConnected&&!m.classList.contains("bonk"))m.remove()},life));
     };
     spawn();timers.push(setInterval(spawn,Math.round(life*.5)));
     timers.push(setTimeout(()=>{if(done)return;done=true;
+      if(strictFail(()=>gWhack(u,L,back,act),`Hết giờ! Từ đó là <b>${esc(w.en)}</b> ${pic(w.pic)}`))return;
       $("#wp").innerHTML=`Hết giờ! Từ đó là <b>${esc(w.en)}</b> ${pic(w.pic)}`;say(w.en);nextRound(1900)},15000));
   };
   round();
@@ -1258,7 +1283,7 @@ function gRace(u,L,back,act){
       if(locked||over)return;locked=true;const o=ops[+t.dataset.k];
       if(o===w){t.classList.add("good");sGood();score++;$("#gs").textContent=score;me+=12.5;pos();
         if(me>=100)return end(true);timers.push(setTimeout(ask,450))}
-      else{t.classList.add("bad");bump(t);sBad();say(w.en);timers.push(setTimeout(ask,1000))}
+      else{t.classList.add("bad");bump(t);sBad();if(strictFail(()=>gRace(u,L,back,act),`Đáp án đúng: <b>${esc(w.en)}</b> ${pic(w.pic)}`))return;say(w.en);timers.push(setTimeout(ask,1000))}
     });
   };
   $("#go").onclick=()=>{
@@ -1296,7 +1321,7 @@ function gMissing(u,L,back,act){
           draw();sGood();if(!miss){score++;$("#gs").textContent=score}say(w.en);
           document.querySelectorAll("#opts .lt").forEach(x=>x.disabled=true);
           setTimeout(()=>{r++;r<rounds.length?show():finish({stars:score,max:rounds.length,back,key:u.key,act,again:()=>gMissing(u,L,back,act)})},1400);
-        }else{miss=true;bump(b);sBad();b.disabled=true}
+        }else{miss=true;bump(b);sBad();b.disabled=true;strictFail(()=>gMissing(u,L,back,act),`Từ đúng là: <b>${esc(w.en)}</b> ${pic(w.pic)}`)}
       });
     };
     draw();say(w.en);
@@ -1386,7 +1411,7 @@ function challenge(li,adv=false){
   const all=(adv?advUnits(L):basicUnits(L)).flatMap(u=>u.words);
   const rounds=shuffle(all).slice(0,10).map((w,k)=>({w,mode:k%2?"look":"listen"}));
   const back="lv-"+li;
-  gChoose({t:L.name,words:all,li},L,back,"listen",{pool:all,rounds,title:`🏆 Thử thách ${adv?"nâng cao":"đảo"} ${L.name}`,onEnd:(score,n)=>{
+  gChoose({t:L.name,words:all,li},L,back,"listen",{again:()=>challenge(li,adv),pool:all,rounds,title:`🏆 Thử thách ${adv?"nâng cao":"đảo"} ${L.name}`,onEnd:(score,n)=>{
     const p=P(),k=L.id+(adv?"-cupnc":"-cup");p.done[k]=Math.max(p.done[k]||0,score);save();
     finish({stars:score,max:n,back,again:()=>challenge(li,adv),label:"Kết quả thử thách:"});
   }});
@@ -1439,7 +1464,7 @@ function program(){
       <li><b>Đều đặn mỗi ngày:</b> 20–40 phút mỗi ngày tùy lớp, chia nhỏ theo buổi học mẫu, tốt hơn học dồn 2 tiếng cuối tuần. Ngọn lửa 🔥 đếm số ngày học liên tiếp.</li>
       <li><b>Nói to theo máy:</b> khi xem Thẻ từ, cho bé nói to từng từ, dùng nút 🐢 Nghe chậm với từ khó.</li>
       <li><b>Mang ra đời thật:</b> học bài Fruits thì đi chợ hỏi bé “What is this?”; học Road safety thì nhắc bé đội mũ bảo hiểm và nói “Always wear a helmet”.</li>
-      <li><b>Khen cụ thể:</b> khen bé cố gắng (“Con nghe giỏi quá!”) thay vì chỉ khen điểm. Sai không bị trừ sao, bé chỉ không nhận sao ở câu đó.</li>
+      <li><b>Khen cụ thể:</b> khen bé cố gắng (“Con nghe giỏi quá!”) thay vì chỉ khen điểm. Mặc định chọn sai một lần là phải làm lại từ đầu, để bé tập trung và nhớ chắc. Bé còn nhỏ hoặc dễ nản thì tắt chế độ này trong hồ sơ của bé (bấm vào hình đại diện góc trên).</li>
       <li><b>Đổi thưởng:</b> cùng bé đặt mục tiêu, ví dụ đủ 5 nhãn dán thì được đi công viên.</li>
     </ul>
   </section>
@@ -1469,6 +1494,7 @@ function profileModal(){
     <label for="pname"><b>Tên của bé đang chọn</b></label>
     <input type="text" id="pname" maxlength="20" value="${esc(P().name)}">
     <div class="avs">${AVATARS.map(a=>`<button class="av ${a===sel?"on":""}" data-a="${a}">${a}</button>`).join("")}</div>
+    <label class="strictrow" for="pstrict"><input type="checkbox" id="pstrict" ${strictOn()?"checked":""}> <span><b>Sai phải làm lại từ đầu</b><br><small class="muted">Chọn sai một lần là chơi lại từ câu đầu. Bé còn nhỏ hoặc dễ nản thì tắt đi: chọn sai được chọn lại ngay câu đó.</small></span></label>
     <div class="row" style="justify-content:space-between;margin-top:10px">
       <button class="btn ghost sm" id="addp">+ Thêm bé</button>
       <button class="btn" id="savep" style="--c:var(--leaf)">Lưu</button>
@@ -1476,7 +1502,7 @@ function profileModal(){
     m.querySelectorAll("[data-p]").forEach(el=>el.onclick=()=>{DB.cur=+el.dataset.p;sel=P().avatar;save();draw();route()});
     m.querySelectorAll("[data-a]").forEach(el=>el.onclick=()=>{sel=el.dataset.a;m.querySelectorAll(".av").forEach(x=>x.classList.toggle("on",x.dataset.a===sel))});
     m.querySelector("#addp").onclick=()=>{DB.list.push(newProfile("Bé "+(DB.list.length+1),AVATARS[DB.list.length%AVATARS.length]));DB.cur=DB.list.length-1;sel=P().avatar;save();draw();route()};
-    m.querySelector("#savep").onclick=()=>{const n=m.querySelector("#pname").value.trim();P().name=n||"Bé";P().avatar=sel;save();m.remove();route()};
+    m.querySelector("#savep").onclick=()=>{const n=m.querySelector("#pname").value.trim();P().name=n||"Bé";P().avatar=sel;P().strict=m.querySelector("#pstrict").checked;save();m.remove();route()};
   };
   m.onclick=e=>{if(e.target===m)m.remove()};
   draw();document.body.appendChild(m);
