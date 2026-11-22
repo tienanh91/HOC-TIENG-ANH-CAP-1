@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Việt hóa video</title>
+<style>
+:root{
+  --bg:#0f1220; --panel:#181c2f; --panel2:#20253d; --line:#2e3555;
+  --text:#e8ebf7; --muted:#9aa3c7; --accent:#ff7a59; --accent2:#5ad1ff; --ok:#4ade80; --err:#ff8a8a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:5;flex-wrap:wrap}
+header h1{margin:0;font-size:20px}
+header .sp{flex:1}
+a{color:var(--accent2)}
+button,select,input,textarea{font:inherit;color:inherit}
+button{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer}
+button:hover{border-color:var(--accent2)}
+button.primary{background:var(--accent);border-color:var(--accent);color:#1b0f0a;font-weight:600}
+button:disabled{opacity:.5;cursor:not-allowed}
+input,select,textarea{background:#0c0f1c;border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%}
+label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px}
+main{display:grid;grid-template-columns:minmax(320px,420px) 1fr;gap:16px;padding:16px;max-width:1500px;margin:0 auto}
+@media (max-width:900px){main{grid-template-columns:1fr;padding:12px}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h2{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:8px}
+.step{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#1b0f0a;font-size:13px;font-weight:700}
+.stack>*+*{margin-top:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hint{font-size:12.5px;color:var(--muted)}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.check{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:14px}
+.check input{width:auto}
+#drop{border:2px dashed var(--line);border-radius:10px;padding:22px;text-align:center;color:var(--muted);cursor:pointer}
+#drop.over{border-color:var(--accent2);color:var(--text)}
+#stage-wrap{background:#000;border-radius:10px;overflow:hidden;display:grid;place-items:center;min-height:200px}
+canvas#stage{max-width:100%;max-height:60vh;display:block}
+video#src{display:none}
+.bar{height:8px;background:var(--panel2);border-radius:4px;overflow:hidden;flex:1;min-width:140px;cursor:pointer}
+.bar>div{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+#time{font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px}
+.status{font-size:13px;color:var(--muted);min-height:20px;margin-top:8px}
+.status.err{color:var(--err)}.status.ok{color:var(--ok)}
+.cues{max-height:60vh;overflow:auto;border:1px solid var(--line);border-radius:10px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{position:sticky;top:0;background:var(--panel2);text-align:left;font-weight:600;font-size:13px;color:var(--muted);z-index:1}
+tr.active td{background:rgba(255,122,89,.12)}
+td.t{width:92px;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.t input{display:block;width:84px;padding:3px 5px;font-size:12.5px;margin-bottom:3px}
+td textarea{min-height:44px;padding:5px 7px;resize:vertical}
+td.act{width:40px;text-align:center}
+td.act button{padding:3px 8px}
+.empty{color:var(--muted);text-align:center;padding:30px 10px}
+.prog{height:6px;background:var(--panel2);border-radius:3px;overflow:hidden;margin-top:8px}
+.prog>div{height:100%;width:0;background:var(--accent2);transition:width .2s}
+</style>
+</head>
+<body>
+<header>
+  <span style="font-size:26px">🌐</span>
+  <h1>Việt hóa video</h1>
+  <span class="sp"></span>
+  <a href="index.html">← AI Film Studio</a>
+</header>
+
+<main>
+  <section class="stack">
+    <div class="card">
+      <h2><span class="step">1</span> Chọn video</h2>
+      <div id="drop">Kéo thả video vào đây hoặc bấm để chọn (.mp4, .webm, .mov)</div>
+      <input type="file" id="file" accept="video/*" hidden>
+      <p class="hint">Chỉ dùng video của bạn, video có giấy phép cho phép chỉnh sửa (Creative Commons…), hoặc đã được tác giả đồng ý. Video được xử lý ngay trên máy bạn, không tải lên đâu cả.</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="step">2</span> Lấy lời thoại gốc</h2>
+      <p class="hint">Cách A: nếu đã có phụ đề (.srt/.vtt, ví dụ tải từ YouTube), nhập vào là nhanh và chính xác nhất.</p>
+      <div class="controls"><button id="btn-import">📄 Nhập phụ đề .srt / .vtt</button></div>
+      <input type="file" id="sub-file" accept=".srt,.vtt,text/vtt" hidden>
+      <p class="hint" style="margin-top:14px">Cách B: AI nghe và chép lời (Whisper chạy trong trình duyệt). Lần đầu tải mô hình khoảng 80–250 MB, các lần sau nhanh hơn.</p>
+      <div class="row">
+        <div><label for="asr-model">Mô hình</label>
+          <select id="asr-model">
+            <option value="onnx-community/whisper-tiny">Nhanh (tiny)</option>
+            <option value="onnx-community/whisper-base" selected>Cân bằng (base)</option>
+            <option value="onnx-community/whisper-small">Chính xác (small, chậm)</option>
+          </select></div>
+        <div><label for="asr-lang">Ngôn ngữ gốc</label>
+          <select id="asr-lang">
+            <option value="english">Tiếng Anh</option>
+            <option value="chinese">Tiếng Trung</option>
+            <option value="japanese">Tiếng Nhật</option>
+            <option value="korean">Tiếng Hàn</option>
+            <option value="french">Tiếng Pháp</option>
+            <option value="spanish">Tiếng Tây Ban Nha</option>
+            <option value="">Tự nhận diện</option>
+          </select></div>
+      </div>
+      <div class="controls"><button class="primary" id="btn-asr" disabled>🎧 AI chép lời</button></div>
+      <div class="prog" id="asr-prog" hidden><div></div></div>
+      <div class="status" id="asr-status"></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="step">3</span> Dịch sang tiếng Việt</h2>
+      <label for="apikey">Khóa Claude API (dùng chung với AI Film Studio)</label>
+      <input id="apikey" type="password" placeholder="sk-ant-..." autocomplete="off">
+      <label for="style">Giọng văn bản dịch</label>
+      <select id="style">
+        <option value="tự nhiên, dễ hiểu, phù hợp mọi lứa tuổi">Tự nhiên, phổ thông</option>
+        <option value="đơn giản, thân thiện, dành cho trẻ em">Cho trẻ em</option>
+        <option value="trang trọng, chính xác thuật ngữ">Trang trọng</option>
+        <option value="trẻ trung, hài hước, đúng chất mạng xã hội">Trẻ trung, mạng xã hội</option>
+      </select>
+      <div class="controls"><button class="primary" id="btn-tr" disabled>🇻🇳 Dịch bằng AI</button></div>
+      <div class="status" id="tr-status"></div>
+      <p class="hint">Không có khóa API, bạn vẫn tự gõ bản dịch vào cột "Tiếng Việt" được.</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="step">4</span> Âm thanh &amp; phụ đề</h2>
+      <label for="orig-vol">Âm lượng tiếng gốc: <span id="orig-vol-v">100%</span></label>
+      <input id="orig-vol" type="range" min="0" max="1" step="0.05" value="1">
+      <label class="check"><input type="checkbox" id="tts"> Đọc thử bản dịch bằng giọng máy khi xem (không ghi được vào video)</label>
+      <label class="check"><input type="checkbox" id="show-orig"> Hiện cả phụ đề gốc (song ngữ)</label>
+      <label for="font-size">Cỡ chữ phụ đề</label>
+      <input id="font-size" type="range" min="0.03" max="0.07" step="0.005" value="0.045">
+      <div class="controls"><button id="btn-dub">🎙 Tải file lồng tiếng Việt</button><span class="hint" id="dub-name"></span></div>
+      <input type="file" id="dub-file" accept="audio/*" hidden>
+      <p class="hint">File lồng tiếng là bản ghi âm giọng Việt cho cả video, bắt đầu từ giây 0. Khi có file này, nên giảm tiếng gốc xuống 10–30%.</p>
+    </div>
+  </section>
+
+  <section class="stack">
+    <div class="card">
+      <h2>🎬 Xem thử</h2>
+      <div id="stage-wrap"><canvas id="stage" width="1280" height="720"></canvas></div>
+      <video id="src" playsinline preload="auto"></video>
+      <div class="controls">
+        <button id="btn-play" disabled>▶ Phát</button>
+        <div class="bar" id="bar"><div></div></div>
+        <span id="time">0:00 / 0:00</span>
+      </div>
+      <div class="controls">
+        <button class="primary" id="btn-export" disabled>⬇ Xuất video tiếng Việt</button>
+        <button id="btn-srt" disabled>⬇ Phụ đề .srt</button>
+        <button id="btn-vtt" disabled>⬇ Phụ đề .vtt</button>
+      </div>
+      <div class="status" id="exp-status"></div>
+    </div>
+
+    <div class="card">
+      <h2>📝 Phụ đề <span class="sp" style="flex:1"></span><button id="btn-add" disabled>＋ Thêm câu tại vị trí đang xem</button></h2>
+      <div class="cues" id="cues"><div class="empty">Chưa có phụ đề. Nhập file phụ đề hoặc dùng AI chép lời ở bước 2.</div></div>
+    </div>
+  </section>
+</main>
+
+<script type="module">
+const $ = s => document.querySelector(s);
+const MODEL = "claude-opus-5-5";
+const store = {
+  get(k){ try{ return localStorage.getItem(k); }catch{ return null; } },
+  set(k,v){ try{ localStorage.setItem(k,v); }catch{} }
+};
+function setStatus(id, msg, cls=""){ const el=$(id); el.textContent=msg; el.className="status "+cls; }
+function fmt(s){ s=Math.max(0,s|0); return `${s/60|0}:${String(s%60).padStart(2,"0")}`; }
+function esc(s){ return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function download(blob, name){ const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=name; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),5000); }
+
+let cues = [];      // {start, end, src, vi}
+let videoFile = null, baseName = "video";
+const video = $("#src"), cv = $("#stage"), ctx = cv.getContext("2d");
+
+$("#apikey").value = store.get("aifilm_key") || "";
+$("#apikey").addEventListener("change", e => store.set("aifilm_key", e.target.value.trim()));
+
+/* ---------- 1. load video ---------- */
+const drop = $("#drop");
+drop.onclick = () => $("#file").click();
+drop.ondragover = e => { e.preventDefault(); drop.classList.add("over"); };
+drop.ondragleave = () => drop.classList.remove("over");
+drop.ondrop = e => { e.preventDefault(); drop.classList.remove("over"); const f=e.dataTransfer.files[0]; if (f) loadVideo(f); };
+$("#file").onchange = e => e.target.files[0] && loadVideo(e.target.files[0]);
+function loadVideo(f){
+  videoFile = f; baseName = f.name.replace(/\.[^.]+$/,"");
+  video.src = URL.createObjectURL(f);
+  drop.textContent = "🎞 " + f.name + " — bấm để đổi video";
+  video.onloadedmetadata = () => {
+    const scale = Math.min(1, 1280/Math.max(video.videoWidth, video.videoHeight));
+    cv.width = Math.round(video.videoWidth*scale) || 1280; cv.height = Math.round(video.videoHeight*scale) || 720;
+    ["#btn-play","#btn-asr","#btn-export","#btn-add"].forEach(s=>$(s).disabled=false);
+    video.currentTime = 0.01; updateTime();
+  };
+  video.onseeked = () => draw();
+}
+
+/* ---------- 2a. import subtitles ---------- */
+$("#btn-import").onclick = () => $("#sub-file").click();
+$("#sub-file").onchange = async e => {
+  const f = e.target.files[0]; if (!f) return;
+  const parsed = parseSubs(await f.text());
+  if (!parsed.length) return setStatus("#asr-status","⚠️ Không đọc được phụ đề trong file này.","err");
+  cues = parsed; renderCues(); setStatus("#asr-status",`✅ Đã nhập ${cues.length} câu phụ đề.`,"ok");
+  e.target.value="";
+};
+function parseTime(t){ const m = t.trim().replace(",",".").match(/(?:(\d+):)?(\d+):(\d+(?:\.\d+)?)/); if(!m) return NaN; return (+(m[1]||0))*3600 + (+m[2])*60 + (+m[3]); }
+function parseSubs(text){
+  const out = [];
+  text.replace(/\r/g,"").split(/\n\s*\n/).forEach(block=>{
+    const lines = block.split("\n").filter(l=>l.trim()!=="");
+    const i = lines.findIndex(l=>l.includes("-->")); if (i<0) return;
+    const [a,b] = lines[i].split("-->"); const start=parseTime(a), end=parseTime(b.split(/\s/).filter(Boolean)[0]);
+    const txt = lines.slice(i+1).join(" ").replace(/<[^>]+>/g,"").replace(/\{[^}]+\}/g,"").trim();
+    if (!isNaN(start) && !isNaN(end) && txt) out.push({start, end, src:txt, vi:""});
+  });
+  return out.sort((x,y)=>x.start-y.start);
+}
+
+/* ---------- 2b. Whisper in the browser ---------- */
+let asrPipe = null, asrModelId = "";
+$("#btn-asr").onclick = async () => {
+  if (!videoFile) return;
+  const btn = $("#btn-asr"); btn.disabled = true;
+  const prog = $("#asr-prog"); prog.hidden = false; const pbar = prog.firstElementChild;
+  try{
+    setStatus("#asr-status","⏳ Đang tách âm thanh từ video…");
+    const audio = await extractAudio16k(videoFile);
+    const modelId = $("#asr-model").value;
+    if (!asrPipe || asrModelId !== modelId){
+      setStatus("#asr-status","⏳ Đang tải mô hình AI nghe (chỉ lần đầu)…");
+      const { pipeline } = await import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1");
+      const files = {};
+      asrPipe = await pipeline("automatic-speech-recognition", modelId, {
+        progress_callback: p => {
+          if (p.status==="progress" && p.file){ files[p.file] = p.progress||0; const v = Object.values(files); pbar.style.width = (v.reduce((a,b)=>a+b,0)/v.length)+"%"; }
+        }
+      });
+      asrModelId = modelId;
+    }
+    setStatus("#asr-status",`⏳ AI đang nghe ${fmt(audio.length/16000)} âm thanh… (có thể mất vài phút, đừng đóng trang)`);
+    pbar.style.width = "100%";
+    const lang = $("#asr-lang").value;
+    const res = await asrPipe(audio, { return_timestamps:true, chunk_length_s:30, stride_length_s:5, task:"transcribe", ...(lang?{language:lang}:{}) });
+    const chunks = (res.chunks||[]).filter(c=>c.text && c.text.trim());
+    cues = mergeChunks(chunks.map(c=>({start:c.timestamp[0]??0, end:c.timestamp[1] ?? (c.timestamp[0]+3), src:c.text.trim(), vi:""})));
+    renderCues();
+    setStatus("#asr-status",`✅ Đã chép được ${cues.length} câu. Kiểm tra lại rồi sang bước 3 để dịch.`,"ok");
+  } catch(e){
+    console.error(e); setStatus("#asr-status","⚠️ Lỗi khi chép lời: "+(e.message||e)+". Hãy thử mô hình nhỏ hơn hoặc nhập file phụ đề.","err");
+  } finally { btn.disabled=false; prog.hidden = true; }
+};
+async function extractAudio16k(file){
+  const buf = await file.arrayBuffer();
+  const ac = new (window.AudioContext||window.webkitAudioContext)();
+  const decoded = await ac.decodeAudioData(buf); ac.close();
+  const off = new OfflineAudioContext(1, Math.ceil(decoded.duration*16000), 16000);
+  const src = off.createBufferSource(); src.buffer = decoded; src.connect(off.destination); src.start();
+  const rendered = await off.startRendering();
+  return rendered.getChannelData(0);
+}
+// join very short fragments so each subtitle reads well
+function mergeChunks(list){
+  const out=[];
+  for (const c of list){
+    const last = out[out.length-1];
+    if (last && (c.start - last.end) < 0.3 && (last.end-last.start) < 2.5 && (last.src.length + c.src.length) < 90){ last.end = c.end; last.src += " " + c.src; }
+    else out.push({...c});
+  }
+  out.forEach(c=>{ if (c.end<=c.start) c.end = c.start+2; });
+  return out;
+}
+
+/* ---------- 3. translate with Claude ---------- */
+const TR_SCHEMA = { type:"object", additionalProperties:false, required:["translations"], properties:{
+  translations:{ type:"array", items:{ type:"object", additionalProperties:false, required:["id","vi"], properties:{ id:{type:"integer"}, vi:{type:"string"} } } } } };
+$("#btn-tr").onclick = async () => {
+  const key = $("#apikey").value.trim();
+  if (!key) return setStatus("#tr-status","Hãy dán khóa Claude API trước (hoặc tự gõ bản dịch vào bảng).","err");
+  if (!cues.length) return;
+  store.set("aifilm_key", key);
+  const btn=$("#btn-tr"); btn.disabled=true;
+  try{
+    const { default: Anthropic } = await import("https://cdn.jsdelivr.net/npm/@anthropic-ai/sdk@1.6.0/+esm");
+    const client = new Anthropic({ apiKey:key, dangerouslyAllowBrowser:true });
+    const BATCH = 60;
+    for (let b=0; b<cues.length; b+=BATCH){
+      setStatus("#tr-status",`⏳ Đang dịch câu ${b+1}–${Math.min(cues.length,b+BATCH)} / ${cues.length}…`);
+      const items = cues.slice(b,b+BATCH).map((c,k)=>({id:b+k, text:c.src}));
+      const context = cues.slice(Math.max(0,b-5), b).map(c=>c.src).join(" ");
+      const prompt = `Dịch phụ đề video sau sang tiếng Việt. Giọng văn: ${$("#style").value}.
+Quy tắc:
+- Giữ đúng id, mỗi câu dịch tương ứng một câu gốc, không gộp hay bỏ câu.
+- Câu dịch ngắn gọn để đọc kịp trên màn hình (độ dài gần với câu gốc).
+- Tên riêng giữ nguyên; xưng hô nhất quán và tự nhiên theo ngữ cảnh.
+${context ? "Ngữ cảnh các câu ngay trước (không cần dịch): " + context + "\n" : ""}
+Danh sách câu (JSON):
+${JSON.stringify(items)}`;
+      const msg = await client.beta.messages.stream({
+        model: MODEL, max_tokens: 16000,
+        betas: ["server-side-fallback-2026-07-01"], fallbacks: "default",
+        output_config: { effort:"low", format:{ type:"json_schema", schema:TR_SCHEMA } },
+        messages: [{ role:"user", content: prompt }]
+      }).finalMessage();
+      if (msg.stop_reason === "refusal") throw new Error("AI từ chối dịch đoạn này.");
+      const data = JSON.parse(msg.content.filter(x=>x.type==="text").map(x=>x.text).join(""));
+      data.translations.forEach(t=>{ if (cues[t.id]) cues[t.id].vi = t.vi; });
+      renderCues();
+    }
+    setStatus("#tr-status","✅ Đã dịch xong. Bạn có thể sửa từng câu trong bảng.","ok");
+  } catch(e){
+    console.error(e); setStatus("#tr-status","⚠️ Lỗi dịch: "+(e?.status===401?"khóa API không đúng.":(e.message||e)),"err");
+  } finally { btn.disabled=false; }
+};
+
+/* ---------- subtitle table ---------- */
+function ts(s){ const m=s/60|0, sec=(s%60); return `${String(m).padStart(2,"0")}:${sec.toFixed(1).padStart(4,"0")}`; }
+function renderCues(){
+  const has = cues.length>0;
+  ["#btn-tr","#btn-srt","#btn-vtt"].forEach(s=>$(s).disabled=!has);
+  if (!has){ $("#cues").innerHTML = `<div class="empty">Chưa có phụ đề. Nhập file phụ đề hoặc dùng AI chép lời ở bước 2.</div>`; return; }
+  $("#cues").innerHTML = `<table><thead><tr><th>Thời gian</th><th>Câu gốc</th><th>Tiếng Việt</th><th></th></tr></thead><tbody>${
+    cues.map((c,i)=>`<tr data-i="${i}">
+      <td class="t"><input data-f="start" value="${ts(c.start)}"><input data-f="end" value="${ts(c.end)}"></td>
+      <td><textarea data-f="src">${esc(c.src)}</textarea></td>
+      <td><textarea data-f="vi" placeholder="Nhập bản dịch…">${esc(c.vi)}</textarea></td>
+      <td class="act"><button data-a="go" title="Xem câu này">▶</button><button data-a="del" title="Xóa">✕</button></td></tr>`).join("")
+  }</tbody></table>`;
+}
+$("#cues").addEventListener("change", e=>{
+  const el=e.target, tr=el.closest("tr"); if(!tr||!el.dataset.f) return;
+  const c=cues[+tr.dataset.i], f=el.dataset.f;
+  if (f==="start"||f==="end"){ const v=parseTime(el.value); if(!isNaN(v)) c[f]=v; el.value=ts(c[f]); }
+  else c[f]=el.value;
+  draw();
+});
+$("#cues").addEventListener("input", e=>{ const el=e.target, tr=el.closest("tr"); if(tr && (el.dataset.f==="vi"||el.dataset.f==="src")){ cues[+tr.dataset.i][el.dataset.f]=el.value; draw(); } });
+$("#cues").addEventListener("click", e=>{
+  const b=e.target.closest("button[data-a]"); if(!b) return; const i=+b.closest("tr").dataset.i;
+  if (b.dataset.a==="go"){ video.currentTime = cues[i].start + 0.01; }
+  if (b.dataset.a==="del"){ cues.splice(i,1); renderCues(); draw(); }
+});
+$("#btn-add").onclick = () => {
+  const t = video.currentTime||0; cues.push({start:t, end:t+2.5, src:"", vi:""}); cues.sort((a,b)=>a.start-b.start); renderCues();
+};
+
+/* ---------- export subtitle files ---------- */
+function srtTime(s,sep=","){ const h=s/3600|0, m=(s%3600)/60|0, sec=s%60|0, ms=Math.round((s%1)*1000); return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(sec).padStart(2,"0")}${sep}${String(ms).padStart(3,"0")}`; }
+$("#btn-srt").onclick = () => download(new Blob([cues.map((c,i)=>`${i+1}\n${srtTime(c.start)} --> ${srtTime(c.end)}\n${c.vi||c.src}\n`).join("\n")],{type:"text/plain"}), baseName+".vi.srt");
+$("#btn-vtt").onclick = () => download(new Blob(["WEBVTT\n\n"+cues.map(c=>`${srtTime(c.start,".")} --> ${srtTime(c.end,".")}\n${c.vi||c.src}\n`).join("\n")],{type:"text/vtt"}), baseName+".vi.vtt");
+
+/* ---------- 4. rendering ---------- */
+function cueAt(t){ return cues.find(c=>t>=c.start && t<c.end); }
+function wrap(text, maxW){ const words=text.split(/\s+/), lines=[]; let line=""; for(const w of words){ const tt=line?line+" "+w:w; if(ctx.measureText(tt).width>maxW && line){ lines.push(line); line=w; } else line=tt; } if(line) lines.push(line); return lines; }
+function drawSubtitle(lines, y, fs, color){
+  ctx.font = `700 ${fs}px system-ui,"Segoe UI",Roboto,sans-serif`; ctx.textAlign="center"; ctx.textBaseline="middle";
+  ctx.lineJoin="round"; ctx.lineWidth = fs*0.18; ctx.strokeStyle="rgba(0,0,0,.9)";
+  lines.forEach((l,i)=>{ const yy = y + i*fs*1.25; ctx.strokeText(l, cv.width/2, yy); ctx.fillStyle=color; ctx.fillText(l, cv.width/2, yy); });
+}
+let lastCue = null;
+function draw(){
+  const W=cv.width, H=cv.height;
+  if (video.readyState>=2) ctx.drawImage(video,0,0,W,H); else { ctx.fillStyle="#000"; ctx.fillRect(0,0,W,H); }
+  const c = cueAt(video.currentTime);
+  if (c){
+    const fs = Math.round(Math.min(W,H) * +$("#font-size").value);
+    ctx.font = `700 ${fs}px system-ui,sans-serif`;
+    const vi = c.vi || (c.vi===""? "" : "");
+    const showOrig = $("#show-orig").checked;
+    const mainLines = wrap(vi || c.src, W*0.88);
+    const origLines = showOrig && vi ? (ctx.font = `600 ${Math.round(fs*0.75)}px system-ui,sans-serif`, wrap(c.src, W*0.88)) : [];
+    const total = mainLines.length*fs*1.25 + origLines.length*fs*0.95;
+    let y = H - H*0.06 - total + fs*0.6;
+    drawSubtitle(mainLines, y, fs, vi ? "#fff" : "#ffd27a");
+    if (origLines.length) drawSubtitle(origLines, y + mainLines.length*fs*1.25, Math.round(fs*0.75), "#c9d4ff");
+  }
+  if (c !== lastCue){ lastCue = c; onCueChange(c); }
+  updateTime();
+}
+function updateTime(){ const d=video.duration||0, t=video.currentTime||0; $("#time").textContent=`${fmt(t)} / ${fmt(d)}`; $("#bar>div").style.width = d? (100*t/d)+"%" : "0"; }
+$("#bar").onclick = e => { if(!video.duration) return; const r=e.currentTarget.getBoundingClientRect(); video.currentTime = (e.clientX-r.left)/r.width*video.duration; };
+["#font-size","#show-orig"].forEach(s=>$(s).addEventListener("input", draw));
+
+/* audio graph */
+let actx=null, origGain=null, dubGain=null, recDest=null, dubEl=null;
+function ensureAudio(){
+  if (actx){ actx.resume(); return; }
+  actx = new (window.AudioContext||window.webkitAudioContext)();
+  recDest = actx.createMediaStreamDestination();
+  origGain = actx.createGain(); origGain.gain.value = +$("#orig-vol").value;
+  const s = actx.createMediaElementSource(video); s.connect(origGain); origGain.connect(actx.destination); origGain.connect(recDest);
+  dubGain = actx.createGain(); dubGain.connect(actx.destination); dubGain.connect(recDest);
+  if (dubEl) actx.createMediaElementSource(dubEl).connect(dubGain);
+}
+$("#orig-vol").oninput = e => { $("#orig-vol-v").textContent = Math.round(e.target.value*100)+"%"; if (origGain) origGain.gain.value = +e.target.value; };
+$("#btn-dub").onclick = () => $("#dub-file").click();
+$("#dub-file").onchange = e => {
+  const f=e.target.files[0]; if(!f) return;
+  dubEl = new Audio(URL.createObjectURL(f)); dubEl.preload="auto";
+  if (actx) actx.createMediaElementSource(dubEl).connect(dubGain);
+  $("#dub-name").textContent = "✓ " + f.name;
+};
+
+/* TTS preview */
+function onCueChange(c){
+  if (!$("#tts").checked || video.paused || recording || !("speechSynthesis" in window)) return;
+  speechSynthesis.cancel();
+  if (!c || !c.vi) return;
+  const u = new SpeechSynthesisUtterance(c.vi); u.lang="vi-VN";
+  const v = speechSynthesis.getVoices().find(v=>v.lang.toLowerCase().startsWith("vi")); if (v) u.voice=v;
+  u.rate = Math.min(1.6, Math.max(0.9, c.vi.length / 14 / Math.max(1, c.end-c.start)));
+  speechSynthesis.speak(u);
+}
+
+/* playback loop */
+let raf=0;
+function loop(){ draw(); if (!video.paused && !video.ended) raf = requestAnimationFrame(loop); }
+async function play(){ ensureAudio(); if (dubEl){ dubEl.currentTime = video.currentTime; dubEl.play(); } await video.play(); $("#btn-play").textContent="⏸ Tạm dừng"; loop(); }
+function pause(){ video.pause(); dubEl?.pause(); speechSynthesis?.cancel(); $("#btn-play").textContent="▶ Phát"; }
+$("#btn-play").onclick = () => video.paused ? play() : pause();
+video.addEventListener("seeking", ()=>{ if (dubEl) dubEl.currentTime = video.currentTime; });
+video.addEventListener("ended", ()=>{ pause(); draw(); if (recording) stopRecording(); });
+
+/* ---------- export video ---------- */
+let recording=false, recorder=null, chunks=[];
+$("#btn-export").onclick = async () => {
+  if (recording) return;
+  if (!window.MediaRecorder || !cv.captureStream) return setStatus("#exp-status","Trình duyệt không hỗ trợ ghi video. Hãy dùng Chrome hoặc Edge mới.","err");
+  pause(); ensureAudio();
+  video.currentTime = 0; await new Promise(r=>video.addEventListener("seeked", r, {once:true}));
+  const stream = cv.captureStream(30);
+  recDest.stream.getAudioTracks().forEach(t=>stream.addTrack(t));
+  const mime = ["video/webm;codecs=vp9,opus","video/webm;codecs=vp8,opus","video/webm","video/mp4"].find(m=>MediaRecorder.isTypeSupported(m)) || "";
+  recorder = new MediaRecorder(stream, mime?{mimeType:mime, videoBitsPerSecond:6_000_000}:{});
+  chunks=[]; recorder.ondataavailable = e => e.data.size && chunks.push(e.data);
+  recorder.onstop = () => {
+    const type = recorder.mimeType||"video/webm", ext = type.includes("mp4")?"mp4":"webm";
+    download(new Blob(chunks,{type}), baseName+"-tieng-viet."+ext);
+    setStatus("#exp-status",`✅ Đã xuất video (${ext.toUpperCase()}). Kiểm tra thư mục Tải xuống.`,"ok");
+    $("#btn-export").disabled=false; $("#btn-export").textContent="⬇ Xuất video tiếng Việt";
+  };
+  recording = true; $("#btn-export").disabled=true; $("#btn-export").textContent="⏺ Đang ghi…";
+  setStatus("#exp-status",`⏺ Đang ghi ${fmt(video.duration)} — video phát theo thời gian thực, giữ tab này mở tới khi xong.`);
+  recorder.start(500);
+  await play();
+};
+function stopRecording(){ recording=false; setTimeout(()=>recorder?.state==="recording" && recorder.stop(), 300); }
+
+renderCues(); draw();
+</script>
+</body>
+</html>
