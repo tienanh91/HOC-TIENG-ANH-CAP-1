@@ -2951,14 +2951,36 @@ const HLV=[["circle","square","triangle","rectangle","oval","heart","star","diam
 
 /* ---------- Con vật: [tiếng Anh, tiếng Việt, hình, số chân, biết bay, sống dưới nước, loại] (null = không hỏi) ---------- */
 const ANIMAL_DATA=[
- ["cat","con mèo","🐱",4,0,0,"pet"],["dog","con chó","🐶",4,0,0,"pet"],["fish","con cá","🐟",0,0,1,null],["bird","con chim","🐦",2,1,0,null],["duck","con vịt","🦆",2,null,null,"farm"],["cow","con bò","🐮",4,0,0,"farm"],["pig","con heo","🐷",4,0,0,"farm"],["chicken","con gà","🐔",2,null,0,"farm"],
- ["rabbit","con thỏ","🐰",4,0,0,null],["horse","con ngựa","🐴",4,0,0,"farm"],["sheep","con cừu","🐑",4,0,0,"farm"],["goat","con dê","🐐",4,0,0,"farm"],["mouse","con chuột","🐭",4,0,0,null],["frog","con ếch","🐸",4,0,null,null],
- ["lion","sư tử","🦁",4,0,0,"wild"],["tiger","con hổ","🐯",4,0,0,"wild"],["elephant","con voi","🐘",4,0,0,"wild"],["monkey","con khỉ","🐒",null,0,0,"wild"],["bear","con gấu","🐻",4,0,0,"wild"],["zebra","ngựa vằn","🦓",4,0,0,"wild"],
- ["giraffe","hươu cao cổ","🦒",4,0,0,"wild"],["snake","con rắn","🐍",0,0,null,"wild"],["crocodile","cá sấu","🐊",4,0,null,"wild"],["penguin","chim cánh cụt","🐧",2,0,null,"wild"],["kangaroo","chuột túi","🦘",null,0,0,"wild"],["panda","gấu trúc","🐼",4,0,0,"wild"],
- ["dolphin","cá heo","🐬",0,0,1,"wild"],["whale","cá voi","🐳",0,0,1,"wild"],["octopus","bạch tuộc","🐙",null,0,1,"wild"],["butterfly","con bướm","🦋",6,1,0,null],["bee","con ong","🐝",6,1,0,null],["owl","cú mèo","🦉",2,1,0,"wild"],
- ["camel","lạc đà","🐫",4,0,0,null],["eagle","đại bàng","🦅",2,1,0,"wild"],["parrot","con vẹt","🦜",2,1,0,null],["bat","con dơi","🦇",null,1,0,"wild"],["squirrel","con sóc","🐿️",4,0,0,"wild"],["deer","con hươu","🦌",4,0,0,"wild"]];
-const ANIMALS={};ANIMAL_DATA.forEach(([en,vi,e,legs,fly,water,kind])=>ANIMALS[en]={en,vi,e,legs,fly,water,kind});
-const ALV=[0,8,14,20,26,32,38].slice(1).map((n,i,arr)=>ANIMAL_DATA.slice(i?arr[i-1]:0,n).map(x=>x[0]));
+ /* [tiếng Anh, tiếng Việt, hình, số chân, biết bay, sống dưới nước, loại, nhóm] · null = không dùng để hỏi */
+ /* Mầm non (12) */
+ ["cat","con mèo","🐱",4,0,0,"pet","nuoi"],["dog","con chó","🐶",4,0,0,"pet","nuoi"],["fish","con cá","🐟",0,0,1,null,"nuoc"],["bird","con chim","🐦",2,1,0,null,"chim"],["duck","con vịt","🦆",2,null,null,"farm","nuoi"],["cow","con bò","🐮",4,0,0,"farm","nuoi"],
+ ["pig","con heo","🐷",4,0,0,"farm","nuoi"],["chicken","con gà","🐔",2,null,0,"farm","nuoi"],["rabbit","con thỏ","🐰",4,0,0,null,"nuoi"],["horse","con ngựa","🐴",4,0,0,"farm","nuoi"],["elephant","con voi","🐘",4,0,0,"wild","rung"],["monkey","con khỉ","🐒",null,0,0,"wild","rung"],
+ /* Lớp 1 (+18) */
+ ["sheep","con cừu","🐑",4,0,0,"farm","nuoi"],["goat","con dê","🐐",4,0,0,"farm","nuoi"],["mouse","con chuột","🐭",4,0,0,null,"rung"],["frog","con ếch","🐸",4,0,null,null,"bosat"],["lion","sư tử","🦁",4,0,0,"wild","rung"],["tiger","con hổ","🐯",4,0,0,"wild","rung"],
+ ["bear","con gấu","🐻",4,0,0,"wild","rung"],["zebra","ngựa vằn","🦓",4,0,0,"wild","rung"],["giraffe","hươu cao cổ","🦒",4,0,0,"wild","rung"],["panda","gấu trúc","🐼",4,0,0,"wild","rung"],["butterfly","con bướm","🦋",6,1,0,null,"contrung"],["bee","con ong","🐝",6,1,0,null,"contrung"],
+ ["owl","cú mèo","🦉",2,1,0,"wild","chim"],["snail","ốc sên","🐌",0,0,0,null,"contrung"],["ant","con kiến","🐜",6,null,0,null,"contrung"],["ladybird","bọ rùa","🐞",6,1,0,null,"contrung"],["turtle","con rùa","🐢",4,0,null,null,"bosat"],["buffalo","con trâu","🐃",4,0,null,"farm","nuoi"],
+ /* Lớp 2 (+20) */
+ ["snake","con rắn","🐍",0,0,null,"wild","bosat"],["crocodile","cá sấu","🐊",4,0,null,"wild","bosat"],["penguin","chim cánh cụt","🐧",2,0,null,"wild","chim"],["kangaroo","chuột túi","🦘",null,0,0,"wild","rung"],["dolphin","cá heo","🐬",0,0,1,"wild","nuoc"],["whale","cá voi","🐳",0,0,1,"wild","nuoc"],
+ ["octopus","bạch tuộc","🐙",null,0,1,"wild","nuoc"],["crab","con cua","🦀",null,0,null,null,"nuoc"],["shrimp","con tôm","🦐",null,0,1,null,"nuoc"],["squid","con mực","🦑",null,0,1,null,"nuoc"],["shark","cá mập","🦈",0,0,1,"wild","nuoc"],["rooster","gà trống","🐓",2,null,0,"farm","nuoi"],
+ ["chick","gà con","🐤",2,null,0,"farm","nuoi"],["turkey","gà tây","🦃",2,null,0,"farm","nuoi"],["hamster","chuột hamster","🐹",4,0,0,"pet","nuoi"],["koala","gấu túi","🐨",4,0,0,"wild","rung"],["hippo","hà mã","🦛",4,0,null,"wild","rung"],["rhino","tê giác","🦏",4,0,0,"wild","rung"],
+ ["camel","lạc đà","🐫",4,0,0,null,"rung"],["deer","con hươu","🦌",4,0,0,"wild","rung"],
+ /* Lớp 3 (+20) */
+ ["eagle","đại bàng","🦅",2,1,0,"wild","chim"],["parrot","con vẹt","🦜",2,1,0,null,"chim"],["bat","con dơi","🦇",null,1,0,"wild","rung"],["squirrel","con sóc","🐿️",4,0,0,"wild","rung"],["fox","con cáo","🦊",4,0,0,"wild","rung"],["wolf","chó sói","🐺",4,0,0,"wild","rung"],
+ ["leopard","con báo","🐆",4,0,0,"wild","rung"],["gorilla","khỉ đột","🦍",null,0,0,"wild","rung"],["hedgehog","con nhím","🦔",4,0,0,"wild","rung"],["raccoon","gấu mèo","🦝",4,0,0,"wild","rung"],["swan","thiên nga","🦢",2,1,null,null,"chim"],["peacock","con công","🦚",2,null,0,null,"chim"],
+ ["flamingo","hồng hạc","🦩",2,1,null,"wild","chim"],["dove","chim bồ câu","🕊️",2,1,0,null,"chim"],["lizard","thằn lằn","🦎",4,0,0,"wild","bosat"],["dinosaur","khủng long","🦕",4,0,0,"extinct","bosat"],["spider","con nhện","🕷️",8,0,0,null,"contrung"],["scorpion","bọ cạp","🦂",8,0,0,"wild","contrung"],
+ ["mosquito","con muỗi","🦟",6,1,0,null,"contrung"],["cricket","con dế","🦗",6,null,0,null,"contrung"],
+ /* Lớp 4 (+20) */
+ ["polar bear","gấu Bắc Cực","🐻‍❄️",4,0,null,"wild","rung"],["seal","hải cẩu","🦭",null,0,null,"wild","nuoc"],["otter","rái cá","🦦",4,0,null,"wild","rung"],["sloth","con lười","🦥",4,0,0,"wild","rung"],["llama","lạc đà không bướu","🦙",4,0,0,null,"nuoi"],["badger","con lửng","🦡",4,0,0,"wild","rung"],
+ ["skunk","chồn hôi","🦨",4,0,0,"wild","rung"],["orangutan","đười ươi","🦧",null,0,0,"wild","rung"],["boar","lợn rừng","🐗",4,0,0,"wild","rung"],["ox","bò đực","🐂",4,0,0,"farm","nuoi"],["ram","cừu đực","🐏",4,0,0,"farm","nuoi"],["tropical fish","cá cảnh","🐠",0,0,1,"pet","nuoc"],
+ ["blowfish","cá nóc","🐡",0,0,1,null,"nuoc"],["lobster","tôm hùm","🦞",null,0,1,null,"nuoc"],["oyster","con hàu","🦪",0,0,1,null,"nuoc"],["worm","con giun","🪱",0,0,0,null,"contrung"],["beetle","bọ cánh cứng","🪲",6,null,0,null,"contrung"],["fly","con ruồi","🪰",6,1,0,null,"contrung"],
+ ["caterpillar","sâu bướm","🐛",null,0,0,null,"contrung"],["T-rex","khủng long bạo chúa","🦖",2,0,0,"extinct","bosat"],
+ /* Lớp 5 (+8) */
+ ["bison","bò rừng bison","🦬",4,0,0,"wild","rung"],["mammoth","voi ma mút","🦣",4,0,0,"extinct","rung"],["beaver","hải ly","🦫",4,0,null,"wild","rung"],["dodo","chim dodo","🦤",2,0,0,"extinct","chim"],["dromedary","lạc đà một bướu","🐪",4,0,0,null,"rung"],["rat","chuột cống","🐀",4,0,0,null,"rung"],
+ ["cockroach","con gián","🪳",6,null,0,null,"contrung"],["blue whale","cá voi xanh","🐋",0,0,1,"wild","nuoc"]];
+const BIRDS_EXTRA=["duck","chicken","rooster","chick","turkey"],INSECTS=["butterfly","bee","ant","ladybird","mosquito","cricket","beetle","fly","cockroach"];
+const ANIMALS={};ANIMAL_DATA.forEach(([en,vi,e,legs,fly,water,kind,group])=>ANIMALS[en]={en,vi,e,legs,fly,water,kind,group,bird:group==="chim"||BIRDS_EXTRA.includes(en),insect:INSECTS.includes(en)});
+const ALV=[12,30,50,70,90,98].map((n,i,arr)=>ANIMAL_DATA.slice(i?arr[i-1]:0,n).map(x=>x[0]));
+const AGROUPS=[["all","Tất cả","All"],["nuoi","Vật nuôi","Farm & pets"],["rung","Thú hoang dã","Wild animals"],["chim","Chim","Birds"],["nuoc","Dưới nước","Sea animals"],["bosat","Bò sát, lưỡng cư","Reptiles"],["contrung","Côn trùng, loài nhỏ","Bugs"]];
 /* ---------- Cơ thể người ---------- */
 const BODY_DATA=[["eyes","đôi mắt","👀"],["ears","đôi tai","👂"],["nose","cái mũi","👃"],["mouth","cái miệng","👄"],["hand","bàn tay","✋"],["foot","bàn chân","🦶"],["hair","mái tóc","💇"],["teeth","hàm răng","🦷"],
  ["tongue","cái lưỡi","👅"],["finger","ngón tay","☝️"],["leg","cái chân","🦵"],["arm","cánh tay","💪"],
@@ -3011,7 +3033,10 @@ function hQuiz(tp,lang,li){
     pickQ(pool.filter(id=>A(id).water===1),pool.filter(id=>A(id).water===0),"Which animal lives <b>in the water</b>?","Con vật nào <b>sống dưới nước</b>?");
     pickQ(pool.filter(id=>A(id).kind==="wild"),pool.filter(id=>A(id).kind==="farm"||A(id).kind==="pet"),"Which one is a <b>wild animal</b>?","Con nào là <b>động vật hoang dã</b>?");
     pickQ(pool.filter(id=>A(id).kind==="farm"),pool.filter(id=>A(id).kind==="wild"),"Which one is a <b>farm animal</b>?","Con nào là <b>vật nuôi ở nông trại</b>?");
-    shuffle(pool.filter(id=>A(id).legs!==null)).slice(0,6).forEach(id=>{const n=A(id).legs;qs.push({q:`${P_(id,96)}<div class="vq">${en?`How many legs does a ${A(id).en} have?`:`${cap(A(id).vi)} có mấy chân?`}</div>`,a:String(n),opts:["0","2","4","6"],after:en?`A ${A(id).en} has ${n} legs.`:`${cap(A(id).vi)} có ${n} chân.`,en})});
+    pickQ(pool.filter(id=>A(id).bird),pool.filter(id=>!A(id).bird&&A(id).group!=="contrung"&&A(id).fly!==1),"Which one is a <b>bird</b>?","Con nào là <b>loài chim</b>?");
+    pickQ(pool.filter(id=>A(id).insect),pool.filter(id=>!A(id).insect&&A(id).group!=="contrung"),"Which one is an <b>insect</b>?","Con nào là <b>côn trùng</b>?");
+    if(li>=3)pickQ(pool.filter(id=>A(id).kind==="extinct"),pool.filter(id=>A(id).kind==="wild"&&A(id).group!=="bosat"),"Which animal is <b>extinct</b> (no longer lives today)?","Con vật nào <b>đã tuyệt chủng</b>?");
+    shuffle(pool.filter(id=>A(id).legs!==null)).slice(0,6).forEach(id=>{const n=A(id).legs;qs.push({q:`${P_(id,96)}<div class="vq">${en?`How many legs does a ${A(id).en} have?`:`${cap(A(id).vi)} có mấy chân?`}</div>`,a:String(n),opts:pickOpts(String(n),["0","2","4","6","8"]).sort((x,y)=>x-y),after:en?`A ${A(id).en} has ${n} legs.`:`${cap(A(id).vi)} có ${n} chân.`,en})});
   }
   if(tp==="cothe"){
     BODY_USE.filter(([id])=>pool.includes(id)).forEach(([id,uen,uvi])=>qs.push({q:`<div class="vq">${en?`Which body part do we use to <b>${uen}</b>?`:`Bộ phận nào giúp chúng ta <b>${uvi}</b>?`}</div>`,a:id,opts:pickOpts(id,pool.filter(x=>x!==id&&!(AMBIG[id]||[]).includes(x))),render:x=>P_(x,64),after:nm(id),en}));
@@ -3057,15 +3082,17 @@ function hBoard(tp,lang,li){
   <div class="lvhead" style="--c:${lvColor(li)}"><div class="em">${T.em}</div>
     <div style="min-width:0;flex:1"><div class="eyebrow">${L.name} · ${pool.length} mục${li&&isNew.size?` · ${isNew.size} mục mới`:""}</div><h1>${tTitle(tp,lang)}</h1>
     <p class="muted" style="margin:4px 0 0">Chạm vào từng hình để nghe tên. Dấu ✨ là mục mới của lớp này.</p></div></div>
+  ${tp==="convat"?`<section class="row" id="agrp">${AGROUPS.map(([k,v,e],i)=>{const n=k==="all"?pool.length:pool.filter(id=>ANIMALS[id].group===k).length;return n?`<button class="chip ${i?"":"on"}" data-g="${k}">${en?e:v} (${n})</button>`:""}).join("")}</section>`:""}
   <section class="row"><button class="btn" style="--c:var(--leaf)" id="hread">▶ ${en?"Đọc cả bảng (tiếng Anh)":"Đọc cả bảng"}</button><button class="btn ghost" id="hstop">⏹ Dừng</button></section>
   <section><div class="hboard">${pool.map(id=>`<button class="hcard" data-id="${id}">${isNew.has(id)&&li?'<span class="new">✨</span>':""}${tPic(tp,id,78)}<b>${esc(tName(tp,lang,id))}</b><small>${esc(tName(tp,en?"vi":"en",id))}</small></button>`).join("")}</div></section>
   <section><h2 style="font-size:1.3rem;margin-bottom:10px">${en?"Games · Trò chơi":"Trò chơi"} từ dễ đến khó</h2>
     <div class="acts">${hActs(li).map(a=>{const x=HA[a];return`<button class="act" data-go="${tp}-g-${lang}-${a}-${li}">${d[a]?'<span class="ok">✓</span>':""}<span class="em">${x.em}</span><b>${en?x.en:x.n}</b>${en?`<small>${x.n}</small>`:""}<span class="diff">${diffStars(x.lv)} ${diffName(x.lv)}</span></button>`}).join("")}</div></section>`);
   const cards=[...document.querySelectorAll(".hcard")];let run=0;
+  document.querySelectorAll("#agrp [data-g]").forEach(b=>b.onclick=()=>{document.querySelectorAll("#agrp .chip").forEach(x=>x.classList.toggle("on",x===b));const g=b.dataset.g;cards.forEach(c=>c.hidden=g!=="all"&&ANIMALS[c.dataset.id].group!==g)});
   const hl=el=>{cards.forEach(c=>c.classList.toggle("on",c===el))};
   const stop=()=>{run++;try{speechSynthesis.cancel()}catch(e){}stopVi();hl(null)};stopMedia=stop;
   cards.forEach(c=>c.onclick=()=>{stop();hl(c);hSay(lang,tName(tp,lang,c.dataset.id)).then(()=>c.classList.remove("on"))});
-  $("#hread").onclick=async()=>{stop();const my=run;for(const c of cards){hl(c);c.scrollIntoView({block:"nearest",behavior:"smooth"});await hSay(lang,tName(tp,lang,c.dataset.id));if(my!==run)return;await wait(350)}hl(null)};
+  $("#hread").onclick=async()=>{stop();const my=run;for(const c of cards.filter(x=>!x.hidden)){hl(c);c.scrollIntoView({block:"nearest",behavior:"smooth"});await hSay(lang,tName(tp,lang,c.dataset.id));if(my!==run)return;await wait(350)}hl(null)};
   $("#hstop").onclick=stop;
 }
 function hRoute(h){let m;
