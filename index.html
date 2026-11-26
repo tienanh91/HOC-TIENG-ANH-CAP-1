@@ -322,6 +322,18 @@ ul.tips a{color:var(--sky)}
 .clues ol{margin:6px 0 8px;padding-left:22px;font-weight:700}
 .clues li{margin:4px 0}
 .cipher{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,7vw,2.2rem);line-height:1.5;padding:8px 20px;border:3px dashed var(--orange);border-radius:18px;background:var(--soft);font-variant-numeric:tabular-nums}
+.tscene{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;font-size:1.9rem;line-height:1;padding:8px 14px;border-radius:16px;background:var(--soft);border:2px solid var(--line)}
+.tscene.big{font-size:3.4rem;padding:14px 22px}
+.hidebox{position:relative;width:160px;height:160px;max-width:100%;border-radius:24px;background:color-mix(in srgb,var(--grape) 16%,var(--card));border:3px dashed var(--grape);display:grid;place-items:center}
+.hideem{position:absolute;top:6px;left:8px;font-size:1.6rem}
+.sil{font-size:6rem;line-height:1;filter:brightness(0);opacity:.88}
+.anm{display:block;font-size:.85rem;font-family:var(--body)}
+.dsbox{width:min(600px,100%);padding:8px 12px;border-radius:16px;border:2px solid var(--line);background:var(--card);text-align:left}
+.dsbox.got{background:var(--soft)}
+.dslist{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.dsi{display:inline-flex;flex-direction:column;align-items:center;font-size:1.9rem;line-height:1.1;min-width:58px}
+.dsi small{font-size:.72rem;color:var(--muted)}
+.caph{font-size:1.3rem;margin:22px 0 10px;padding-bottom:6px;border-bottom:2px dashed var(--line)}
 /* Bảng hình */
 .pbgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .pbbtn{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 8px;border:3px solid var(--sky);border-radius:20px;background:color-mix(in srgb,var(--sky) 12%,var(--card));color:var(--ink);cursor:pointer;box-shadow:0 5px 0 color-mix(in srgb,var(--sky) 55%,#000)}
@@ -607,6 +619,83 @@ LEVELS.forEach((L,li)=>L.units.forEach((u,ui)=>{
   u.sent=u.s.map(x=>{const [en,vi]=x.split("|");return{en,vi}});
   u.key=L.id+"-"+ui; u.li=li; u.ui=ui;
 }));
+/* ================== TIẾNG ANH THCS – THPT (Lớp 6–12) ================== */
+LEVELS.push(
+{id:"l6",name:"Lớp 6",em:"🏙️",age:"11–12 tuổi",time:"30–40 phút/ngày",skills:"Nghe · Nói · Đọc · Viết đoạn",cap:2,
+ goal:"Mô tả khu phố, kỳ quan thiên nhiên, chương trình ti vi. Hiện tại đơn và tiếp diễn, so sánh hơn, must/mustn't. Hướng tới trình độ A2.",
+ grammar:["There is/There are…","must / mustn't","so sánh hơn với tính từ ngắn","and, but, so"],plan:[["🃏 Từ vựng",10],["🎮 Trò chơi",10],["🧱 Mẫu câu",10],["🎙️ Luyện nói",5]],
+ units:[
+ {t:"My neighbourhood",vi:"Khu phố của em",em:"🏙️",w:"cinema|🎬|rạp chiếu phim;museum|🏛️|bảo tàng;railway station|🚉|nhà ga;cathedral|⛪|nhà thờ lớn;art gallery|🖼️|phòng tranh;temple|🛕|ngôi đền;stadium|🏟️|sân vận động;bakery|🥐|tiệm bánh",
+  s:["There is a big museum near my house.|Có một bảo tàng lớn gần nhà mình.","Is there a cinema in your neighbourhood?|Khu bạn ở có rạp chiếu phim không?","My street is quieter than the city centre.|Đường nhà mình yên tĩnh hơn trung tâm thành phố."]},
+ {t:"Natural wonders",vi:"Kỳ quan thiên nhiên",em:"🌋",w:"mountain|⛰️|núi;volcano|🌋|núi lửa;island|🏝️|hòn đảo;desert|🏜️|sa mạc;forest|🌲|rừng;river|🏞️|dòng sông;beach|🏖️|bãi biển;rock|🪨|tảng đá",
+  s:["Ha Long Bay is a natural wonder of Viet Nam.|Vịnh Hạ Long là một kỳ quan thiên nhiên của Việt Nam.","You must bring a map when you go hiking.|Bạn phải mang bản đồ khi đi bộ đường dài.","We mustn't leave rubbish in the forest.|Chúng ta không được để rác trong rừng."]},
+ {t:"Television",vi:"Truyền hình",em:"📺",w:"cartoon|🎞️|phim hoạt hình;news|📰|tin tức;channel|📡|kênh truyền hình;comedy|😂|hài kịch;documentary|🎥|phim tài liệu;game show|🎯|trò chơi truyền hình;weather forecast|🌦️|dự báo thời tiết;remote control|🎛️|điều khiển từ xa",
+  s:["My favourite programme is a cartoon.|Chương trình mình thích nhất là phim hoạt hình.","What time does the news start?|Mấy giờ chương trình thời sự bắt đầu?","I watch TV, but I don't watch it all day.|Mình xem ti vi nhưng không xem cả ngày."]}]},
+{id:"l7",name:"Lớp 7",em:"🎨",age:"12–13 tuổi",time:"30–40 phút/ngày",skills:"Nghe · Nói · Đọc · Viết đoạn",cap:2,
+ goal:"Sở thích, sống khỏe, giao thông. Thì quá khứ đơn, câu so sánh, động từ chỉ sở thích (enjoy, find…), should/shouldn't.",
+ grammar:["I enjoy / love + V-ing","should / shouldn't","It is … from A to B","quá khứ đơn"],plan:[["🃏 Từ vựng",10],["🎮 Trò chơi",10],["🧱 Mẫu câu",10],["🎙️ Luyện nói",5]],
+ units:[
+ {t:"Hobbies",vi:"Sở thích",em:"🎨",w:"gardening|🌱|làm vườn;collecting|🪙|sưu tầm;photography|📷|chụp ảnh;cooking|🍳|nấu ăn;fishing|🎣|câu cá;knitting|🧶|đan len;camping|🏕️|cắm trại;skateboarding|🛹|trượt ván",
+  s:["My hobby is collecting old coins.|Sở thích của mình là sưu tầm đồng xu cũ.","I find gardening very relaxing.|Mình thấy làm vườn rất thư giãn.","Do you enjoy going camping?|Bạn có thích đi cắm trại không?"]},
+ {t:"Healthy living",vi:"Sống khỏe",em:"🥗",w:"vegetables|🥦|rau củ;exercise|🏋️|tập thể dục;sleep|😴|giấc ngủ;junk food|🍟|đồ ăn vặt;vitamin|💊|vi-ta-min;sunburn|☀️|cháy nắng;flu|🤧|bệnh cúm;water|💧|nước",
+  s:["You should eat more vegetables.|Bạn nên ăn nhiều rau hơn.","Too much junk food is bad for your health.|Ăn quá nhiều đồ ăn vặt có hại cho sức khỏe.","I go to bed early, so I feel fresh in the morning.|Mình đi ngủ sớm nên buổi sáng thấy tỉnh táo."]},
+ {t:"Traffic",vi:"Giao thông",em:"🚦",w:"traffic jam|🚙|tắc đường;road sign|🚸|biển báo giao thông;cycle lane|🚲|làn xe đạp;pedestrian|🚶|người đi bộ;zebra crossing|🦓|vạch qua đường;helmet|⛑️|mũ bảo hiểm;passenger|🧳|hành khách;driving licence|📄|bằng lái xe",
+  s:["It is about two kilometres from my house to school.|Từ nhà mình đến trường khoảng hai ki-lô-mét.","You should obey the traffic rules.|Bạn nên tuân thủ luật giao thông.","Always wear a helmet when you ride a motorbike.|Luôn đội mũ bảo hiểm khi đi xe máy."]}]},
+{id:"l8",name:"Lớp 8",em:"🔬",age:"13–14 tuổi",time:"35–40 phút/ngày",skills:"Nghe · Nói · Đọc · Viết bài ngắn",cap:2,
+ goal:"Cuộc sống nông thôn, khoa học công nghệ, bảo vệ môi trường. So sánh trạng từ, tương lai đơn, câu điều kiện loại 1, thì hiện tại hoàn thành.",
+ grammar:["more … than (trạng từ)","will + V","If + hiện tại, will + V","hiện tại hoàn thành"],plan:[["🃏 Từ vựng",10],["🎮 Trò chơi",10],["🧱 Mẫu câu",10],["🎙️ Luyện nói",10]],
+ units:[
+ {t:"Life in the countryside",vi:"Cuộc sống nông thôn",em:"🌾",w:"harvest|🧺|vụ thu hoạch;paddy field|🌾|ruộng lúa;buffalo|🐃|con trâu;kite|🪁|cánh diều;orchard|🍊|vườn cây ăn quả;farmer|🧑‍🌾|nông dân;cattle|🐄|gia súc;peaceful|🕊️|yên bình",
+  s:["Life in the countryside is more peaceful than in the city.|Cuộc sống ở nông thôn yên bình hơn ở thành phố.","Children often fly kites in the paddy fields.|Trẻ em thường thả diều trên cánh đồng lúa.","My grandparents help harvest the rice every year.|Ông bà mình giúp thu hoạch lúa mỗi năm."]},
+ {t:"Science and technology",vi:"Khoa học và công nghệ",em:"🔬",w:"robot|🤖|rô-bốt;laptop|💻|máy tính xách tay;smartphone|📱|điện thoại thông minh;satellite|🛰️|vệ tinh;microscope|🔬|kính hiển vi;rocket|🚀|tên lửa;invention|💡|phát minh;experiment|🧪|thí nghiệm",
+  s:["Robots will do many jobs in the future.|Rô-bốt sẽ làm nhiều công việc trong tương lai.","Scientists are doing an experiment in the lab.|Các nhà khoa học đang làm thí nghiệm trong phòng thí nghiệm.","The internet has changed the way we learn.|Internet đã thay đổi cách chúng ta học."]},
+ {t:"Protecting the environment",vi:"Bảo vệ môi trường",em:"🌍",w:"pollution|🏭|ô nhiễm;recycle|♻️|tái chế;plastic bag|🛍️|túi ni-lông;solar energy|🔆|năng lượng mặt trời;wind power|🌬️|năng lượng gió;global warming|🌡️|nóng lên toàn cầu;endangered|🐼|có nguy cơ tuyệt chủng;deforestation|🪓|phá rừng",
+  s:["If we cut down forests, many animals will lose their homes.|Nếu chặt phá rừng, nhiều loài vật sẽ mất nơi ở.","We should use reusable bags instead of plastic bags.|Chúng ta nên dùng túi tái sử dụng thay vì túi ni-lông.","Global warming is a serious problem.|Sự nóng lên toàn cầu là một vấn đề nghiêm trọng."]}]},
+{id:"l9",name:"Lớp 9",em:"🎓",age:"14–15 tuổi",time:"40 phút/ngày",skills:"Nghe · Nói · Đọc · Viết bài",cap:2,
+ goal:"Làng nghề, học tập, nghề nghiệp tương lai. Câu ước (wish), mệnh đề quan hệ, câu điều kiện, câu bị động. Ôn thi vào lớp 10.",
+ grammar:["I wish + quá khứ đơn","who / which / that","câu bị động","If + quá khứ, would + V"],plan:[["🃏 Từ vựng",10],["🎮 Trò chơi",10],["🧱 Mẫu câu",10],["🏆 Thử thách",10]],
+ units:[
+ {t:"Craft villages",vi:"Làng nghề",em:"🏺",w:"craft village|🏘️|làng nghề;pottery|🏺|đồ gốm;lantern|🏮|đèn lồng;conical hat|👒|nón lá;silk|🧵|lụa;handicraft|🧺|đồ thủ công;artisan|🧑‍🎨|nghệ nhân;tourist attraction|📸|điểm du lịch",
+  s:["Bat Trang is famous for its pottery.|Bát Tràng nổi tiếng với đồ gốm.","The artisan who made this lantern is my uncle.|Người nghệ nhân làm chiếc đèn lồng này là chú mình.","Many tourists visit the craft village every year.|Nhiều du khách đến thăm làng nghề mỗi năm."]},
+ {t:"Education",vi:"Học tập",em:"🎓",w:"scholarship|🏆|học bổng;university|🎓|trường đại học;exam|📝|kỳ thi;certificate|📜|chứng chỉ;library|📚|thư viện;dormitory|🛏️|ký túc xá;online course|💻|khóa học trực tuyến;deadline|⏰|hạn chót",
+  s:["She won a scholarship to study in Australia.|Cô ấy giành được học bổng du học Úc.","I wish I had more time to prepare for the exam.|Ước gì mình có thêm thời gian ôn thi.","If you study harder, you will pass the exam.|Nếu bạn học chăm hơn, bạn sẽ đỗ kỳ thi."]},
+ {t:"Future jobs",vi:"Nghề nghiệp tương lai",em:"💼",w:"engineer|👷|kỹ sư;programmer|🧑‍💻|lập trình viên;pilot|🧑‍✈️|phi công;designer|🧑‍🎨|nhà thiết kế;journalist|🗞️|nhà báo;architect|📐|kiến trúc sư;chef|🧑‍🍳|đầu bếp;vet|🐾|bác sĩ thú y",
+  s:["I would like to become an engineer.|Mình muốn trở thành kỹ sư.","A good programmer needs to be creative and patient.|Một lập trình viên giỏi cần sáng tạo và kiên nhẫn.","What do you want to be when you grow up?|Khi lớn lên bạn muốn làm nghề gì?"]}]},
+{id:"l10",name:"Lớp 10",em:"🌱",age:"15–16 tuổi",time:"40–45 phút/ngày",skills:"Nghe · Nói · Đọc hiểu · Viết luận ngắn",cap:3,
+ goal:"Cuộc sống gia đình, con người và môi trường, các phát minh. Thì hiện tại hoàn thành, câu bị động, to-infinitive và V-ing. Hướng tới trình độ B1.",
+ grammar:["hiện tại đơn và tiếp diễn","bị động: was/were + V3","used to + V","so sánh kép"],plan:[["🃏 Từ vựng",10],["🎮 Trò chơi",10],["🧱 Mẫu câu",10],["🎙️ Luyện nói",10]],
+ units:[
+ {t:"Family life",vi:"Cuộc sống gia đình",em:"👨‍👩‍👧",w:"household chores|🧹|việc nhà;laundry|🧺|giặt giũ;breadwinner|💼|trụ cột gia đình;homemaker|🏠|người nội trợ;groceries|🛒|đồ tạp hóa;responsibility|🤝|trách nhiệm;gratitude|🙏|lòng biết ơn;washing-up|🍽️|rửa bát",
+  s:["My father is the breadwinner of the family.|Bố mình là trụ cột kinh tế của gia đình.","We share the housework equally.|Chúng mình chia đều việc nhà.","Doing chores helps children become more responsible.|Làm việc nhà giúp trẻ có trách nhiệm hơn."]},
+ {t:"Humans and the environment",vi:"Con người và môi trường",em:"🌳",w:"carbon footprint|👣|dấu chân các-bon;renewable energy|🔋|năng lượng tái tạo;eco-friendly|🌿|thân thiện môi trường;waste|🗑️|rác thải;climate change|🌡️|biến đổi khí hậu;biodiversity|🦋|đa dạng sinh học;conservation|🛡️|bảo tồn;ecosystem|🌍|hệ sinh thái",
+  s:["We can reduce our carbon footprint by cycling to school.|Chúng ta có thể giảm dấu chân các-bon bằng cách đạp xe đến trường.","Renewable energy will be used more widely.|Năng lượng tái tạo sẽ được sử dụng rộng rãi hơn.","Protecting biodiversity is everyone's responsibility.|Bảo vệ đa dạng sinh học là trách nhiệm của mọi người."]},
+ {t:"Inventions",vi:"Các phát minh",em:"💡",w:"telephone|☎️|điện thoại;light bulb|💡|bóng đèn;computer|🖥️|máy tính;camera|📷|máy ảnh;airplane|✈️|máy bay;printer|🖨️|máy in;vaccine|💉|vắc-xin;compass|🧭|la bàn",
+  s:["The telephone was invented in the nineteenth century.|Điện thoại được phát minh vào thế kỷ mười chín.","Smartphones are used for many different purposes.|Điện thoại thông minh được dùng cho nhiều mục đích khác nhau.","Without vaccines, many more people would get sick.|Nếu không có vắc-xin, sẽ có nhiều người bị bệnh hơn."]}]},
+{id:"l11",name:"Lớp 11",em:"🏃",age:"16–17 tuổi",time:"40–45 phút/ngày",skills:"Nghe · Nói · Đọc hiểu · Viết luận",cap:3,
+ goal:"Khoảng cách thế hệ, lối sống lành mạnh, thành phố tương lai. Động từ khuyết thiếu, danh động từ, phân từ, câu tường thuật.",
+ grammar:["must / have to / should","V-ing làm chủ ngữ","câu tường thuật","mệnh đề phân từ"],plan:[["🃏 Từ vựng",10],["🎮 Trò chơi",10],["🧱 Mẫu câu",10],["🎙️ Luyện nói",10]],
+ units:[
+ {t:"Generation gap",vi:"Khoảng cách thế hệ",em:"👵",w:"generation gap|🧓|khoảng cách thế hệ;extended family|👨‍👩‍👧‍👦|gia đình nhiều thế hệ;nuclear family|👪|gia đình hạt nhân;conflict|⚡|xung đột;respect|🙇|sự tôn trọng;privacy|🔒|sự riêng tư;tradition|🎎|truyền thống;opinion|💬|ý kiến",
+  s:["Many teenagers want more privacy.|Nhiều thanh thiếu niên muốn có nhiều sự riêng tư hơn.","We should respect our grandparents' opinions.|Chúng ta nên tôn trọng ý kiến của ông bà.","Living in an extended family has both advantages and disadvantages.|Sống trong gia đình nhiều thế hệ có cả ưu và nhược điểm."]},
+ {t:"Healthy lifestyle",vi:"Lối sống lành mạnh",em:"🏃",w:"balanced diet|🥗|chế độ ăn cân bằng;life expectancy|⏳|tuổi thọ;fitness|💪|sự khỏe mạnh;meditation|🧘|thiền;stress|😫|căng thẳng;check-up|🩺|khám sức khỏe;nutrition|🍎|dinh dưỡng;jogging|🏃|chạy bộ",
+  s:["A balanced diet helps you live longer.|Chế độ ăn cân bằng giúp bạn sống lâu hơn.","Regular exercise reduces stress.|Tập thể dục đều đặn giúp giảm căng thẳng.","You should have a medical check-up every year.|Bạn nên khám sức khỏe định kỳ mỗi năm."]},
+ {t:"Cities of the future",vi:"Thành phố tương lai",em:"🏙️",w:"skyscraper|🏙️|nhà chọc trời;smart city|📶|thành phố thông minh;public transport|🚇|giao thông công cộng;electric car|🔌|xe điện;green space|🌳|không gian xanh;population|👥|dân số;infrastructure|🏗️|cơ sở hạ tầng;sustainable|♻️|bền vững",
+  s:["Cities of the future will have more green spaces.|Các thành phố tương lai sẽ có nhiều không gian xanh hơn.","More people should use public transport.|Nhiều người hơn nên sử dụng giao thông công cộng.","Electric cars produce less pollution.|Xe điện thải ra ít ô nhiễm hơn."]}]},
+{id:"l12",name:"Lớp 12",em:"🚀",age:"17–18 tuổi",time:"45–60 phút/ngày",skills:"Đọc hiểu · Viết luận · Ôn thi tốt nghiệp",cap:3,
+ goal:"Nghề nghiệp, trí tuệ nhân tạo, truyền thông và học tập suốt đời. Mệnh đề quan hệ rút gọn, đảo ngữ, câu điều kiện hỗn hợp. Ôn thi tốt nghiệp THPT, hướng tới B1–B2.",
+ grammar:["Having + V3, …","câu điều kiện hỗn hợp","đảo ngữ: Not only … but also …","cụm động từ (phrasal verbs)"],plan:[["🃏 Từ vựng",10],["🎮 Trò chơi",10],["🧱 Mẫu câu",15],["🏆 Thử thách",15]],
+ units:[
+ {t:"Careers",vi:"Nghề nghiệp",em:"💼",w:"career|💼|sự nghiệp;interview|🤝|phỏng vấn;CV|📄|sơ yếu lý lịch;salary|💰|tiền lương;experience|⭐|kinh nghiệm;skill|🛠️|kỹ năng;apprenticeship|🔧|học nghề;volunteer|🙋|tình nguyện viên",
+  s:["Before the interview, you should prepare your CV carefully.|Trước buổi phỏng vấn, bạn nên chuẩn bị sơ yếu lý lịch cẩn thận.","Soft skills are as important as knowledge.|Kỹ năng mềm quan trọng như kiến thức.","Having worked as a volunteer, she gained a lot of experience.|Đã từng làm tình nguyện viên, cô ấy tích lũy được nhiều kinh nghiệm."]},
+ {t:"Artificial intelligence",vi:"Trí tuệ nhân tạo",em:"🤖",w:"artificial intelligence|🧠|trí tuệ nhân tạo;algorithm|🔢|thuật toán;data|📊|dữ liệu;chatbot|💬|chatbot;automation|⚙️|tự động hóa;virtual reality|🥽|thực tế ảo;cybersecurity|🛡️|an ninh mạng;innovation|🚀|đổi mới sáng tạo",
+  s:["Artificial intelligence is changing many industries.|Trí tuệ nhân tạo đang thay đổi nhiều ngành nghề.","Personal data should be protected carefully.|Dữ liệu cá nhân cần được bảo vệ cẩn thận.","Students can use chatbots to practise speaking English.|Học sinh có thể dùng chatbot để luyện nói tiếng Anh."]},
+ {t:"Media and lifelong learning",vi:"Truyền thông, học tập suốt đời",em:"📚",w:"newspaper|📰|báo in;podcast|🎧|chương trình phát thanh trực tuyến;social media|📱|mạng xã hội;advertisement|📢|quảng cáo;fake news|🚫|tin giả;lifelong learning|📚|học tập suốt đời;online learning|💻|học trực tuyến;critical thinking|🤔|tư duy phản biện",
+  s:["We should check the source before sharing news online.|Chúng ta nên kiểm tra nguồn trước khi chia sẻ tin trên mạng.","Lifelong learning helps us adapt to change.|Học tập suốt đời giúp chúng ta thích nghi với sự thay đổi.","Social media can spread fake news very quickly.|Mạng xã hội có thể lan truyền tin giả rất nhanh."]}]}
+);
+LEVELS.forEach((L,li)=>{if(li<6)return;L.units.forEach((u,ui)=>{
+  u.words=u.w.split(";").map(x=>{const [en,pic,vi]=x.split("|");return{en:en.trim(),pic:pic.trim(),vi:vi.trim()}});
+  u.sent=u.s.map(x=>{const [en,vi]=x.split("|");return{en,vi}});u.key=L.id+"-"+ui;u.li=li;u.ui=ui;u.adv=false})});
+
 const ACTS=[
  {id:"flash",name:"Thẻ từ",em:"🃏",d:"Đọc đúng từ, thẻ tự lật"},
  {id:"video",name:"Xem & hát",em:"🎬",d:"Video hoạt hình, hát theo từng từ"},
@@ -643,7 +732,10 @@ const isTextPic=p=>/^[A-Za-z0-9]+$/.test(p);
 const pic=p=>isTextPic(p)?`<span class="tp">${esc(p)}</span>`:p;
 let SAY=[];
 const sv=t=>{SAY.push(t);return `data-say="${SAY.length-1}"`};
-function lvColor(li){return `var(${LEVELS[li].c})`}
+const LVC=["--berry","--orange","--sun","--leaf","--sky","--grape"];
+function lvColor(li){return `var(${LVC[li%6]})`}
+const CAPS=[[1,"🎒 Mầm non & Tiểu học"],[2,"🏫 Trung học cơ sở · Lớp 6–9"],[3,"🎓 Trung học phổ thông · Lớp 10–12"]];
+function capSections(arr,card){return CAPS.map(([c,t])=>{const it=arr.map((L,li)=>[L,li]).filter(([L,li])=>(L.cap||(li<6?1:2))===c);return it.length?`<h2 class="caph">${t}</h2><div class="islands">${it.map(([L,li])=>card(L,li)).join("")}</div>`:""}).join("")}
 
 /* giọng đọc */
 let voice=null;
@@ -772,16 +864,14 @@ function home(){
       <h2 style="font-size:1.6rem">Bản đồ các đảo</h2>
       <span class="muted">Chọn đảo theo lớp của bé</span>
     </div>
-    <div class="islands">
-      ${LEVELS.map((L,li)=>`
+    ${capSections(LEVELS,(L,li)=>`
       <button class="island" style="--c:${lvColor(li)}" data-go="lv-${li}">
         <div class="top"><span class="em">${L.em}</span><span class="badge">${L.age}</span></div>
         <h3>${L.name}</h3>
         <span class="muted">${basicUnits(L).map(u=>u.t).join(" · ")}</span>
         <div class="bar" aria-label="Tiến độ ${levelPct(li)}%"><i style="width:${levelPct(li)}%"></i></div>
-        <small class="muted"><b>${levelPct(li)}%</b> hoàn thành · ${basicUnits(L).reduce((s,u)=>s+u.words.length,0)} từ · 🚀 +${advUnits(L).length} bài nâng cao</small>
-      </button>`).join("")}
-    </div>
+        <small class="muted"><b>${levelPct(li)}%</b> hoàn thành · ${basicUnits(L).reduce((s,u)=>s+u.words.length,0)} từ${advUnits(L).length?` · 🚀 +${advUnits(L).length} bài nâng cao`:""}</small>
+      </button>`)}
   </section>`);
 }
 
@@ -807,19 +897,19 @@ function level(li){
       <p class="muted" style="margin:4px 0 0;max-width:62ch">${L.goal}</p>
     </div>
   </div>
-  <section class="card picboards">
+  ${li>=6?"":`<section class="card picboards">
     <h2 style="font-size:1.35rem">🖼️ Bảng hình ảnh · Picture boards</h2><p class="muted" style="margin:4px 0 10px">Học tên tiếng Anh của con vật, bộ phận cơ thể và hình học: bảng đọc tên và 6 trò chơi.</p>
     <div class="pbgrid">${["convat","cothe","hinh"].map(k=>`<button class="pbbtn" data-go="${k}-en-${li}"><span class="em">${TOPICS[k].em}</span><b>${TOPICS[k].vi}</b><small>${TOPICS[k].en} · ${tItems(k,li).length} mục</small></button>`).join("")}</div>
-  </section>
+  </section>`}
   <section>
     <div class="units">${basicUnits(L).map(u=>unitCard(u,li)).join("")}</div>
   </section>
   <section class="card row" style="justify-content:space-between">
     <div><h2 style="font-size:1.35rem">🏆 Thử thách cuối đảo</h2>
-    <span class="muted">10 câu hỏi trộn từ 6 bài cơ bản. ${cup?`Kỷ lục của bé: <b>${cup}/10</b>`:"Làm sau khi học xong các bài nhé."}</span></div>
+    <span class="muted">10 câu hỏi trộn từ ${basicUnits(L).length} bài cơ bản. ${cup?`Kỷ lục của bé: <b>${cup}/10</b>`:"Làm sau khi học xong các bài nhé."}</span></div>
     <button class="btn" style="--c:${lvColor(li)}" data-go="thu-thach-${li}">Bắt đầu</button>
   </section>
-  <section class="advbox" style="--c:${lvColor(li)}">
+  ${advUnits(L).length?`<section class="advbox" style="--c:${lvColor(li)}">
     <div class="eyebrow">Phần nâng cao · khó hơn</div>
     <h2 style="font-size:1.6rem">🚀 Nâng cao ${L.name}</h2>
     <p class="muted" style="margin:4px 0 12px;max-width:66ch">${L.advGoal} Từ khó hơn, câu dài hơn; Bắn bóng bay dùng chữ thay hình, Đánh vần có thêm chữ cái gây nhiễu. Tiến độ phần nâng cao: <b>${levelPct(li,true)}%</b>.</p>
@@ -828,7 +918,7 @@ function level(li){
       <span class="muted">🏆 Thử thách nâng cao: 10 câu từ 3 bài nâng cao. ${cupA?`Kỷ lục: <b>${cupA}/10</b>`:""}</span>
       <button class="btn" style="--c:var(--grape)" data-go="thu-thach-${li}-nc">Thử thách nâng cao</button>
     </div>
-  </section>`);
+  </section>`:""}`);
 }
 
 function unit(li,ui){
@@ -1654,6 +1744,68 @@ const VLEVELS=[
 ]}
 ];
 
+
+/* ================== NGỮ VĂN THCS – THPT (Lớp 6–12) ================== */
+const AUTH_Q={label:"là tác giả của",q:"Ai là tác giả của tác phẩm {a}?"};
+const HV_Q={label:"có nghĩa là",q:"Yếu tố Hán Việt {a} có nghĩa là gì?"};
+VLEVELS.push(
+{id:"l6",name:"Lớp 6",em:"📖",age:"11–12 tuổi",time:"30–40 phút/ngày",cap:2,
+ goal:"Từ Hán Việt; biện pháp so sánh, nhân hóa, ẩn dụ, hoán dụ; nhận biết tác giả – tác phẩm quen thuộc.",
+ units:[
+ {t:"Từ Hán Việt (1)",em:"🈶",P:{...HV_Q,items:"thiên|trời;địa|đất;nhân|người;gia|nhà;phụ|cha;mẫu|mẹ;huynh|anh;đệ|em trai"},matchPrompt:"Ghép yếu tố Hán Việt với nghĩa của nó",
+  tip:"Từ Hán Việt là từ gốc Hán, được đọc theo cách đọc của người Việt. Ví dụ: thiên địa (trời đất), phụ mẫu (cha mẹ), huynh đệ (anh em)."},
+ {t:"So sánh, nhân hóa, ẩn dụ, hoán dụ",em:"🎭",Q:"«Mặt trời xuống biển như hòn lửa.» dùng biện pháp tu từ nào?|so sánh|nhân hóa|ẩn dụ|hoán dụ;«Trâu ơi ta bảo trâu này.» dùng biện pháp tu từ nào?|nhân hóa|so sánh|ẩn dụ|hoán dụ;«Ngày ngày mặt trời đi qua trên lăng / Thấy một mặt trời trong lăng rất đỏ.» Hình ảnh «mặt trời trong lăng» là|ẩn dụ|so sánh|nhân hóa|hoán dụ;«Áo chàm đưa buổi phân li.» Hình ảnh «áo chàm» là|hoán dụ|ẩn dụ|so sánh|nhân hóa;«Bàn tay ta làm nên tất cả.» Hình ảnh «bàn tay» là|hoán dụ|ẩn dụ|so sánh|nhân hóa;«Một cây làm chẳng nên non / Ba cây chụm lại nên hòn núi cao.» dùng biện pháp|ẩn dụ|so sánh|nhân hóa|hoán dụ;«Chiếc thuyền nhẹ hăng như con tuấn mã.» dùng biện pháp|so sánh|nhân hóa|ẩn dụ|hoán dụ;«Ông trời mặc áo giáp đen ra trận.» dùng biện pháp|nhân hóa|so sánh|hoán dụ|ẩn dụ",
+  tip:"So sánh: đối chiếu hai sự vật có nét giống nhau (thường có từ «như»). Nhân hóa: gọi, tả vật như người. Ẩn dụ: gọi tên sự vật này bằng tên sự vật khác có nét tương đồng. Hoán dụ: gọi tên bằng sự vật có quan hệ gần gũi (bộ phận – toàn thể, vật chứa – vật bị chứa…)."},
+ {t:"Tác giả – tác phẩm (1)",em:"✍️",P:{...AUTH_Q,items:"Bài học đường đời đầu tiên|Tô Hoài;Cô bé bán diêm|An-đéc-xen;Đêm nay Bác không ngủ|Minh Huệ;Lượm|Tố Hữu;Mưa|Trần Đăng Khoa;Cây tre Việt Nam|Thép Mới;Bức tranh của em gái tôi|Tạ Duy Anh"},matchPrompt:"Ghép tác phẩm với tác giả"}]},
+{id:"l7",name:"Lớp 7",em:"🖋️",age:"12–13 tuổi",time:"30–40 phút/ngày",cap:2,
+ goal:"Nói quá, nói giảm nói tránh, liệt kê, điệp ngữ; các thể thơ; phương thức biểu đạt.",
+ units:[
+ {t:"Nói quá, nói giảm, liệt kê, điệp ngữ",em:"🎭",Q:"«Bác Dương thôi đã thôi rồi.» dùng biện pháp|nói giảm nói tránh|nói quá|liệt kê|điệp ngữ;«Lỗ mũi mười tám gánh lông.» dùng biện pháp|nói quá|nói giảm nói tránh|liệt kê|điệp ngữ;«Tre, nứa, trúc, mai, vầu mấy chục loại khác nhau.» dùng biện pháp|liệt kê|nói quá|điệp ngữ|nói giảm nói tránh;«Nhớ sao lớp học i tờ / Đồng khuya đuốc sáng những giờ liên hoan / Nhớ sao ngày tháng cơ quan.» dùng biện pháp|điệp ngữ|liệt kê|nói quá|nói giảm nói tránh;«Có sức người sỏi đá cũng thành cơm.» dùng biện pháp|nói quá|nói giảm nói tránh|liệt kê|điệp ngữ;«Ông ấy đã đi xa mãi mãi.» (ý nói ông đã mất) dùng biện pháp|nói giảm nói tránh|nói quá|liệt kê|điệp ngữ;«Mồ hôi thánh thót như mưa ruộng cày.» Ý «mồ hôi như mưa» là|nói quá|nói giảm nói tránh|liệt kê|điệp ngữ",
+  tip:"Nói quá: phóng đại để nhấn mạnh. Nói giảm nói tránh: diễn đạt tế nhị để tránh đau buồn, thô tục. Liệt kê: sắp xếp nhiều từ, cụm từ cùng loại. Điệp ngữ: lặp lại từ ngữ để nhấn mạnh."},
+ {t:"Thể thơ",em:"📜",Q:"«Truyện Kiều» (Nguyễn Du) được viết theo thể thơ nào?|lục bát|song thất lục bát|thất ngôn bát cú|tự do;«Qua đèo Ngang» (Bà Huyện Thanh Quan) thuộc thể thơ|thất ngôn bát cú Đường luật|lục bát|thất ngôn tứ tuyệt|năm chữ;«Bánh trôi nước» (Hồ Xuân Hương) thuộc thể thơ|thất ngôn tứ tuyệt Đường luật|thất ngôn bát cú Đường luật|lục bát|tự do;«Ông đồ» (Vũ Đình Liên) viết theo thể thơ|năm chữ|bảy chữ|lục bát|tám chữ;«Nhớ rừng» (Thế Lữ) viết theo thể thơ|tám chữ|năm chữ|lục bát|bảy chữ;«Đồng chí» (Chính Hữu) viết theo thể thơ|tự do|lục bát|năm chữ|thất ngôn bát cú;Một cặp câu lục bát gồm|câu 6 chữ và câu 8 chữ|hai câu 7 chữ|hai câu 5 chữ|câu 7 chữ và câu 6 chữ;Bài thơ thất ngôn bát cú có bao nhiêu câu?|8 câu|4 câu|6 câu|12 câu",
+  tip:"Lục bát: câu 6 chữ xen câu 8 chữ. Thất ngôn bát cú: 8 câu, mỗi câu 7 chữ. Thất ngôn tứ tuyệt: 4 câu, mỗi câu 7 chữ. Song thất lục bát: hai câu 7 chữ tiếp một cặp lục bát."},
+ {t:"Phương thức biểu đạt",em:"🗂️",Q:"Văn bản kể lại một chuỗi sự việc có mở đầu, diễn biến, kết thúc dùng phương thức chủ yếu nào?|tự sự|miêu tả|biểu cảm|nghị luận;Văn bản tái hiện hình dáng, đặc điểm của sự vật để người đọc hình dung được dùng phương thức|miêu tả|tự sự|thuyết minh|nghị luận;Bài văn bày tỏ tình cảm, cảm xúc của người viết dùng phương thức|biểu cảm|tự sự|thuyết minh|nghị luận;Văn bản cung cấp tri thức khách quan về sự vật (cấu tạo, cách làm, nguồn gốc) dùng phương thức|thuyết minh|biểu cảm|miêu tả|tự sự;Văn bản nêu ý kiến, dùng lí lẽ và dẫn chứng để thuyết phục người đọc dùng phương thức|nghị luận|tự sự|miêu tả|biểu cảm;Đơn xin nghỉ học dùng phương thức|hành chính – công vụ|tự sự|biểu cảm|nghị luận",
+  tip:"Sáu phương thức biểu đạt: tự sự, miêu tả, biểu cảm, thuyết minh, nghị luận, hành chính – công vụ."}]},
+{id:"l8",name:"Lớp 8",em:"📕",age:"13–14 tuổi",time:"35–40 phút/ngày",cap:2,
+ goal:"Thành phần chính của câu, các kiểu câu (đặc biệt, rút gọn, ghép, bị động); từ Hán Việt; tác giả – tác phẩm.",
+ units:[
+ {t:"Câu và thành phần câu",em:"🧩",Q:"Trong câu «Mẹ em đang nấu cơm.», chủ ngữ là|Mẹ em|đang nấu cơm|nấu cơm|cơm;Trong câu «Hoa phượng nở đỏ rực sân trường.», vị ngữ là|nở đỏ rực sân trường|Hoa phượng|sân trường|đỏ rực;«Mưa.» (đứng một mình, gợi tả cảnh trời mưa) là kiểu câu|câu đặc biệt|câu rút gọn|câu ghép|câu bị động;«— Bao giờ bạn về? — Ngày mai.» Câu «Ngày mai.» là|câu rút gọn|câu đặc biệt|câu ghép|câu cảm thán;«Trời mưa to nên đường trơn.» là|câu ghép|câu đơn|câu đặc biệt|câu rút gọn;«Ngôi nhà được xây năm 2020.» là|câu bị động|câu chủ động|câu đặc biệt|câu rút gọn",
+  tip:"Câu có hai thành phần chính: chủ ngữ (Ai? Cái gì?) và vị ngữ (làm gì? thế nào? là gì?). Câu rút gọn lược bớt thành phần; câu đặc biệt không phân định được chủ ngữ – vị ngữ."},
+ {t:"Từ Hán Việt (2)",em:"⛰️",P:{...HV_Q,items:"sơn|núi;thủy|nước;hỏa|lửa;mộc|cây;nguyệt|trăng;nhật|mặt trời;thạch|đá;phong|gió"},matchPrompt:"Ghép yếu tố Hán Việt với nghĩa của nó",
+  tip:"Ví dụ: sơn thủy (núi sông), phong ba (sóng gió), nhật nguyệt (mặt trời, mặt trăng)."},
+ {t:"Tác giả – tác phẩm (2)",em:"✍️",P:{...AUTH_Q,items:"Tắt đèn|Ngô Tất Tố;Lão Hạc|Nam Cao;Trong lòng mẹ|Nguyên Hồng;Nhớ rừng|Thế Lữ;Quê hương|Tế Hanh;Ông đồ|Vũ Đình Liên;Khi con tu hú|Tố Hữu;Chiếc lá cuối cùng|O. Henry"},matchPrompt:"Ghép tác phẩm với tác giả"}]},
+{id:"l9",name:"Lớp 9",em:"📗",age:"14–15 tuổi",time:"40 phút/ngày",cap:2,
+ goal:"Thành phần biệt lập; tổng hợp biện pháp tu từ; tác giả – tác phẩm văn học hiện đại. Ôn thi vào lớp 10.",
+ units:[
+ {t:"Thành phần biệt lập",em:"💬",Q:"«Có lẽ trời sắp mưa.» Từ «có lẽ» là thành phần|tình thái|cảm thán|gọi – đáp|phụ chú;«Ôi, cảnh đẹp quá!» Từ «Ôi» là thành phần|cảm thán|tình thái|gọi – đáp|phụ chú;«Này, bạn đi đâu đấy?» Từ «Này» là thành phần|gọi – đáp|cảm thán|tình thái|phụ chú;«Lan – bạn thân của tôi – học rất giỏi.» Phần «bạn thân của tôi» là thành phần|phụ chú|tình thái|cảm thán|gọi – đáp;«Chắc chắn bạn ấy sẽ đến.» «Chắc chắn» là thành phần|tình thái|phụ chú|gọi – đáp|cảm thán;«Chao ôi, bông hoa thơm quá!» «Chao ôi» là thành phần|cảm thán|gọi – đáp|tình thái|phụ chú",
+  tip:"Thành phần biệt lập không tham gia diễn đạt nghĩa sự việc: tình thái (có lẽ, chắc chắn…), cảm thán (ôi, chao ôi…), gọi – đáp (này, vâng…), phụ chú (bổ sung, thường đặt giữa hai dấu gạch ngang hoặc ngoặc đơn)."},
+ {t:"Biện pháp tu từ tổng hợp",em:"🎭",Q:"«Thuyền về có nhớ bến chăng / Bến thì một dạ khăng khăng đợi thuyền.» Hình ảnh «thuyền», «bến» là|ẩn dụ|hoán dụ|nhân hóa|so sánh;«Cả làng ra đồng gặt lúa.» «Cả làng» chỉ người dân trong làng, đó là|hoán dụ|ẩn dụ|nói quá|nhân hóa;«Trẻ em như búp trên cành.» dùng biện pháp|so sánh|ẩn dụ|nhân hóa|liệt kê;«Mặt trời của bắp thì nằm trên đồi / Mặt trời của mẹ, em nằm trên lưng.» «Mặt trời của mẹ» là|ẩn dụ|hoán dụ|so sánh|nói quá;«Lệ rơi thấm đá, tơ chia rũ tằm.» dùng biện pháp|nói quá|nói giảm nói tránh|liệt kê|điệp ngữ;«Chị gió dịu dàng hát ru.» dùng biện pháp|nhân hóa|ẩn dụ|so sánh|hoán dụ"},
+ {t:"Tác giả – tác phẩm (3)",em:"✍️",P:{...AUTH_Q,items:"Đồng chí|Chính Hữu;Bài thơ về tiểu đội xe không kính|Phạm Tiến Duật;Ánh trăng|Nguyễn Duy;Mùa xuân nho nhỏ|Thanh Hải;Sang thu|Hữu Thỉnh;Làng|Kim Lân;Lặng lẽ Sa Pa|Nguyễn Thành Long;Chiếc lược ngà|Nguyễn Quang Sáng;Đoàn thuyền đánh cá|Huy Cận"},matchPrompt:"Ghép tác phẩm với tác giả"}]},
+{id:"l10",name:"Lớp 10",em:"🏯",age:"15–16 tuổi",time:"40–45 phút/ngày",cap:3,
+ goal:"Thể loại văn học dân gian và trung đại; tác giả – tác phẩm văn học trung đại; sửa lỗi dùng từ.",
+ units:[
+ {t:"Thể loại văn học",em:"📚",Q:"«Thánh Gióng» thuộc thể loại|truyền thuyết|cổ tích|ngụ ngôn|truyện cười;«Tấm Cám» thuộc thể loại|cổ tích|truyền thuyết|ngụ ngôn|sử thi;«Ếch ngồi đáy giếng» thuộc thể loại|ngụ ngôn|cổ tích|truyền thuyết|truyện cười;«Đăm Săn» của người Ê-đê thuộc thể loại|sử thi|cổ tích|ngụ ngôn|truyền thuyết;«Bình Ngô đại cáo» thuộc thể loại|cáo|hịch|chiếu|truyện thơ;«Hịch tướng sĩ» thuộc thể loại|hịch|cáo|chiếu|phú;«Chiếu dời đô» thuộc thể loại|chiếu|hịch|cáo|truyện thơ;«Truyện Kiều» thuộc thể loại|truyện thơ Nôm|sử thi|tiểu thuyết|truyền thuyết",
+  tip:"Văn học dân gian: truyền thuyết, cổ tích, ngụ ngôn, truyện cười, sử thi, ca dao. Văn học trung đại: chiếu, hịch, cáo, truyện thơ Nôm, thơ Đường luật…"},
+ {t:"Văn học trung đại",em:"🏯",P:{...AUTH_Q,items:"Truyện Kiều|Nguyễn Du;Bình Ngô đại cáo|Nguyễn Trãi;Hịch tướng sĩ|Trần Quốc Tuấn;Chiếu dời đô|Lý Công Uẩn;Bánh trôi nước|Hồ Xuân Hương;Qua đèo Ngang|Bà Huyện Thanh Quan;Truyện Lục Vân Tiên|Nguyễn Đình Chiểu"},matchPrompt:"Ghép tác phẩm với tác giả"},
+ {t:"Sửa lỗi dùng từ",em:"✏️",C:"Anh ấy thờ ơ, _ trước nỗi khổ của người khác.|bàng quan|bàng quang;Tương lai của em thật _.|xán lạn|sáng lạng;Bác sĩ đang _ bệnh cho bệnh nhân.|chẩn đoán|chuẩn đoán;Học sinh cần _ kiến thức mỗi ngày.|trau dồi|chau dồi;Đội tuyển đã _ chiến thắng.|giành|dành;Mẹ _ thời gian đọc truyện cho em.|dành|giành;Cần _ nghiêm các vi phạm giao thông.|xử lý|sử lý;Không nên _ lỗi lầm của mình.|giấu giếm|dấu diếm",
+  tip:"Lỗi hay gặp: nhầm âm, nhầm nghĩa giữa các từ gần âm (bàng quan – bàng quang, giành – dành, chẩn đoán – chuẩn đoán)."}]},
+{id:"l11",name:"Lớp 11",em:"🌙",age:"16–17 tuổi",time:"40–45 phút/ngày",cap:3,
+ goal:"Văn học hiện đại giai đoạn 1930–1945; các thao tác lập luận; biện pháp tu từ nâng cao (đảo ngữ, chơi chữ, câu hỏi tu từ, phép đối).",
+ units:[
+ {t:"Văn học 1930–1945",em:"🌙",P:{...AUTH_Q,items:"Hai đứa trẻ|Thạch Lam;Chữ người tử tù|Nguyễn Tuân;Chí Phèo|Nam Cao;Vội vàng|Xuân Diệu;Tràng giang|Huy Cận;Đây thôn Vĩ Dạ|Hàn Mặc Tử;Số đỏ|Vũ Trọng Phụng;Tắt đèn|Ngô Tất Tố"},matchPrompt:"Ghép tác phẩm với tác giả"},
+ {t:"Thao tác lập luận",em:"🧠",Q:"Làm rõ nghĩa của một vấn đề (khái niệm, câu nói) là thao tác|giải thích|chứng minh|bác bỏ|bình luận;Dùng dẫn chứng xác thực để khẳng định một ý kiến là đúng là thao tác|chứng minh|giải thích|so sánh|phân tích;Chia vấn đề thành các bộ phận để xem xét kĩ từng mặt là thao tác|phân tích|chứng minh|bác bỏ|bình luận;Chỉ ra cái sai của ý kiến khác để khẳng định ý kiến đúng là thao tác|bác bỏ|chứng minh|giải thích|so sánh;Đặt hai đối tượng cạnh nhau để tìm điểm giống và khác là thao tác|so sánh|phân tích|bình luận|giải thích;Đánh giá đúng sai, hay dở của một vấn đề là thao tác|bình luận|chứng minh|phân tích|giải thích",
+  tip:"Các thao tác lập luận: giải thích, chứng minh, phân tích, so sánh, bác bỏ, bình luận. Một bài nghị luận thường kết hợp nhiều thao tác."},
+ {t:"Tu từ nâng cao",em:"🎭",Q:"«Lom khom dưới núi tiều vài chú / Lác đác bên sông chợ mấy nhà.» dùng biện pháp|đảo ngữ|chơi chữ|câu hỏi tu từ|nói giảm nói tránh;«Lợi thì có lợi nhưng răng không còn.» dùng biện pháp|chơi chữ|đảo ngữ|liệt kê|nói quá;«Người đâu gặp gỡ làm chi / Trăm năm biết có duyên gì hay không?» dùng biện pháp|câu hỏi tu từ|đảo ngữ|chơi chữ|liệt kê;«Gần mực thì đen, gần đèn thì rạng.» dùng biện pháp|phép đối|đảo ngữ|chơi chữ|nói giảm nói tránh;«Rắn như thép, vững như đồng.» dùng biện pháp|so sánh|đảo ngữ|chơi chữ|câu hỏi tu từ;«Bao giờ cây cải làm đình / Gỗ lim thái ghém thì mình lấy ta.» dùng biện pháp|nói quá|chơi chữ|đảo ngữ|phép đối",
+  tip:"Đảo ngữ: đảo vị trí thành phần câu để nhấn mạnh. Chơi chữ: lợi dụng âm, nghĩa của từ để tạo sắc thái dí dỏm. Câu hỏi tu từ: hỏi mà không cần trả lời, để bộc lộ cảm xúc."}]},
+{id:"l12",name:"Lớp 12",em:"🎓",age:"17–18 tuổi",time:"45–60 phút/ngày",cap:3,
+ goal:"Văn học Việt Nam sau 1945; kĩ năng nghị luận xã hội; phong cách ngôn ngữ và đọc hiểu. Ôn thi tốt nghiệp THPT.",
+ units:[
+ {t:"Văn học sau 1945",em:"🎓",P:{...AUTH_Q,items:"Tây Tiến|Quang Dũng;Việt Bắc|Tố Hữu;Sóng|Xuân Quỳnh;Vợ nhặt|Kim Lân;Vợ chồng A Phủ|Tô Hoài;Người lái đò sông Đà|Nguyễn Tuân;Ai đã đặt tên cho dòng sông?|Hoàng Phủ Ngọc Tường;Chiếc thuyền ngoài xa|Nguyễn Minh Châu"},matchPrompt:"Ghép tác phẩm với tác giả"},
+ {t:"Nghị luận xã hội",em:"🗣️",Q:"Phần nêu vấn đề cần bàn luận trong bài nghị luận là|mở bài|thân bài|kết bài|luận cứ;Ý kiến, quan điểm chính mà người viết muốn làm sáng tỏ gọi là|luận điểm|luận cứ|dẫn chứng|kết luận;Lí lẽ và dẫn chứng dùng để làm sáng tỏ luận điểm gọi là|luận cứ|luận điểm|đề tài|chủ đề;Một đoạn văn nghị luận khoảng 200 chữ thường gồm|câu mở đoạn, các câu phát triển ý, câu kết đoạn|chỉ một câu thật dài|các câu thơ liên tiếp|lời thoại nhân vật;Dẫn chứng trong bài nghị luận xã hội cần|xác thực, tiêu biểu, gần gũi|càng dài càng tốt|tự nghĩ ra cho hay|chỉ lấy từ truyện cổ tích;Khi bàn về một hiện tượng tiêu cực, nên|chỉ ra biểu hiện, nguyên nhân, tác hại và đề xuất giải pháp|chỉ chê bai|bỏ qua không bàn|ca ngợi hiện tượng đó",
+  tip:"Bố cục bài nghị luận xã hội: mở bài nêu vấn đề; thân bài giải thích, bàn luận (biểu hiện, nguyên nhân, tác động), phản đề, giải pháp; kết bài khẳng định lại và rút ra bài học."},
+ {t:"Phong cách ngôn ngữ, đọc hiểu",em:"📰",Q:"Một bản tin thời sự thuộc phong cách ngôn ngữ|báo chí|sinh hoạt|nghệ thuật|khoa học;Bài thơ, truyện ngắn thuộc phong cách ngôn ngữ|nghệ thuật|báo chí|hành chính|chính luận;Cuộc trò chuyện hằng ngày giữa bạn bè thuộc phong cách ngôn ngữ|sinh hoạt|nghệ thuật|khoa học|hành chính;«Tuyên ngôn Độc lập» (Hồ Chí Minh) thuộc phong cách ngôn ngữ|chính luận|sinh hoạt|nghệ thuật|khoa học;Sách giáo khoa Vật lí thuộc phong cách ngôn ngữ|khoa học|báo chí|sinh hoạt|nghệ thuật;Quyết định xử phạt vi phạm hành chính thuộc phong cách ngôn ngữ|hành chính|nghệ thuật|sinh hoạt|báo chí",
+  tip:"Sáu phong cách ngôn ngữ: sinh hoạt, nghệ thuật, báo chí, chính luận, khoa học, hành chính."}]}
+);
 /* ---------- đọc dữ liệu ---------- */
 VLEVELS.forEach((L,li)=>L.units.forEach((u,ui)=>{
   u.li=li;u.ui=ui;u.key="tv-"+li+"-"+ui;
@@ -1664,7 +1816,7 @@ VLEVELS.forEach((L,li)=>L.units.forEach((u,ui)=>{
   u.ct=sp(u.C,([q,a,wr,pic])=>({q,a,wrong:wr.split(","),pic:pic||""}));
   u.quiz=sp(u.Q,([q,a,...wr])=>({q,a,wrong:wr}));
   if(u.S)u.sort={cats:u.S.cats,items:sp(u.S.items,([w,c])=>({w,c:+c}))};
-  if(u.P)u.pairs={label:u.P.label,items:sp(u.P.items,([a,b])=>({a,b}))};
+  if(u.P)u.pairs={label:u.P.label,q:u.P.q,items:sp(u.P.items,([a,b])=>({a,b}))};
   u.sents=u.X||null;
 }));
 
@@ -1713,7 +1865,7 @@ function vMcq(u){
   if(u.sort)u.sort.items.forEach(it=>q.push({q:`<div class="vq">«<b>${esc(it.w)}</b>» thuộc nhóm nào?</div>`,a:u.sort.cats[it.c],opts:u.sort.cats.slice(),after:it.w,basket:1}));
   (u.quiz||[]).forEach(z=>q.push({q:`<div class="vq">${fillBlank(z.q)}</div>`,a:z.a,opts:shuffle([z.a,...z.wrong]),say:plainQ(z.q)}));
   if(u.pairs){const bs=u.pairs.items.map(x=>x.b);
-    u.pairs.items.forEach(p=>q.push({q:`<div class="vq">Từ nào ${esc(u.pairs.label)} «<b>${esc(p.a)}</b>»?</div>`,a:p.b,opts:pickOpts(p.b,bs),say:`Từ nào ${u.pairs.label} ${p.a}`}))}
+    u.pairs.items.forEach(p=>{const qt=u.pairs.q?u.pairs.q.replace("{a}",`«<b>${esc(p.a)}</b>»`):`Từ nào ${esc(u.pairs.label)} «<b>${esc(p.a)}</b>»?`;q.push({q:`<div class="vq">${qt}</div>`,a:p.b,opts:pickOpts(p.b,bs),say:qt.replace(/<[^>]+>|[«»]/g,"")})})}
   return q;
 }
 const VA={
@@ -2050,28 +2202,28 @@ function hub(){
     <button class="island hubisland" style="--c:var(--sky)" data-go="ta">
       <div class="top"><span class="em">🏝️</span><span class="badge">ABC</span></div>
       <h3>Đảo Tiếng Anh</h3>
-      <span class="muted hubdesc">Mầm non – Lớp 5 · 54 bài · 14 trò chơi · luyện nói</span>
+      <span class="muted hubdesc">Mầm non – Lớp 12 · 14 trò chơi · luyện nói</span>
       <div class="bar"><i style="width:${ePct}%"></i></div>
       <small class="muted"><b>${ePct}%</b> hoàn thành${ne?` · Học tiếp: ${esc(ne.t)}`:""}</small>
     </button>
     <button class="island hubisland" style="--c:var(--leaf)" data-go="tv">
       <div class="top"><span class="em">🌾</span><span class="badge">Aa Ăă</span></div>
       <h3>Đảo Tiếng Việt</h3>
-      <span class="muted hubdesc">Chữ cái, âm vần, dấu thanh, chính tả, từ và câu · Mầm non – Lớp 5</span>
+      <span class="muted hubdesc">Chữ cái, âm vần, chính tả → Ngữ văn THCS, THPT · Mầm non – Lớp 12</span>
       <div class="bar"><i style="width:${vPct}%"></i></div>
       <small class="muted"><b>${vPct}%</b> hoàn thành${nv?` · Học tiếp: ${esc(nv.t)}`:""}</small>
     </button>
     <button class="island hubisland" style="--c:var(--orange)" data-go="toan">
       <div class="top"><span class="em">🔢</span><span class="badge">+ − × ÷</span></div>
       <h3>Đảo Toán Học</h3>
-      <span class="muted hubdesc">Toán Mầm non – Lớp 5 · cơ bản và nâng cao · bảng cửu chương</span>
+      <span class="muted hubdesc">Toán Mầm non – Lớp 12 · cơ bản và nâng cao · bảng cửu chương</span>
       <div class="bar"><i style="width:${cPct}%"></i></div>
       <small class="muted"><b>${cPct}%</b> hoàn thành</small>
     </button>
     <button class="island hubisland" style="--c:var(--grape)" data-go="tt">
       <div class="top"><span class="em">🕵️</span><span class="badge">${ttRank()[0]} ${ttRank()[1]}</span></div>
       <h3>Đảo Thám Tử</h3>
-      <span class="muted hubdesc">Tìm manh mối, phá án · rèn quan sát, ghi nhớ, tư duy logic · Mầm non – Lớp 5</span>
+      <span class="muted hubdesc">Tìm manh mối, phá án · rèn quan sát, ghi nhớ, tư duy logic · Mầm non – THPT</span>
       <div class="bar"><i style="width:${Math.min(100,Math.round(ttSolved()/40*100))}%"></i></div>
       <small class="muted"><b>${ttSolved()}</b> vụ án đã phá</small>
     </button>
@@ -2090,13 +2242,11 @@ function vHome(){
     ${nu?`<button class="btn big" data-go="tv-u-${nu.li}-${nu.ui}">▶ Học tiếp: ${esc(nu.t)}</button><span class="muted">${VLEVELS[nu.li].name}</span>`:`<span class="btn big" style="--c:var(--leaf)">🏆 Bé đã học hết Đảo Tiếng Việt!</span>`}
     <button class="btn ghost" data-go="tv-chuong-trinh">📘 Chương trình học</button>
   </section>
-  <section><div class="islands">
-    ${VLEVELS.map((L,li)=>`<button class="island" style="--c:${lvColor(li)}" data-go="tv-lv-${li}">
+  <section>${capSections(VLEVELS,(L,li)=>`<button class="island" style="--c:${lvColor(li)}" data-go="tv-lv-${li}">
       <div class="top"><span class="em">${L.em}</span><span class="badge">${L.age}</span></div>
       <h3>${L.name}</h3><span class="muted">${L.units.map(u=>u.t).join(" · ")}</span>
       <div class="bar"><i style="width:${vLevelPct(li)}%"></i></div><small class="muted"><b>${vLevelPct(li)}%</b> hoàn thành · ${L.units.length} bài</small>
-    </button>`).join("")}
-  </div></section>`);
+    </button>`)}</section>`);
 }
 function vLevel(li){
   const L=VLEVELS[li];if(!L)return vHome();const cup=P().done["tv-"+L.id+"-cup"];
@@ -2149,7 +2299,7 @@ function vProgram(){
   <div class="row" style="margin-top:12px"><button class="chip" data-go="chuong-trinh">🏝️ Tiếng Anh</button><button class="chip on">🌾 Tiếng Việt</button><button class="chip" data-go="toan-chuong-trinh">🔢 Toán</button></div>
   <section>
     <div class="eyebrow">Dành cho phụ huynh và thầy cô</div>
-    <h1 style="font-size:clamp(1.8rem,5vw,2.4rem)">Chương trình Tiếng Việt Mầm non – Lớp 5</h1>
+    <h1 style="font-size:clamp(1.8rem,5vw,2.4rem)">Chương trình Tiếng Việt – Ngữ văn Mầm non – Lớp 12</h1>
     <p class="muted" style="max-width:68ch">Mầm non: làm quen 29 chữ cái theo nhóm như ở lớp mẫu giáo lớn. Lớp 1–5: bám các yêu cầu cần đạt về tiếng Việt (âm vần, chính tả, từ, câu, biện pháp tu từ) của Chương trình giáo dục phổ thông môn Tiếng Việt 2018. Tổng cộng <b>${VLEVELS.reduce((s,L)=>s+L.units.length,0)} bài</b>, mỗi bài học trong khoảng một tuần. Nội dung là bài luyện tập bổ trợ, không thay thế sách giáo khoa của bé.</p>
   </section>
   <section class="card"><h2 style="font-size:1.3rem">Lịch học gợi ý cho mỗi bài (1 tuần)</h2>
@@ -2367,7 +2517,7 @@ const FR=(a,b)=>`<span class="frac"><span>${a}</span><span>${b}</span></span>`;
 const frHTML=s=>{const m=String(s).match(/^(\d+)\/(\d+)$/);return m?FR(m[1],m[2]):esc(s)};
 const romanBig=n=>{let o="";[[1000,"M"],[900,"CM"],[500,"D"],[400,"CD"],[100,"C"],[90,"XC"],[50,"L"],[40,"XL"],[10,"X"],[9,"IX"],[5,"V"],[4,"IV"],[1,"I"]].forEach(([v,r])=>{while(n>=v){o+=r;n-=v}});return o};
 function nearInt(x,step=1){return [...new Set([x+step,x-step,x+1,x-1,x+2,x-2,x+10,x-10,x+2*step])].filter(v=>v>=0&&v!==x)}
-const QN=(q,ans,d)=>{const a=fmtN(ans);const ds=[...new Set((d||nearInt(ans)).filter(v=>v!==ans&&v>=0).map(fmtN))].filter(x=>x!==a);return{q:`<div class="mq">${q}</div>`,a,opts:pickOpts(a,ds),num:true}};
+const QN=(q,ans,d)=>{const a=fmtN(ans);let ds=[...new Set((d||nearInt(ans)).filter(v=>v!==ans&&v>=0).map(fmtN))].filter(x=>x!==a);if(ds.length<3)ds=[...new Set([...ds,...nearInt(ans).map(fmtN)])].filter(x=>x!==a);return{q:`<div class="mq">${q}</div>`,a,opts:pickOpts(a,ds),num:true}};
 const QT=(q,ans,choices,render)=>({q:`<div class="mq">${q}</div>`,a:ans,opts:choices.length<=4&&choices.includes(ans)?choices.slice():pickOpts(ans,choices),render});
 const QF=(q,ans,d)=>({q:`<div class="mq">${q}</div>`,a:ans,opts:pickOpts(ans,[...new Set(d)].filter(x=>x!==ans)),render:frHTML,num:true});
 const QD=(q,ans,d)=>QN(q,ans,(d||[ans+.1,ans-.1,ans+1,ans*10,ans/10,ans+.01]).map(v=>Math.round(v*1000)/1000));
@@ -2568,6 +2718,156 @@ const MLEVELS=[
 ]}
 ];
 MLEVELS.forEach((L,li)=>L.units.forEach((u,ui)=>{u.li=li;u.ui=ui;u.key=`toan-${li}-${ui}`;u.back=`toan-u-${li}-${ui}`}));
+/* ================== TOÁN THCS – THPT (Lớp 6–12) ================== */
+const nearZ=(x,step=1)=>[...new Set([x+step,x-step,x+1,x-1,-x,x+2,x-2,x+10])].filter(v=>v!==x);
+const QZ=(q,ans,d)=>{const a=fmtN(ans);const ds=[...new Set([...(d||[]),...nearZ(ans)].filter(v=>v!==ans).map(fmtN))].filter(x=>x!==a);return{q:`<div class="mq">${q}</div>`,a,opts:pickOpts(a,ds),num:true}};
+const QS=(q,ans,wrong)=>({q:`<div class="mq">${q}</div>`,a:ans,opts:pickOpts(ans,wrong.filter(x=>x!==ans))});
+const sgn=n=>n<0?`(${fmtN(n)})`:fmtN(n);
+const sup=(b,e)=>`${b}<sup>${e}</sup>`;
+const nz=(a,b)=>{let x=Rn(a,b);while(x===0)x=Rn(a,b);return x};
+const C_=(n,k)=>{let r=1;for(let i=1;i<=k;i++)r=r*(n-k+i)/i;return Math.round(r)};
+const fact=n=>n<=1?1:n*fact(n-1);
+const frZ=(a,b)=>{if(b<0){a=-a;b=-b}const g=gcd(Math.abs(a),b)||1;a/=g;b/=g;return b===1?String(a):`${a}/${b}`};
+const QFZ=(q,ans,d)=>({q:`<div class="mq">${q}</div>`,a:ans,opts:pickOpts(ans,[...new Set(d)].filter(x=>x!==ans)),render:s=>{const m=String(s).match(/^(-?)(\d+)\/(\d+)$/);return m?(m[1]?"−":"")+FR(m[2],m[3]):esc(s)},num:true});
+const poly=(cs)=>{/* cs: [[hệ số, bậc]] → chuỗi */let s="";cs.forEach(([c,p],i)=>{if(!c)return;const sign=c<0?" − ":(s?" + ":"");const ac=Math.abs(c);const coef=(ac===1&&p>0)?"":String(ac);s+=(s||c>=0?sign:"−")+coef+(p===0?"":p===1?"x":`x<sup>${p}</sup>`)});return s.replace(/^ \+ /,"")||"0"};
+
+MLEVELS.push(
+{id:"l6",name:"Lớp 6",em:"🔢",age:"11–12 tuổi",time:"40 phút/ngày",cap:2,goal:"Lũy thừa, thứ tự thực hiện phép tính; ước và bội, ƯCLN, BCNN; số nguyên; phân số; diện tích hình bình hành, hình thoi.",units:[
+ {t:"Lũy thừa, thứ tự phép tính",em:"🔺",tip:"aⁿ = a · a · … · a (n thừa số). aᵐ · aⁿ = aᵐ⁺ⁿ. Thứ tự: ngoặc → lũy thừa → nhân, chia → cộng, trừ.",
+  b(){const a=Rn(2,9),n=Rn(2,a<=3?5:3);return QN(big(`${sup(a,n)} = ?`),a**n,[a*n,a**(n-1),a**n+a,(a+1)**n].filter(x=>x!==a**n))},
+  a(){const a=Rn(2,5),m=Rn(1,4),n=Rn(1,4),x=Rn(2,9),y=Rn(2,9);return pk([()=>QN(big(`${sup(a,m)} · ${sup(a,n)} = ${a}<sup>?</sup>`),m+n,[m*n,m+n+1,m+n-1]),()=>QN(big(`${sup(x,2)} + ${y} · ${sup(2,3)} = ?`),x*x+8*y,[(x*x+y)*8,x*2+8*y,x*x+8+y])])()}},
+ {t:"Ước và bội, ƯCLN, BCNN",em:"🔗",tip:"ƯCLN: số lớn nhất cùng là ước của các số. BCNN: số nhỏ nhất khác 0 cùng là bội của các số. ƯCLN(a, b) · BCNN(a, b) = a · b.",
+  b(){let m=Rn(2,9),n=Rn(2,9);while(gcd(m,n)!==1||m===n){m=Rn(2,9);n=Rn(2,9)}const g=Rn(2,12);return QN(big(`ƯCLN(${g*m}, ${g*n}) = ?`),g,[g*2,m,n,g*m*n,1].filter(x=>x!==g))},
+  a(){let m=Rn(2,9),n=Rn(2,9);while(gcd(m,n)!==1||m===n){m=Rn(2,9);n=Rn(2,9)}const g=Rn(1,4),a=g*m,b=g*n,l=g*m*n;
+   return Math.random()<.5?QN(big(`BCNN(${a}, ${b}) = ?`),l,[a*b,l*2,g,a+b].filter(x=>x!==l)):QN(`<p>Đèn xanh cứ ${a} giây nháy một lần, đèn đỏ cứ ${b} giây nháy một lần. Hai đèn vừa cùng nháy. Sau ít nhất bao nhiêu giây chúng lại cùng nháy?</p>`,l,[a*b,a+b,l*2,g].filter(x=>x!==l))}},
+ {t:"Số nguyên",em:"➖",tip:"Cộng hai số nguyên cùng dấu: cộng phần số, giữ dấu. Khác dấu: lấy số lớn trừ số bé (phần số), lấy dấu của số có phần số lớn hơn. Nhân: cùng dấu được dương, khác dấu được âm.",
+  b(){const a=nz(-20,20),b=nz(-20,20);return Math.random()<.5?QZ(big(`${fmtN(a)} + ${sgn(b)} = ?`),a+b):QZ(big(`${fmtN(a)} − ${sgn(b)} = ?`),a-b,[a+b,-(a-b),a-b+1,a-b-1])},
+  a(){const a=nz(-12,12),b=nz(-9,9),c=nz(-9,9);return pk([()=>QZ(big(`${sgn(a)} · ${sgn(b)} = ?`),a*b,[-a*b,a+b,a*b+1]),()=>QZ(big(`${fmtN(a)} − (${fmtN(b)} − ${sgn(c)}) = ?`),a-(b-c),[a-b-c,a+b-c,-(a-(b-c))]),()=>{const t=Rn(-9,-1),up=Rn(3,15);return QZ(`<p>Nhiệt độ lúc 6 giờ sáng là ${t}°C, đến trưa tăng thêm ${up}°C. Nhiệt độ buổi trưa là bao nhiêu độ C?</p>`,t+up,[t-up,up-t,t+up+1])}])()}},
+ {t:"Phân số",em:"🍕",tip:"Tìm giá trị phân số m/n của một số b: b · m/n. Tìm một số biết m/n của nó bằng a: a : m/n.",
+  b(){const n=Rn(2,9);let m=Rn(1,n-1);while(gcd(m,n)>1)m=Rn(1,n-1);const k=Rn(2,9);return QN(`<p>Tìm ${FR(m,n)} của ${n*k}.</p>`,m*k,[n*k-m*k,m*k+k,k,m*n].filter(x=>x!==m*k))},
+  a(){const n=Rn(2,9),m=Rn(1,n-1),k=Rn(2,12);return QN(`<p>Tìm một số, biết ${FR(m,n)} của số đó bằng ${m*k}.</p>`,n*k,[m*k*m,k,n*k+n,m*k*n/m+k].filter(x=>x!==n*k))}},
+ {t:"Hình bình hành, hình thoi",em:"🔷",tip:"Hình bình hành: S = đáy × chiều cao. Hình thoi: S = (đường chéo 1 × đường chéo 2) : 2. Chu vi hình thoi = cạnh × 4.",
+  b(){const a=Rn(4,20),h=Rn(2,15);return QN(`<p>Hình bình hành có độ dài đáy ${a} cm, chiều cao ${h} cm. Diện tích là bao nhiêu cm²?</p>`,a*h,[a*h/2|0,2*(a+h),a+h].filter(x=>x!==a*h))},
+  a(){let d1=Rn(4,20),d2=Rn(4,20);if(d1*d2%2)d1++;return Math.random()<.6?QN(`<p>Hình thoi có hai đường chéo dài ${d1} cm và ${d2} cm. Diện tích là bao nhiêu cm²?</p>`,d1*d2/2,[d1*d2,d1+d2,2*(d1+d2)]):(()=>{const s=Rn(3,15);return QN(`<p>Hình thoi có chu vi ${4*s} cm. Độ dài mỗi cạnh là bao nhiêu cm?</p>`,s,[2*s,s*s,4*s])})()}}
+]},
+{id:"l7",name:"Lớp 7",em:"📏",age:"12–13 tuổi",time:"40 phút/ngày",cap:2,goal:"Số hữu tỉ; căn bậc hai, số thực; tỉ lệ thức, dãy tỉ số bằng nhau; biểu thức đại số, đa thức một biến; tổng ba góc của tam giác.",units:[
+ {t:"Số hữu tỉ",em:"➗",tip:"Cộng, trừ số hữu tỉ: viết về cùng mẫu dương rồi cộng, trừ tử số. (a/b)ⁿ = aⁿ/bⁿ. Kết quả nên rút gọn.",
+  b(){const b=Rn(2,7),d=Rn(2,7),a=nz(-6,6),c=nz(-6,6);const ans=frZ(a*d+c*b,b*d);const sh=(x,y)=>x<0?`−${FR(-x,y)}`:FR(x,y);
+   return QFZ(big(`${sh(a,b)} + ${c<0?`(${sh(c,d)})`:sh(c,d)} = ?`)+"<p>(rút gọn)</p>",ans,[frZ(a+c,b+d),frZ(a*d-c*b,b*d),frZ(-(a*d+c*b),b*d),frZ(a*c,b*d),frZ(a*d+c*b+1,b*d)])},
+  a(){const a=nz(-4,4),b=Rn(2,5),n=pk([2,3]);const num=a**n,den=b**n;return QFZ(big(`(${a<0?"−":""}${FR(Math.abs(a),b)})<sup>${n}</sup> = ?`),frZ(num,den),[frZ(-num,den),frZ(a*n,b*n),frZ(num,b*n),frZ(a*n,den),frZ(num,den+1),frZ(num+1,den)])}},
+ {t:"Căn bậc hai, số thực",em:"√",tip:"√a là số không âm mà bình phương bằng a: √49 = 7. |a| là giá trị tuyệt đối, luôn không âm: |−7| = 7.",
+  b(){const k=Rn(2,20);return QN(big(`√${k*k} = ?`),k,[k*k/2|0,k+1,k-1,2*k].filter(x=>x!==k))},
+  a(){const p=Rn(2,12),q=Rn(2,12),r=nz(-15,15);return Math.random()<.5?QN(big(`√${p*p} + √${q*q} = ?`),p+q,[Math.round(Math.sqrt(p*p+q*q)),p*q,p+q+1]):QN(big(`|${fmtN(r)}| + √${q*q} = ?`),Math.abs(r)+q,[r+q,Math.abs(r)-q<0?q-Math.abs(r):Math.abs(r)-q,Math.abs(r)*q].filter(x=>x>=0))}},
+ {t:"Tỉ lệ thức",em:"⚖️",tip:"Nếu a/b = c/d thì a · d = b · c. Dãy tỉ số bằng nhau: a/b = c/d = (a + c)/(b + d).",
+  b(){const b=Rn(2,9),k=Rn(2,9),d=Rn(2,9);return QN(big(`x/${b} = ${d*k}/${d} → x = ?`),b*k,[d*k,b*d,k,b*k+b].filter(x=>x!==b*k))},
+  a(){const p=[Rn(1,5),Rn(1,5),Rn(1,5)],k=Rn(2,9),t=(p[0]+p[1]+p[2])*k,big3=Math.max(...p)*k;return QN(`<p>Chia ${t} thành ba phần tỉ lệ với ${p.join(", ")}. Phần lớn nhất bằng bao nhiêu?</p>`,big3,[Math.min(...p)*k,t/3|0,big3+k,k].filter(x=>x!==big3))}},
+ {t:"Biểu thức đại số, đa thức",em:"🧮",tip:"Tính giá trị đa thức: thay giá trị của biến vào rồi tính. Bậc của đa thức một biến là số mũ lớn nhất của biến.",
+  b(){const a=Rn(1,4),b=nz(-6,6),c=nz(-9,9),x=nz(-4,4);return QZ(`<p>Giá trị của ${poly([[a,2],[b,1],[c,0]])} tại x = ${fmtN(x)} là:</p>`,a*x*x+b*x+c,[a*x*x-b*x+c,a*x+b*x+c,a*x*x+b*x-c])},
+  a(){const a=nz(-5,5),b=nz(-5,5),c=nz(-5,5),d=nz(-5,5);return Math.random()<.5?QZ(`<p>Thu gọn (${poly([[a,2],[b,1]])}) + (${poly([[c,2],[d,1]])}). Hệ số của x là:</p>`,b+d,[a+c,b-d,b*d]):QZ(`<p>Thu gọn (${poly([[a,2],[b,1]])}) − (${poly([[c,2],[d,1]])}). Hệ số của x<sup>2</sup> là:</p>`,a-c,[a+c,c-a,b-d])}},
+ {t:"Tam giác",em:"🔺",tip:"Tổng ba góc của một tam giác bằng 180°. Tam giác cân có hai góc ở đáy bằng nhau. Góc ngoài của tam giác bằng tổng hai góc trong không kề với nó.",
+  b(){const A=Rn(30,80),B=Rn(30,150-A);return QN(`<p>Tam giác ABC có góc A = ${A}°, góc B = ${B}°. Số đo góc C là bao nhiêu độ?</p>`,180-A-B,[A+B,180-A,90-A>0?90-A:B])},
+  a(){if(Math.random()<.5){const t=pk([20,30,40,50,60,70,80,100,120]);return QN(`<p>Tam giác cân có góc ở đỉnh bằng ${t}°. Mỗi góc ở đáy bằng bao nhiêu độ?</p>`,(180-t)/2,[180-t,t,90-t/2+10])}
+   const A=Rn(30,80),B=Rn(30,80);return QN(`<p>Tam giác ABC có góc A = ${A}°, góc B = ${B}°. Góc ngoài tại đỉnh C bằng bao nhiêu độ?</p>`,A+B,[180-A-B,180-A,180-B])}}
+]},
+{id:"l8",name:"Lớp 8",em:"📐",age:"13–14 tuổi",time:"40–45 phút/ngày",cap:2,goal:"Hằng đẳng thức đáng nhớ; phương trình bậc nhất một ẩn; định lí Pythagore; hàm số bậc nhất; phân thức đại số.",units:[
+ {t:"Hằng đẳng thức",em:"🟰",tip:"(a + b)² = a² + 2ab + b²; (a − b)² = a² − 2ab + b²; a² − b² = (a − b)(a + b). Dùng để tính nhanh: 101² = (100 + 1)².",
+  b(){const k=Rn(2,9),s=pk([1,-1]);return QZ(`<p>Khai triển (x ${s>0?"+":"−"} ${k})<sup>2</sup>. Hệ số của x là:</p>`,2*k*s,[k*s,k*k,-2*k*s,2*k*s+1])},
+  a(){return pk([()=>{const a=Rn(51,99),b=100-a;return QN(big(`${a}<sup>2</sup> − ${b}<sup>2</sup> = ?`),a*a-b*b,[(a-b)**2,a*a+b*b,(a-b)*100+1])},()=>{const n=pk([99,101,1001,49,51,201]);return QN(`<p>Tính nhanh: ${n}<sup>2</sup> = ?</p>`,n*n,[n*n+1,n*n-100,n*2])},()=>{const k=Rn(2,9);return QN(`<p>x<sup>2</sup> + ${2*k}x + ${k*k} = (x + ?)<sup>2</sup></p>`,k,[2*k,k*k,k+1])}])()}},
+ {t:"Phương trình bậc nhất",em:"⚖️",tip:"ax + b = c ⇔ ax = c − b ⇔ x = (c − b) : a (a ≠ 0). Chuyển vế phải đổi dấu.",
+  b(){const a=nz(-6,6),x=nz(-9,9),b=nz(-15,15);return QZ(big(`${a===1?"":a===-1?"−":a}x ${b<0?"−":"+"} ${Math.abs(b)} = ${fmtN(a*x+b)}`)+"<p>x = ?</p>",x,[-x,x+1,x-1,a*x])},
+  a(){if(Math.random()<.5){const x=nz(-8,8),p=Rn(1,6),a=Rn(2,5),b=Rn(1,a-1)||1;/* a(x−p) = bx + q */const q=a*(x-p)-b*x;return QZ(big(`${a}(x − ${p}) = ${b===1?"":b}x ${q<0?"−":"+"} ${Math.abs(q)}`)+"<p>x = ?</p>",x,[-x,x+p,x-p,x+1])}
+   for(let k=0;k<50;k++){const c=Rn(5,12),t=Rn(2,8),r=Rn(2,3),dad=r*(c+t)-t,diff=dad-c;if(diff>=20&&diff<=40)return QN(`<p>Hiện nay bố hơn con ${diff} tuổi. Sau ${t} năm nữa, tuổi bố gấp ${r} lần tuổi con. Hỏi tuổi con hiện nay?</p>`,c,[c+t,dad,diff-c,c+1].filter(x=>x!==c))}
+   return QN(`<p>Tổng số tuổi của hai bố con là 46, bố hơn con 30 tuổi. Hỏi tuổi con?</p>`,8,[16,38,30])}},
+ {t:"Định lí Pythagore",em:"📐",tip:"Trong tam giác vuông: bình phương cạnh huyền bằng tổng bình phương hai cạnh góc vuông: c² = a² + b².",
+  b(){const [a,b,c]=pk([[3,4,5],[5,12,13],[8,15,17],[7,24,25],[6,8,10],[9,12,15],[20,21,29]]);return QN(`<p>Tam giác vuông có hai cạnh góc vuông dài ${a} cm và ${b} cm. Cạnh huyền dài bao nhiêu cm?</p>`,c,[a+b,c+1,c-1,b+1].filter(x=>x!==c))},
+  a(){const [a,b,c]=pk([[3,4,5],[5,12,13],[8,15,17],[7,24,25],[6,8,10],[9,40,41],[12,16,20]]);return QN(`<p>Tam giác vuông có cạnh huyền ${c} cm, một cạnh góc vuông ${a} cm. Cạnh góc vuông còn lại dài bao nhiêu cm?</p>`,b,[c-a,c+a,b+1,a].filter(x=>x!==b))}},
+ {t:"Hàm số bậc nhất",em:"📈",tip:"Hàm số bậc nhất y = ax + b (a ≠ 0). Đồ thị đi qua điểm (x₀; y₀) thì y₀ = a·x₀ + b. a > 0: hàm số đồng biến.",
+  b(){const a=nz(-5,5),b=nz(-9,9),x=nz(-5,5);return QZ(`<p>Cho y = ${a===1?"":a===-1?"−":a}x ${b<0?"−":"+"} ${Math.abs(b)}. Khi x = ${fmtN(x)} thì y = ?</p>`,a*x+b,[a*x-b,-a*x+b,a+x+b])},
+  a(){const a=nz(-5,5),b=nz(-9,9),x=nz(-4,4);return QZ(`<p>Đường thẳng y = ax ${b<0?"−":"+"} ${Math.abs(b)} đi qua điểm (${fmtN(x)}; ${fmtN(a*x+b)}). Tìm a.</p>`,a,[-a,a+1,a*x,b])}},
+ {t:"Phân thức đại số",em:"🧩",tip:"Rút gọn phân thức: phân tích tử và mẫu thành nhân tử rồi chia cho nhân tử chung. Ví dụ (x² − 1)/(x − 1) = x + 1 (x ≠ 1).",
+  b(){const x=pk([2,3,4,5,6,7,8,9,-2,-3,-4,-5]);return QZ(`<p>Rút gọn rồi tính giá trị của (x<sup>2</sup> − 1)/(x − 1) tại x = ${fmtN(x)}.</p>`,x+1,[x-1,x*x-1,-(x+1)])},
+  a(){const k=Rn(2,6),x=pk([1,2,3,5,7,9,10,-1,-3]).valueOf();const X=x===k||x===-k?x+11:x;return QZ(`<p>Rút gọn rồi tính giá trị của (x<sup>2</sup> − ${k*k})/(x + ${k}) tại x = ${fmtN(X)}.</p>`,X-k,[X+k,X*X-k*k,k-X])}}
+]},
+{id:"l9",name:"Lớp 9",em:"🎯",age:"14–15 tuổi",time:"45 phút/ngày",cap:2,goal:"Căn thức bậc hai; hệ hai phương trình bậc nhất hai ẩn; phương trình bậc hai và định lí Viète; tỉ số lượng giác của góc nhọn; đường tròn. Ôn thi vào lớp 10.",units:[
+ {t:"Căn thức bậc hai",em:"√",tip:"√a · √b = √(ab); √a : √b = √(a/b). Đưa thừa số ra ngoài dấu căn: √(a²b) = |a|√b.",
+  b(){return pk([()=>{const [a,b,c]=pk([[12,3,6],[2,8,4],[5,20,10],[3,27,9],[2,18,6],[6,24,12]]);return QN(big(`√${a} · √${b} = ?`),c,[a*b,c+1,c*2,Math.sqrt(a+b)|0].filter(x=>x!==c))},()=>{const k=Rn(2,9),m=pk([2,3,5]);return QN(big(`√${k*k*m} : √${m} = ?`),k,[k*k,k*m,k+1])}])()},
+  a(){const m=Rn(1,4),n=Rn(1,4);return QN(`<p>Rút gọn ${m===1?"":m}√8 + ${n===1?"":n}√18 = k√2. Tìm k.</p>`,2*m+3*n,[m+n,2*m+n,m+3*n,5*m*n])}},
+ {t:"Hệ hai phương trình bậc nhất",em:"🔀",tip:"Giải bằng phương pháp cộng đại số hoặc thế. Ví dụ x + y = 10, x − y = 4 ⇒ 2x = 14 ⇒ x = 7, y = 3.",
+  b(){const x=Rn(1,15),y=Rn(1,15);return QZ(`<p>Giải hệ: x + y = ${x+y}; x − y = ${fmtN(x-y)}. Giá trị của x là:</p>`,x,[y,x+y,x-y,x+1].filter(v=>v!==x))},
+  a(){const x=nz(-6,6),y=nz(-6,6),a=Rn(1,4),b=nz(-4,4),c=Rn(1,4),d=nz(-4,4);if(a*d-b*c===0)return this.a();const ask=Math.random()<.5;
+   const eq=(p,q,r)=>`${p===1?"":p}x ${q<0?"−":"+"} ${Math.abs(q)===1?"":Math.abs(q)}y = ${fmtN(r)}`;
+   return QZ(`<p>Giải hệ: ${eq(a,b,a*x+b*y)}; ${eq(c,d,c*x+d*y)}. Giá trị của ${ask?"x":"y"} là:</p>`,ask?x:y,ask?[y,-x,x+1]:[x,-y,y+1])}},
+ {t:"Phương trình bậc hai, Viète",em:"🧮",tip:"x² − Sx + P = 0 có hai nghiệm x₁, x₂ thì x₁ + x₂ = S, x₁ · x₂ = P (định lí Viète). Δ = b² − 4ac.",
+  b(){const r1=nz(-6,8),r2=nz(-6,8),S=r1+r2,P=r1*r2;return QZ(`<p>Phương trình x<sup>2</sup> ${S<0?"+":"−"} ${Math.abs(S)}x ${P<0?"−":"+"} ${Math.abs(P)} = 0 có hai nghiệm x₁, x₂. Tính x₁ + x₂.</p>`,S,[-S,P,-P,S+1].filter(v=>v!==S))},
+  a(){return pk([()=>{const r=Rn(1,6),k=Rn(1,9);const m=r*(k-r);return QZ(`<p>Phương trình x<sup>2</sup> − ${k}x + m = 0 có một nghiệm là ${r}. Tìm m.</p>`,m,[k-r,-m,r*k,m+1])},()=>{const a=Rn(1,3),b=nz(-9,9),c=nz(-5,5);return QZ(`<p>Tính biệt thức Δ của phương trình ${a===1?"":a}x<sup>2</sup> ${b<0?"−":"+"} ${Math.abs(b)}x ${c<0?"−":"+"} ${Math.abs(c)} = 0.</p>`,b*b-4*a*c,[b*b+4*a*c,b*b-2*a*c,-b*b-4*a*c])}])()}},
+ {t:"Tỉ số lượng giác",em:"📐",tip:"sin = đối/huyền, cos = kề/huyền, tan = đối/kề. Góc đặc biệt: sin30° = 1/2, cos60° = 1/2, sin45° = cos45° = √2/2, tan45° = 1, sin60° = √3/2.",
+  b(){const T=[["sin 30°","1/2"],["cos 60°","1/2"],["sin 60°","√3/2"],["cos 30°","√3/2"],["sin 45°","√2/2"],["cos 45°","√2/2"],["tan 45°","1"],["tan 60°","√3"],["tan 30°","√3/3"]];const [q,a]=pk(T);return QS(big(`${q} = ?`),a,["1/2","√3/2","√2/2","1","√3","√3/3","2"])},
+  a(){const [p,q,r]=pk([[3,4,5],[5,12,13],[8,15,17],[7,24,25]]),k=Rn(1,3);const fn=pk(["sin","cos","tan"]);const ans=fn==="sin"?frZ(p,r):fn==="cos"?frZ(q,r):frZ(p,q);
+   return QFZ(`<p>Tam giác ABC vuông tại A có AB = ${q*k} cm, AC = ${p*k} cm, BC = ${r*k} cm. Tính ${fn} B.</p>`,ans,[frZ(p,r),frZ(q,r),frZ(p,q),frZ(q,p),frZ(r,p)])}},
+ {t:"Đường tròn",em:"⭕",tip:"Chu vi C = 2πR, diện tích S = πR² (lấy π ≈ 3,14). Góc nội tiếp chắn nửa đường tròn là góc vuông. Độ dài cung n°: l = πRn/180.",
+  b(){const R=Rn(1,10);return Math.random()<.5?QD(`<p>Đường tròn bán kính ${R} cm (π ≈ 3,14). Chu vi là bao nhiêu cm?</p>`,R*2*314/100,[R*314/100,R*R*314/100,R*2*314/1000]):QD(`<p>Hình tròn bán kính ${R} cm (π ≈ 3,14). Diện tích là bao nhiêu cm²?</p>`,R*R*314/100,[R*2*314/100,R*314/100,R*R*314/1000])},
+  a(){if(Math.random()<.3)return QN(`<p>Góc nội tiếp chắn nửa đường tròn có số đo bao nhiêu độ?</p>`,90,[180,45,60,120]);const n=pk([60,90,120,180]),R=pk([3,6,9,12]);return QD(`<p>Cung ${n}° của đường tròn bán kính ${R} cm có độ dài bao nhiêu cm? (π ≈ 3,14)</p>`,Math.round(314*R*n/180)/100,[Math.round(314*R*n/90)/100,Math.round(314*R/180*100)/100,R*n/180])}}
+]},
+{id:"l10",name:"Lớp 10",em:"📊",age:"15–16 tuổi",time:"45 phút/ngày",cap:3,goal:"Tập hợp; hàm số bậc hai; hoán vị, chỉnh hợp, tổ hợp; nhị thức Newton; thống kê; hệ thức lượng trong tam giác.",units:[
+ {t:"Tập hợp",em:"🔵",tip:"Số phần tử của A ∪ B = |A| + |B| − |A ∩ B|. Tập hợp có n phần tử có 2ⁿ tập con.",
+  b(){const ab=Rn(2,10),a=ab+Rn(3,15),b=ab+Rn(3,15);return QN(`<p>Lớp có ${a} bạn thích Toán, ${b} bạn thích Văn, trong đó ${ab} bạn thích cả hai môn. Có bao nhiêu bạn thích ít nhất một trong hai môn?</p>`,a+b-ab,[a+b,a+b-2*ab,a+b+ab])},
+  a(){const n=Rn(2,8);return QN(`<p>Tập hợp có ${n} phần tử có bao nhiêu tập con?</p>`,2**n,[n*n,2*n,2**n-1,2**(n+1)].filter(x=>x!==2**n))}},
+ {t:"Hàm số bậc hai",em:"📈",tip:"y = ax² + bx + c có đỉnh tại x = −b/(2a). Với a > 0, giá trị nhỏ nhất của hàm số đạt tại đỉnh.",
+  b(){const a=pk([1,2,-1,-2]),h=nz(-5,5),c=nz(-9,9),b=-2*a*h;return QZ(`<p>Parabol y = ${a===1?"":a===-1?"−":a}x<sup>2</sup> ${b<0?"−":"+"} ${Math.abs(b)}x ${c<0?"−":"+"} ${Math.abs(c)} có đỉnh tại x = ?</p>`,h,[-h,b,h+1,2*h])},
+  a(){const h=nz(-5,5),k=nz(-9,9),b=-2*h,c=h*h+k;return QZ(`<p>Giá trị nhỏ nhất của y = x<sup>2</sup> ${b<0?"−":"+"} ${Math.abs(b)}x ${c<0?"−":"+"} ${Math.abs(c)} là:</p>`,k,[c,-k,h,k+1])}},
+ {t:"Hoán vị, chỉnh hợp, tổ hợp",em:"🔢",tip:"Hoán vị: Pₙ = n!. Chỉnh hợp (có thứ tự): Aₙᵏ = n!/(n − k)!. Tổ hợp (không thứ tự): Cₙᵏ = n!/(k!(n − k)!).",
+  b(){const n=Rn(3,7);return QN(`<p>Có bao nhiêu cách xếp ${n} bạn ngồi vào một hàng ${n} ghế?</p>`,fact(n),[n*n,fact(n-1),2**n,n*(n-1)].filter(x=>x!==fact(n)))},
+  a(){const n=Rn(5,10),k=Rn(2,3);const A=fact(n)/fact(n-k),C=C_(n,k);return Math.random()<.5?QN(`<p>Từ ${n} học sinh, chọn ${k} bạn đi dự hội nghị (không phân biệt vai trò). Có bao nhiêu cách chọn?</p>`,C,[A,n*k,C+n,fact(k)].filter(x=>x!==C)):QN(`<p>Từ ${n} học sinh, chọn ${k===2?"1 lớp trưởng và 1 lớp phó":"1 lớp trưởng, 1 lớp phó và 1 thủ quỹ"}. Có bao nhiêu cách chọn?</p>`,A,[C,n*k,n**k,A/2].filter(x=>x!==A))}},
+ {t:"Nhị thức Newton",em:"🎲",tip:"(a + b)ⁿ = Σ Cₙᵏ aⁿ⁻ᵏ bᵏ (n ≤ 5 trong chương trình). Hệ số của xᵏ trong (x + 1)ⁿ là Cₙᵏ.",
+  b(){const n=Rn(3,5),k=Rn(1,n-1);return QN(`<p>Hệ số của x<sup>${k}</sup> trong khai triển (x + 1)<sup>${n}</sup> là:</p>`,C_(n,k),[n,k,n*k,C_(n,k)+1].filter(x=>x!==C_(n,k)))},
+  a(){const n=Rn(3,5),k=Rn(1,n-1);const v=C_(n,k)*2**(n-k);return QN(`<p>Hệ số của x<sup>${k}</sup> trong khai triển (x + 2)<sup>${n}</sup> là:</p>`,v,[C_(n,k),C_(n,k)*2**k,v*2,2**(n-k)].filter(x=>x!==v))}},
+ {t:"Thống kê",em:"📊",tip:"Số trung bình = tổng các giá trị : số giá trị. Trung vị: giá trị ở giữa khi sắp xếp. Mốt: giá trị xuất hiện nhiều nhất. Khoảng biến thiên = lớn nhất − nhỏ nhất.",
+  b(){const n=pk([4,5]),m=Rn(5,9);let xs=Array.from({length:n-1},()=>Rn(m-4,m+4));const last=m*n-xs.reduce((a,b)=>a+b,0);if(last<0||last>20)return this.b();xs.push(last);xs=shuffle(xs);return QN(`<p>Số trung bình của dãy ${xs.join("; ")} là:</p>`,m,[m+1,m-1,Math.max(...xs),xs[2]].filter(x=>x!==m))},
+  a(){const xs=Array.from({length:pk([5,7])},()=>Rn(1,20));const s=xs.slice().sort((a,b)=>a-b);return Math.random()<.5?QN(`<p>Trung vị của dãy ${xs.join("; ")} là:</p>`,s[(s.length-1)/2],[s[0],s[s.length-1],xs[(xs.length-1)/2],Math.round(xs.reduce((a,b)=>a+b,0)/xs.length)].filter(x=>x!==s[(s.length-1)/2])):QN(`<p>Khoảng biến thiên của dãy ${xs.join("; ")} là:</p>`,s[s.length-1]-s[0],[s[s.length-1],s[0]+s[s.length-1],s[s.length-1]-s[1]].filter(x=>x!==s[s.length-1]-s[0]))}},
+ {t:"Hệ thức lượng trong tam giác",em:"📐",tip:"Định lí côsin: c² = a² + b² − 2ab·cosC. Với C = 60°: c² = a² + b² − ab. Diện tích S = ½·a·b·sinC.",
+  b(){const a=Rn(2,12),b=Rn(2,12);let A=a,B=b;if(A*B%4)B=b+(4-(A*B%4))%4;return QN(`<p>Tam giác có hai cạnh ${A} cm và ${B} cm, góc xen giữa bằng 30°. Diện tích tam giác là bao nhiêu cm²?</p>`,A*B/4,[A*B/2,A*B,A+B])},
+  a(){const [a,b,c]=pk([[3,8,7],[5,8,7],[8,15,13],[7,15,13],[16,6,14],[5,21,19]]);return QN(`<p>Tam giác ABC có CA = ${a} cm, CB = ${b} cm, góc C = 60°. Tính độ dài AB.</p>`,c,[a+b-c+1,Math.round(Math.sqrt(a*a+b*b)),c+1].filter(x=>x!==c))}}
+]},
+{id:"l11",name:"Lớp 11",em:"📉",age:"16–17 tuổi",time:"45 phút/ngày",cap:3,goal:"Góc lượng giác và giá trị lượng giác; cấp số cộng, cấp số nhân; giới hạn; hàm số mũ và lôgarit; đạo hàm; xác suất.",units:[
+ {t:"Lượng giác",em:"🌀",tip:"180° = π rad. Giá trị đặc biệt: sin(π/6) = 1/2, cos(π/3) = 1/2, tan(π/4) = 1, sin(π/2) = 1, cos π = −1.",
+  b(){const [d,r]=pk([[30,"π/6"],[45,"π/4"],[60,"π/3"],[90,"π/2"],[120,"2π/3"],[180,"π"],[360,"2π"],[150,"5π/6"]]);return QS(`<p>Đổi ${d}° sang radian:</p>`,r,["π/6","π/4","π/3","π/2","2π/3","π","2π","5π/6"])},
+  a(){const [q,a]=pk([["sin(π/6)","1/2"],["cos(π/3)","1/2"],["tan(π/4)","1"],["sin(π/2)","1"],["cos(π)","−1"],["cos(0)","1"],["sin(π)","0"],["cos(π/2)","0"],["sin(3π/2)","−1"]]);return QS(big(`${q} = ?`),a,["1/2","1","−1","0","√3/2","√2/2"])}},
+ {t:"Cấp số cộng, cấp số nhân",em:"🔁",tip:"Cấp số cộng: uₙ = u₁ + (n − 1)d, Sₙ = n(u₁ + uₙ)/2. Cấp số nhân: uₙ = u₁·qⁿ⁻¹.",
+  b(){if(Math.random()<.5){const u=nz(-10,10),d=nz(-5,5),n=Rn(5,15);return QZ(`<p>Cấp số cộng có u₁ = ${fmtN(u)}, công sai d = ${fmtN(d)}. Tính u<sub>${n}</sub>.</p>`,u+(n-1)*d,[u+n*d,u*(n-1)*d,u+(n-2)*d])}
+   const u=Rn(1,5),q=pk([2,3,-2]),n=Rn(3,6);return QZ(`<p>Cấp số nhân có u₁ = ${u}, công bội q = ${fmtN(q)}. Tính u<sub>${n}</sub>.</p>`,u*q**(n-1),[u*q**n,u*q*(n-1),-(u*q**(n-1))])},
+  a(){const u=Rn(1,10),d=Rn(1,6),n=Rn(5,20);const un=u+(n-1)*d;return QN(`<p>Tính tổng ${n} số hạng đầu của cấp số cộng có u₁ = ${u}, d = ${d}.</p>`,n*(u+un)/2,[n*un,n*(u+un),(n-1)*(u+un)/2|0].filter(x=>x!==n*(u+un)/2))}},
+ {t:"Giới hạn",em:"♾️",tip:"lim (an + b)/(cn + d) = a/c (n → +∞). Giới hạn của đa thức tại x₀ bằng giá trị tại x₀. Dạng 0/0: phân tích nhân tử rồi rút gọn.",
+  b(){const a=Rn(1,9),c=Rn(1,9),b=nz(-9,9),d=nz(-9,9);return QFZ(`<p>lim<sub>n→+∞</sub> (${a}n ${b<0?"−":"+"} ${Math.abs(b)})/(${c}n ${d<0?"−":"+"} ${Math.abs(d)}) = ?</p>`,frZ(a,c),[frZ(b,d),frZ(c,a),frZ(a+b,c+d),"0"])},
+  a(){const k=nz(-6,6);return Math.random()<.5?QZ(`<p>lim<sub>x→${fmtN(k)}</sub> (x<sup>2</sup> − ${k*k})/(x ${k<0?"+":"−"} ${Math.abs(k)}) = ?</p>`,2*k,[k,0,k*k,-2*k]):(()=>{const x=nz(-3,3),a=Rn(1,4),b=nz(-5,5);return QZ(`<p>lim<sub>x→${fmtN(x)}</sub> (${a===1?"":a}x<sup>2</sup> ${b<0?"−":"+"} ${Math.abs(b)}x) = ?</p>`,a*x*x+b*x,[a*x*x-b*x,a*x+b,2*a*x+b])})()}},
+ {t:"Mũ và lôgarit",em:"📈",tip:"log_a(aⁿ) = n; log_a(b) + log_a(c) = log_a(bc); aˣ = b ⇔ x = log_a b; log_a x = n ⇔ x = aⁿ.",
+  b(){const a=pk([2,3,5,10]),n=Rn(1,a===2?7:4);return QN(big(`log<sub>${a}</sub> ${a**n} = ?`),n,[a*n,a**n/a,n+1].filter(x=>x!==n))},
+  a(){return pk([()=>{const n=Rn(2,8);return QN(big(`2<sup>x</sup> = ${2**n} ⇒ x = ?`),n,[2**n/2,n+1,n*2])},()=>{const n=Rn(1,5),a=pk([2,3]);return QN(big(`log<sub>${a}</sub> x = ${n} ⇒ x = ?`),a**n,[a*n,n**a,a**(n+1)].filter(x=>x!==a**n))},()=>{const m=Rn(1,4),n=Rn(1,4);return QN(big(`log<sub>2</sub> ${2**m} + log<sub>2</sub> ${2**n} = ?`),m+n,[m*n,2**(m+n),m+n+1])}])()}},
+ {t:"Đạo hàm",em:"📐",tip:"(xⁿ)' = n·xⁿ⁻¹; (c)' = 0; (u + v)' = u' + v'. Hệ số góc tiếp tuyến tại x₀ bằng f'(x₀).",
+  b(){const a=nz(-4,4),b=nz(-6,6),c=nz(-9,9),x=nz(-3,3);return QZ(`<p>f(x) = ${poly([[a,2],[b,1],[c,0]])}. Tính f'(${fmtN(x)}).</p>`,2*a*x+b,[a*x*x+b*x+c,2*a*x,a*x+b])},
+  a(){const a=nz(-3,3),b=nz(-4,4),c=nz(-6,6),x=nz(-2,2);return QZ(`<p>f(x) = ${poly([[a,3],[b,2],[c,1]])}. Hệ số góc tiếp tuyến của đồ thị tại điểm có hoành độ x = ${fmtN(x)} là:</p>`,3*a*x*x+2*b*x+c,[a*x**3+b*x*x+c*x,3*a*x+2*b+c,3*a*x*x+b*x+c])}},
+ {t:"Xác suất",em:"🎲",tip:"Xác suất của biến cố = số kết quả thuận lợi : số kết quả có thể (các kết quả đồng khả năng). Kết quả nên rút gọn.",
+  b(){const r=Rn(1,9),g=Rn(1,9);return QFZ(`<p>Hộp có ${r} bi đỏ và ${g} bi xanh. Lấy ngẫu nhiên 1 viên. Xác suất lấy được bi đỏ là:</p>`,frZ(r,r+g),[frZ(g,r+g),frZ(r,g),frZ(1,r+g),frZ(r,2*(r+g))])},
+  a(){return pk([()=>QFZ(`<p>Gieo hai con xúc xắc cân đối. Xác suất tổng số chấm bằng 7 là:</p>`,"1/6",["1/36","7/36","1/12","5/36"]),()=>QFZ(`<p>Gieo hai đồng xu cân đối. Xác suất cả hai đều sấp là:</p>`,"1/4",["1/2","3/4","1/3"]),()=>{const r=Rn(2,6),g=Rn(2,6);const n=C_(r+g,2);return QFZ(`<p>Hộp có ${r} bi đỏ và ${g} bi xanh. Lấy ngẫu nhiên 2 viên. Xác suất lấy được 2 bi đỏ là:</p>`,frZ(C_(r,2),n),[frZ(r,r+g),frZ(C_(g,2),n),frZ(r*g,n),frZ(2,r+g)])}])()}}
+]},
+{id:"l12",name:"Lớp 12",em:"🎓",age:"17–18 tuổi",time:"45–60 phút/ngày",cap:3,goal:"Ứng dụng đạo hàm (cực trị, giá trị lớn nhất – nhỏ nhất); nguyên hàm, tích phân; tọa độ trong không gian; thống kê (phương sai); xác suất có điều kiện. Ôn thi tốt nghiệp THPT.",units:[
+ {t:"Cực trị, giá trị lớn nhất – nhỏ nhất",em:"⛰️",tip:"Cực trị: giải f'(x) = 0 và xét dấu f'. f(x) = x³ − 3k²x có cực đại tại x = −k, cực tiểu tại x = k. Hàm bậc hai x² − 2mx + c có GTNN = c − m².",
+  b(){const k=Rn(1,5),max=Math.random()<.5;return QZ(`<p>Hàm số f(x) = x<sup>3</sup> − ${3*k*k}x đạt cực ${max?"đại":"tiểu"} tại x = ?</p>`,max?-k:k,[max?k:-k,3*k,0,k*k])},
+  a(){const m=nz(-6,6),c=Rn(-5,40);return QZ(`<p>Giá trị nhỏ nhất của f(x) = x<sup>2</sup> ${m<0?"+":"−"} ${Math.abs(2*m)}x ${c<0?"−":"+"} ${Math.abs(c)} trên ℝ là:</p>`,c-m*m,[c,c+m*m,-m,m*m])}},
+ {t:"Nguyên hàm, tích phân",em:"∫",tip:"∫xⁿdx = xⁿ⁺¹/(n + 1) + C. ∫ₐᵇ f(x)dx = F(b) − F(a). Ví dụ ∫₀² 3x² dx = 2³ − 0 = 8.",
+  b(){const a=Rn(1,6);return Math.random()<.5?QN(big(`∫<sub>0</sub><sup>${a}</sup> 2x dx = ?`),a*a,[2*a,a*a*2,a]):QN(big(`∫<sub>0</sub><sup>${a}</sup> 3x<sup>2</sup> dx = ?`),a**3,[3*a*a,a*a,a**3*3])},
+  a(){const b=Rn(2,6);return Math.random()<.5?QN(big(`∫<sub>1</sub><sup>${b}</sup> (2x + 1) dx = ?`),b*b+b-2,[b*b+b,b*b,2*b+1]):(()=>{const t=pk([2,4]);return QN(`<p>Diện tích hình phẳng giới hạn bởi y = x<sup>3</sup>, trục Ox, x = 0 và x = ${t} là:</p>`,t**4/4,[t**3,t**4,t**3/3|0].filter(x=>x!==t**4/4))})()}},
+ {t:"Tọa độ trong không gian",em:"🧊",tip:"A(x₁; y₁; z₁), B(x₂; y₂; z₂): AB = √[(x₂ − x₁)² + (y₂ − y₁)² + (z₂ − z₁)²]. Tích vô hướng u·v = x₁x₂ + y₁y₂ + z₁z₂.",
+  b(){const [p,q,r,d]=pk([[1,2,2,3],[2,3,6,7],[1,4,8,9],[2,6,9,11],[4,4,7,9],[2,2,1,3]]);const A=[nz(-5,5),nz(-5,5),nz(-5,5)];const s=()=>pk([1,-1]);const B=[A[0]+s()*p,A[1]+s()*q,A[2]+s()*r];
+   return QN(`<p>Cho A(${A.map(fmtN).join("; ")}), B(${B.map(fmtN).join("; ")}). Độ dài AB là:</p>`,d,[p+q+r,d*d,d+1].filter(x=>x!==d))},
+  a(){const u=[nz(-5,5),nz(-5,5),nz(-5,5)],v=[nz(-5,5),nz(-5,5),nz(-5,5)];const dot=u[0]*v[0]+u[1]*v[1]+u[2]*v[2];return QZ(`<p>Cho u⃗ = (${u.map(fmtN).join("; ")}), v⃗ = (${v.map(fmtN).join("; ")}). Tích vô hướng u⃗·v⃗ là:</p>`,dot,[-dot,u[0]+v[0]+u[1]+v[1]+u[2]+v[2],dot+1])}},
+ {t:"Phương sai, xác suất có điều kiện",em:"📊",tip:"Phương sai s² = trung bình của bình phương độ lệch so với số trung bình. P(A | B) = P(A ∩ B) : P(B).",
+  b(){const [dev,v]=pk([[[-1,1],"1"],[[-3,-1,1,3],"5"],[[-2,-2,2,2],"4"],[[-4,0,0,4],"8"],[[-2,0,2],"8/3"],[[-1,0,1],"2/3"]]);const m=Rn(5,15);const xs=shuffle(dev.map(x=>x+m));
+   return QFZ(`<p>Tính phương sai của mẫu số liệu: ${xs.join("; ")}.</p>`,v,["1","5","4","8","8/3","2/3","2","10"])},
+  a(){const n=Rn(30,45),g=Rn(12,n-10),k=Rn(2,g-2);return QFZ(`<p>Lớp có ${n} học sinh, trong đó ${g} bạn nữ; có ${k} bạn nữ đeo kính. Chọn ngẫu nhiên một bạn nữ. Xác suất bạn đó đeo kính là:</p>`,frZ(k,g),[frZ(k,n),frZ(g,n),frZ(g-k,g),frZ(k,n-g)])}}
+]}
+);
+MLEVELS.forEach((L,li)=>L.units.forEach((u,ui)=>{u.li=li;u.ui=ui;u.key=`toan-${li}-${ui}`;u.back=`toan-u-${li}-${ui}`}));
+
 
 const MA={
  coban:{n:"Bài tập cơ bản",em:"📝",lv:1,d:"10 câu chọn đáp án đúng"},
@@ -2587,13 +2887,13 @@ const mNext=(u,act)=>{const l=mActs(u),i=l.indexOf(act),n=i<0?null:l[i+1];return
 /* Bàn phím số để bé tự điền đáp án */
 function kRun(u,act,qs){
   const back=u.back;render(shell(`${MA[act].em} ${MA[act].n} · ${esc(u.t)}`,back,qs.length));
-  let r=0,score=0;const hasFrac=qs.some(q=>q.a.includes("/")),hasDec=qs.some(q=>q.a.includes(","));
+  let r=0,score=0;const hasFrac=qs.some(q=>q.a.includes("/")),hasDec=qs.some(q=>q.a.includes(",")),hasNeg=qs.some(q=>q.a.startsWith("-"));
   const norm=s=>String(s).replace(/[\s .]/g,"");
   const eq=(x,a)=>{x=norm(x);a=norm(a);if(!x)return false;if(a.includes("/")||x.includes("/"))return x===a;const nx=parseFloat(x.replace(",",".")),na=parseFloat(a.replace(",","."));return !isNaN(nx)&&Math.abs(nx-na)<1e-9};
   const show=()=>{SAY=[];setProg(r);const q=qs[r];let val="",miss=false,locked=false;
     const keys=["7","8","9","4","5","6","1","2","3",hasDec?",":"",  "0","⌫"];
     $("#stage").innerHTML=`${q.q}<div class="kdisp" id="kd" aria-live="polite">?</div>
-      <div class="kpad">${keys.map(k=>k?`<button class="btn kb" data-k="${k}" style="--c:${k==="⌫"?"var(--card)":"var(--sun)"}">${k}</button>`:"<span></span>").join("")}${hasFrac?`<button class="btn kb" data-k="/" style="--c:var(--sky)">/</button>`:""}</div>
+      <div class="kpad">${keys.map(k=>k?`<button class="btn kb" data-k="${k}" style="--c:${k==="⌫"?"var(--card)":"var(--sun)"}">${k}</button>`:"<span></span>").join("")}${hasNeg?`<button class="btn kb" data-k="-" style="--c:var(--sky)">−</button>`:""}${hasFrac?`<button class="btn kb" data-k="/" style="--c:var(--sky)">/</button>`:""}</div>
       <button class="btn big" style="--c:var(--leaf)" id="kok">✓ Kiểm tra</button><div class="prompt" id="fb" style="min-height:1.4em"></div>`;
     const kd=$("#kd");const draw=()=>{kd.innerHTML=val?(val.includes("/")&&/^\d+\/\d+$/.test(val)?FR(...val.split("/")):esc(val)):"?"};
     document.querySelectorAll(".kb").forEach(b=>b.onclick=()=>{if(locked)return;const k=b.dataset.k;if(k==="⌫")val=val.slice(0,-1);else if(val.length<12)val+=k;tone(600,.03);draw()});
@@ -2625,13 +2925,11 @@ function toanHome(){
     <div style="min-width:0;flex:1"><h2 style="font-size:1.4rem">✖️ Bảng cửu chương</h2><span class="muted">Bảng nhân, bảng chia 2–9 · vè, thơ, mẹo nhớ · 7 trò chơi · Siêu tốc 60 giây</span></div>
     <button class="btn" style="--c:var(--orange)" data-go="cc">Vào học ▶</button>
   </section>
-  <section><div class="islands">
-    ${MLEVELS.map((L,li)=>`<button class="island" style="--c:${lvColor(li)}" data-go="toan-lv-${li}">
+  <section>${capSections(MLEVELS,(L,li)=>`<button class="island" style="--c:${lvColor(li)}" data-go="toan-lv-${li}">
       <div class="top"><span class="em">${L.em}</span><span class="badge">${L.age}</span></div>
       <h3>Toán ${L.name}</h3><span class="muted">${L.units.map(u=>u.t).join(" · ")}</span>
       <div class="bar"><i style="width:${mLevelPct(li)}%"></i></div><small class="muted"><b>${mLevelPct(li)}%</b> hoàn thành · ${L.units.length} bài</small>
-    </button>`).join("")}
-  </div></section>
+    </button>`)}</section>
   <section class="row"><button class="btn ghost" data-go="toan-chuong-trinh">📘 Chương trình Toán</button></section>`);
 }
 function toanLevel(li){
@@ -2641,10 +2939,10 @@ function toanLevel(li){
   <div class="lvhead" style="--c:${lvColor(li)}"><div class="em">${L.em}</div>
     <div style="min-width:0;flex:1"><div class="eyebrow">${L.age} · ${L.time}</div><h1>Toán ${L.name}</h1>
     <p class="muted" style="margin:4px 0 0;max-width:62ch">${L.goal}</p></div></div>
-  <section class="card funbanner" style="border-color:var(--sky)">
+  ${li>=6?"":`  <section class="card funbanner" style="border-color:var(--sky)">
     <div style="min-width:0;flex:1"><h2 style="font-size:1.35rem">🔷 Bảng hình học</h2><span class="muted">${tItems("hinh",li).length} hình phẳng và hình khối · bảng đọc tên · trò chơi nhận biết, đếm cạnh, đếm mặt</span></div>
     <button class="btn" style="--c:var(--sky)" data-go="hinh-vi-${li}">Học hình ▶</button>
-  </section>
+  </section>`}
   <section><div class="units">${L.units.map(u=>{const d=mDone(u),n=mActs(u).length;return`
     <button class="unit" style="--c:${lvColor(li)}" data-go="toan-u-${li}-${u.ui}"><span class="em">${u.em}</span><span class="n">Bài ${u.ui+1}</span>
       <h3>${esc(u.t)}</h3><div class="dots">${mActs(u).map((a,i)=>`<b class="${i<d?"on":""}"></b>`).join("")}</div>
@@ -2683,7 +2981,7 @@ function toanProgram(){
   <button class="btn ghost sm back" data-go="toan">← Đảo Toán Học</button>
   <div class="row" style="margin-top:12px"><button class="chip" data-go="chuong-trinh">🏝️ Tiếng Anh</button><button class="chip" data-go="tv-chuong-trinh">🌾 Tiếng Việt</button><button class="chip on">🔢 Toán</button></div>
   <section><div class="eyebrow">Dành cho phụ huynh và thầy cô</div>
-    <h1 style="font-size:clamp(1.8rem,5vw,2.4rem)">Chương trình Toán Mầm non – Lớp 5</h1>
+    <h1 style="font-size:clamp(1.8rem,5vw,2.4rem)">Chương trình Toán Mầm non – Lớp 12</h1>
     <p class="muted" style="max-width:68ch">Bám các yêu cầu cần đạt của Chương trình môn Toán 2018 (Mầm non theo chương trình làm quen với toán). Tổng cộng <b>${MLEVELS.reduce((s,L)=>s+L.units.length,0)} bài</b>, mỗi bài có bài tập <b>cơ bản</b> và <b>nâng cao</b> do máy tự tạo nên không bao giờ hết đề. Thêm <b>bảng cửu chương</b> 2–9 với vè, thơ và trò chơi. Đây là bài luyện tập bổ trợ, không thay thế sách giáo khoa.</p></section>
   <section class="card"><h2 style="font-size:1.3rem">Cách luyện mỗi bài</h2>
     <ul class="tips"><li>⭐ <b>Bài tập cơ bản</b> và <b>Đúng hay sai</b>: nắm chắc kiến thức của bài.</li><li>⭐⭐ <b>Tự điền đáp án</b>: bé tự tính rồi gõ kết quả, không có đáp án gợi ý.</li><li>⭐⭐⭐ <b>Nâng cao</b>: toán có lời văn, tìm số chưa biết, bài nhiều bước. <b>Đua xe</b>: luyện tính nhanh.</li><li>Cuối mỗi lớp có <b>Thử thách 10 câu</b> trộn cơ bản và nâng cao.</li></ul></section>
@@ -2706,7 +3004,7 @@ function mRoute(h){
 }
 
 /* ======================================================================
-   ĐẢO THÁM TỬ — câu đố quan sát, ghi nhớ và suy luận (Mầm non – Lớp 5)
+   ĐẢO THÁM TỬ — câu đố quan sát, ghi nhớ và suy luận (Mầm non – THPT)
    Mọi câu đố do máy tự tạo; độ khó tăng theo cấp (d = 0…5).
    ====================================================================== */
 const ANI=[["🐻","Gấu"],["🐰","Thỏ"],["🐱","Mèo"],["🐶","Cún"],["🦊","Cáo"],["🐼","Gấu Trúc"],["🐸","Ếch"],["🐯","Hổ"],["🐵","Khỉ"],["🐷","Heo"]];
@@ -2857,7 +3155,143 @@ const TT={
    $("#rc").onclick=()=>sayVi(clues.join(" ")+" "+q.t);
   }}
 };
+/* ---------- Đảo Thám Tử: các vụ án "manh mối trong tranh" ---------- */
+const TSET=[{n:"phòng khách",bg:["🛋️","🪴","🖼️","🕰️","🧸"]},{n:"lớp học",bg:["📚","✏️","🎒","🖍️","🔔"]},{n:"sở thú",bg:["🌳","🪨","🌿","🎪","🍃"]},{n:"công viên",bg:["🌳","🌷","⛲","🪁","🌻"]},{n:"siêu thị",bg:["🛒","🍎","🥛","🧀","🍞"]},{n:"bãi biển",bg:["🏖️","🌊","🐚","⛱️","🏄"]},{n:"nông trại",bg:["🌾","🚜","🛖","🌽","🥕"]},{n:"khu rừng",bg:["🌲","🍄","🌿","🪵","🍂"]},{n:"đêm Trung thu",bg:["🏮","🥮","🌕","🎑","🏮"]},{n:"thư viện",bg:["📚","📖","🪑","💡","📕"]}];
+const THIDE=[["sau tấm rèm","🪟"],["sau bụi cây","🌳"],["trong hang","🕳️"],["sau cánh cửa","🚪"],["dưới gầm bàn","🪑"],["sau tảng đá","🪨"]];
+const TLOOK=[["cat","tiger","leopard","lion"],["dog","wolf","fox"],["bear","panda","polar bear","koala"],["bird","dove","parrot","eagle","owl"],["mouse","rat","hamster","squirrel"],["horse","zebra","deer","cow"],["fish","tropical fish","blowfish","shark","dolphin"],["duck","chicken","chick","rooster","turkey"],["monkey","gorilla","orangutan"]];
+const TEV=[["🍪","Vụn bánh quy rơi khắp bàn."],["☂️","Vũng nước nhỏ ngay cạnh cửa."],["🖍️","Bút màu rơi vãi trên thảm."],["🪶","Lông chim rơi trên bãi cỏ."],["🥕","Luống cà rốt bị nhổ mất mấy củ."],["🍇","Vỏ nho còn vương trên đĩa."],["⚽","Ô cửa kính bị vỡ một góc."],["🍯","Vệt mật ong dính trên bàn."],["🌸","Cánh hoa rơi đầy lối đi."],["🍦","Kem chảy dính trên ghế."],["🧦","Một chiếc tất lẻ trên giường."],["🍌","Vỏ chuối nằm giữa sàn nhà."]];
+const TLIST=[["Cô giáo chia bánh, bạn nào chưa có bánh?","🍪","Đã có bánh"],["Lên xe đi tham quan, bạn nào chưa lên xe?","🚌","Đã lên xe"],["Thu bài kiểm tra, bạn nào chưa nộp bài?","📝","Đã nộp bài"],["Phát quà Trung thu, bạn nào chưa nhận đèn lồng?","🏮","Đã nhận đèn"],["Trước khi đi xe máy, bạn nào chưa đội mũ bảo hiểm?","⛑️","Đã đội mũ"],["Giờ ngủ trưa, bạn nào chưa lên giường?","🛏️","Đã lên giường"]];
+const THAB=[{e:["🌊","🐚","🌊"],a:["fish","dolphin","whale","shark","octopus","crab","shrimp","squid","tropical fish","blowfish","lobster","oyster","seal","blue whale"],x:["duck","swan","penguin","turtle","frog","crocodile","otter","hippo","beaver","polar bear","flamingo"]},
+ {e:["🎋","🎋","🎋"],a:["panda"],x:[]},{e:["🌴","🍌"],a:["monkey","gorilla","orangutan"],x:[]},{e:["🕳️","🥕"],a:["rabbit"],x:["mouse","rat","hamster"]},
+ {e:["🧊","❄️"],a:["penguin","polar bear","seal"],x:[]},{e:["🌳","🌰"],a:["squirrel"],x:["bird","owl","parrot","dove","eagle","koala","sloth","monkey","gorilla","orangutan"]},
+ {e:["🦴","🏠"],a:["dog"],x:["wolf","fox"]},{e:["🌸","🍯"],a:["bee"],x:["butterfly","bear"]},{e:["🕸️"],a:["spider"],x:[]},
+ {e:["🏜️","🌵"],a:["camel","dromedary","scorpion","lizard"],x:["snake"]},{e:["🌾","🛖"],a:["cow","pig","sheep","goat","chicken","horse","buffalo","rooster","ox","ram","duck","turkey","chick"],x:["mouse","rat","cat","dog","rabbit"]},
+ {e:["🪵","🌊"],a:["beaver"],x:["otter"]},{e:["🌙","🕳️"],a:["bat"],x:["owl"]},{e:["🌳","☀️","🌾"],a:["lion","zebra","giraffe","elephant","rhino"],x:["leopard","deer","bison","tiger","hippo"]},{e:["🧶","🛋️"],a:["cat"],x:["dog","hamster","rabbit"]}];
+const tPool=d=>tItems("convat",Math.min(5,d+1));
+const tAniOpt=id=>`<span class="em2">${ANIMALS[id].e}</span><small class="anm">${ANIMALS[id].vi}</small>`;
+const tScene=s=>`<div class="tscene">${s.bg.map(e=>`<span>${e}</span>`).join("")}</div>`;
+
+Object.assign(TT,{
+ bong:{n:"Bóng ai thế?",em:"🌑",lv:1,d:"Nhìn cái bóng, đoán bạn đang trốn",skill:"Quan sát hình dáng",
+  play(st,d,api){
+   const pool=tPool(d),t=pk(pool),n=[3,4,4,4,6,6][d],s=pk(TSET),h=pk(THIDE);
+   const grp=TLOOK.find(g=>g.includes(t));let others=d>=3&&grp?shuffle(grp.filter(x=>x!==t)):[];
+   others=[...new Set([...others,...shuffle(pool.filter(x=>x!==t))])].slice(0,n-1);
+   const clip=d>=5?pk(["inset(0 50% 40% 0)","inset(40% 0 0 50%)","inset(0 0 55% 0)"]):d>=4?pk(["inset(0 50% 0 0)","inset(0 0 0 50%)","inset(0 0 50% 0)","inset(45% 0 0 0)"]):"none";
+   ttMcq(st,`<div class="prompt">🕵️ Ở ${s.n}, ai đang trốn <b>${h[0]}</b>?${d>=4?" (chỉ thấy một phần cái bóng)":""}</div>${tScene(s)}
+     <div class="hidebox"><span class="hideem">${h[1]}</span><span class="sil" style="clip-path:${clip}">${ANIMALS[t].e}</span></div>`,
+     shuffle([t,...others]),t,api,`Bóng đó là của ${ANIMALS[t].vi} ${ANIMALS[t].e}`,tAniOpt);
+  }},
+ nhacuaai:{n:"Nhà của ai?",em:"🏠",lv:1,d:"Nhìn nơi ở, đoán chủ nhà",skill:"Hiểu biết, liên tưởng",
+  play(st,d,api){
+   const pool=tPool(d),habs=THAB.filter(hb=>hb.a.some(x=>pool.includes(x)));const hb=pk(habs);
+   const t=pk(hb.a.filter(x=>pool.includes(x))),n=[3,4,4,4,5,6][d];
+   const others=shuffle(pool.filter(x=>!hb.a.includes(x)&&!hb.x.includes(x))).slice(0,n-1);
+   const clue=d>=3?hb.e.slice(0,Math.max(1,hb.e.length-1)):hb.e;
+   ttMcq(st,`<div class="prompt">🏠 Nơi này trông giống <b>nhà của ai</b> nhất?</div><div class="tscene big">${clue.map(e=>`<span>${e}</span>`).join("")}</div>`,
+     shuffle([t,...others]),t,api,`Đây là nhà của ${ANIMALS[t].vi} ${ANIMALS[t].e}`,tAniOpt);
+  }},
+ danhsach:{n:"Ai còn thiếu?",em:"📋",lv:2,d:"Đối chiếu danh sách, tìm bạn còn thiếu",skill:"Đối chiếu, cẩn thận",
+  play(st,d,api){
+   const N=[4,5,6,7,8,9][d],pool=tPool(d),[q,item,lab]=pk(TLIST);
+   let all;if(d>=3){const g=shuffle(TLOOK.filter(g=>g.filter(x=>pool.includes(x)).length>=2))[0];all=[...new Set([...(g?g.filter(x=>pool.includes(x)):[]),...shuffle(pool)])].slice(0,N)}else all=shuffle(pool).slice(0,N);
+   all=shuffle(all);const miss=pk(all),got=(d>=1?shuffle(all):all).filter(x=>x!==miss);
+   const opts=d<=1?pickOpts(miss,all):shuffle(all.slice());
+   ttMcq(st,`<div class="prompt">📋 ${q}</div>
+     <div class="dsbox"><b>Danh sách lớp</b><div class="dslist">${all.map(id=>`<span class="dsi">${ANIMALS[id].e}<small>${ANIMALS[id].vi}</small></span>`).join("")}</div></div>
+     <div class="dsbox got"><b>${lab} ${item}</b><div class="dslist">${got.map(id=>`<span class="dsi">${ANIMALS[id].e}<small>${item}</small></span>`).join("")}</div></div>`,
+     opts,miss,api,`Bạn còn thiếu là ${ANIMALS[miss].vi} ${ANIMALS[miss].e}`,tAniOpt);
+  }},
+ vatchung:{n:"Ai để lại dấu vết?",em:"🧤",lv:2,d:"Tìm ai cầm vật chứng, dùng thêm lời nhân chứng",skill:"Quan sát, suy luận",
+  play(st,d,api){
+   const n=[3,4,4,5,5,6][d],k=d<2?1:d<4?2:3,pool=tPool(d),s=pk(TSET),ev=pk(TEV);
+   const ids=shuffle(pool).slice(0,n),otherItems=TEV.map(x=>x[0]).filter(x=>x!==ev[0]);
+   let sus,tries=0;
+   do{sus=ids.map((a,i)=>({id:i,a,h:Rn(0,3),s:Rn(0,3),it:i<k?ev[0]:pk(otherItems)}));tries++}
+   while(tries<50&&sus.slice(1,k).some(x=>x.h===sus[0].h&&x.s===sus[0].s));
+   sus.slice(1,k).forEach(x=>{if(x.h===sus[0].h&&x.s===sus[0].s)x.s=(sus[0].s+1)%4});
+   const cul=sus[0],rem=new Set(sus.slice(1,k).map(x=>x.id)),clues=[];
+   while(rem.size){const cand=[];
+     ["h","s"].forEach(key=>{const el=[...rem].filter(i=>sus[i][key]!==cul[key]);if(el.length)cand.push({t:"Nhân chứng thấy thủ phạm "+ATTR[key].pos(cul[key])+".",el});
+       if(d>=4)ATTR[key].vals.forEach((_,v)=>{if(v===cul[key])return;const el2=[...rem].filter(i=>sus[i][key]===v);if(el2.length)cand.push({t:"Thủ phạm "+ATTR[key].neg(v)+".",el:el2})})});
+     if(!cand.length)break;const c=pk(cand);c.el.forEach(i=>rem.delete(i));clues.push(c.t)}
+   const card=c=>`<button class="ch" data-c="${c.id}"><span class="hat">${HATS[c.h][0]||"&nbsp;"}</span><span class="ani">${ANIMALS[c.a].e}</span><span class="itm">${c.it}</span><span class="shirt" style="background:${SHIRTS[c.s][1]}"></span><b class="nm">${ANIMALS[c.a].vi}</b></button>`;
+   ttQ(st,`<div class="prompt">🕵️ Ở ${s.n}, ai đã để lại dấu vết?</div>${tScene(s)}
+     <div class="clues"><b>🔍 Hiện trường:</b> <span class="em2">${ev[0]}</span> ${ev[1]}${clues.length?`<ol>${clues.map(c=>`<li>${c}</li>`).join("")}</ol>`:"<p style=\"margin:6px 0 0\">Thủ phạm vẫn còn cầm vật chứng trên tay!</p>"}<button class="btn sm" style="--c:var(--sky)" id="rc">🔊 Nghe manh mối</button></div>
+     <div class="chs">${shuffle(sus).map(card).join("")}</div>`);
+   $("#rc").onclick=()=>sayVi(ev[1]+" "+(clues.length?clues.join(" "):"Thủ phạm vẫn còn cầm vật chứng trên tay."));
+   let done=false;st.querySelectorAll(".chs .ch").forEach(b=>b.onclick=()=>{if(done)return;
+     if(+b.dataset.c===cul.id){done=true;b.classList.add("good","pop");api.ok()}
+     else{b.classList.add("out");bump(b);if(api.wrong(`Thủ phạm là <b>${ANIMALS[cul.a].vi}</b> ${ANIMALS[cul.a].e}. Hãy nhìn vật chứng trên tay và đọc kĩ lời nhân chứng!`))return}});
+  }}
+});
+
 const TTL=[{name:"Mầm non",em:"🐣",age:"5–6 tuổi"},{name:"Lớp 1",em:"🌱",age:"6–7 tuổi"},{name:"Lớp 2",em:"🌼",age:"7–8 tuổi"},{name:"Lớp 3",em:"🌳",age:"8–9 tuổi"},{name:"Lớp 4",em:"🌊",age:"9–10 tuổi"},{name:"Lớp 5",em:"🚀",age:"10–11 tuổi"}];
+/* ---------- Đảo Thám Tử: suy luận cho THCS – THPT (d có thể tới 8) ---------- */
+function ttSeq(d){
+  const a=Rn(1,9),k=Rn(2,6),types=[];
+  types.push(()=>{const s=Array.from({length:5},(_,i)=>a+i*k);return{s,n:a+5*k,why:`cộng thêm ${k}`}});
+  types.push(()=>{const r=pk([2,3]),b=Rn(1,4);const s=Array.from({length:5},(_,i)=>b*r**i);return{s,n:b*r**5,why:`nhân với ${r}`}});
+  if(d>=5){types.push(()=>{const o=Rn(0,3);const s=Array.from({length:5},(_,i)=>(i+1+o)**2);return{s,n:(6+o)**2,why:"các số chính phương"}});
+    types.push(()=>{const p=Rn(1,5),q=Rn(6,12);let x=Rn(1,9);const s=[x];for(let i=1;i<5;i++){x+=i%2?p:q;s.push(x)}return{s,n:x+p,why:`cộng xen kẽ ${p} và ${q}`}})}
+  if(d>=6){types.push(()=>{let x=Rn(1,3),y=Rn(2,5);const s=[x,y];for(let i=2;i<6;i++){const z=s[i-1]+s[i-2];s.push(z)}return{s:s.slice(0,5),n:s[5],why:"mỗi số bằng tổng hai số đứng trước"}});
+    types.push(()=>{const s=[2,3,5,7,11,13,17,19,23,29,31],o=Rn(0,5);return{s:s.slice(o,o+5),n:s[o+5],why:"các số nguyên tố liên tiếp"}});
+    types.push(()=>{const s=Array.from({length:6},(_,i)=>(i+1)*(i+2)/2);return{s:s.slice(0,5),n:s[5],why:"số tam giác: cộng 2, 3, 4, 5, …"}})}
+  if(d>=7){types.push(()=>{const b=Rn(1,3);const s=Array.from({length:6},(_,i)=>b*2**i+i);return{s:s.slice(0,5),n:s[5],why:`nhân 2 rồi cộng thêm số thứ tự`}});
+    types.push(()=>{const o=Rn(1,3);const s=Array.from({length:6},(_,i)=>(i+o)**3);return{s:s.slice(0,5),n:s[5],why:"các lập phương"}})}
+  return pk(types)();
+}
+function ttKnights(d){
+  const n=d>=7?3:2,names=shuffle(NAMES).slice(0,n);
+  const mk=()=>{const sp=Rn(0,n-1),o=(sp+Rn(1,n-1))%n,o2=[...Array(n).keys()].find(x=>x!==sp&&x!==o);
+    const opts=[{t:`${names[o]} nói dối.`,f:v=>!v[o]},{t:`${names[o]} nói thật.`,f:v=>v[o]},{t:`Tôi và ${names[o]} cùng một loại người.`,f:v=>v[sp]===v[o]},{t:`Tôi và ${names[o]} khác loại người.`,f:v=>v[sp]!==v[o]},{t:`Trong chúng ta có ít nhất một người nói dối.`,f:v=>v.includes(false)}];
+    if(n===3&&o2!==undefined)opts.push({t:`${names[o]} và ${names[o2]} đều nói dối.`,f:v=>!v[o]&&!v[o2]},{t:`Có đúng một người nói thật trong ba chúng ta.`,f:v=>v.filter(Boolean).length===1});
+    const st=pk(opts);return{sp,...st}};
+  for(let t=0;t<400;t++){const sts=[];const used=new Set();while(sts.length<n){const s=mk();if(used.has(s.sp)&&sts.length<n)continue;used.add(s.sp);sts.push(s)}
+    const sols=[];for(let m=0;m<2**n;m++){const v=Array.from({length:n},(_,i)=>!!(m>>i&1));if(sts.every(s=>s.f(v)===v[s.sp]))sols.push(v)}
+    if(sols.length===1){const v=sols[0],label=w=>{const tr=names.filter((_,i)=>w[i]);return tr.length?tr.join(" và ")+" nói thật":"Không ai nói thật"};
+      const all=[];for(let m=0;m<2**n;m++)all.push(label(Array.from({length:n},(_,i)=>!!(m>>i&1))));
+      return{names,sts:sts.sort((a,b)=>a.sp-b.sp),ans:label(v),opts:pickOpts(label(v),all)}}}
+  return null;
+}
+function ttGrid(d){
+  const n=d>=8?4:3,people=shuffle(NAMES).slice(0,n);
+  const A1=shuffle([["áo đỏ","mặc áo đỏ"],["áo xanh","mặc áo xanh"],["áo vàng","mặc áo vàng"],["áo trắng","mặc áo trắng"]]).slice(0,n);
+  const CAT=pk([{ask:"nuôi con gì",v:[["mèo","nuôi mèo"],["chó","nuôi chó"],["cá","nuôi cá"],["thỏ","nuôi thỏ"]]},{ask:"thích môn nào",v:[["Toán","thích môn Toán"],["Văn","thích môn Văn"],["Anh","thích môn Anh"],["Sử","thích môn Sử"]]},{ask:"có sở thích gì",v:[["bóng đá","chơi bóng đá"],["cờ vua","chơi cờ vua"],["bơi","đi bơi"],["vẽ","học vẽ"]]}]);
+  const A2=shuffle(CAT.v).slice(0,n);
+  const perms=a=>a.length<2?[a]:a.flatMap((x,i)=>perms([...a.slice(0,i),...a.slice(i+1)]).map(p=>[x,...p]));
+  const P=perms([...Array(n).keys()]),sol={a:shuffle([...Array(n).keys()]),b:shuffle([...Array(n).keys()])};
+  const facts=[];
+  for(let i=0;i<n;i++)for(let j=0;j<n;j++){
+    facts.push({t:`${people[i]} ${sol.a[i]===j?"":"không "}${A1[j][1]}.`,f:(a,b)=>(a[i]===j)===(sol.a[i]===j)});
+    facts.push({t:`${people[i]} ${sol.b[i]===j?"":"không "}${A2[j][1]}.`,f:(a,b)=>(b[i]===j)===(sol.b[i]===j)});
+    const pi=sol.a.indexOf(j);/* người mặc A1[j] */
+    for(let k=0;k<n;k++)facts.push({t:`Người ${A1[j][1]} ${sol.b[pi]===k?"":"không "}${A2[k][1]}.`,f:(a,b)=>(b[a.indexOf(j)]===k)===(sol.b[pi]===k)});
+  }
+  const pool=shuffle(facts.filter(x=>d>=7?true:!/ không /.test(x.t)||Math.random()<.5));const clues=[];
+  let cand=[];P.forEach(a=>P.forEach(b=>cand.push([a,b])));
+  for(const f of pool){if(cand.length===1)break;const nc=cand.filter(([a,b])=>f.f(a,b));if(nc.length<cand.length&&nc.length>=1){cand=nc;clues.push(f.t)}}
+  if(cand.length!==1)return null;
+  const qi=Rn(0,n-1),type=Rn(0,2);
+  if(type===0){const j=sol.b[qi];return{people,clues:shuffle(clues),q:`Ai ${A2[j][1]}?`,ans:people[qi],opts:shuffle(people.slice())}}
+  if(type===1)return{people,clues:shuffle(clues),q:`${people[qi]} mặc áo màu gì?`,ans:A1[sol.a[qi]][0],opts:shuffle(A1.map(x=>x[0]))};
+  const j=sol.a[qi];return{people,clues:shuffle(clues),q:`Người ${A1[j][1]} ${CAT.ask}?`,ans:A2[sol.b[qi]][0],opts:shuffle(A2.map(x=>x[0]))};
+}
+Object.assign(TT,{
+ dayso:{n:"Dãy số bí ẩn",em:"🔢",lv:3,d:"Tìm quy luật, đoán số tiếp theo",skill:"Tìm quy luật",min:4,big:1,
+  play(st,d,api){const {s,n,why}=ttSeq(d);ttMcq(st,`<div class="prompt">🔢 Mật mã két sắt là số tiếp theo của dãy:</div><div class="cipher">${s.join(", ")}, <span class="blank">?</span></div>`,pickOpts(String(n),[n+1,n-1,n+2,n*2,n-2,n+5].filter(x=>x>0&&x!==n).map(String)),String(n),api,`Số tiếp theo là ${n} (${why}).`)}},
+ noithat:{n:"Ai nói thật?",em:"🗣️",lv:3,d:"Người thật thà luôn nói thật, kẻ nói dối luôn nói sai",skill:"Logic mệnh đề",min:5,big:1,
+  play(st,d,api){let p=null;for(let i=0;i<20&&!p;i++)p=ttKnights(d);if(!p)return TT.dayso.play(st,d,api);
+   ttMcq(st,`<div class="prompt">🗣️ Trên đảo có hai loại người: <b>thật thà</b> (luôn nói thật) và <b>nói dối</b> (luôn nói sai). Thám tử nghe được:</div>
+     <div class="clues"><ol>${p.sts.map(s=>`<li><b>${p.names[s.sp]}:</b> «${esc(s.t)}»</li>`).join("")}</ol></div><div class="prompt">Ai là người nói thật?</div>`,
+     p.opts,p.ans,api,`Đáp án: <b>${esc(p.ans)}</b>. Thử giả sử từng người nói thật rồi kiểm tra có mâu thuẫn không.`)}},
+ luoi:{n:"Lưới logic",em:"🧩",lv:3,d:"Ghép người – màu áo – sở thích từ manh mối",skill:"Suy luận nhiều bước",min:5,big:1,
+  play(st,d,api){let p=null;for(let i=0;i<30&&!p;i++)p=ttGrid(d);if(!p)return TT.dayso.play(st,d,api);
+   ttMcq(st,`<div class="prompt">🧩 Mỗi bạn mặc một màu áo khác nhau và có một sở thích khác nhau. Manh mối:</div>
+     <div class="clues"><ol>${p.clues.map(c=>`<li>${esc(c)}</li>`).join("")}</ol><small class="muted">Mẹo: kẻ bảng, đánh ✗ vào ô không thể, ✓ vào ô chắc chắn.</small></div><div class="prompt">${esc(p.q)}</div>`,
+     p.opts,p.ans,api,`Đáp án: <b>${esc(p.ans)}</b>.`)}}
+});
+TTL.push({name:"THCS",em:"🏫",age:"Lớp 6–9"},{name:"THPT",em:"🎓",age:"Lớp 10–12"});
 const ttTypes=li=>Object.keys(TT).filter(k=>!(TT[k].min>li)).sort((a,b)=>TT[a].lv-TT[b].lv);
 const ttDone=li=>{const d=P().done["tt-"+li]||{};return ttTypes(li).filter(k=>d[k]).length};
 const ttSolved=()=>TTL.reduce((s,L,li)=>s+ttDone(li),0);
@@ -2869,7 +3303,7 @@ function ttCase(type,li){
   render(shell(`${T.em} ${T.n} · ${TTL[li].name}`,back,rounds));
   let r=0,score=0;
   const play=()=>{
-    setProg(r);let miss=false,fin=false;const d=Math.min(5,li+(r===rounds-1?1:0));
+    setProg(r);let miss=false,fin=false;const df=li+(r===rounds-1?1:0),d=T.big?Math.min(8,df):Math.min(5,df);
     const st=$("#stage");st.innerHTML="";
     T.play(st,d,{
       ok(){if(fin)return;fin=true;if(!miss){score++;$("#gs").textContent=score}sGood();sayVi(pk(["Giỏi lắm!","Phá án thành công!","Thám tử tài ba!","Chính xác!"]));
@@ -2890,14 +3324,12 @@ function ttHome(){
   <section class="card row" style="justify-content:space-between">
     <div><div class="eyebrow">Huy hiệu của ${esc(P().name)}</div><h2 style="font-size:1.5rem">${re} ${rn}</h2><span class="muted">Đã phá ${s} vụ án. Thám tử nhí: 10 vụ · Thám tử giỏi: 24 vụ · Siêu thám tử: 40 vụ.</span></div>
   </section>
-  <section><div class="islands">
-    ${TTL.map((L,li)=>{const n=ttTypes(li).length,dn=ttDone(li);return`<button class="island" style="--c:${lvColor(li)}" data-go="tt-lv-${li}">
+  <section>${capSections(TTL.map((L,li)=>({...L,cap:li<6?1:li===6?2:3})),(L,li)=>{const n=ttTypes(li).length,dn=ttDone(li);return`<button class="island" style="--c:${lvColor(li)}" data-go="tt-lv-${li}">
       <div class="top"><span class="em">${L.em}</span><span class="badge">${L.age}</span></div>
       <h3>Thám tử ${L.name}</h3><span class="muted">${ttTypes(li).map(k=>TT[k].em+" "+TT[k].n).join(" · ")}</span>
-      <div class="bar"><i style="width:${Math.round(dn/n*100)}%"></i></div><small class="muted"><b>${dn}/${n}</b> vụ án đã phá</small></button>`}).join("")}
-  </div></section>
+      <div class="bar"><i style="width:${Math.round(dn/n*100)}%"></i></div><small class="muted"><b>${dn}/${n}</b> vụ án đã phá</small></button>`})}</section>
   <section class="card"><h2 style="font-size:1.2rem">Dành cho phụ huynh</h2>
-    <ul class="tips"><li><b>Quan sát, tập trung:</b> Tìm bạn sinh đôi, Hai bức ảnh khác nhau, Tìm đồ thất lạc.</li><li><b>Ghi nhớ:</b> Ai vắng mặt? (thời gian ghi nhớ ngắn dần theo cấp).</li><li><b>Định hướng, làm theo chỉ dẫn:</b> Lần theo dấu chân.</li><li><b>Tư duy logic:</b> Giải mật thư (từ Lớp 1), Ai là thủ phạm?, Ai đứng đầu? (từ Lớp 2).</li><li>Có thể dùng thay cho thời gian xem điện thoại giải trí: 10–15 phút mỗi ngày, bé tự phá một vụ án.</li></ul></section>`);
+    <ul class="tips"><li><b>Quan sát, tập trung:</b> Tìm bạn sinh đôi, Hai bức ảnh khác nhau, Tìm đồ thất lạc.</li><li><b>Ghi nhớ:</b> Ai vắng mặt? (thời gian ghi nhớ ngắn dần theo cấp).</li><li><b>Manh mối trong tranh:</b> Bóng ai thế?, Nhà của ai?, Ai còn thiếu?, Ai để lại dấu vết? — nhìn chi tiết nhỏ rồi suy ra câu trả lời; lớp lớn có bóng bị che một phần, nhiều nghi phạm và lời nhân chứng.</li><li><b>Định hướng, làm theo chỉ dẫn:</b> Lần theo dấu chân.</li><li><b>Tư duy logic:</b> Giải mật thư (từ Lớp 1), Ai là thủ phạm?, Ai đứng đầu? (từ Lớp 2).</li><li>Có thể dùng thay cho thời gian xem điện thoại giải trí: 10–15 phút mỗi ngày, bé tự phá một vụ án.</li></ul></section>`);
 }
 function ttLevel(li){
   const L=TTL[li];if(!L)return ttHome();const d=P().done["tt-"+li]||{};
@@ -2910,8 +3342,8 @@ function ttLevel(li){
 function ttRoute(h){
   let m;
   if(h==="tt")return ttHome();
-  if(m=h.match(/^tt-lv-(\d)$/))return ttLevel(+m[1]);
-  if(m=h.match(/^tt-g-([a-z]+)-(\d)$/)){const li=+m[2];if(TT[m[1]]&&TTL[li]&&ttTypes(li).includes(m[1]))return ttCase(m[1],li);return ttLevel(li)}
+  if(m=h.match(/^tt-lv-(\d+)$/))return ttLevel(+m[1]);
+  if(m=h.match(/^tt-g-([a-z]+)-(\d+)$/)){const li=+m[2];if(TT[m[1]]&&TTL[li]&&ttTypes(li).includes(m[1]))return ttCase(m[1],li);return ttLevel(li)}
   ttHome();
 }
 
@@ -3096,8 +3528,8 @@ function hBoard(tp,lang,li){
   $("#hstop").onclick=stop;
 }
 function hRoute(h){let m;
-  if(m=h.match(/^(hinh|convat|cothe)-(en|vi)-(\d)$/))return hBoard(m[1],m[2],+m[3]);
-  if(m=h.match(/^(hinh|convat|cothe)-g-(en|vi)-([a-z]+)-(\d)$/)){const li=+m[4];if(HA[m[3]]&&hActs(li).includes(m[3]))return hPlay(m[1],m[2],m[3],li);return hBoard(m[1],m[2],li)}
+  if(m=h.match(/^(hinh|convat|cothe)-(en|vi)-(\d+)$/))return hBoard(m[1],m[2],+m[3]);
+  if(m=h.match(/^(hinh|convat|cothe)-g-(en|vi)-([a-z]+)-(\d+)$/)){const li=+m[4];if(HA[m[3]]&&hActs(li).includes(m[3]))return hPlay(m[1],m[2],m[3],li);return hBoard(m[1],m[2],li)}
   go("");
 }
 
@@ -3123,7 +3555,7 @@ function program(){
   <div class="row" style="margin-top:12px"><button class="chip on">🏝️ Tiếng Anh</button><button class="chip" data-go="tv-chuong-trinh">🌾 Tiếng Việt</button><button class="chip" data-go="toan-chuong-trinh">🔢 Toán</button></div>
   <section>
     <div class="eyebrow">Dành cho phụ huynh và thầy cô</div>
-    <h1 style="font-size:clamp(1.8rem,5vw,2.4rem)">Chương trình học Mầm non – Lớp 5</h1>
+    <h1 style="font-size:clamp(1.8rem,5vw,2.4rem)">Chương trình Tiếng Anh Mầm non – Lớp 12</h1>
     <p class="muted" style="max-width:68ch">6 cấp độ, mỗi cấp 6 bài cơ bản và 3 bài nâng cao, tổng cộng <b>${LEVELS.reduce((s,L)=>s+L.units.length,0)} bài</b> và <b>${total} từ vựng</b> kèm mẫu câu. Chủ đề đi từ gần gũi (màu sắc, con vật, gia đình) đến mở rộng (lễ hội, môi trường, an toàn giao thông). Mỗi bài học trong khoảng một tuần.</p>
   </section>
   <section class="card">
@@ -3139,7 +3571,7 @@ function program(){
     <div class="meta"><div><b>Độ tuổi</b>${L.age}</div><div><b>Thời lượng</b>${L.time}</div><div><b>Kỹ năng</b>${L.skills}</div></div>
     <div style="margin:8px 0"><b>Một buổi học mẫu (${L.plan.reduce((s,p)=>s+p[1],0)} phút):</b> <div class="pat" style="margin-top:4px">${L.plan.map(p=>`<span>${p[0]} · ${p[1]} phút</span>`).join("")}</div></div>
     <div style="margin:8px 0"><b>Mẫu câu trọng tâm:</b> <div class="pat" style="margin-top:4px">${L.grammar.map(g=>`<span>${esc(g)}</span>`).join("")}</div></div>
-    <div style="margin:8px 0"><b>🚀 Nâng cao:</b> ${L.advGoal} <div class="pat" style="margin-top:4px">${L.advGrammar.map(g=>`<span>${esc(g)}</span>`).join("")}</div></div>
+    ${L.advGoal?`<div style="margin:8px 0"><b>🚀 Nâng cao:</b> ${L.advGoal} <div class="pat" style="margin-top:4px">${L.advGrammar.map(g=>`<span>${esc(g)}</span>`).join("")}</div></div>`:""}
     <div class="tbl"><table><thead><tr><th>Bài</th><th>Chủ đề</th><th>Tiếng Việt</th><th style="text-align:right">Số từ</th></tr></thead>
     <tbody>${L.units.map((u,ui)=>`<tr${u.adv?' class="advrow"':""}><td>${u.adv?"🚀 NC"+(ui-basicUnits(L).length+1):ui+1}</td><td><b>${esc(u.t)}</b></td><td>${esc(u.vi)}</td><td class="num">${u.words.length}</td></tr>`).join("")}</tbody></table></div>
   </section>`).join("")}
