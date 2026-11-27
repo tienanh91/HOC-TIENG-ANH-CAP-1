@@ -1,12 +1,4 @@
-<!doctype html>
-<html lang="vi">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-</head>
-<body>
-<title>Đảo Học Vui</title>
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Đảo Học Vui</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap">
@@ -223,6 +215,18 @@ ul.tips a{color:var(--sky)}
 .strictrow{display:flex;gap:10px;align-items:flex-start;margin:6px 0 4px;padding:10px 12px;border:2px solid var(--line);border-radius:14px;background:var(--soft);cursor:pointer}
 .strictrow input{width:22px;height:22px;margin-top:2px;flex:none;accent-color:var(--leaf)}
 /* trang đầu, Tiếng Việt, Cửu chương */
+.snthemes{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.sntheme{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px 10px;border-radius:18px;border:2px solid var(--line,#ddd);background:var(--card,#fff);color:inherit;font:inherit;cursor:pointer;text-align:center}
+.sntheme .em{font-size:2.6rem;line-height:1}.sntheme:hover{transform:translateY(-2px)}
+.sntop{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:14px 0}
+.snmodes .chip{cursor:pointer}.snmodes .chip.on{outline:3px solid var(--berry)}
+.sngrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.sncard{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 6px;border-radius:20px;border:3px solid transparent;background:var(--card,#fff);box-shadow:0 2px 8px #0001;color:inherit;font:inherit;cursor:pointer;min-height:150px;justify-content:center}
+.sncard b{font-size:1.05rem}.sncard small{opacity:.75}.sncard small.en{color:var(--sky);font-weight:700;opacity:1}
+.sncard.on{border-color:var(--sun);transform:scale(1.05)}.sncard.good{border-color:var(--leaf)}
+.snpic{line-height:1.1}.snbig{font-size:1.8rem;font-weight:800;color:var(--berry)}
+.snquiz{margin-bottom:12px}
+@media (max-width:620px){.sngrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.sncard{min-height:120px;padding:8px 2px}.sncard .snpic{font-size:44px!important}.snmodes .lbl{display:none}.snthemes{grid-template-columns:repeat(2,1fr)}}
 .hubgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
 @media (max-width:620px){.hubgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   .hubisland{padding:12px 12px 10px}.hubisland .em{font-size:2.4rem}.hubisland h3{font-size:1.15rem}.hubisland .badge{font-size:.7rem;padding:1px 6px}
@@ -849,6 +853,7 @@ function route(){
   if(/^toan(-|$)/.test(h))return mRoute(h);
   if(/^tt(-|$)/.test(h))return ttRoute(h);
   if(/^ls(-|$)/.test(h))return lsRoute(h);
+  if(h==="sach"||/^sach-/.test(h))return snRoute(h);
   if(/^(hinh|convat|cothe)-/.test(h))return hRoute(h);
   if(h==="nhan-dan")return stickers();
   if(h==="chuong-trinh")return program();
@@ -2262,6 +2267,12 @@ function hub(){
       <span class="muted hubdesc">Dựng nước và giữ nước, danh nhân, văn minh thế giới · địa lí Việt Nam cập nhật 2025</span>
       <div class="bar"><i style="width:${Math.round(LSLEVELS.reduce((s,L,i)=>s+lsPct(i),0)/LSLEVELS.length)}%"></i></div>
       <small class="muted"><b>${Math.round(LSLEVELS.reduce((s,L,i)=>s+lsPct(i),0)/LSLEVELS.length)}%</b> hoàn thành</small>
+    </button>
+    <button class="island hubisland" style="--c:var(--berry)" data-go="sach">
+      <div class="top"><span class="em">📚</span><span class="badge">Việt – Anh</span></div>
+      <h3>Sách nói song ngữ</h3>
+      <span class="muted hubdesc">Chạm hình để nghe tiếng Việt, tiếng Anh · 20 chủ đề, chữ cái, đồng dao · đố tìm</span>
+      <small class="muted"><b>20</b> chủ đề · <b>300+</b> từ</small>
     </button>
   </section>
   <section class="card note26">
@@ -3794,7 +3805,113 @@ function profileModal(){
 }
 
 route();
-</script>
+/* ======================================================================
+   SÁCH NÓI SONG NGỮ VIỆT – ANH: chạm hình để nghe, 4 chế độ, đố tìm
+   ====================================================================== */
+const SN_FRUIT="apple|🍎|quả táo;banana|🍌|quả chuối;orange|🍊|quả cam;mango|🥭|quả xoài;grapes|🍇|chùm nho;watermelon|🍉|dưa hấu;pineapple|🍍|quả dứa;strawberry|🍓|dâu tây;coconut|🥥|quả dừa;cherries|🍒|anh đào;lemon|🍋|quả chanh;peach|🍑|quả đào;pear|🍐|quả lê;kiwi|🥝|quả kiwi;melon|🍈|dưa lưới;avocado|🥑|quả bơ;blueberries|🫐|việt quất;green apple|🍏|táo xanh";
+const SN_ABC="A|apple|🍎|quả táo;B|ball|⚽|quả bóng;C|cat|🐱|con mèo;D|dog|🐶|con chó;E|egg|🥚|quả trứng;F|fish|🐟|con cá;G|grapes|🍇|chùm nho;H|hat|👒|cái mũ;I|ice cream|🍦|kem;J|juice|🧃|nước ép;K|kite|🪁|cái diều;L|lion|🦁|sư tử;M|monkey|🐒|con khỉ;N|nose|👃|cái mũi;O|orange|🍊|quả cam;P|pig|🐷|con heo;Q|queen|👸|nữ hoàng;R|rabbit|🐰|con thỏ;S|sun|☀️|mặt trời;T|tiger|🐯|con hổ;U|umbrella|☂️|cái ô;V|violin|🎻|đàn vi-ô-lông;W|watermelon|🍉|dưa hấu;X|fox|🦊|con cáo (chữ x ở cuối từ);Y|yo-yo|🪀|con quay yo-yo;Z|zebra|🦓|ngựa vằn";
+const SN_NUM=["một","hai","ba","bốn","năm","sáu","bảy","tám","chín","mười"],SN_NUMEN=["one","two","three","four","five","six","seven","eight","nine","ten"],SN_KEY=["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣","🔟"];
+const SN_HOME="bed|🛏️|cái giường;chair|🪑|cái ghế;sofa|🛋️|ghế sô-pha;door|🚪|cửa ra vào;window|🪟|cửa sổ;lamp|💡|cái đèn;clock|🕰️|đồng hồ;television|📺|ti vi;toilet|🚽|bồn cầu;bathtub|🛁|bồn tắm;mirror|🪞|cái gương;broom|🧹|cái chổi;spoon|🥄|cái thìa;bowl|🥣|cái bát;teapot|🫖|ấm trà;key|🔑|chìa khóa";
+const SN_FOOD="rice|🍚|cơm;bread|🍞|bánh mì;noodles|🍜|mì, phở;egg|🥚|quả trứng;milk|🥛|sữa;water|💧|nước;cake|🍰|bánh ngọt;soup|🍲|canh, súp;chicken|🍗|thịt gà;fish|🐟|cá;cheese|🧀|phô mai;ice cream|🍦|kem;cookie|🍪|bánh quy;pizza|🍕|bánh pizza;sandwich|🥪|bánh kẹp;honey|🍯|mật ong";
+const SN_SCHOOL="book|📕|quyển sách;notebook|📓|quyển vở;pencil|✏️|bút chì;pen|🖊️|bút mực;ruler|📏|thước kẻ;crayon|🖍️|bút sáp;scissors|✂️|cái kéo;school bag|🎒|cặp sách;paintbrush|🖌️|cọ vẽ;paper clip|📎|kẹp giấy;calculator|🧮|bàn tính;globe|🌏|quả địa cầu";
+const SN_RHYMES=[
+ {t:"Twinkle, Twinkle, Little Star",lang:"en",em:"⭐",lines:["Twinkle, twinkle, little star,","How I wonder what you are!","Up above the world so high,","Like a diamond in the sky.","Twinkle, twinkle, little star,","How I wonder what you are!"],note:"Bài hát ru tiếng Anh cổ (dân gian)"},
+ {t:"Baa, Baa, Black Sheep",lang:"en",em:"🐑",lines:["Baa, baa, black sheep,","Have you any wool?","Yes sir, yes sir,","Three bags full!"],note:"Đồng dao tiếng Anh cổ (dân gian)"},
+ {t:"Row, Row, Row Your Boat",lang:"en",em:"🚣",lines:["Row, row, row your boat,","Gently down the stream.","Merrily, merrily, merrily, merrily,","Life is but a dream."],note:"Bài hát tiếng Anh cổ (dân gian)"},
+ {t:"Dung dăng dung dẻ",lang:"vi",em:"👫",lines:["Dung dăng dung dẻ","Dắt trẻ đi chơi","Đến ngõ nhà trời","Lạy cậu lạy mợ","Cho cháu về quê","Cho dê đi học","Cho cóc ở nhà","Cho gà bới bếp","Ngồi xệp xuống đây"],note:"Đồng dao Việt Nam"},
+ {t:"Nu na nu nống",lang:"vi",em:"🦶",lines:["Nu na nu nống","Cái cống nằm trong","Cái ong nằm ngoài","Củ khoai chấm mật","Phật ngồi phật khóc","Con cóc nhảy ra","Con gà ú ụ","Nhà mụ thổi xôi","Nhà tôi nấu chè","Tay xòe chân rụt"],note:"Đồng dao Việt Nam"},
+ {t:"Chi chi chành chành",lang:"vi",em:"✋",lines:["Chi chi chành chành","Cái đanh thổi lửa","Con ngựa chết trương","Ba vương ngũ đế","Chấp chế đi tìm","Ù à ù ập"],note:"Đồng dao Việt Nam"}];
+const snParse=(s,f=([en,pic,vi])=>({en,pic,vi}))=>s.split(";").map(x=>f(x.split("|")));
+const snUnit=t=>{for(const L of LEVELS)for(const u of L.units)if(u.t===t)return u.words.map(w=>({en:w.en,vi:w.vi,pic:w.pic}));return[]};
+const snAni=g=>ANIMAL_DATA.filter(a=>a[7]===g).map(a=>({en:a[0],vi:a[1],pic:a[2]}));
+let SN_CACHE=null;
+function snThemes(){
+  if(SN_CACHE)return SN_CACHE;
+  const vnLetters=VLEVELS[0].units.flatMap(u=>u.L.split(";").map(x=>x.split("|"))).map(([ch,name,pic,ex])=>({big:`${ch.toUpperCase()} ${ch}`,pic,vi:`chữ ${name}`,sub:ex,sayVi:`chữ ${name}. ${ex}`,en:null}));
+  SN_CACHE=[
+   {id:"chuvn",t:"Chữ cái tiếng Việt",em:"🔤",items:vnLetters,viOnly:1},
+   {id:"abc",t:"Alphabet · Chữ cái tiếng Anh",em:"🅰️",items:snParse(SN_ABC,([L,en,pic,vi])=>({big:`${L} ${L.toLowerCase()}`,pic,en,vi,sayEn:`${L}. ${L} is for ${en}.`,sayVi:`chữ ${L}, ${vi}`}))},
+   {id:"so",t:"Số đếm · Numbers",em:"🔢",items:SN_KEY.map((k,i)=>({pic:k,vi:SN_NUM[i],en:SN_NUMEN[i]}))},
+   {id:"mau",t:"Màu sắc · Colours",em:"🎨",items:snUnit("Colors")},
+   {id:"hinh",t:"Hình dạng · Shapes",em:"🔷",items:HLV.slice(0,2).flat().map(id=>({svg:id,en:SHAPES[id].en,vi:SHAPES[id].vi}))},
+   {id:"traicay",t:"Trái cây · Fruits",em:"🍓",items:snParse(SN_FRUIT)},
+   {id:"rau",t:"Rau củ · Vegetables",em:"🥕",items:snUnit("Vegetables")},
+   {id:"nuoi",t:"Vật nuôi · Farm animals",em:"🐮",items:snAni("nuoi")},
+   {id:"rung",t:"Thú hoang dã · Wild animals",em:"🦁",items:snAni("rung")},
+   {id:"chim",t:"Các loài chim · Birds",em:"🦜",items:snAni("chim")},
+   {id:"bien",t:"Dưới nước · Sea animals",em:"🐬",items:snAni("nuoc")},
+   {id:"contrung",t:"Côn trùng · Bugs",em:"🐞",items:snAni("contrung").concat(snAni("bosat"))},
+   {id:"xe",t:"Phương tiện · Transport",em:"🚌",items:snUnit("Transport")},
+   {id:"nghe",t:"Nghề nghiệp · Jobs",em:"🧑‍🚒",items:snUnit("Jobs").concat(snUnit("More jobs"))},
+   {id:"cothe",t:"Cơ thể · Body",em:"🧒",items:BODY_DATA.slice(0,15).map(([en,vi,pic])=>({en,vi,pic}))},
+   {id:"quanao",t:"Quần áo · Clothes",em:"👕",items:snUnit("Clothes")},
+   {id:"thoitiet",t:"Thời tiết · Weather",em:"🌦️",items:snUnit("Weather").concat(snUnit("Seasons and time").slice(0,4))},
+   {id:"nha",t:"Đồ dùng trong nhà · Home",em:"🏠",items:snParse(SN_HOME)},
+   {id:"doan",t:"Đồ ăn · Food",em:"🍚",items:snParse(SN_FOOD)},
+   {id:"truong",t:"Đồ dùng học tập · School",em:"🎒",items:snParse(SN_SCHOOL)}];
+  SN_CACHE.forEach(t=>{const seen=new Set();t.items=t.items.filter(it=>{const k=it.pic||it.svg;if(seen.has(k))return false;seen.add(k);return true})});
+  return SN_CACHE;
+}
+let SN_MODE="bi";
+const snPic=(it,sz)=>it.svg?hSvg(it.svg,sz):it.big?`<span class="snbig">${esc(it.big)}</span><span class="snpic" style="font-size:${Math.round(sz*.5)}px">${it.pic}</span>`:`<span class="snpic" style="font-size:${Math.round(sz*.7)}px">${it.pic}</span>`;
+async function snSpeak(it,mode){
+  const vi=it.sayVi||it.vi,en=it.sayEn||it.en;
+  if(mode==="vi"||!en)return sayViP(vi);
+  if(mode==="en")return sayP(en,.8);
+  await sayP(en,.8);await wait(200);return sayViP(vi);
+}
+function snHome(){
+  const T=snThemes(),total=T.reduce((s,t)=>s+t.items.length,0);
+  render(`
+  <button class="btn ghost sm back" data-go="">← Trang đầu</button>
+  <div class="lvhead" style="--c:var(--berry)"><div class="em">📚</div>
+    <div style="min-width:0;flex:1"><div class="eyebrow">Việt – Anh · ${T.length} chủ đề · ${total} từ</div><h1>Sách nói song ngữ</h1>
+    <p class="muted" style="margin:4px 0 0;max-width:62ch">Chạm vào hình để nghe tên bằng tiếng Việt, tiếng Anh hoặc cả hai. Chế độ ❓ Đố tìm: Cú Bông đọc tên, bé chạm đúng hình.</p></div></div>
+  <section><div class="snthemes">${T.map(t=>`<button class="sntheme" data-go="sach-${t.id}"><span class="em">${t.em}</span><b>${esc(t.t)}</b><small>${t.items.length} từ</small></button>`).join("")}
+    <button class="sntheme" data-go="sach-dongdao"><span class="em">🎵</span><b>Đồng dao · Nursery rhymes</b><small>${SN_RHYMES.length} bài</small></button></div></section>`);
+}
+function snTheme(id){
+  if(id==="dongdao")return snRhymes();
+  const T=snThemes(),th=T.find(t=>t.id===id);if(!th)return snHome();
+  const modes=[["vi","VI","Tiếng Việt"],["en","EN","English"],["bi","VI+EN","Song ngữ"],["quiz","❓","Đố tìm"]].filter(m=>!(th.viOnly&&(m[0]==="en"||m[0]==="bi")));
+  if(th.viOnly&&(SN_MODE==="en"||SN_MODE==="bi"))SN_MODE="vi";
+  const i=T.indexOf(th),prev=T[(i-1+T.length)%T.length],next=T[(i+1)%T.length];
+  render(`
+  <button class="btn ghost sm back" data-go="sach">← Sách nói song ngữ</button>
+  <div class="sntop"><h1 style="font-size:clamp(1.4rem,5vw,2rem)">${th.em} ${esc(th.t)}</h1>
+    <div class="row snmodes">${modes.map(([k,l,d])=>`<button class="chip ${SN_MODE===k?"on":""}" data-m="${k}" title="${d}"><b>${l}</b> <span class="lbl">${d}</span></button>`).join("")}</div></div>
+  <div id="snq" class="card snquiz" hidden></div>
+  <section><div class="sngrid">${th.items.map((it,k)=>`<button class="sncard" data-k="${k}">${snPic(it,86)}<b>${esc(it.vi)}</b>${it.sub?`<small>${esc(it.sub)}</small>`:""}${it.en?`<small class="en">${esc(it.en)}</small>`:""}</button>`).join("")}</div></section>
+  <section class="row" style="justify-content:space-between"><button class="btn ghost" data-go="sach-${prev.id}">◀ ${prev.em} ${esc(prev.t.split(" · ")[0])}</button><button class="btn ghost" data-go="sach-${next.id}">${next.em} ${esc(next.t.split(" · ")[0])} ▶</button></section>`);
+  const cards=[...document.querySelectorAll(".sncard")];let target=-1,run=0,got=0;
+  const stop=()=>{run++;try{speechSynthesis.cancel()}catch(e){}stopVi()};stopMedia=stop;
+  const ask=()=>{target=Math.random()*th.items.length|0;const it=th.items[target],useEn=!th.viOnly&&Math.random()<.5;
+    const say=useEn?`Find the ${it.en}`:`Tìm ${it.vi}`;$("#snq").hidden=false;
+    $("#snq").innerHTML=`<div class="row" style="justify-content:space-between"><span class="prompt" style="margin:0">❓ ${esc(say)}</span><span class="row"><button class="btn sm" style="--c:var(--sky)" id="snrep">🔊</button><span class="chip">⭐ ${got}</span></span></div>`;
+    $("#snrep").onclick=()=>useEn?say&&sayP(say,.8):sayViP(say);useEn?sayP(say,.8):sayViP(say)};
+  const setMode=m=>{SN_MODE=m;document.querySelectorAll(".snmodes .chip").forEach(c=>c.classList.toggle("on",c.dataset.m===m));
+    if(m==="quiz"){got=0;ask()}else{$("#snq").hidden=true;target=-1}};
+  document.querySelectorAll(".snmodes .chip").forEach(c=>c.onclick=()=>{stop();setMode(c.dataset.m)});
+  cards.forEach(c=>c.onclick=()=>{const k=+c.dataset.k,it=th.items[k];
+    if(SN_MODE==="quiz"){if(target<0)return;
+      if(k===target){c.classList.remove("pop");void c.offsetWidth;c.classList.add("pop","good");sGood();got++;addStars(1);snSpeak(it,th.viOnly?"vi":"bi");setTimeout(()=>{c.classList.remove("good");ask()},1600)}
+      else{bump(c);sBad()}return}
+    stop();cards.forEach(x=>x.classList.toggle("on",x===c));snSpeak(it,SN_MODE).then(()=>c.classList.remove("on"))});
+  if(SN_MODE==="quiz")ask();
+}
+function snRhymes(){
+  render(`
+  <button class="btn ghost sm back" data-go="sach">← Sách nói song ngữ</button>
+  <h1 style="font-size:clamp(1.5rem,5vw,2.1rem);margin-top:14px">🎵 Đồng dao · Nursery rhymes</h1>
+  <p class="muted">Bấm ▶ để nghe đọc, dòng đang đọc sẽ sáng lên. Đọc theo nhịp, vừa đọc vừa vỗ tay nhé!</p>
+  ${SN_RHYMES.map((r,i)=>`<section class="card poem"><div class="row" style="justify-content:space-between"><h2 style="font-size:1.25rem">${r.em} ${esc(r.t)}</h2><button class="btn sm" style="--c:var(--leaf)" data-r="${i}">▶ Đọc</button></div>
+    <div class="poemlines" id="rh${i}">${r.lines.map(l=>`<div class="pl">${esc(l)}</div>`).join("")}</div><small class="muted">${r.note}</small></section>`).join("")}`);
+  let run=0;const stop=()=>{run++;try{speechSynthesis.cancel()}catch(e){}stopVi();document.querySelectorAll(".pl.on").forEach(x=>x.classList.remove("on"))};stopMedia=stop;
+  document.querySelectorAll("[data-r]").forEach(b=>b.onclick=async()=>{stop();const my=run,r=SN_RHYMES[+b.dataset.r],rows=[...document.querySelectorAll(`#rh${b.dataset.r} .pl`)];
+    for(let i=0;i<r.lines.length;i++){rows.forEach((x,k)=>x.classList.toggle("on",k===i));await (r.lang==="en"?sayP(r.lines[i],.8):sayViP(r.lines[i],.85));if(my!==run)return;await wait(200)}rows.forEach(x=>x.classList.remove("on"))});
+}
+function snRoute(h){const m=h.match(/^sach-([a-z]+)$/);if(m)return snTheme(m[1]);snHome()}
 
-</body>
-</html>
+
+</script>
+</body></html>
