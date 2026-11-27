@@ -333,6 +333,8 @@ ul.tips a{color:var(--sky)}
 .dslist{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
 .dsi{display:inline-flex;flex-direction:column;align-items:center;font-size:1.9rem;line-height:1.1;min-width:58px}
 .dsi small{font-size:.72rem;color:var(--muted)}
+.note26{border-color:var(--orange);background:color-mix(in srgb,var(--sun) 12%,var(--card))}
+.note26 .tips{margin:6px 0}
 .caph{font-size:1.3rem;margin:22px 0 10px;padding-bottom:6px;border-bottom:2px dashed var(--line)}
 /* Bảng hình */
 .pbgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
@@ -622,75 +624,101 @@ LEVELS.forEach((L,li)=>L.units.forEach((u,ui)=>{
 /* ================== TIẾNG ANH THCS – THPT (Lớp 6–12) ================== */
 LEVELS.push(
 {id:"l6",name:"Lớp 6",em:"🏙️",age:"11–12 tuổi",time:"30–40 phút/ngày",skills:"Nghe · Nói · Đọc · Viết đoạn",cap:2,
- goal:"Mô tả khu phố, kỳ quan thiên nhiên, chương trình ti vi. Hiện tại đơn và tiếp diễn, so sánh hơn, must/mustn't. Hướng tới trình độ A2.",
+ goal:"Theo sách Tiếng Anh 6 Global Success. Mô tả khu phố, kỳ quan thiên nhiên, chương trình ti vi. Hiện tại đơn và tiếp diễn, so sánh hơn, must/mustn't. Hướng tới trình độ A2.",
  grammar:["There is/There are…","must / mustn't","so sánh hơn với tính từ ngắn","and, but, so"],plan:[["🃏 Từ vựng",10],["🎮 Trò chơi",10],["🧱 Mẫu câu",10],["🎙️ Luyện nói",5]],
  units:[
- {t:"My neighbourhood",vi:"Khu phố của em",em:"🏙️",w:"cinema|🎬|rạp chiếu phim;museum|🏛️|bảo tàng;railway station|🚉|nhà ga;cathedral|⛪|nhà thờ lớn;art gallery|🖼️|phòng tranh;temple|🛕|ngôi đền;stadium|🏟️|sân vận động;bakery|🥐|tiệm bánh",
+ {t:"My neighbourhood",vi:"Unit 4 · Khu phố của em",em:"🏙️",w:"cinema|🎬|rạp chiếu phim;museum|🏛️|bảo tàng;railway station|🚉|nhà ga;cathedral|⛪|nhà thờ lớn;art gallery|🖼️|phòng tranh;temple|🛕|ngôi đền;stadium|🏟️|sân vận động;bakery|🥐|tiệm bánh",
   s:["There is a big museum near my house.|Có một bảo tàng lớn gần nhà mình.","Is there a cinema in your neighbourhood?|Khu bạn ở có rạp chiếu phim không?","My street is quieter than the city centre.|Đường nhà mình yên tĩnh hơn trung tâm thành phố."]},
- {t:"Natural wonders",vi:"Kỳ quan thiên nhiên",em:"🌋",w:"mountain|⛰️|núi;volcano|🌋|núi lửa;island|🏝️|hòn đảo;desert|🏜️|sa mạc;forest|🌲|rừng;river|🏞️|dòng sông;beach|🏖️|bãi biển;rock|🪨|tảng đá",
+ {t:"Natural wonders of Viet Nam",vi:"Unit 5 · Kỳ quan thiên nhiên Việt Nam",em:"🌋",w:"mountain|⛰️|núi;volcano|🌋|núi lửa;island|🏝️|hòn đảo;desert|🏜️|sa mạc;forest|🌲|rừng;river|🏞️|dòng sông;beach|🏖️|bãi biển;rock|🪨|tảng đá",
   s:["Ha Long Bay is a natural wonder of Viet Nam.|Vịnh Hạ Long là một kỳ quan thiên nhiên của Việt Nam.","You must bring a map when you go hiking.|Bạn phải mang bản đồ khi đi bộ đường dài.","We mustn't leave rubbish in the forest.|Chúng ta không được để rác trong rừng."]},
- {t:"Television",vi:"Truyền hình",em:"📺",w:"cartoon|🎞️|phim hoạt hình;news|📰|tin tức;channel|📡|kênh truyền hình;comedy|😂|hài kịch;documentary|🎥|phim tài liệu;game show|🎯|trò chơi truyền hình;weather forecast|🌦️|dự báo thời tiết;remote control|🎛️|điều khiển từ xa",
-  s:["My favourite programme is a cartoon.|Chương trình mình thích nhất là phim hoạt hình.","What time does the news start?|Mấy giờ chương trình thời sự bắt đầu?","I watch TV, but I don't watch it all day.|Mình xem ti vi nhưng không xem cả ngày."]}]},
+ {t:"Our Tet holiday",vi:"Unit 6 · Tết của chúng mình",em:"🧧",w:"firework|🎆|pháo hoa;lucky money|🧧|tiền lì xì;peach blossom|🌸|hoa đào;chung cake|🟩|bánh chưng;family gathering|👪|sum họp gia đình;pagoda|🛕|ngôi chùa;calendar|📅|lịch;new clothes|👗|quần áo mới",
+  s:["We should clean our house before Tet.|Chúng ta nên dọn dẹp nhà cửa trước Tết.","Children often get lucky money at Tet.|Trẻ em thường được nhận lì xì vào dịp Tết.","We shouldn't break things at Tet.|Chúng ta không nên làm vỡ đồ vào dịp Tết."]},
+ {t:"Television",vi:"Unit 7 · Truyền hình",em:"📺",w:"cartoon|🎞️|phim hoạt hình;news|📰|tin tức;channel|📡|kênh truyền hình;comedy|😂|hài kịch;documentary|🎥|phim tài liệu;game show|🎯|trò chơi truyền hình;weather forecast|🌦️|dự báo thời tiết;remote control|🎛️|điều khiển từ xa",
+  s:["My favourite programme is a cartoon.|Chương trình mình thích nhất là phim hoạt hình.","What time does the news start?|Mấy giờ chương trình thời sự bắt đầu?","I watch TV, but I don't watch it all day.|Mình xem ti vi nhưng không xem cả ngày."]},
+ {t:"Sports and games",vi:"Unit 8 · Thể thao và trò chơi",em:"⚽",w:"football|⚽|bóng đá;volleyball|🏐|bóng chuyền;table tennis|🏓|bóng bàn;karate|🥋|võ karate;marathon|🏃|chạy ma-ra-tông;racket|🏸|cây vợt;goggles|🥽|kính bơi;chess|♟️|cờ vua",
+  s:["My brother played football yesterday.|Hôm qua anh trai mình đã chơi bóng đá.","Did you go swimming last weekend?|Cuối tuần trước bạn có đi bơi không?","Don't forget your racket.|Đừng quên vợt của bạn."]}]},
 {id:"l7",name:"Lớp 7",em:"🎨",age:"12–13 tuổi",time:"30–40 phút/ngày",skills:"Nghe · Nói · Đọc · Viết đoạn",cap:2,
- goal:"Sở thích, sống khỏe, giao thông. Thì quá khứ đơn, câu so sánh, động từ chỉ sở thích (enjoy, find…), should/shouldn't.",
+ goal:"Theo sách Tiếng Anh 7 Global Success. Sở thích, sống khỏe, giao thông, phim ảnh, năng lượng. Thì quá khứ đơn, câu so sánh, động từ chỉ sở thích (enjoy, find…), should/shouldn't.",
  grammar:["I enjoy / love + V-ing","should / shouldn't","It is … from A to B","quá khứ đơn"],plan:[["🃏 Từ vựng",10],["🎮 Trò chơi",10],["🧱 Mẫu câu",10],["🎙️ Luyện nói",5]],
  units:[
- {t:"Hobbies",vi:"Sở thích",em:"🎨",w:"gardening|🌱|làm vườn;collecting|🪙|sưu tầm;photography|📷|chụp ảnh;cooking|🍳|nấu ăn;fishing|🎣|câu cá;knitting|🧶|đan len;camping|🏕️|cắm trại;skateboarding|🛹|trượt ván",
+ {t:"Hobbies",vi:"Unit 1 · Sở thích",em:"🎨",w:"gardening|🌱|làm vườn;collecting|🪙|sưu tầm;photography|📷|chụp ảnh;cooking|🍳|nấu ăn;fishing|🎣|câu cá;knitting|🧶|đan len;camping|🏕️|cắm trại;skateboarding|🛹|trượt ván",
   s:["My hobby is collecting old coins.|Sở thích của mình là sưu tầm đồng xu cũ.","I find gardening very relaxing.|Mình thấy làm vườn rất thư giãn.","Do you enjoy going camping?|Bạn có thích đi cắm trại không?"]},
- {t:"Healthy living",vi:"Sống khỏe",em:"🥗",w:"vegetables|🥦|rau củ;exercise|🏋️|tập thể dục;sleep|😴|giấc ngủ;junk food|🍟|đồ ăn vặt;vitamin|💊|vi-ta-min;sunburn|☀️|cháy nắng;flu|🤧|bệnh cúm;water|💧|nước",
+ {t:"Healthy living",vi:"Unit 2 · Sống khỏe",em:"🥗",w:"vegetables|🥦|rau củ;exercise|🏋️|tập thể dục;sleep|😴|giấc ngủ;junk food|🍟|đồ ăn vặt;vitamin|💊|vi-ta-min;sunburn|☀️|cháy nắng;flu|🤧|bệnh cúm;water|💧|nước",
   s:["You should eat more vegetables.|Bạn nên ăn nhiều rau hơn.","Too much junk food is bad for your health.|Ăn quá nhiều đồ ăn vặt có hại cho sức khỏe.","I go to bed early, so I feel fresh in the morning.|Mình đi ngủ sớm nên buổi sáng thấy tỉnh táo."]},
- {t:"Traffic",vi:"Giao thông",em:"🚦",w:"traffic jam|🚙|tắc đường;road sign|🚸|biển báo giao thông;cycle lane|🚲|làn xe đạp;pedestrian|🚶|người đi bộ;zebra crossing|🦓|vạch qua đường;helmet|⛑️|mũ bảo hiểm;passenger|🧳|hành khách;driving licence|📄|bằng lái xe",
-  s:["It is about two kilometres from my house to school.|Từ nhà mình đến trường khoảng hai ki-lô-mét.","You should obey the traffic rules.|Bạn nên tuân thủ luật giao thông.","Always wear a helmet when you ride a motorbike.|Luôn đội mũ bảo hiểm khi đi xe máy."]}]},
+ {t:"Traffic",vi:"Unit 7 · Giao thông",em:"🚦",w:"traffic jam|🚙|tắc đường;road sign|🚸|biển báo giao thông;cycle lane|🚲|làn xe đạp;pedestrian|🚶|người đi bộ;zebra crossing|🦓|vạch qua đường;helmet|⛑️|mũ bảo hiểm;passenger|🧳|hành khách;driving licence|📄|bằng lái xe",
+  s:["It is about two kilometres from my house to school.|Từ nhà mình đến trường khoảng hai ki-lô-mét.","You should obey the traffic rules.|Bạn nên tuân thủ luật giao thông.","Always wear a helmet when you ride a motorbike.|Luôn đội mũ bảo hiểm khi đi xe máy."]},
+ {t:"Films",vi:"Unit 8 · Phim ảnh",em:"🎬",w:"action film|💥|phim hành động;horror film|👻|phim kinh dị;comedy|😂|phim hài;science fiction|👽|phim khoa học viễn tưởng;animation|🎞️|phim hoạt hình;actor|🧑‍🎤|diễn viên;ticket|🎟️|vé xem phim;director|🎬|đạo diễn",
+  s:["Although the film was long, it was very interesting.|Mặc dù bộ phim dài nhưng rất thú vị.","What kind of film do you like?|Bạn thích loại phim nào?","The actors in this film are excellent.|Các diễn viên trong phim này rất xuất sắc."]},
+ {t:"Energy sources",vi:"Unit 10 · Các nguồn năng lượng",em:"⚡",w:"solar energy|☀️|năng lượng mặt trời;wind energy|🌬️|năng lượng gió;hydropower|💧|thủy điện;coal|⚫|than đá;oil|🛢️|dầu mỏ;nuclear energy|⚛️|năng lượng hạt nhân;electricity|⚡|điện;renewable|♻️|có thể tái tạo",
+  s:["We are using too much electricity.|Chúng ta đang dùng quá nhiều điện.","Solar energy is clean and renewable.|Năng lượng mặt trời sạch và có thể tái tạo.","Turn off the lights when you leave the room.|Hãy tắt đèn khi ra khỏi phòng."]}]},
 {id:"l8",name:"Lớp 8",em:"🔬",age:"13–14 tuổi",time:"35–40 phút/ngày",skills:"Nghe · Nói · Đọc · Viết bài ngắn",cap:2,
- goal:"Cuộc sống nông thôn, khoa học công nghệ, bảo vệ môi trường. So sánh trạng từ, tương lai đơn, câu điều kiện loại 1, thì hiện tại hoàn thành.",
+ goal:"Theo sách Tiếng Anh 8 Global Success. Nông thôn, môi trường, mua sắm, khoa học công nghệ, sự sống ngoài Trái Đất. So sánh trạng từ, tương lai đơn, câu điều kiện loại 1, thì hiện tại hoàn thành.",
  grammar:["more … than (trạng từ)","will + V","If + hiện tại, will + V","hiện tại hoàn thành"],plan:[["🃏 Từ vựng",10],["🎮 Trò chơi",10],["🧱 Mẫu câu",10],["🎙️ Luyện nói",10]],
  units:[
- {t:"Life in the countryside",vi:"Cuộc sống nông thôn",em:"🌾",w:"harvest|🧺|vụ thu hoạch;paddy field|🌾|ruộng lúa;buffalo|🐃|con trâu;kite|🪁|cánh diều;orchard|🍊|vườn cây ăn quả;farmer|🧑‍🌾|nông dân;cattle|🐄|gia súc;peaceful|🕊️|yên bình",
+ {t:"Life in the countryside",vi:"Unit 2 · Cuộc sống nông thôn",em:"🌾",w:"harvest|🧺|vụ thu hoạch;paddy field|🌾|ruộng lúa;buffalo|🐃|con trâu;kite|🪁|cánh diều;orchard|🍊|vườn cây ăn quả;farmer|🧑‍🌾|nông dân;cattle|🐄|gia súc;peaceful|🕊️|yên bình",
   s:["Life in the countryside is more peaceful than in the city.|Cuộc sống ở nông thôn yên bình hơn ở thành phố.","Children often fly kites in the paddy fields.|Trẻ em thường thả diều trên cánh đồng lúa.","My grandparents help harvest the rice every year.|Ông bà mình giúp thu hoạch lúa mỗi năm."]},
- {t:"Science and technology",vi:"Khoa học và công nghệ",em:"🔬",w:"robot|🤖|rô-bốt;laptop|💻|máy tính xách tay;smartphone|📱|điện thoại thông minh;satellite|🛰️|vệ tinh;microscope|🔬|kính hiển vi;rocket|🚀|tên lửa;invention|💡|phát minh;experiment|🧪|thí nghiệm",
+ {t:"Environmental protection",vi:"Unit 7 · Bảo vệ môi trường",em:"🌍",w:"pollution|🏭|ô nhiễm;recycle|♻️|tái chế;plastic bag|🛍️|túi ni-lông;solar energy|🔆|năng lượng mặt trời;wind power|🌬️|năng lượng gió;global warming|🌡️|nóng lên toàn cầu;endangered|🐼|có nguy cơ tuyệt chủng;deforestation|🪓|phá rừng",
+  s:["If we cut down forests, many animals will lose their homes.|Nếu chặt phá rừng, nhiều loài vật sẽ mất nơi ở.","We should use reusable bags instead of plastic bags.|Chúng ta nên dùng túi tái sử dụng thay vì túi ni-lông.","Global warming is a serious problem.|Sự nóng lên toàn cầu là một vấn đề nghiêm trọng."]},
+ {t:"Shopping",vi:"Unit 8 · Mua sắm",em:"🛍️",w:"supermarket|🛒|siêu thị;online shopping|💻|mua sắm trực tuyến;discount|🏷️|giảm giá;receipt|🧾|hóa đơn;convenience store|🏪|cửa hàng tiện lợi;open-air market|⛺|chợ ngoài trời;customer|🧍|khách hàng;credit card|💳|thẻ tín dụng",
+  s:["The supermarket opens at eight o'clock.|Siêu thị mở cửa lúc tám giờ.","Online shopping is convenient but sometimes risky.|Mua sắm trực tuyến tiện lợi nhưng đôi khi rủi ro.","Can I pay by credit card?|Tôi có thể trả bằng thẻ tín dụng không?"]},
+ {t:"Science and technology",vi:"Unit 11 · Khoa học và công nghệ",em:"🔬",w:"robot|🤖|rô-bốt;laptop|💻|máy tính xách tay;smartphone|📱|điện thoại thông minh;satellite|🛰️|vệ tinh;microscope|🔬|kính hiển vi;rocket|🚀|tên lửa;invention|💡|phát minh;experiment|🧪|thí nghiệm",
   s:["Robots will do many jobs in the future.|Rô-bốt sẽ làm nhiều công việc trong tương lai.","Scientists are doing an experiment in the lab.|Các nhà khoa học đang làm thí nghiệm trong phòng thí nghiệm.","The internet has changed the way we learn.|Internet đã thay đổi cách chúng ta học."]},
- {t:"Protecting the environment",vi:"Bảo vệ môi trường",em:"🌍",w:"pollution|🏭|ô nhiễm;recycle|♻️|tái chế;plastic bag|🛍️|túi ni-lông;solar energy|🔆|năng lượng mặt trời;wind power|🌬️|năng lượng gió;global warming|🌡️|nóng lên toàn cầu;endangered|🐼|có nguy cơ tuyệt chủng;deforestation|🪓|phá rừng",
-  s:["If we cut down forests, many animals will lose their homes.|Nếu chặt phá rừng, nhiều loài vật sẽ mất nơi ở.","We should use reusable bags instead of plastic bags.|Chúng ta nên dùng túi tái sử dụng thay vì túi ni-lông.","Global warming is a serious problem.|Sự nóng lên toàn cầu là một vấn đề nghiêm trọng."]}]},
+ {t:"Life on other planets",vi:"Unit 12 · Sự sống trên hành tinh khác",em:"🪐",w:"planet|🪐|hành tinh;alien|👽|người ngoài hành tinh;spaceship|🛸|tàu vũ trụ;astronaut|🧑‍🚀|phi hành gia;galaxy|🌌|thiên hà;Mars|🔴|sao Hỏa;gravity|🌍|trọng lực;telescope|🔭|kính thiên văn",
+  s:["Scientists are looking for life on Mars.|Các nhà khoa học đang tìm kiếm sự sống trên sao Hỏa.","He said that he had seen a UFO.|Anh ấy nói rằng anh ấy đã nhìn thấy một vật thể bay lạ.","Do you think aliens exist?|Bạn có nghĩ người ngoài hành tinh tồn tại không?"]}]},
 {id:"l9",name:"Lớp 9",em:"🎓",age:"14–15 tuổi",time:"40 phút/ngày",skills:"Nghe · Nói · Đọc · Viết bài",cap:2,
- goal:"Làng nghề, học tập, nghề nghiệp tương lai. Câu ước (wish), mệnh đề quan hệ, câu điều kiện, câu bị động. Ôn thi vào lớp 10.",
+ goal:"Theo sách Tiếng Anh 9 Global Success. Cộng đồng địa phương, hành tinh Trái Đất, thiết bị điện tử, chọn nghề. Câu ước (wish), mệnh đề quan hệ, câu điều kiện, câu bị động. Ôn thi vào lớp 10.",
  grammar:["I wish + quá khứ đơn","who / which / that","câu bị động","If + quá khứ, would + V"],plan:[["🃏 Từ vựng",10],["🎮 Trò chơi",10],["🧱 Mẫu câu",10],["🏆 Thử thách",10]],
  units:[
- {t:"Craft villages",vi:"Làng nghề",em:"🏺",w:"craft village|🏘️|làng nghề;pottery|🏺|đồ gốm;lantern|🏮|đèn lồng;conical hat|👒|nón lá;silk|🧵|lụa;handicraft|🧺|đồ thủ công;artisan|🧑‍🎨|nghệ nhân;tourist attraction|📸|điểm du lịch",
+ {t:"Local community",vi:"Unit 1 · Cộng đồng địa phương (làng nghề)",em:"🏺",w:"craft village|🏘️|làng nghề;pottery|🏺|đồ gốm;lantern|🏮|đèn lồng;conical hat|👒|nón lá;silk|🧵|lụa;handicraft|🧺|đồ thủ công;artisan|🧑‍🎨|nghệ nhân;tourist attraction|📸|điểm du lịch",
   s:["Bat Trang is famous for its pottery.|Bát Tràng nổi tiếng với đồ gốm.","The artisan who made this lantern is my uncle.|Người nghệ nhân làm chiếc đèn lồng này là chú mình.","Many tourists visit the craft village every year.|Nhiều du khách đến thăm làng nghề mỗi năm."]},
- {t:"Education",vi:"Học tập",em:"🎓",w:"scholarship|🏆|học bổng;university|🎓|trường đại học;exam|📝|kỳ thi;certificate|📜|chứng chỉ;library|📚|thư viện;dormitory|🛏️|ký túc xá;online course|💻|khóa học trực tuyến;deadline|⏰|hạn chót",
-  s:["She won a scholarship to study in Australia.|Cô ấy giành được học bổng du học Úc.","I wish I had more time to prepare for the exam.|Ước gì mình có thêm thời gian ôn thi.","If you study harder, you will pass the exam.|Nếu bạn học chăm hơn, bạn sẽ đỗ kỳ thi."]},
- {t:"Future jobs",vi:"Nghề nghiệp tương lai",em:"💼",w:"engineer|👷|kỹ sư;programmer|🧑‍💻|lập trình viên;pilot|🧑‍✈️|phi công;designer|🧑‍🎨|nhà thiết kế;journalist|🗞️|nhà báo;architect|📐|kiến trúc sư;chef|🧑‍🍳|đầu bếp;vet|🐾|bác sĩ thú y",
+ {t:"Planet Earth",vi:"Unit 10 · Hành tinh Trái Đất",em:"🌍",w:"continent|🗺️|châu lục;ocean|🌊|đại dương;mountain range|🏔️|dãy núi;rainforest|🌴|rừng mưa nhiệt đới;desert|🏜️|sa mạc;polar region|🧊|vùng cực;habitat|🏞️|môi trường sống;species|🦓|loài",
+  s:["The Earth has seven continents.|Trái Đất có bảy châu lục.","Many species are losing their habitats.|Nhiều loài đang mất môi trường sống.","We must protect our planet for future generations.|Chúng ta phải bảo vệ hành tinh cho các thế hệ tương lai."]},
+ {t:"Electronic devices",vi:"Unit 11 · Thiết bị điện tử",em:"📱",w:"smartphone|📱|điện thoại thông minh;laptop|💻|máy tính xách tay;smartwatch|⌚|đồng hồ thông minh;earphones|🎧|tai nghe;e-reader|📖|máy đọc sách;charger|🔌|bộ sạc;digital camera|📷|máy ảnh kỹ thuật số;printer|🖨️|máy in",
+  s:["My smartwatch can count my steps.|Đồng hồ thông minh của mình có thể đếm số bước chân.","You shouldn't use electronic devices before bed.|Bạn không nên dùng thiết bị điện tử trước khi ngủ.","This laptop is lighter than my old one.|Chiếc máy tính này nhẹ hơn chiếc cũ của mình."]},
+ {t:"Career choices",vi:"Unit 12 · Lựa chọn nghề nghiệp",em:"💼",w:"engineer|👷|kỹ sư;programmer|🧑‍💻|lập trình viên;pilot|🧑‍✈️|phi công;designer|🧑‍🎨|nhà thiết kế;journalist|🗞️|nhà báo;architect|📐|kiến trúc sư;chef|🧑‍🍳|đầu bếp;vet|🐾|bác sĩ thú y",
   s:["I would like to become an engineer.|Mình muốn trở thành kỹ sư.","A good programmer needs to be creative and patient.|Một lập trình viên giỏi cần sáng tạo và kiên nhẫn.","What do you want to be when you grow up?|Khi lớn lên bạn muốn làm nghề gì?"]}]},
 {id:"l10",name:"Lớp 10",em:"🌱",age:"15–16 tuổi",time:"40–45 phút/ngày",skills:"Nghe · Nói · Đọc hiểu · Viết luận ngắn",cap:3,
- goal:"Cuộc sống gia đình, con người và môi trường, các phát minh. Thì hiện tại hoàn thành, câu bị động, to-infinitive và V-ing. Hướng tới trình độ B1.",
+ goal:"Theo sách Tiếng Anh 10 Global Success. Gia đình, môi trường, phát minh, cách học mới, du lịch sinh thái. Thì hiện tại hoàn thành, câu bị động, to-infinitive và V-ing. Hướng tới trình độ B1.",
  grammar:["hiện tại đơn và tiếp diễn","bị động: was/were + V3","used to + V","so sánh kép"],plan:[["🃏 Từ vựng",10],["🎮 Trò chơi",10],["🧱 Mẫu câu",10],["🎙️ Luyện nói",10]],
  units:[
- {t:"Family life",vi:"Cuộc sống gia đình",em:"👨‍👩‍👧",w:"household chores|🧹|việc nhà;laundry|🧺|giặt giũ;breadwinner|💼|trụ cột gia đình;homemaker|🏠|người nội trợ;groceries|🛒|đồ tạp hóa;responsibility|🤝|trách nhiệm;gratitude|🙏|lòng biết ơn;washing-up|🍽️|rửa bát",
+ {t:"Family life",vi:"Unit 1 · Cuộc sống gia đình",em:"👨‍👩‍👧",w:"household chores|🧹|việc nhà;laundry|🧺|giặt giũ;breadwinner|💼|trụ cột gia đình;homemaker|🏠|người nội trợ;groceries|🛒|đồ tạp hóa;responsibility|🤝|trách nhiệm;gratitude|🙏|lòng biết ơn;washing-up|🍽️|rửa bát",
   s:["My father is the breadwinner of the family.|Bố mình là trụ cột kinh tế của gia đình.","We share the housework equally.|Chúng mình chia đều việc nhà.","Doing chores helps children become more responsible.|Làm việc nhà giúp trẻ có trách nhiệm hơn."]},
- {t:"Humans and the environment",vi:"Con người và môi trường",em:"🌳",w:"carbon footprint|👣|dấu chân các-bon;renewable energy|🔋|năng lượng tái tạo;eco-friendly|🌿|thân thiện môi trường;waste|🗑️|rác thải;climate change|🌡️|biến đổi khí hậu;biodiversity|🦋|đa dạng sinh học;conservation|🛡️|bảo tồn;ecosystem|🌍|hệ sinh thái",
+ {t:"Humans and the environment",vi:"Unit 2 · Con người và môi trường",em:"🌳",w:"carbon footprint|👣|dấu chân các-bon;renewable energy|🔋|năng lượng tái tạo;eco-friendly|🌿|thân thiện môi trường;waste|🗑️|rác thải;climate change|🌡️|biến đổi khí hậu;biodiversity|🦋|đa dạng sinh học;conservation|🛡️|bảo tồn;ecosystem|🌍|hệ sinh thái",
   s:["We can reduce our carbon footprint by cycling to school.|Chúng ta có thể giảm dấu chân các-bon bằng cách đạp xe đến trường.","Renewable energy will be used more widely.|Năng lượng tái tạo sẽ được sử dụng rộng rãi hơn.","Protecting biodiversity is everyone's responsibility.|Bảo vệ đa dạng sinh học là trách nhiệm của mọi người."]},
- {t:"Inventions",vi:"Các phát minh",em:"💡",w:"telephone|☎️|điện thoại;light bulb|💡|bóng đèn;computer|🖥️|máy tính;camera|📷|máy ảnh;airplane|✈️|máy bay;printer|🖨️|máy in;vaccine|💉|vắc-xin;compass|🧭|la bàn",
-  s:["The telephone was invented in the nineteenth century.|Điện thoại được phát minh vào thế kỷ mười chín.","Smartphones are used for many different purposes.|Điện thoại thông minh được dùng cho nhiều mục đích khác nhau.","Without vaccines, many more people would get sick.|Nếu không có vắc-xin, sẽ có nhiều người bị bệnh hơn."]}]},
+ {t:"Inventions",vi:"Unit 5 · Các phát minh",em:"💡",w:"telephone|☎️|điện thoại;light bulb|💡|bóng đèn;computer|🖥️|máy tính;camera|📷|máy ảnh;airplane|✈️|máy bay;printer|🖨️|máy in;vaccine|💉|vắc-xin;compass|🧭|la bàn",
+  s:["The telephone was invented in the nineteenth century.|Điện thoại được phát minh vào thế kỷ mười chín.","Smartphones are used for many different purposes.|Điện thoại thông minh được dùng cho nhiều mục đích khác nhau.","Without vaccines, many more people would get sick.|Nếu không có vắc-xin, sẽ có nhiều người bị bệnh hơn."]},
+ {t:"New ways to learn",vi:"Unit 8 · Những cách học mới",em:"💻",w:"online learning|💻|học trực tuyến;video call|📹|cuộc gọi video;tablet|📲|máy tính bảng;e-book|📖|sách điện tử;homework|📝|bài tập về nhà;deadline|⏰|hạn chót;discussion|💬|thảo luận;self-study|📚|tự học",
+  s:["Online learning helps students study at their own pace.|Học trực tuyến giúp học sinh học theo tốc độ riêng.","Tablets can be useful in class if teachers guide students well.|Máy tính bảng có thể hữu ích trong lớp nếu giáo viên hướng dẫn tốt.","We had a video call to discuss our project.|Chúng mình đã gọi video để thảo luận dự án."]},
+ {t:"Ecotourism",vi:"Unit 10 · Du lịch sinh thái",em:"🌿",w:"ecotourism|🌿|du lịch sinh thái;tour guide|🧭|hướng dẫn viên du lịch;local culture|🏮|văn hóa địa phương;national park|🏞️|vườn quốc gia;souvenir|🎁|quà lưu niệm;homestay|🏡|nhà dân cho khách ở;kayaking|🛶|chèo thuyền kayak;wildlife|🦜|động vật hoang dã",
+  s:["Yok Don National Park is in Dak Lak Province.|Vườn quốc gia Yok Đôn nằm ở tỉnh Đắk Lắk.","Ecotourism helps protect the environment and local culture.|Du lịch sinh thái giúp bảo vệ môi trường và văn hóa địa phương.","Tourists should not leave litter in the national park.|Du khách không nên xả rác trong vườn quốc gia."]}]},
 {id:"l11",name:"Lớp 11",em:"🏃",age:"16–17 tuổi",time:"40–45 phút/ngày",skills:"Nghe · Nói · Đọc hiểu · Viết luận",cap:3,
- goal:"Khoảng cách thế hệ, lối sống lành mạnh, thành phố tương lai. Động từ khuyết thiếu, danh động từ, phân từ, câu tường thuật.",
+ goal:"Theo sách Tiếng Anh 11 Global Success. Sống khỏe, khoảng cách thế hệ, thành phố tương lai, nóng lên toàn cầu, di sản. Động từ khuyết thiếu, danh động từ, phân từ, câu tường thuật.",
  grammar:["must / have to / should","V-ing làm chủ ngữ","câu tường thuật","mệnh đề phân từ"],plan:[["🃏 Từ vựng",10],["🎮 Trò chơi",10],["🧱 Mẫu câu",10],["🎙️ Luyện nói",10]],
  units:[
- {t:"Generation gap",vi:"Khoảng cách thế hệ",em:"👵",w:"generation gap|🧓|khoảng cách thế hệ;extended family|👨‍👩‍👧‍👦|gia đình nhiều thế hệ;nuclear family|👪|gia đình hạt nhân;conflict|⚡|xung đột;respect|🙇|sự tôn trọng;privacy|🔒|sự riêng tư;tradition|🎎|truyền thống;opinion|💬|ý kiến",
-  s:["Many teenagers want more privacy.|Nhiều thanh thiếu niên muốn có nhiều sự riêng tư hơn.","We should respect our grandparents' opinions.|Chúng ta nên tôn trọng ý kiến của ông bà.","Living in an extended family has both advantages and disadvantages.|Sống trong gia đình nhiều thế hệ có cả ưu và nhược điểm."]},
- {t:"Healthy lifestyle",vi:"Lối sống lành mạnh",em:"🏃",w:"balanced diet|🥗|chế độ ăn cân bằng;life expectancy|⏳|tuổi thọ;fitness|💪|sự khỏe mạnh;meditation|🧘|thiền;stress|😫|căng thẳng;check-up|🩺|khám sức khỏe;nutrition|🍎|dinh dưỡng;jogging|🏃|chạy bộ",
+ {t:"A long and healthy life",vi:"Unit 1 · Sống lâu và khỏe mạnh",em:"🏃",w:"balanced diet|🥗|chế độ ăn cân bằng;life expectancy|⏳|tuổi thọ;fitness|💪|sự khỏe mạnh;meditation|🧘|thiền;stress|😫|căng thẳng;check-up|🩺|khám sức khỏe;nutrition|🍎|dinh dưỡng;jogging|🏃|chạy bộ",
   s:["A balanced diet helps you live longer.|Chế độ ăn cân bằng giúp bạn sống lâu hơn.","Regular exercise reduces stress.|Tập thể dục đều đặn giúp giảm căng thẳng.","You should have a medical check-up every year.|Bạn nên khám sức khỏe định kỳ mỗi năm."]},
- {t:"Cities of the future",vi:"Thành phố tương lai",em:"🏙️",w:"skyscraper|🏙️|nhà chọc trời;smart city|📶|thành phố thông minh;public transport|🚇|giao thông công cộng;electric car|🔌|xe điện;green space|🌳|không gian xanh;population|👥|dân số;infrastructure|🏗️|cơ sở hạ tầng;sustainable|♻️|bền vững",
-  s:["Cities of the future will have more green spaces.|Các thành phố tương lai sẽ có nhiều không gian xanh hơn.","More people should use public transport.|Nhiều người hơn nên sử dụng giao thông công cộng.","Electric cars produce less pollution.|Xe điện thải ra ít ô nhiễm hơn."]}]},
+ {t:"The generation gap",vi:"Unit 2 · Khoảng cách thế hệ",em:"👵",w:"generation gap|🧓|khoảng cách thế hệ;extended family|👨‍👩‍👧‍👦|gia đình nhiều thế hệ;nuclear family|👪|gia đình hạt nhân;conflict|⚡|xung đột;respect|🙇|sự tôn trọng;privacy|🔒|sự riêng tư;tradition|🎎|truyền thống;opinion|💬|ý kiến",
+  s:["Many teenagers want more privacy.|Nhiều thanh thiếu niên muốn có nhiều sự riêng tư hơn.","We should respect our grandparents' opinions.|Chúng ta nên tôn trọng ý kiến của ông bà.","Living in an extended family has both advantages and disadvantages.|Sống trong gia đình nhiều thế hệ có cả ưu và nhược điểm."]},
+ {t:"Cities of the future",vi:"Unit 3 · Thành phố tương lai",em:"🏙️",w:"skyscraper|🏙️|nhà chọc trời;smart city|📶|thành phố thông minh;public transport|🚇|giao thông công cộng;electric car|🔌|xe điện;green space|🌳|không gian xanh;population|👥|dân số;infrastructure|🏗️|cơ sở hạ tầng;sustainable|♻️|bền vững",
+  s:["Cities of the future will have more green spaces.|Các thành phố tương lai sẽ có nhiều không gian xanh hơn.","More people should use public transport.|Nhiều người hơn nên sử dụng giao thông công cộng.","Electric cars produce less pollution.|Xe điện thải ra ít ô nhiễm hơn."]},
+ {t:"Global warming",vi:"Unit 5 · Sự nóng lên toàn cầu",em:"🌡️",w:"greenhouse gas|🌫️|khí nhà kính;carbon dioxide|💨|khí CO2;heatwave|🥵|đợt nắng nóng;melting ice|🧊|băng tan;sea level|🌊|mực nước biển;drought|🏜️|hạn hán;flood|🌧️|lũ lụt;fossil fuel|🛢️|nhiên liệu hóa thạch",
+  s:["Burning fossil fuels releases carbon dioxide.|Đốt nhiên liệu hóa thạch thải ra khí CO2.","Rising sea levels may flood coastal cities.|Mực nước biển dâng có thể làm ngập các thành phố ven biển.","We should plant more trees to reduce global warming.|Chúng ta nên trồng thêm cây để giảm sự nóng lên toàn cầu."]},
+ {t:"Preserving our heritage",vi:"Unit 6 · Gìn giữ di sản",em:"🏯",w:"heritage site|🏯|khu di sản;citadel|🏰|thành cổ;ancient town|🏮|phố cổ;folk song|🎶|dân ca;festival|🎉|lễ hội;museum|🏛️|bảo tàng;ruins|🧱|tàn tích;preservation|🛡️|sự bảo tồn",
+  s:["Hoi An Ancient Town is a World Heritage Site.|Phố cổ Hội An là Di sản Thế giới.","Young people should help preserve folk songs.|Người trẻ nên góp phần gìn giữ các làn điệu dân ca.","The Space of Gong Culture in the Central Highlands is recognised by UNESCO.|Không gian văn hóa Cồng chiêng Tây Nguyên được UNESCO công nhận."]}]},
 {id:"l12",name:"Lớp 12",em:"🚀",age:"17–18 tuổi",time:"45–60 phút/ngày",skills:"Đọc hiểu · Viết luận · Ôn thi tốt nghiệp",cap:3,
- goal:"Nghề nghiệp, trí tuệ nhân tạo, truyền thông và học tập suốt đời. Mệnh đề quan hệ rút gọn, đảo ngữ, câu điều kiện hỗn hợp. Ôn thi tốt nghiệp THPT, hướng tới B1–B2.",
+ goal:"Theo sách Tiếng Anh 12 Global Success. Sống xanh, đô thị hóa, trí tuệ nhân tạo, truyền thông, nghề nghiệp, học tập suốt đời. Mệnh đề quan hệ rút gọn, đảo ngữ, câu điều kiện hỗn hợp. Ôn thi tốt nghiệp THPT, hướng tới B1–B2.",
  grammar:["Having + V3, …","câu điều kiện hỗn hợp","đảo ngữ: Not only … but also …","cụm động từ (phrasal verbs)"],plan:[["🃏 Từ vựng",10],["🎮 Trò chơi",10],["🧱 Mẫu câu",15],["🏆 Thử thách",15]],
  units:[
- {t:"Careers",vi:"Nghề nghiệp",em:"💼",w:"career|💼|sự nghiệp;interview|🤝|phỏng vấn;CV|📄|sơ yếu lý lịch;salary|💰|tiền lương;experience|⭐|kinh nghiệm;skill|🛠️|kỹ năng;apprenticeship|🔧|học nghề;volunteer|🙋|tình nguyện viên",
-  s:["Before the interview, you should prepare your CV carefully.|Trước buổi phỏng vấn, bạn nên chuẩn bị sơ yếu lý lịch cẩn thận.","Soft skills are as important as knowledge.|Kỹ năng mềm quan trọng như kiến thức.","Having worked as a volunteer, she gained a lot of experience.|Đã từng làm tình nguyện viên, cô ấy tích lũy được nhiều kinh nghiệm."]},
- {t:"Artificial intelligence",vi:"Trí tuệ nhân tạo",em:"🤖",w:"artificial intelligence|🧠|trí tuệ nhân tạo;algorithm|🔢|thuật toán;data|📊|dữ liệu;chatbot|💬|chatbot;automation|⚙️|tự động hóa;virtual reality|🥽|thực tế ảo;cybersecurity|🛡️|an ninh mạng;innovation|🚀|đổi mới sáng tạo",
+ {t:"Green living",vi:"Unit 3 · Sống xanh",em:"♻️",w:"reusable bag|🛍️|túi tái sử dụng;compost|🌱|phân hữu cơ;bicycle|🚲|xe đạp;second-hand|👕|đồ đã qua sử dụng;energy-saving|💡|tiết kiệm năng lượng;zero waste|🚯|không rác thải;tap water|🚰|nước máy;carpool|🚗|đi chung xe",
+  s:["Living green means making small changes every day.|Sống xanh nghĩa là thay đổi nhỏ mỗi ngày.","We could save energy if we switched off unused devices.|Chúng ta có thể tiết kiệm năng lượng nếu tắt các thiết bị không dùng.","Buying second-hand clothes reduces waste.|Mua quần áo cũ giúp giảm rác thải."]},
+ {t:"Urbanisation",vi:"Unit 4 · Đô thị hóa",em:"🏙️",w:"urbanisation|🏙️|đô thị hóa;migration|🚌|di cư;slum|🏚️|khu ổ chuột;traffic congestion|🚦|ùn tắc giao thông;job opportunity|💼|cơ hội việc làm;overcrowding|👥|quá tải dân số;housing|🏠|nhà ở;rural area|🌾|vùng nông thôn",
+  s:["Many young people move to cities to find jobs.|Nhiều người trẻ chuyển lên thành phố để tìm việc.","Urbanisation can lead to traffic congestion and pollution.|Đô thị hóa có thể dẫn đến ùn tắc giao thông và ô nhiễm.","It is important that the government improve housing in cities.|Điều quan trọng là chính phủ cải thiện nhà ở tại các thành phố."]},
+ {t:"Artificial intelligence",vi:"Unit 6 · Trí tuệ nhân tạo",em:"🤖",w:"artificial intelligence|🧠|trí tuệ nhân tạo;algorithm|🔢|thuật toán;data|📊|dữ liệu;chatbot|💬|chatbot;automation|⚙️|tự động hóa;virtual reality|🥽|thực tế ảo;cybersecurity|🛡️|an ninh mạng;innovation|🚀|đổi mới sáng tạo",
   s:["Artificial intelligence is changing many industries.|Trí tuệ nhân tạo đang thay đổi nhiều ngành nghề.","Personal data should be protected carefully.|Dữ liệu cá nhân cần được bảo vệ cẩn thận.","Students can use chatbots to practise speaking English.|Học sinh có thể dùng chatbot để luyện nói tiếng Anh."]},
- {t:"Media and lifelong learning",vi:"Truyền thông, học tập suốt đời",em:"📚",w:"newspaper|📰|báo in;podcast|🎧|chương trình phát thanh trực tuyến;social media|📱|mạng xã hội;advertisement|📢|quảng cáo;fake news|🚫|tin giả;lifelong learning|📚|học tập suốt đời;online learning|💻|học trực tuyến;critical thinking|🤔|tư duy phản biện",
-  s:["We should check the source before sharing news online.|Chúng ta nên kiểm tra nguồn trước khi chia sẻ tin trên mạng.","Lifelong learning helps us adapt to change.|Học tập suốt đời giúp chúng ta thích nghi với sự thay đổi.","Social media can spread fake news very quickly.|Mạng xã hội có thể lan truyền tin giả rất nhanh."]}]}
+ {t:"The world of mass media",vi:"Unit 7 & 10 · Truyền thông, học tập suốt đời",em:"📚",w:"newspaper|📰|báo in;podcast|🎧|chương trình phát thanh trực tuyến;social media|📱|mạng xã hội;advertisement|📢|quảng cáo;fake news|🚫|tin giả;lifelong learning|📚|học tập suốt đời;online learning|💻|học trực tuyến;critical thinking|🤔|tư duy phản biện",
+  s:["We should check the source before sharing news online.|Chúng ta nên kiểm tra nguồn trước khi chia sẻ tin trên mạng.","Lifelong learning helps us adapt to change.|Học tập suốt đời giúp chúng ta thích nghi với sự thay đổi.","Social media can spread fake news very quickly.|Mạng xã hội có thể lan truyền tin giả rất nhanh."]},
+ {t:"Career paths",vi:"Unit 9 · Con đường sự nghiệp",em:"💼",w:"career|💼|sự nghiệp;interview|🤝|phỏng vấn;CV|📄|sơ yếu lý lịch;salary|💰|tiền lương;experience|⭐|kinh nghiệm;skill|🛠️|kỹ năng;apprenticeship|🔧|học nghề;volunteer|🙋|tình nguyện viên",
+  s:["Before the interview, you should prepare your CV carefully.|Trước buổi phỏng vấn, bạn nên chuẩn bị sơ yếu lý lịch cẩn thận.","Soft skills are as important as knowledge.|Kỹ năng mềm quan trọng như kiến thức.","Having worked as a volunteer, she gained a lot of experience.|Đã từng làm tình nguyện viên, cô ấy tích lũy được nhiều kinh nghiệm."]}]}
 );
 LEVELS.forEach((L,li)=>{if(li<6)return;L.units.forEach((u,ui)=>{
   u.words=u.w.split(";").map(x=>{const [en,pic,vi]=x.split("|");return{en:en.trim(),pic:pic.trim(),vi:vi.trim()}});
@@ -820,6 +848,7 @@ function route(){
   if(/^cc(-|$)/.test(h))return ccRoute(h);
   if(/^toan(-|$)/.test(h))return mRoute(h);
   if(/^tt(-|$)/.test(h))return ttRoute(h);
+  if(/^ls(-|$)/.test(h))return lsRoute(h);
   if(/^(hinh|convat|cothe)-/.test(h))return hRoute(h);
   if(h==="nhan-dan")return stickers();
   if(h==="chuong-trinh")return program();
@@ -1898,7 +1927,7 @@ function vActs(u){
 const vDone=u=>{const d=P().done[u.key]||{};return vActs(u).filter(a=>d[a]).length};
 const vLevelPct=li=>{let t=0,d=0;VLEVELS[li].units.forEach(u=>{t+=vActs(u).length;d+=vDone(u)});return t?Math.round(d/t*100):0};
 const vNextUnit=()=>{for(const L of VLEVELS)for(const u of L.units)if(vDone(u)<vActs(u).length)return u;return null};
-const vNext=(u,act)=>{const l=vActs(u),i=l.indexOf(act),n=i<0?null:l[i+1];return n?{go:`tv-g-${n}-${u.li}-${u.ui}`,em:VA[n].em,name:VA[n].n}:null};
+const vNext=(u,act)=>{if(u.nextOf)return u.nextOf(act);const l=vActs(u),i=l.indexOf(act),n=i<0?null:l[i+1];return n?{go:`tv-g-${n}-${u.li}-${u.ui}`,em:VA[n].em,name:VA[n].n}:null};
 const diffStars=n=>"⭐".repeat(n);
 const diffName=n=>["","Dễ","Vừa","Khó"][n];
 
@@ -2195,7 +2224,7 @@ function hub(){
     <div class="bubble">
       <div class="eyebrow">Cú Bông nói</div>
       <h1>Chào ${esc(p.name)}! Hôm nay bé muốn học gì?</h1>
-      <p class="muted" style="margin:4px 0 0">Chọn một hòn đảo để bắt đầu. Sao và nhãn dán dùng chung cho tất cả các đảo.</p>
+      <p class="muted" style="margin:4px 0 0">Chọn một hòn đảo để bắt đầu. Sao và nhãn dán dùng chung cho tất cả các đảo. Chương trình cập nhật năm học 2026–2027.</p>
     </div>
   </div>
   <section class="hubgrid">
@@ -2227,6 +2256,20 @@ function hub(){
       <div class="bar"><i style="width:${Math.min(100,Math.round(ttSolved()/40*100))}%"></i></div>
       <small class="muted"><b>${ttSolved()}</b> vụ án đã phá</small>
     </button>
+    <button class="island hubisland" style="--c:var(--orange)" data-go="ls">
+      <div class="top"><span class="em">🏛️</span><span class="badge">Lớp 4–12</span></div>
+      <h3>Đảo Lịch sử – Địa lí</h3>
+      <span class="muted hubdesc">Dựng nước và giữ nước, danh nhân, văn minh thế giới · địa lí Việt Nam cập nhật 2025</span>
+      <div class="bar"><i style="width:${Math.round(LSLEVELS.reduce((s,L,i)=>s+lsPct(i),0)/LSLEVELS.length)}%"></i></div>
+      <small class="muted"><b>${Math.round(LSLEVELS.reduce((s,L,i)=>s+lsPct(i),0)/LSLEVELS.length)}%</b> hoàn thành</small>
+    </button>
+  </section>
+  <section class="card note26">
+    <b>📢 Cập nhật chương trình năm học 2026–2027</b>
+    <ul class="tips"><li>Cả nước dùng thống nhất bộ sách giáo khoa <b>«Kết nối tri thức với cuộc sống»</b> (Quyết định 3588/QĐ-BGDĐT ngày 26/12/2025). Tiếng Anh theo sách <b>Global Success</b>.</li>
+    <li>Đề án đưa tiếng Anh thành ngôn ngữ thứ hai: các địa phương triển khai dạy tiếng Anh từ lớp 1.</li>
+    <li>Địa lí cập nhật: 34 tỉnh, thành phố; chính quyền địa phương 2 cấp từ 1/7/2025; ASEAN có 11 thành viên.</li></ul>
+    <small class="muted">Nội dung trong phần mềm là bài luyện tập bổ trợ, thứ tự bài có thể khác sách giáo khoa.</small>
   </section>`);
 }
 function vHome(){
@@ -2296,10 +2339,17 @@ function vProgram(){
   const days=[["Thứ Hai","🃏 Thẻ học · 👂 Nghe & chọn","Làm quen nội dung mới"],["Thứ Ba","🧩 Lật thẻ · 🔨 Đập chuột","Nhớ mặt chữ, mặt từ"],["Thứ Tư","〽️ Dấu thanh · 🔤 Ghép tiếng · ✏️ Điền chữ","Luyện kĩ năng chính của bài"],["Thứ Năm","🗂️ Phân loại · ❓ Đố vui","Hiểu và vận dụng"],["Thứ Sáu","🧱 Xếp câu · 🎙️ Bé đọc to","Đọc và viết câu"],["Thứ Bảy","🏎️ Đua xe · 🏆 Thử thách","Ôn tổng hợp, thi đua"],["Chủ nhật","Nghỉ hoặc ôn","Chơi lại trò bé thích"]];
   render(`
   <button class="btn ghost sm back" data-go="tv">← Đảo Tiếng Việt</button>
-  <div class="row" style="margin-top:12px"><button class="chip" data-go="chuong-trinh">🏝️ Tiếng Anh</button><button class="chip on">🌾 Tiếng Việt</button><button class="chip" data-go="toan-chuong-trinh">🔢 Toán</button></div>
+  <div class="row" style="margin-top:12px"><button class="chip" data-go="chuong-trinh">🏝️ Tiếng Anh</button><button class="chip on">🌾 Tiếng Việt</button><button class="chip" data-go="toan-chuong-trinh">🔢 Toán</button><button class="chip" data-go="ls">🏛️ Sử – Địa</button></div>
   <section>
     <div class="eyebrow">Dành cho phụ huynh và thầy cô</div>
     <h1 style="font-size:clamp(1.8rem,5vw,2.4rem)">Chương trình Tiếng Việt – Ngữ văn Mầm non – Lớp 12</h1>
+    <div class="card note26" style="margin:12px 0">
+    <b>📢 Cập nhật chương trình năm học 2026–2027</b>
+    <ul class="tips"><li>Cả nước dùng thống nhất bộ sách giáo khoa <b>«Kết nối tri thức với cuộc sống»</b> (Quyết định 3588/QĐ-BGDĐT ngày 26/12/2025). Tiếng Anh theo sách <b>Global Success</b>.</li>
+    <li>Đề án đưa tiếng Anh thành ngôn ngữ thứ hai: các địa phương triển khai dạy tiếng Anh từ lớp 1.</li>
+    <li>Địa lí cập nhật: 34 tỉnh, thành phố; chính quyền địa phương 2 cấp từ 1/7/2025; ASEAN có 11 thành viên.</li></ul>
+    <small class="muted">Nội dung trong phần mềm là bài luyện tập bổ trợ, thứ tự bài có thể khác sách giáo khoa.</small>
+  </div>
     <p class="muted" style="max-width:68ch">Mầm non: làm quen 29 chữ cái theo nhóm như ở lớp mẫu giáo lớn. Lớp 1–5: bám các yêu cầu cần đạt về tiếng Việt (âm vần, chính tả, từ, câu, biện pháp tu từ) của Chương trình giáo dục phổ thông môn Tiếng Việt 2018. Tổng cộng <b>${VLEVELS.reduce((s,L)=>s+L.units.length,0)} bài</b>, mỗi bài học trong khoảng một tuần. Nội dung là bài luyện tập bổ trợ, không thay thế sách giáo khoa của bé.</p>
   </section>
   <section class="card"><h2 style="font-size:1.3rem">Lịch học gợi ý cho mỗi bài (1 tuần)</h2>
@@ -2982,6 +3032,13 @@ function toanProgram(){
   <div class="row" style="margin-top:12px"><button class="chip" data-go="chuong-trinh">🏝️ Tiếng Anh</button><button class="chip" data-go="tv-chuong-trinh">🌾 Tiếng Việt</button><button class="chip on">🔢 Toán</button></div>
   <section><div class="eyebrow">Dành cho phụ huynh và thầy cô</div>
     <h1 style="font-size:clamp(1.8rem,5vw,2.4rem)">Chương trình Toán Mầm non – Lớp 12</h1>
+    <div class="card note26" style="margin:12px 0">
+    <b>📢 Cập nhật chương trình năm học 2026–2027</b>
+    <ul class="tips"><li>Cả nước dùng thống nhất bộ sách giáo khoa <b>«Kết nối tri thức với cuộc sống»</b> (Quyết định 3588/QĐ-BGDĐT ngày 26/12/2025). Tiếng Anh theo sách <b>Global Success</b>.</li>
+    <li>Đề án đưa tiếng Anh thành ngôn ngữ thứ hai: các địa phương triển khai dạy tiếng Anh từ lớp 1.</li>
+    <li>Địa lí cập nhật: 34 tỉnh, thành phố; chính quyền địa phương 2 cấp từ 1/7/2025; ASEAN có 11 thành viên.</li></ul>
+    <small class="muted">Nội dung trong phần mềm là bài luyện tập bổ trợ, thứ tự bài có thể khác sách giáo khoa.</small>
+  </div>
     <p class="muted" style="max-width:68ch">Bám các yêu cầu cần đạt của Chương trình môn Toán 2018 (Mầm non theo chương trình làm quen với toán). Tổng cộng <b>${MLEVELS.reduce((s,L)=>s+L.units.length,0)} bài</b>, mỗi bài có bài tập <b>cơ bản</b> và <b>nâng cao</b> do máy tự tạo nên không bao giờ hết đề. Thêm <b>bảng cửu chương</b> 2–9 với vè, thơ và trò chơi. Đây là bài luyện tập bổ trợ, không thay thế sách giáo khoa.</p></section>
   <section class="card"><h2 style="font-size:1.3rem">Cách luyện mỗi bài</h2>
     <ul class="tips"><li>⭐ <b>Bài tập cơ bản</b> và <b>Đúng hay sai</b>: nắm chắc kiến thức của bài.</li><li>⭐⭐ <b>Tự điền đáp án</b>: bé tự tính rồi gõ kết quả, không có đáp án gợi ý.</li><li>⭐⭐⭐ <b>Nâng cao</b>: toán có lời văn, tìm số chưa biết, bài nhiều bước. <b>Đua xe</b>: luyện tính nhanh.</li><li>Cuối mỗi lớp có <b>Thử thách 10 câu</b> trộn cơ bản và nâng cao.</li></ul></section>
@@ -3533,6 +3590,110 @@ function hRoute(h){let m;
   go("");
 }
 
+/* ======================================================================
+   ĐẢO LỊCH SỬ – ĐỊA LÍ (Lớp 4–12) · cập nhật đơn vị hành chính 2025
+   ====================================================================== */
+const LSLEVELS=[
+{id:"l4",name:"Lớp 4",em:"🗺️",age:"9–10 tuổi",cap:1,goal:"Các vùng của Việt Nam: Trung du và miền núi Bắc Bộ, Đồng bằng Bắc Bộ, Duyên hải miền Trung, Tây Nguyên, Nam Bộ; Đền Hùng, Thăng Long – Hà Nội, Cố đô Huế.",units:[
+ {t:"Các vùng của Việt Nam",em:"⛰️",Q:"Dãy núi cao nhất Việt Nam là|Hoàng Liên Sơn|Trường Sơn|Bạch Mã|Ngân Sơn;Đỉnh núi cao nhất Việt Nam là|Phan-xi-păng|Bà Đen|Lang Biang|Ngọc Linh;Tây Nguyên nổi tiếng với cây công nghiệp nào?|cà phê|lúa gạo|cói|đay;Đồng bằng lớn nhất nước ta là|đồng bằng sông Cửu Long|đồng bằng sông Hồng|đồng bằng Thanh Hóa|đồng bằng Nghệ An;Không gian văn hóa Cồng chiêng là nét đặc sắc của vùng|Tây Nguyên|Nam Bộ|Đồng bằng Bắc Bộ|Duyên hải miền Trung;Thành phố Buôn Ma Thuột thuộc vùng|Tây Nguyên|Nam Bộ|Trung du và miền núi Bắc Bộ|Đồng bằng Bắc Bộ;Ruộng bậc thang là cảnh quan nổi bật ở vùng|Trung du và miền núi Bắc Bộ|Nam Bộ|Đồng bằng Bắc Bộ|Duyên hải miền Trung;Chợ nổi trên sông là nét đặc trưng của vùng|Nam Bộ|Tây Nguyên|Đồng bằng Bắc Bộ|Trung du và miền núi Bắc Bộ",
+  tip:"Việt Nam có các vùng: Trung du và miền núi Bắc Bộ, Đồng bằng Bắc Bộ, Duyên hải miền Trung, Tây Nguyên, Nam Bộ. Phan-xi-păng (3 143 m) là đỉnh núi cao nhất."},
+ {t:"Đền Hùng, Thăng Long, Huế",em:"🏯",Q:"Nhà nước đầu tiên của người Việt là|Văn Lang|Âu Lạc|Đại Việt|Đại Cồ Việt;Kinh đô của nước Văn Lang ở|Phong Châu|Cổ Loa|Hoa Lư|Thăng Long;Ngày Giỗ Tổ Hùng Vương là ngày|10 tháng 3 âm lịch|2 tháng 9|1 tháng 6|15 tháng 8 âm lịch;Năm 1010, Lý Công Uẩn dời đô từ Hoa Lư về|Đại La (Thăng Long)|Phú Xuân|Cổ Loa|Phong Châu;Văn Miếu – Quốc Tử Giám ở|Hà Nội|Huế|Đà Nẵng|Cần Thơ;Cố đô Huế là kinh đô của triều đại|nhà Nguyễn|nhà Lý|nhà Trần|nhà Đinh",
+  tip:"«Dù ai đi ngược về xuôi / Nhớ ngày Giỗ Tổ mùng Mười tháng Ba.» Thăng Long – Hà Nội là kinh đô từ năm 1010."}]},
+{id:"l5",name:"Lớp 5",em:"🇻🇳",age:"10–11 tuổi",cap:1,goal:"Đất nước Việt Nam sau sắp xếp hành chính năm 2025; các cuộc đấu tranh dựng nước và giữ nước; cách mạng và kháng chiến; Đông Nam Á và ASEAN.",units:[
+ {t:"Địa lí Việt Nam (cập nhật 2025)",em:"🗺️",Q:"Sau khi sắp xếp năm 2025, nước ta có bao nhiêu đơn vị hành chính cấp tỉnh?|34|63|28|6;Sáu thành phố trực thuộc trung ương gồm Hà Nội, TP. Hồ Chí Minh, Hải Phòng, Đà Nẵng, Cần Thơ và|Huế|Nha Trang|Vũng Tàu|Đà Lạt;Từ ngày 1/7/2025, chính quyền địa phương nước ta có mấy cấp?|2 cấp (tỉnh và xã)|3 cấp|4 cấp|1 cấp;Thủ đô của Việt Nam là|Hà Nội|TP. Hồ Chí Minh|Huế|Đà Nẵng;Hai quần đảo xa bờ của Việt Nam trên Biển Đông là|Hoàng Sa và Trường Sa|Côn Đảo và Phú Quốc|Cát Bà và Lý Sơn|Cô Tô và Bạch Long Vĩ;Con sông dài nhất chảy qua Việt Nam là|sông Mê Công (Cửu Long)|sông Hồng|sông Đồng Nai|sông Đà;Khí hậu Việt Nam là khí hậu|nhiệt đới gió mùa|ôn đới|hàn đới|hoang mạc;Việt Nam có bao nhiêu dân tộc?|54|45|64|36",
+  tip:"Theo Nghị quyết 202/2025/QH15, từ năm 2025 cả nước có 34 tỉnh, thành phố (28 tỉnh, 6 thành phố trực thuộc trung ương). Từ 1/7/2025, chính quyền địa phương có 2 cấp: tỉnh và xã."},
+ {t:"Dựng nước và giữ nước",em:"⚔️",P:{label:"gắn với",q:"Sự kiện {a} gắn với nhân vật nào?",items:"Khởi nghĩa năm 40|Hai Bà Trưng;Chiến thắng Bạch Đằng năm 938|Ngô Quyền;Dẹp loạn 12 sứ quân|Đinh Bộ Lĩnh;Dời đô về Thăng Long năm 1010|Lý Công Uẩn;Phòng tuyến sông Như Nguyệt năm 1077|Lý Thường Kiệt;Chiến thắng Bạch Đằng năm 1288|Trần Hưng Đạo;Khởi nghĩa Lam Sơn|Lê Lợi;Đại phá quân Thanh năm 1789|Quang Trung"},matchPrompt:"Ghép sự kiện với nhân vật lịch sử"},
+ {t:"Cách mạng và kháng chiến",em:"⭐",Q:"Năm 1911, Nguyễn Tất Thành ra đi tìm đường cứu nước từ|bến cảng Nhà Rồng|bến Bạch Đằng|cảng Hải Phòng|cửa Thuận An;Đảng Cộng sản Việt Nam được thành lập ngày|3/2/1930|2/9/1945|19/8/1945|7/5/1954;Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập ngày|2/9/1945|19/8/1945|30/4/1975|7/5/1954;Chiến thắng Điện Biên Phủ diễn ra năm|1954|1945|1975|1968;Ngày giải phóng hoàn toàn miền Nam, thống nhất đất nước là|30/4/1975|2/9/1945|7/5/1954|27/1/1973;Chiến thắng Buôn Ma Thuột (10/3/1975) mở màn cho chiến dịch|Tây Nguyên|Hồ Chí Minh|Điện Biên Phủ|Huế – Đà Nẵng"},
+ {t:"Đông Nam Á và ASEAN",em:"🌏",Q:"Việt Nam gia nhập ASEAN năm|1995|1975|2007|1986;Thành viên thứ 11 của ASEAN (gia nhập tháng 10/2025) là|Đông Ti-mo (Timor-Leste)|Mi-an-ma|Cam-pu-chia|Lào;Hiện nay ASEAN có bao nhiêu thành viên?|11|10|9|12;Thủ đô của Lào là|Viêng Chăn|Phnôm Pênh|Băng Cốc|Gia-các-ta;Thủ đô của Cam-pu-chia là|Phnôm Pênh|Viêng Chăn|Ma-ni-la|Ku-a-la Lăm-pơ;Thủ đô của Thái Lan là|Băng Cốc|Ku-a-la Lăm-pơ|Xin-ga-po|Viêng Chăn;Quốc gia có diện tích lớn nhất Đông Nam Á là|In-đô-nê-xi-a|Việt Nam|Thái Lan|Xin-ga-po",
+  tip:"ASEAN thành lập năm 1967. Việt Nam gia nhập năm 1995. Ngày 26/10/2025, Đông Ti-mo trở thành thành viên thứ 11."}]},
+{id:"l6",name:"Lớp 6",em:"🏺",age:"11–12 tuổi",cap:2,goal:"Lịch sử: các quốc gia cổ đại, Văn Lang – Âu Lạc, thời Bắc thuộc. Địa lí: Trái Đất, bản đồ, đại dương và lục địa.",units:[
+ {t:"Thế giới cổ đại, Văn Lang – Âu Lạc",em:"🏺",Q:"Kim tự tháp là công trình nổi tiếng của|Ai Cập cổ đại|Hy Lạp cổ đại|La Mã cổ đại|Trung Quốc cổ đại;Vạn Lý Trường Thành ở|Trung Quốc|Ấn Độ|Ai Cập|Hy Lạp;Đấu trường Cô-li-dê là công trình của|La Mã cổ đại|Ai Cập cổ đại|Lưỡng Hà|Ấn Độ cổ đại;Chữ số 0 và hệ đếm thập phân bắt nguồn từ|Ấn Độ cổ đại|Ai Cập cổ đại|Hy Lạp cổ đại|La Mã cổ đại;Thế vận hội Ô-lim-pích bắt nguồn từ|Hy Lạp cổ đại|La Mã cổ đại|Ai Cập cổ đại|Trung Quốc cổ đại;An Dương Vương xây thành|Cổ Loa|Thăng Long|Hoa Lư|Phú Xuân;Trống đồng Đông Sơn là hiện vật tiêu biểu của thời kì|Văn Lang – Âu Lạc|nhà Nguyễn|nhà Trần|nhà Lý;Khởi nghĩa Bà Triệu diễn ra năm|248|40|938|1010"},
+ {t:"Trái Đất, bản đồ",em:"🌍",Q:"Trái Đất là hành tinh thứ mấy tính từ Mặt Trời?|thứ ba|thứ nhất|thứ hai|thứ tư;Trái Đất tự quay quanh trục một vòng hết khoảng|24 giờ|365 ngày|12 giờ|30 ngày;Trái Đất quay quanh Mặt Trời một vòng hết khoảng|365 ngày|24 giờ|30 ngày|7 ngày;Đường xích đạo chia Trái Đất thành|bán cầu Bắc và bán cầu Nam|bán cầu Đông và bán cầu Tây|năm đới khí hậu|bốn mùa;Bản đồ tỉ lệ 1 : 100 000 thì 1 cm trên bản đồ ứng với ngoài thực tế|1 km|100 m|10 km|100 km;Đại dương lớn nhất thế giới là|Thái Bình Dương|Đại Tây Dương|Ấn Độ Dương|Bắc Băng Dương;Lục địa có diện tích lớn nhất là|lục địa Á – Âu|lục địa Phi|lục địa Nam Mỹ|lục địa Ô-xtrây-li-a",
+  tip:"Tỉ lệ bản đồ 1 : 100 000 nghĩa là 1 cm trên bản đồ bằng 100 000 cm = 1 km ngoài thực tế."}]},
+{id:"l7",name:"Lớp 7",em:"🏰",age:"12–13 tuổi",cap:2,goal:"Lịch sử: Đại Việt thời Ngô, Đinh, Tiền Lê, Lý, Trần, Hồ, Lê sơ. Địa lí: các châu lục trên thế giới.",units:[
+ {t:"Triều đại và kinh đô",em:"🏰",P:{label:"có kinh đô ở",q:"Kinh đô của {a} ở đâu?",items:"nước Văn Lang|Phong Châu;nước Âu Lạc|Cổ Loa;nhà Đinh|Hoa Lư;nhà Lý|Thăng Long;nhà Hồ|Tây Đô (Thanh Hóa);nhà Nguyễn|Phú Xuân (Huế)"},matchPrompt:"Ghép triều đại với kinh đô"},
+ {t:"Đại Việt thời Lý – Trần – Lê sơ",em:"⚔️",Q:"Ba lần kháng chiến chống quân Mông – Nguyên diễn ra dưới triều|nhà Trần|nhà Lý|nhà Lê sơ|nhà Hồ;Bài thơ «Nam quốc sơn hà» gắn với cuộc kháng chiến chống|quân Tống|quân Minh|quân Thanh|quân Nguyên;«Bình Ngô đại cáo» được viết sau thắng lợi của|khởi nghĩa Lam Sơn|kháng chiến chống Tống|kháng chiến chống Nguyên|phong trào Tây Sơn;Bộ luật Hồng Đức được ban hành dưới thời vua|Lê Thánh Tông|Lê Lợi|Trần Nhân Tông|Lý Thánh Tông;Người chỉ huy trận Bạch Đằng năm 1288 là|Trần Hưng Đạo|Lý Thường Kiệt|Ngô Quyền|Lê Lợi;Năm 1070, nhà Lý cho lập Văn Miếu để thờ|Khổng Tử|Phật|Đức Thánh Trần|Hùng Vương"},
+ {t:"Các châu lục",em:"🌎",Q:"Châu lục đông dân nhất thế giới là|châu Á|châu Phi|châu Âu|châu Mỹ;Hoang mạc Xa-ha-ra nằm ở|châu Phi|châu Á|châu Mỹ|châu Đại Dương;Rừng A-ma-dôn nằm ở|Nam Mỹ|châu Phi|châu Á|Bắc Mỹ;Châu lục lạnh nhất, gần như phủ toàn băng là|châu Nam Cực|châu Âu|châu Đại Dương|châu Á;Đỉnh núi cao nhất thế giới là|Ê-vơ-rét|Phan-xi-păng|Ki-li-man-gia-rô|Mông Blăng;Ô-xtrây-li-a thuộc|châu Đại Dương|châu Á|châu Mỹ|châu Phi;Kênh đào Xuy-ê nối Địa Trung Hải với|Biển Đỏ|Thái Bình Dương|Biển Đông|Bắc Băng Dương"}]},
+{id:"l8",name:"Lớp 8",em:"⚙️",age:"13–14 tuổi",cap:2,goal:"Lịch sử: cách mạng tư sản, cách mạng công nghiệp; Việt Nam thế kỉ XVIII – XIX. Địa lí: địa lí tự nhiên Việt Nam.",units:[
+ {t:"Thế giới cận đại",em:"⚙️",Q:"Cách mạng Pháp bùng nổ năm|1789|1640|1776|1917;Tuyên ngôn Độc lập của Mỹ được công bố năm|1776|1789|1640|1945;Cách mạng công nghiệp bắt đầu đầu tiên ở|Anh|Pháp|Mỹ|Đức;Người cải tiến máy hơi nước là|Giêm Oát (James Watt)|Ê-đi-xơn|Niu-tơn|Ác-si-mét"},
+ {t:"Việt Nam thế kỉ XVIII – XIX",em:"🏯",Q:"Người chỉ huy đại phá quân Thanh năm 1789 là|Nguyễn Huệ (Quang Trung)|Nguyễn Ánh|Lê Lợi|Trần Hưng Đạo;Nhà Nguyễn được thành lập năm|1802|1789|1858|1945;Thực dân Pháp nổ súng xâm lược Việt Nam tại Đà Nẵng năm|1858|1802|1884|1930;Kinh đô của nhà Nguyễn là|Phú Xuân (Huế)|Thăng Long|Hoa Lư|Gia Định;Người lãnh đạo khởi nghĩa Yên Thế là|Hoàng Hoa Thám|Phan Đình Phùng|Trương Định|Nguyễn Trung Trực;«Bao giờ người Tây nhổ hết cỏ nước Nam thì mới hết người Nam đánh Tây» là câu nói của|Nguyễn Trung Trực|Trương Định|Hoàng Hoa Thám|Phan Bội Châu"},
+ {t:"Tự nhiên Việt Nam",em:"🏞️",Q:"Phần đất liền nước ta có hình dạng|hẹp ngang, kéo dài theo chiều Bắc – Nam|gần như hình vuông|gần như hình tròn|trải rộng theo chiều Đông – Tây;Địa hình chiếm phần lớn diện tích phần đất liền nước ta là|đồi núi|đồng bằng|bãi cát ven biển|đầm lầy;Gió thổi vào miền Bắc nước ta trong mùa đông là gió|mùa đông bắc|mùa tây nam|tây khô nóng|đông nam;Biển bao bọc phía đông và phía nam nước ta là|Biển Đông|Biển Đỏ|Địa Trung Hải|Biển Đen;Loại đất có diện tích lớn nhất ở vùng đồi núi nước ta là|đất fe-ra-lit|đất phù sa|đất mặn|đất cát;Đất badan, thích hợp trồng cà phê, tập trung nhiều ở|Tây Nguyên|đồng bằng sông Hồng|đồng bằng sông Cửu Long|Trung du Bắc Bộ",
+  tip:"Đồi núi chiếm khoảng 3/4 diện tích lãnh thổ phần đất liền. Khí hậu nhiệt đới ẩm gió mùa: mùa đông gió mùa đông bắc, mùa hạ gió mùa tây nam."}]},
+{id:"l9",name:"Lớp 9",em:"🎖️",age:"14–15 tuổi",cap:2,goal:"Lịch sử: Việt Nam 1930–1975, thế giới hiện đại. Địa lí: dân cư và các ngành kinh tế Việt Nam.",units:[
+ {t:"Việt Nam 1930 – 1975",em:"🎖️",Q:"Cách mạng tháng Tám thành công năm|1945|1930|1954|1975;Lời kêu gọi toàn quốc kháng chiến của Chủ tịch Hồ Chí Minh được phát đi năm|1946|1945|1954|1965;Hiệp định Giơ-ne-vơ về Đông Dương được kí năm|1954|1946|1973|1975;Hiệp định Pa-ri về Việt Nam được kí năm|1973|1954|1968|1975;Chiến thắng «Điện Biên Phủ trên không» diễn ra năm|1972|1954|1968|1975;Chiến dịch Hồ Chí Minh toàn thắng ngày|30/4/1975|7/5/1954|2/9/1945|10/3/1975"},
+ {t:"Thế giới hiện đại",em:"🌐",Q:"Chiến tranh thế giới thứ hai kết thúc năm|1945|1918|1939|1975;Liên Hợp Quốc được thành lập năm|1945|1918|1967|1991;Việt Nam trở thành thành viên Liên Hợp Quốc năm|1977|1945|1995|2007;Việt Nam gia nhập Tổ chức Thương mại Thế giới (WTO) năm|2007|1995|1986|2000;Đường lối Đổi mới được đề ra tại Đại hội Đảng lần thứ VI năm|1986|1975|1995|2007;ASEAN được thành lập năm|1967|1945|1995|1975"},
+ {t:"Dân cư và kinh tế Việt Nam",em:"🏭",Q:"Vùng trọng điểm lúa lớn nhất nước ta là|đồng bằng sông Cửu Long|Tây Nguyên|Trung du và miền núi Bắc Bộ|Bắc Trung Bộ;Vùng trồng cà phê lớn nhất nước ta là|Tây Nguyên|đồng bằng sông Hồng|đồng bằng sông Cửu Long|Bắc Trung Bộ;Trung tâm kinh tế lớn nhất cả nước là|TP. Hồ Chí Minh|Huế|Cần Thơ|Hải Phòng;Nhà máy thủy điện Hòa Bình nằm trên sông|Đà|Hồng|Đồng Nai|Mê Công;Dân tộc có số dân đông nhất nước ta là|Kinh|Tày|Thái|Mường"}]},
+{id:"l10",name:"Lớp 10",em:"🏛️",age:"15–16 tuổi",cap:3,goal:"Lịch sử: các nền văn minh thế giới, Đông Nam Á và Việt Nam; danh nhân văn hóa. Địa lí: Trái Đất – khí quyển – thủy quyển.",units:[
+ {t:"Các nền văn minh",em:"🏛️",Q:"Nền văn minh Chăm-pa gắn với di tích tiêu biểu|Thánh địa Mỹ Sơn|Kim tự tháp Kê-ốp|Vạn Lý Trường Thành|Đấu trường Cô-li-dê;Quần thể đền Ăng-co thuộc quốc gia|Cam-pu-chia|Thái Lan|Lào|Mi-an-ma;Văn hóa Óc Eo gắn với vương quốc cổ|Phù Nam|Chăm-pa|Văn Lang|Âu Lạc;Phong trào Văn hóa Phục hưng bắt đầu ở|I-ta-li-a|Anh|Mỹ|Trung Quốc;Đạo Phật ra đời ở|Ấn Độ|Trung Quốc|Ai Cập|Hy Lạp;Cách mạng công nghiệp lần thứ tư gắn với|trí tuệ nhân tạo, internet vạn vật, dữ liệu lớn|máy hơi nước|điện và dây chuyền sản xuất|tàu thủy chạy bằng buồm"},
+ {t:"Danh nhân Việt Nam",em:"📜",P:{label:"là",q:"Ai {a}?",items:"lập ra nhà Đinh|Đinh Bộ Lĩnh;viết Hịch tướng sĩ|Trần Quốc Tuấn;đọc Tuyên ngôn Độc lập năm 1945|Hồ Chí Minh;chỉ huy chiến dịch Điện Biên Phủ|Võ Nguyên Giáp;được gọi là Hải Thượng Lãn Ông|Lê Hữu Trác;là tác giả «Vân đài loại ngữ»|Lê Quý Đôn;soạn Bình Ngô đại cáo|Nguyễn Trãi;đại phá quân Thanh năm 1789|Quang Trung"},matchPrompt:"Ghép đóng góp với danh nhân"},
+ {t:"Địa lí tự nhiên đại cương",em:"🌦️",Q:"Hiện tượng ngày và đêm là do|Trái Đất tự quay quanh trục|Mặt Trăng quay quanh Trái Đất|gió mùa|thủy triều;Các mùa trong năm sinh ra do|trục Trái Đất nghiêng khi quay quanh Mặt Trời|Trái Đất tự quay quanh trục|Mặt Trăng che Mặt Trời|thủy triều;Thủy triều chủ yếu do sức hút của|Mặt Trăng và Mặt Trời|gió|núi lửa|động đất;Tầng khí quyển sát mặt đất là|tầng đối lưu|tầng bình lưu|tầng giữa|tầng nhiệt;Động đất, núi lửa thường xảy ra ở|ranh giới các mảng kiến tạo|giữa các đồng bằng rộng|trung tâm các sa mạc|giữa các thảo nguyên;Tầng ô-dôn giúp|hấp thụ phần lớn tia cực tím từ Mặt Trời|tạo ra mưa|làm Trái Đất lạnh đi|sinh ra gió"}]},
+{id:"l11",name:"Lớp 11",em:"🛡️",age:"16–17 tuổi",cap:3,goal:"Lịch sử: các cuộc cải cách trong lịch sử Việt Nam, bảo vệ chủ quyền biển đảo. Địa lí: kinh tế – xã hội thế giới, các tổ chức quốc tế.",units:[
+ {t:"Cải cách và chủ quyền biển đảo",em:"🛡️",Q:"Hồ Quý Ly cho phát hành tiền giấy có tên là|Thông bảo hội sao|Thái Bình hưng bảo|Gia Long thông bảo|Hồng Đức thông bảo;Vua chia cả nước thành 30 tỉnh và phủ Thừa Thiên (1831–1832) là|Minh Mạng|Gia Long|Lê Thánh Tông|Tự Đức;Đội Hoàng Sa thời chúa Nguyễn và nhà Nguyễn có nhiệm vụ|khai thác và thực thi chủ quyền ở quần đảo Hoàng Sa|đánh bắt cá trên sông|xây dựng kinh thành|thu thuế ở đồng bằng;Cuộc cải cách của Lê Thánh Tông diễn ra vào thế kỉ|XV|XI|XIII|XIX;Bộ luật Hồng Đức ra đời dưới triều|Lê sơ|Lý|Trần|Nguyễn"},
+ {t:"Thế giới và các tổ chức quốc tế",em:"🌐",Q:"Tổ chức Thương mại Thế giới viết tắt là|WTO|UN|ASEAN|WHO;Liên minh châu Âu viết tắt là|EU|UN|APEC|ASEAN;Từ tháng 10/2025, ASEAN có bao nhiêu thành viên?|11|10|12|9;Quốc gia đông dân nhất Đông Nam Á là|In-đô-nê-xi-a|Việt Nam|Phi-lip-pin|Thái Lan;Kênh đào Pa-na-ma nối Thái Bình Dương với|Đại Tây Dương|Ấn Độ Dương|Bắc Băng Dương|Biển Đông;Quốc gia có diện tích lớn nhất thế giới là|Liên bang Nga|Trung Quốc|Hoa Kỳ|Ca-na-đa"}]},
+{id:"l12",name:"Lớp 12",em:"🎓",age:"17–18 tuổi",cap:3,goal:"Lịch sử: Hồ Chí Minh – anh hùng giải phóng dân tộc; công cuộc Đổi mới và hội nhập. Địa lí: địa lí Việt Nam tổng hợp (cập nhật hành chính 2025). Ôn thi tốt nghiệp THPT.",units:[
+ {t:"Hồ Chí Minh",em:"⭐",Q:"Nguyễn Tất Thành sinh năm|1890|1911|1930|1945;Quê hương của Chủ tịch Hồ Chí Minh ở tỉnh|Nghệ An|Hà Tĩnh|Thanh Hóa|Quảng Trị;Năm 1920, Nguyễn Ái Quốc đọc bản Sơ thảo luận cương về vấn đề dân tộc và thuộc địa của|Lê-nin|Mác|Ăng-ghen|Xta-lin;Hội Việt Nam Cách mạng Thanh niên được thành lập năm|1925|1930|1941|1945;Mặt trận Việt Minh được thành lập năm|1941|1930|1945|1936"},
+ {t:"Đổi mới và hội nhập",em:"🤝",Q:"Công cuộc Đổi mới bắt đầu từ năm|1986|1975|1995|2007;Việt Nam bình thường hóa quan hệ ngoại giao với Hoa Kỳ năm|1995|1986|2000|1975;Việt Nam tham gia APEC năm|1998|1995|2007|1977;Việt Nam đã đăng cai Hội nghị cấp cao APEC vào các năm|2006 và 2017|2000 và 2010|2010 và 2020|1998 và 2007;Nghị quyết về sắp xếp đơn vị hành chính cấp tỉnh (còn 34 tỉnh, thành) được Quốc hội thông qua năm|2025|2019|2020|2023"},
+ {t:"Địa lí Việt Nam tổng hợp",em:"🧭",Q:"Sau sắp xếp năm 2025, điểm cực Bắc phần đất liền nước ta thuộc tỉnh|Tuyên Quang|Cao Bằng|Lào Cai|Lạng Sơn;Điểm cực Nam phần đất liền nước ta là mũi|Cà Mau|Né|Đại Lãnh|Kê Gà;Đường bờ biển nước ta dài khoảng|3 260 km|1 650 km|5 000 km|900 km;Hai đồng bằng châu thổ lớn nhất nước ta là của|sông Hồng và sông Cửu Long|sông Mã và sông Cả|sông Đà và sông Lô|sông Thu Bồn và sông Ba;Vùng có tiềm năng thủy điện lớn nhất nước ta là|Trung du và miền núi Bắc Bộ|đồng bằng sông Cửu Long|đồng bằng sông Hồng|Duyên hải Nam Trung Bộ;Từ 1/7/2025, đơn vị hành chính cấp huyện|kết thúc hoạt động, còn chính quyền tỉnh và xã|được giữ nguyên|được nhập vào cấp tỉnh|trở thành thành phố",
+  tip:"Từ năm 2025: 34 tỉnh, thành phố; chính quyền địa phương 2 cấp (tỉnh, xã). Hà Giang nhập vào Tuyên Quang nên điểm cực Bắc (Lũng Cú) nay thuộc tỉnh Tuyên Quang."}]}
+];
+function lsParse(){LSLEVELS.forEach((L,li)=>L.units.forEach((u,ui)=>{
+  u.li=li;u.ui=ui;u.key=`ls-${li}-${ui}`;u.back=`ls-u-${li}-${ui}`;
+  const sp=(s,f)=>s?s.split(";").map(x=>f(x.split("|").map(y=>y.trim()))):null;
+  u.quiz=sp(u.Q,([q,a,...wr])=>({q,a,wrong:wr}));u.ct=null;u.letters=null;u.words=null;u.ghep=null;u.sents=null;
+  if(u.P)u.pairs={label:u.P.label,q:u.P.q,items:sp(u.P.items,([a,b])=>({a,b}))};
+  u.nextOf=act=>{const l=vActs(u),i=l.indexOf(act),n=i<0?null:l[i+1];return n?{go:`ls-g-${n}-${li}-${ui}`,em:VA[n].em,name:VA[n].n}:null};
+}))}
+lsParse();
+const lsDone=u=>{const d=P().done[u.key]||{};return vActs(u).filter(a=>d[a]).length};
+const lsPct=li=>{let t=0,d=0;LSLEVELS[li].units.forEach(u=>{t+=vActs(u).length;d+=lsDone(u)});return t?Math.round(d/t*100):0};
+function lsHome(){
+  render(`
+  <button class="btn ghost sm back" data-go="">← Trang đầu</button>
+  <div class="lvhead" style="--c:var(--orange)"><div class="em">🏛️</div>
+    <div style="min-width:0;flex:1"><div class="eyebrow">Lớp 4 – Lớp 12 · cập nhật 2025–2026</div><h1>Đảo Lịch sử – Địa lí</h1>
+    <p class="muted" style="margin:4px 0 0;max-width:62ch">Các mốc lịch sử dựng nước và giữ nước, danh nhân, các nền văn minh; địa lí Việt Nam và thế giới, cập nhật 34 tỉnh, thành phố và chính quyền 2 cấp từ năm 2025.</p></div></div>
+  <section>${capSections(LSLEVELS.map(L=>({...L})),(L,li)=>`<button class="island" style="--c:${lvColor(li+4)}" data-go="ls-lv-${li}">
+      <div class="top"><span class="em">${L.em}</span><span class="badge">${L.age}</span></div>
+      <h3>${L.name}</h3><span class="muted">${L.units.map(u=>u.t).join(" · ")}</span>
+      <div class="bar"><i style="width:${lsPct(li)}%"></i></div><small class="muted"><b>${lsPct(li)}%</b> hoàn thành · ${L.units.length} bài</small></button>`)}</section>`);
+}
+function lsLevel(li){
+  const L=LSLEVELS[li];if(!L)return lsHome();const cup=P().done["ls-"+L.id+"-cup"];
+  render(`
+  <button class="btn ghost sm back" data-go="ls">← Đảo Lịch sử – Địa lí</button>
+  <div class="lvhead" style="--c:${lvColor(li+4)}"><div class="em">${L.em}</div>
+    <div style="min-width:0;flex:1"><div class="eyebrow">${L.age}</div><h1>Lịch sử – Địa lí ${L.name}</h1><p class="muted" style="margin:4px 0 0;max-width:62ch">${L.goal}</p></div></div>
+  <section><div class="units">${L.units.map(u=>{const d=lsDone(u),n=vActs(u).length;return`<button class="unit" style="--c:${lvColor(li+4)}" data-go="ls-u-${li}-${u.ui}"><span class="em">${u.em}</span><span class="n">Bài ${u.ui+1}</span><h3>${esc(u.t)}</h3><div class="dots">${vActs(u).map((a,i)=>`<b class="${i<d?"on":""}"></b>`).join("")}</div><small class="muted">${d===n?"✅ Đã xong":d+"/"+n+" trò chơi"}</small></button>`}).join("")}</div></section>
+  <section class="card row" style="justify-content:space-between"><div><h2 style="font-size:1.35rem">🏆 Thử thách</h2><span class="muted">10 câu trộn từ các bài. ${cup?`Kỷ lục: <b>${cup}/10</b>`:""}</span></div><button class="btn" style="--c:${lvColor(li+4)}" data-go="ls-thu-thach-${li}">Bắt đầu</button></section>`);
+}
+function lsUnit(li,ui){
+  const L=LSLEVELS[li],u=L&&L.units[ui];if(!u)return lsHome();const d=P().done[u.key]||{};
+  const preview=u.pairs?`<div class="words">${u.pairs.items.map(p=>`<span class="wchip" ${sv(p.a+": "+p.b)} role="button" tabindex="0">${esc(p.a)} → <b>${esc(p.b)}</b></span>`).join("")}</div>`
+    :`<ol class="tips">${u.quiz.map(q=>`<li>${esc(q.q.replace(/\?$/,""))} <b>→ ${esc(q.a)}</b></li>`).join("")}</ol>`;
+  render(`
+  <button class="btn ghost sm back" data-go="ls-lv-${li}">← Lịch sử – Địa lí ${L.name}</button>
+  <div class="lvhead" style="--c:${lvColor(li+4)}"><div class="em">${u.em}</div><div style="min-width:0;flex:1"><div class="eyebrow">${L.name} · Bài ${ui+1}</div><h1>${esc(u.t)}</h1></div></div>
+  ${u.tip?`<section class="card tipcard"><b>💡 Ghi nhớ</b><p style="margin:6px 0 0">${esc(u.tip)}</p></section>`:""}
+  <section class="card"><h2 style="font-size:1.2rem;margin-bottom:8px">📖 Kiến thức cần nhớ <span class="muted" style="font-size:.9rem">· đọc trước khi chơi</span></h2>${preview}</section>
+  <section><h2 style="font-size:1.3rem;margin-bottom:10px">Trò chơi từ dễ đến khó</h2>
+    <div class="acts">${vActs(u).map(a=>{const x=VA[a];return`<button class="act" data-go="ls-g-${a}-${li}-${ui}">${d[a]?'<span class="ok">✓</span>':""}<span class="em">${x.em}</span><b>${x.n}</b><small>${x.d}</small><span class="diff">${diffStars(x.lv)} ${diffName(x.lv)}</span></button>`}).join("")}</div></section>`);
+}
+function lsChallenge(li){
+  const L=LSLEVELS[li];if(!L)return lsHome();
+  const qs=shuffle(L.units.flatMap(u=>vMcq(u))).slice(0,10),pu={t:L.name,li,ui:-1,key:null,back:"ls-lv-"+li};
+  vRun(pu,"trac",qs,{back:"ls-lv-"+li,title:`🏆 Thử thách Lịch sử – Địa lí ${L.name}`,again:()=>lsChallenge(li),autoSay:false,next:null,onEnd:(score,n)=>{
+    const p=P(),k="ls-"+L.id+"-cup";p.done[k]=Math.max(p.done[k]||0,score);save();
+    finish({stars:score,max:n,back:"ls-lv-"+li,again:()=>lsChallenge(li),vi:true,next:null,label:"Kết quả thử thách:"})}});
+}
+function lsRoute(h){let m;
+  if(h==="ls")return lsHome();
+  if(m=h.match(/^ls-lv-(\d+)$/))return lsLevel(+m[1]);
+  if(m=h.match(/^ls-u-(\d+)-(\d+)$/))return lsUnit(+m[1],+m[2]);
+  if(m=h.match(/^ls-thu-thach-(\d+)$/))return lsChallenge(+m[1]);
+  if(m=h.match(/^ls-g-([a-z]+)-(\d+)-(\d+)$/)){const L=LSLEVELS[+m[2]],u=L&&L.units[+m[3]];if(u&&VA[m[1]]&&vActs(u).includes(m[1]))return vPlay(m[1],u);return u?lsUnit(+m[2],+m[3]):lsHome()}
+  lsHome();
+}
+
 /* Nhãn dán */
 function stickers(){
   const p=P(),got=Math.min(Math.floor(p.stars/STAR_PER_STICKER),STICKERS.length),left=STAR_PER_STICKER-(p.stars%STAR_PER_STICKER);
@@ -3552,10 +3713,17 @@ function program(){
   const CH=[["Super Simple Songs","Bài hát ngắn, chậm, hợp Mầm non – Lớp 2"],["Dream English Kids","Bài hát theo chủ đề, nhiều động tác"],["Maple Leaf Learning","Hát và luyện mẫu câu, hợp Lớp 1 – 3"],["British Council LearnEnglish Kids","Truyện và bài hát cho Lớp 3 – 5"]];
   render(`
   <button class="btn ghost sm back" data-go="ta">← Đảo Tiếng Anh</button>
-  <div class="row" style="margin-top:12px"><button class="chip on">🏝️ Tiếng Anh</button><button class="chip" data-go="tv-chuong-trinh">🌾 Tiếng Việt</button><button class="chip" data-go="toan-chuong-trinh">🔢 Toán</button></div>
+  <div class="row" style="margin-top:12px"><button class="chip on">🏝️ Tiếng Anh</button><button class="chip" data-go="tv-chuong-trinh">🌾 Tiếng Việt</button><button class="chip" data-go="toan-chuong-trinh">🔢 Toán</button><button class="chip" data-go="ls">🏛️ Sử – Địa</button></div>
   <section>
     <div class="eyebrow">Dành cho phụ huynh và thầy cô</div>
     <h1 style="font-size:clamp(1.8rem,5vw,2.4rem)">Chương trình Tiếng Anh Mầm non – Lớp 12</h1>
+    <div class="card note26" style="margin:12px 0">
+    <b>📢 Cập nhật chương trình năm học 2026–2027</b>
+    <ul class="tips"><li>Cả nước dùng thống nhất bộ sách giáo khoa <b>«Kết nối tri thức với cuộc sống»</b> (Quyết định 3588/QĐ-BGDĐT ngày 26/12/2025). Tiếng Anh theo sách <b>Global Success</b>.</li>
+    <li>Đề án đưa tiếng Anh thành ngôn ngữ thứ hai: các địa phương triển khai dạy tiếng Anh từ lớp 1.</li>
+    <li>Địa lí cập nhật: 34 tỉnh, thành phố; chính quyền địa phương 2 cấp từ 1/7/2025; ASEAN có 11 thành viên.</li></ul>
+    <small class="muted">Nội dung trong phần mềm là bài luyện tập bổ trợ, thứ tự bài có thể khác sách giáo khoa.</small>
+  </div>
     <p class="muted" style="max-width:68ch">6 cấp độ, mỗi cấp 6 bài cơ bản và 3 bài nâng cao, tổng cộng <b>${LEVELS.reduce((s,L)=>s+L.units.length,0)} bài</b> và <b>${total} từ vựng</b> kèm mẫu câu. Chủ đề đi từ gần gũi (màu sắc, con vật, gia đình) đến mở rộng (lễ hội, môi trường, an toàn giao thông). Mỗi bài học trong khoảng một tuần.</p>
   </section>
   <section class="card">
