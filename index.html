@@ -215,6 +215,12 @@ ul.tips a{color:var(--sky)}
 .strictrow{display:flex;gap:10px;align-items:flex-start;margin:6px 0 4px;padding:10px 12px;border:2px solid var(--line);border-radius:14px;background:var(--soft);cursor:pointer}
 .strictrow input{width:22px;height:22px;margin-top:2px;flex:none;accent-color:var(--leaf)}
 /* trang đầu, Tiếng Việt, Cửu chương */
+.tdgrid{display:grid;gap:6px;width:min(420px,100%)}
+.tdgrid .tdc{min-height:0;aspect-ratio:1;padding:2px;font-size:clamp(1.6rem,9vw,2.6rem);display:flex;align-items:center;justify-content:center;border-radius:14px;box-shadow:0 3px 0 var(--shadow)}
+.tdgrid .tdq{border-color:var(--berry);background:color-mix(in srgb,var(--berry) 15%,var(--card))}
+.tdstair{display:flex;align-items:flex-end;gap:4px;justify-content:center;margin:8px 0 4px}
+.tdstep{position:relative;width:min(54px,13vw);background:var(--sun);border-radius:8px 8px 0 0;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;color:#3a2a00;font-size:1.2rem}
+.tdrab{position:absolute;top:-34px;font-size:1.8rem}
 .snthemes{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
 .sntheme{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px 10px;border-radius:18px;border:2px solid var(--line,#ddd);background:var(--card,#fff);color:inherit;font:inherit;cursor:pointer;text-align:center}
 .sntheme .em{font-size:2.6rem;line-height:1}.sntheme:hover{transform:translateY(-2px)}
@@ -3359,8 +3365,83 @@ Object.assign(TT,{
      <div class="clues"><ol>${p.clues.map(c=>`<li>${esc(c)}</li>`).join("")}</ol><small class="muted">Mẹo: kẻ bảng, đánh ✗ vào ô không thể, ✓ vào ô chắc chắn.</small></div><div class="prompt">${esc(p.q)}</div>`,
      p.opts,p.ans,api,`Đáp án: <b>${esc(p.ans)}</b>.`)}}
 });
+/* ---------- Đảo Thám Tử: Rèn tư duy não trái – não phải (nội dung tự tạo) ---------- */
+const TD_ODD=[["❄️","✳️"],["🍎","🍅"],["⭐","🌟"],["🐟","🐠"],["🌼","🌻"],["🚗","🚙"],["🐥","🐤"],["😀","😃"],["🍀","☘️"],["🌕","🌝"],["🐶","🐕"],["🔵","🟣"],["🍪","🍩"],["🐸","🐢"],["🌷","🌹"],["🎈","🎀"],["🍋","🍌"],["🐞","🐜"],["☀️","🌞"],["🍇","🫐"]];
+const TD_COL=["#ff5d8f","#3aa0ff","#ffc531","#38c172","#9b6bff"];
+function tdPath(W,H,extra){/* đường đi trên lưới từ góc dưới trái tới góc trên phải, dài W+H+2*extra */
+  for(let t=0;t<300;t++){let x=0,y=H;const pts=[[x,y]],seen=new Set(["0,"+H]);let det=extra,ok=true;
+    while(!(x===W&&y===0)){const mv=[];
+      if(x<W)mv.push([1,0],[1,0]);if(y>0)mv.push([0,-1],[0,-1]);
+      if(det>0){if(x>0)mv.push([-1,0]);if(y<H)mv.push([0,1])}
+      const cand=shuffle(mv).filter(([dx,dy])=>!seen.has((x+dx)+","+(y+dy)));
+      if(!cand.length){ok=false;break}const [dx,dy]=cand[0];if(dx<0||dy>0)det--;x+=dx;y+=dy;seen.add(x+","+y);pts.push([x,y]);if(pts.length>60){ok=false;break}}
+    if(ok&&det===0)return pts}
+  return null;
+}
+function tdPathSvg(pts,W,H,col){const s=24,P=14,w=W*s+2*P,h=H*s+2*P;let g="";
+  for(let i=0;i<=W;i++)g+=`<line x1="${P+i*s}" y1="${P}" x2="${P+i*s}" y2="${P+H*s}" stroke="#ccd" stroke-width="1"/>`;
+  for(let j=0;j<=H;j++)g+=`<line x1="${P}" y1="${P+j*s}" x2="${P+W*s}" y2="${P+j*s}" stroke="#ccd" stroke-width="1"/>`;
+  return`<svg viewBox="0 0 ${w} ${h+4}" width="100%" style="max-width:190px" aria-hidden="true">${g}<polyline points="${pts.map(([x,y])=>`${P+x*s},${P+y*s}`).join(" ")}" fill="none" stroke="${col}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><text x="${P}" y="${P+H*s+6}" font-size="20" text-anchor="middle">🦁</text><text x="${P+W*s}" y="${P+6}" font-size="20" text-anchor="middle">🏠</text></svg>`}
+const tdSquares=(a,b)=>{let n=0;for(let k=1;k<=Math.min(a,b);k++)n+=(a-k+1)*(b-k+1);return n};
+function tdGridSvg(a,b){const s=40,P=6;let g="";
+  for(let i=0;i<=a;i++)g+=`<line x1="${P+i*s}" y1="${P}" x2="${P+i*s}" y2="${P+b*s}" stroke="var(--ink,#333)" stroke-width="3"/>`;
+  for(let j=0;j<=b;j++)g+=`<line x1="${P}" y1="${P+j*s}" x2="${P+a*s}" y2="${P+j*s}" stroke="var(--ink,#333)" stroke-width="3"/>`;
+  return`<svg viewBox="0 0 ${a*s+2*P} ${b*s+2*P}" width="${Math.min(260,a*s+2*P)}" aria-hidden="true">${g}</svg>`}
+const TD_SHP={vuong:'<rect x="15" y="15" width="70" height="70" rx="4"/>',tron:'<circle cx="50" cy="50" r="38"/>',tamgiac:'<polygon points="50,12 90,85 10,85"/>',chunhat:'<rect x="8" y="28" width="84" height="44" rx="4"/>'};
+const TD_SHN={vuong:"hình vuông",tron:"hình tròn",tamgiac:"hình tam giác",chunhat:"hình chữ nhật"};
+function tdPix(rows,col){const s=22;return`<svg viewBox="0 0 ${rows[0].length*s} ${rows.length*s}" width="${rows[0].length*s}" aria-hidden="true">${rows.map((r,y)=>r.map((v,x)=>`<rect x="${x*s+1}" y="${y*s+1}" width="${s-2}" height="${s-2}" rx="4" fill="${v?col:"#e8eaf2"}"/>`).join("")).join("")}</svg>`}
+const TD_LATIN=[["🍎","🍌","🍇","🍓"],["🐶","🐱","🐰","🐻"],["🔴","🔵","🟡","🟢"],["🚗","🚲","✈️","🚢"],["⭐","🌙","☀️","☁️"]];
+
+Object.assign(TT,{
+ laccloai:{max:5,n:"Hình lạc loài",em:"❄️",lv:1,d:"Tất cả giống nhau, chỉ một hình khác. Tìm nó!",skill:"Quan sát, tập trung",
+  play(st,d,api){const [a,b]=pk(TD_ODD),n=[3,3,4,4,5,5,6,6,6][d]||6,N=n*n,k=Rn(0,N-1);
+   ttQ(st,`<div class="prompt">❄️ Có một hình khác với các bạn còn lại. Bé tìm và chạm vào nhé!</div><div class="tdgrid" style="grid-template-columns:repeat(${n},minmax(0,1fr))">${Array.from({length:N},(_,i)=>`<button class="tile tdc" data-i="${i}">${i===k?b:a}</button>`).join("")}</div>`);
+   let lock=false;st.querySelectorAll(".tdc").forEach(t=>t.onclick=()=>{if(lock)return;if(+t.dataset.i===k){lock=true;t.classList.add("good","pop");api.ok()}else{t.classList.add("bad");bump(t);api.wrong(`Hình khác là ${b}.`)}})}},
+ haichan:{max:5,n:"Con vật mấy chân?",em:"🦆",lv:1,d:"Đếm chân con vật, tìm con có 2 chân",skill:"Hiểu biết, đếm",
+  play(st,d,api){const A=ANIMAL_DATA.filter(x=>x[3]!==null&&x[3]!==undefined&&[0,2,4,6,8].includes(x[3]));
+   if(d<2){const leg=pk([2,4]),yes=shuffle(A.filter(x=>x[3]===leg)),no=shuffle(A.filter(x=>x[3]!==leg));const ans=yes[0][2],opts=shuffle([ans,...no.slice(0,3).map(x=>x[2])]);
+     return ttMcq(st,`<div class="prompt">🦆 Con vật nào có <b>${leg} chân</b>?</div>`,opts,ans,api,`${ans} ${yes[0][1]} có ${leg} chân.`,x=>`<span style="font-size:2.6rem">${x}</span>`)}
+   const k=Math.min(5,d),g=shuffle(A).slice(0,k),sum=g.reduce((s,x)=>s+x[3],0);
+   ttMcq(st,`<div class="prompt">🦆 Cả nhóm có tất cả bao nhiêu cái chân?</div><div class="cipher" style="font-size:2.4rem">${g.map(x=>x[2]).join(" ")}</div><small class="muted">${g.map(x=>x[1]).join(", ")}</small>`,pickOpts(String(sum),[sum+2,sum-2,sum+4,sum-4,sum+1,sum+6].filter(x=>x>=0).map(String)),String(sum),api,`${g.map(x=>`${x[1]}: ${x[3]}`).join(" · ")} → tổng ${sum} chân.`)}},
+ vedich:{n:"Đường về nhà",em:"🦁",lv:2,d:"Đếm ô, chọn con đường ngắn nhất cho sư tử",skill:"Định hướng, so sánh",
+  play(st,d,api){const W=Math.min(5,3+(d>>1)),H=Math.min(4,2+(d>>1)),ex=shuffle([0,1,2,3].slice(0,d>=5?4:3)).slice(0,3);
+   const ps=ex.map(e=>tdPath(W,H,e));if(ps.some(x=>!x))return TT.laccloai.play(st,d,api);
+   const keys=["Đường A","Đường B","Đường C"],best=ex.indexOf(Math.min(...ex)),len=p=>p.length-1;
+   ttMcq(st,`<div class="prompt">🦁 Sư tử muốn về 🏠. Mỗi cạnh ô vuông là một bước. Đường nào <b>ngắn nhất</b>?</div>`,keys,keys[best],api,`${keys.map((k,i)=>`${k}: ${len(ps[i])} bước`).join(" · ")}.`,
+     x=>{const i=keys.indexOf(x);return`<div style="display:flex;flex-direction:column;align-items:center;gap:4px">${tdPathSvg(ps[i],W,H,TD_COL[i])}<span>${x}</span></div>`})}},
+ demhinh:{n:"Đếm hình",em:"🔲",lv:2,d:"Có bao nhiêu hình vuông? Nhìn kĩ cả hình to!",skill:"Quan sát không gian",
+  play(st,d,api){
+   if(d<2){const t=pk(Object.keys(TD_SHP)),c=Rn(2,6),others=Array.from({length:Rn(3,6)},()=>pk(Object.keys(TD_SHP).filter(x=>x!==t)));
+     const items=shuffle([...Array(c).fill(t),...others]);
+     return ttMcq(st,`<div class="prompt">🔲 Có bao nhiêu <b>${TD_SHN[t]}</b>?</div><div class="row" style="justify-content:center;gap:6px;max-width:420px">${items.map((s,i)=>`<svg viewBox="0 0 100 100" width="56" fill="${TD_COL[i%5]}">${TD_SHP[s]}</svg>`).join("")}</div>`,pickOpts(String(c),["1","2","3","4","5","6","7"]),String(c),api,`Có ${c} ${TD_SHN[t]}.`)}
+   const G=[[2,1],[2,2],[3,1],[3,2],[3,3],[4,2],[4,3],[4,4]],[a,b]=G[Math.min(G.length-1,Rn(d-2,d))],n=tdSquares(a,b);
+   ttMcq(st,`<div class="prompt">🔲 Trong hình có tất cả bao nhiêu <b>hình vuông</b>? (Đếm cả hình vuông to ghép từ nhiều ô)</div><div style="display:flex;justify-content:center">${tdGridSvg(a,b)}</div>`,pickOpts(String(n),[n-1,n+1,a*b,n+2,n-2,a*b+1].filter(x=>x>0&&x!==n).map(String)),String(n),api,
+     `Có ${n} hình vuông: ${Array.from({length:Math.min(a,b)},(_,k)=>`${(a-k)*(b-k)} hình cỡ ${k+1}×${k+1}`).join(", ")}.`)}},
+ oconthieu:{n:"Ô còn thiếu",em:"🧩",lv:2,d:"Mỗi hàng, mỗi cột có đủ các hình, không lặp lại",skill:"Tư duy logic",
+  play(st,d,api){const n=d>=3?4:3,S=shuffle(pk(TD_LATIN).slice()).slice(0,n);
+   const r=shuffle([...Array(n).keys()]),c=shuffle([...Array(n).keys()]),M=r.map(i=>c.map(j=>S[(i+j)%n]));
+   const ti=Rn(0,n-1),tj=Rn(0,n-1),hide=new Set([ti+","+tj]);
+   const extra=d>=4?Math.min(4,d-2):0;for(let t=0;t<50&&hide.size<1+extra;t++){const i=Rn(0,n-1),j=Rn(0,n-1);if(i!==ti&&j!==tj)hide.add(i+","+j)}
+   ttMcq(st,`<div class="prompt">🧩 Mỗi hàng và mỗi cột đều có đủ ${n} hình, không hình nào lặp lại. Ô <b style="color:var(--berry)">❓</b> là hình gì?</div>
+     <div class="tdgrid" style="grid-template-columns:repeat(${n},56px);justify-content:center">${M.map((row,i)=>row.map((v,j)=>`<div class="tile tdc ${i===ti&&j===tj?"tdq":""}">${i===ti&&j===tj?"❓":hide.has(i+","+j)?"·":v}</div>`).join("")).join("")}</div>`,
+     shuffle(S.slice()),M[ti][tj],api,`Hàng đó đã có các hình khác, chỉ còn thiếu ${M[ti][tj]}.`,x=>`<span style="font-size:2.2rem">${x}</span>`)}},
+ soiguong:{n:"Soi gương",em:"🪞",lv:3,d:"Chọn nửa bên phải để hình đối xứng như soi gương",skill:"Tưởng tượng không gian",
+  play(st,d,api){const R=d>=4?5:4,C=d>=3?3:2,col=pk(TD_COL);let L;
+   for(let t=0;t<50;t++){L=Array.from({length:R},()=>Array.from({length:C},()=>Math.random()<.5?1:0));const m=L.map(r=>r.slice().reverse());if(JSON.stringify(m)!==JSON.stringify(L)&&L.flat().some(Boolean))break}
+   const mir=L.map(r=>r.slice().reverse()),same=L.map(r=>r.slice()),flip=mir.slice().reverse(),rnd=mir.map(r=>r.map((v,i)=>i===0&&Math.random()<.6?1-v:v));
+   const K=["A","B","C","D"],cand=[mir,same,flip,rnd],seen=new Set(),opts=[];cand.forEach(x=>{const s=JSON.stringify(x);if(!seen.has(s)){seen.add(s);opts.push(x)}});
+   while(opts.length<3){const x=mir.map(r=>r.map(v=>Math.random()<.3?1-v:v)),s=JSON.stringify(x);if(!seen.has(s)){seen.add(s);opts.push(x)}}
+   const sh=shuffle(opts.map((x,i)=>i)),labels=sh.map((_,i)=>K[i]),ans=labels[sh.indexOf(0)];
+   ttMcq(st,`<div class="prompt">🪞 Đặt gương ở vạch đỏ. Nửa bên phải sẽ trông như thế nào?</div><div style="display:flex;justify-content:center;align-items:center;gap:4px">${tdPix(L,col)}<div style="width:4px;align-self:stretch;background:var(--berry);border-radius:2px"></div><div style="font-size:2rem;width:${C*22}px;text-align:center">❓</div></div>`,
+     labels,ans,api,`Hình soi gương: ô gần gương nhất ở bên trái sẽ nằm sát gương ở bên phải.`,x=>`<div style="display:flex;flex-direction:column;align-items:center;gap:4px">${tdPix(opts[sh[labels.indexOf(x)]],col)}<span>${x}</span></div>`)}},
+ bacthang:{max:5,n:"Bậc thang số",em:"🪜",lv:1,d:"Leo cầu thang, tìm số còn thiếu trên bậc",skill:"Tìm quy luật",
+  play(st,d,api){const step=d<1?1:d<3?pk([1,2]):pk([2,3,5,10]),down=d>=2&&Math.random()<.4,start=down?Rn(step*6,step*6+9):Rn(d<1?1:0,d<2?3:20),n=d<1?5:6;
+   const s=Array.from({length:n},(_,i)=>down?start-i*step:start+i*step),k=Rn(1,n-1),ans=s[k];
+   ttMcq(st,`<div class="prompt">🪜 Bạn Thỏ leo cầu thang. Bậc có dấu ❓ là số mấy?</div><div class="tdstair">${s.map((v,i)=>`<div class="tdstep" style="height:${30+i*22}px"><b>${i===k?"❓":v}</b>${i===n-1?'<span class="tdrab">🐰</span>':""}</div>`).join("")}</div>`,
+     pickOpts(String(ans),[ans+1,ans-1,ans+step+1,ans-step-1,ans+2*step,ans-2].filter(x=>x>=0&&x!==ans).map(String)),String(ans),api,`Mỗi bậc ${down?"bớt":"thêm"} ${step}, nên số còn thiếu là ${ans}.`)}}
+});
 TTL.push({name:"THCS",em:"🏫",age:"Lớp 6–9"},{name:"THPT",em:"🎓",age:"Lớp 10–12"});
-const ttTypes=li=>Object.keys(TT).filter(k=>!(TT[k].min>li)).sort((a,b)=>TT[a].lv-TT[b].lv);
+const ttTypes=li=>Object.keys(TT).filter(k=>!(TT[k].min>li)&&!(TT[k].max<li)).sort((a,b)=>TT[a].lv-TT[b].lv);
 const ttDone=li=>{const d=P().done["tt-"+li]||{};return ttTypes(li).filter(k=>d[k]).length};
 const ttSolved=()=>TTL.reduce((s,L,li)=>s+ttDone(li),0);
 const ttRank=()=>{const s=ttSolved();return s>=40?["🏆","Siêu thám tử"]:s>=24?["🥇","Thám tử giỏi"]:s>=10?["🥈","Thám tử nhí"]:["🔍","Thám tử tập sự"]};
@@ -3397,7 +3478,7 @@ function ttHome(){
       <h3>Thám tử ${L.name}</h3><span class="muted">${ttTypes(li).map(k=>TT[k].em+" "+TT[k].n).join(" · ")}</span>
       <div class="bar"><i style="width:${Math.round(dn/n*100)}%"></i></div><small class="muted"><b>${dn}/${n}</b> vụ án đã phá</small></button>`})}</section>
   <section class="card"><h2 style="font-size:1.2rem">Dành cho phụ huynh</h2>
-    <ul class="tips"><li><b>Quan sát, tập trung:</b> Tìm bạn sinh đôi, Hai bức ảnh khác nhau, Tìm đồ thất lạc.</li><li><b>Ghi nhớ:</b> Ai vắng mặt? (thời gian ghi nhớ ngắn dần theo cấp).</li><li><b>Manh mối trong tranh:</b> Bóng ai thế?, Nhà của ai?, Ai còn thiếu?, Ai để lại dấu vết? — nhìn chi tiết nhỏ rồi suy ra câu trả lời; lớp lớn có bóng bị che một phần, nhiều nghi phạm và lời nhân chứng.</li><li><b>Định hướng, làm theo chỉ dẫn:</b> Lần theo dấu chân.</li><li><b>Tư duy logic:</b> Giải mật thư (từ Lớp 1), Ai là thủ phạm?, Ai đứng đầu? (từ Lớp 2).</li><li>Có thể dùng thay cho thời gian xem điện thoại giải trí: 10–15 phút mỗi ngày, bé tự phá một vụ án.</li></ul></section>`);
+    <ul class="tips"><li><b>Quan sát, tập trung:</b> Tìm bạn sinh đôi, Hai bức ảnh khác nhau, Tìm đồ thất lạc, Hình lạc loài.</li><li><b>Rèn tư duy não trái – não phải:</b> Đếm hình, Đường về nhà, Ô còn thiếu, Soi gương, Bậc thang số, Con vật mấy chân?</li><li><b>Ghi nhớ:</b> Ai vắng mặt? (thời gian ghi nhớ ngắn dần theo cấp).</li><li><b>Manh mối trong tranh:</b> Bóng ai thế?, Nhà của ai?, Ai còn thiếu?, Ai để lại dấu vết? — nhìn chi tiết nhỏ rồi suy ra câu trả lời; lớp lớn có bóng bị che một phần, nhiều nghi phạm và lời nhân chứng.</li><li><b>Định hướng, làm theo chỉ dẫn:</b> Lần theo dấu chân.</li><li><b>Tư duy logic:</b> Giải mật thư (từ Lớp 1), Ai là thủ phạm?, Ai đứng đầu? (từ Lớp 2).</li><li>Có thể dùng thay cho thời gian xem điện thoại giải trí: 10–15 phút mỗi ngày, bé tự phá một vụ án.</li></ul></section>`);
 }
 function ttLevel(li){
   const L=TTL[li];if(!L)return ttHome();const d=P().done["tt-"+li]||{};
