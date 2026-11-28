@@ -215,6 +215,36 @@ ul.tips a{color:var(--sky)}
 .strictrow{display:flex;gap:10px;align-items:flex-start;margin:6px 0 4px;padding:10px 12px;border:2px solid var(--line);border-radius:14px;background:var(--soft);cursor:pointer}
 .strictrow input{width:22px;height:22px;margin-top:2px;flex:none;accent-color:var(--leaf)}
 /* trang đầu, Tiếng Việt, Cửu chương */
+.tdygames{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.tdyv>div:first-child{flex:1 1 200px}.tdyvars{display:flex;flex-direction:column;gap:8px;margin-top:10px}.tdyv{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px 10px;border-radius:14px;background:color-mix(in srgb,var(--grape) 8%,var(--card))}
+.caroboard.big{gap:2px}.caroboard.big .carocell{border-radius:6px;border-width:1px}.carocell.last{box-shadow:0 0 0 3px var(--sun) inset}
+.thaboard{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;width:min(460px,100%);margin:0 auto;padding:8px;border-radius:18px;background:var(--sky)}
+.thac{aspect-ratio:1;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:clamp(1.2rem,7vw,2.4rem);cursor:pointer;line-height:1}
+.thac.win{box-shadow:0 0 0 4px var(--leaf)}
+.quebox{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;min-height:50px;font-size:2rem}.que{display:inline-block;transform:rotate(90deg)}
+.hanoi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:min(560px,100%);margin:0 auto}
+.peg{position:relative;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;min-height:240px;padding:8px 2px 30px;border-radius:16px;border:3px solid var(--line);background:var(--card);cursor:pointer;color:#fff;font:inherit}
+.peg.sel{border-color:var(--sun);background:color-mix(in srgb,var(--sun) 18%,var(--card))}.peg.sel .disk:first-of-type{transform:translateY(-14px)}
+.rod{position:absolute;bottom:30px;top:20px;width:8px;border-radius:4px;background:var(--line);left:calc(50% - 4px)}
+.disk{position:relative;height:26px;border-radius:13px;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 0 #0002;transition:transform .15s}
+.pl2{position:absolute;bottom:4px;color:var(--ink,#333)}
+.sdk{display:grid;width:min(460px,100%);margin:0 auto;border:3px solid var(--ink,#333);border-radius:10px;overflow:hidden;background:var(--card)}
+.sc{aspect-ratio:1;border:1px solid var(--line);background:var(--card);color:var(--sky);font-family:var(--display);font-weight:800;font-size:clamp(1rem,5vw,1.6rem);cursor:pointer;padding:0}
+.sdk.n9 .sc{font-size:clamp(.85rem,4vw,1.3rem)}.sc.given{color:inherit;background:color-mix(in srgb,var(--line) 35%,var(--card));cursor:default}
+.sc.br{border-right:3px solid var(--ink,#333)}.sc.bb{border-bottom:3px solid var(--ink,#333)}.sc.hl{background:color-mix(in srgb,var(--sky) 12%,var(--card))}.sc.sel{background:color-mix(in srgb,var(--sun) 45%,var(--card))}
+.sc.bad{color:var(--berry)}.sc.ok{color:var(--leaf)}
+.truot{display:grid;gap:6px;width:min(360px,100%);margin:0 auto}.tc{aspect-ratio:1;border-radius:14px;border:3px solid var(--line);background:var(--card);font-family:var(--display);font-weight:800;font-size:clamp(1.4rem,8vw,2.2rem);cursor:pointer;color:inherit;box-shadow:0 4px 0 var(--shadow)}
+.tc.ok{background:color-mix(in srgb,var(--leaf) 25%,var(--card))}.tc.empty{background:transparent;border-style:dashed;box-shadow:none}
+.gamehead{display:flex;align-items:center;gap:10px;margin:10px 0}
+.carolv{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}.carobox{border-color:color-mix(in srgb,var(--c) 50%,var(--line))}
+.carobar{display:flex;gap:8px;margin-bottom:8px}.carop{flex:1;padding:8px 10px;border-radius:14px;border:3px solid var(--line);background:var(--card);text-align:center;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.carop.on{border-color:var(--sun);background:color-mix(in srgb,var(--sun) 25%,var(--card))}
+.carocard{padding:10px 14px;margin-bottom:8px}.caroq{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,7vw,2.4rem);text-align:center}
+.caroboard{display:grid;gap:4px;width:min(560px,100%);margin:0 auto}
+.carocell{aspect-ratio:1;border:2px solid var(--line);border-radius:10px;background:var(--card);color:inherit;font-family:var(--display);font-weight:800;font-size:clamp(.85rem,3.8vw,1.3rem);cursor:pointer;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;position:relative}
+.carocell.free{background:color-mix(in srgb,var(--sun) 30%,var(--card));font-size:clamp(.9rem,4vw,1.3rem)}.carocell.free small{font-size:.5em}
+.carocell.o1{background:color-mix(in srgb,var(--berry) 22%,var(--card))}.carocell.o2{background:color-mix(in srgb,var(--sky) 22%,var(--card))}
+.carotok{font-size:1.3em}.carocell small{font-size:.55em;opacity:.6}.carocell.win{outline:3px solid var(--leaf);transform:scale(1.06)}
 .tdgrid{display:grid;gap:6px;width:min(420px,100%)}
 .tdgrid .tdc{min-height:0;aspect-ratio:1;padding:2px;font-size:clamp(1.6rem,9vw,2.6rem);display:flex;align-items:center;justify-content:center;border-radius:14px;box-shadow:0 3px 0 var(--shadow)}
 .tdgrid .tdq{border-color:var(--berry);background:color-mix(in srgb,var(--berry) 15%,var(--card))}
@@ -856,6 +886,8 @@ function route(){
   if(h==="ta")return home();
   if(/^tv(-|$)/.test(h))return vRoute(h);
   if(/^cc(-|$)/.test(h))return ccRoute(h);
+  if(/^caro(-|$)/.test(h))return caroRoute(h);
+  if(/^tdy(-|$)/.test(h))return tdyRoute(h);
   if(/^toan(-|$)/.test(h))return mRoute(h);
   if(/^tt(-|$)/.test(h))return ttRoute(h);
   if(/^ls(-|$)/.test(h))return lsRoute(h);
@@ -2280,6 +2312,12 @@ function hub(){
       <span class="muted hubdesc">Chạm hình để nghe tiếng Việt, tiếng Anh · 20 chủ đề, chữ cái, đồng dao · đố tìm</span>
       <small class="muted"><b>20</b> chủ đề · <b>300+</b> từ</small>
     </button>
+    <button class="island hubisland" style="--c:var(--grape)" data-go="tdy">
+      <div class="top"><span class="em">🧠</span><span class="badge">Mầm non – THPT</span></div>
+      <h3>Đảo Tư Duy</h3>
+      <span class="muted hubdesc">Cờ caro, thả quân 4 hàng, bốc que, tháp Hà Nội, Sudoku, trượt số · đấu Cú Bông hoặc 2 người</span>
+      <small class="muted"><b>${Object.keys(P().done.tdy||{}).length}</b> thử thách đã chinh phục</small>
+    </button>
   </section>
   <section class="card note26">
     <b>📢 Cập nhật chương trình năm học 2026–2027</b>
@@ -2991,6 +3029,10 @@ function toanHome(){
   <section class="card funbanner" style="border-color:var(--orange)">
     <div style="min-width:0;flex:1"><h2 style="font-size:1.4rem">✖️ Bảng cửu chương</h2><span class="muted">Bảng nhân, bảng chia 2–9 · vè, thơ, mẹo nhớ · 7 trò chơi · Siêu tốc 60 giây</span></div>
     <button class="btn" style="--c:var(--orange)" data-go="cc">Vào học ▶</button>
+  </section>
+  <section class="card funbanner" style="border-color:var(--berry)">
+    <div style="min-width:0;flex:1"><h2 style="font-size:1.4rem">⭕ Cờ caro tính nhẩm</h2><span class="muted">Rút thẻ phép tính, đặt quân lên ô đúng kết quả, 5 quân thẳng hàng là thắng · đấu Cú Bông hoặc 2 người · Lớp 1–5</span></div>
+    <button class="btn" style="--c:var(--berry)" data-go="caro">Chơi ngay ▶</button>
   </section>
   <section>${capSections(MLEVELS,(L,li)=>`<button class="island" style="--c:${lvColor(li)}" data-go="toan-lv-${li}">
       <div class="top"><span class="em">${L.em}</span><span class="badge">${L.age}</span></div>
@@ -3993,6 +4035,275 @@ function snRhymes(){
 }
 function snRoute(h){const m=h.match(/^sach-([a-z]+)$/);if(m)return snTheme(m[1]);snHome()}
 
+
+/* ======================================================================
+   CỜ CARO TÍNH NHẨM: rút thẻ phép tính, đặt quân lên ô có kết quả, 5 quân thẳng hàng thắng
+   ====================================================================== */
+const CARO_N=8,CARO_WIN=5;
+const caroRange=(a,b,k)=>shuffle(Array.from({length:b-a+1},(_,i)=>a+i)).slice(0,k);
+const CARO_LV=[
+ {name:"Lớp 1",em:"🌱",d:"Cộng, trừ trong phạm vi 20",vals:()=>caroRange(0,20,21),
+  card(v){if(v>0&&Math.random()<.55){const a=Rn(0,v);return[`${a} + ${v-a}`,`${a} cộng ${v-a}`]}const b=Rn(0,20-v);return[`${v+b} − ${b}`,`${v+b} trừ ${b}`]}},
+ {name:"Lớp 2",em:"🌼",d:"Cộng, trừ có nhớ trong phạm vi 100",vals:()=>caroRange(11,99,21),
+  card(v){if(Math.random()<.5){const a=Rn(Math.max(1,v-60),v-1);return[`${a} + ${v-a}`,`${a} cộng ${v-a}`]}const b=Rn(5,Math.min(60,100-v));return[`${v+b} − ${b}`,`${v+b} trừ ${b}`]}},
+ {name:"Lớp 3",em:"🌳",d:"Nhân, chia trong bảng 2–9",vals:()=>shuffle([...new Set([].concat(...[2,3,4,5,6,7,8,9].map(a=>[2,3,4,5,6,7,8,9].map(b=>a*b))))]).slice(0,17).concat([2,3,4,5,6,7,8,9].sort(()=>Math.random()-.5).slice(0,4)),
+  card(v){const f=[2,3,4,5,6,7,8,9].filter(a=>v%a===0&&v/a>=2&&v/a<=9);if(f.length&&(v>9||Math.random()<.5)){const a=pk(f);return[`${a} × ${v/a}`,`${a} nhân ${v/a}`]}const b=Rn(2,9);return[`${v*b} : ${b}`,`${v*b} chia ${b}`]}},
+ {name:"Lớp 4",em:"🌊",d:"Biểu thức có nhân và cộng, trừ",vals:()=>caroRange(10,90,21),
+  card(v){for(let t=0;t<50;t++){const a=Rn(2,9),b=Rn(2,9),p=a*b;if(p<v&&v-p<=40)return[`${a} × ${b} + ${v-p}`,`${a} nhân ${b} cộng ${v-p}`];if(p>v&&p-v<=40)return[`${a} × ${b} − ${p-v}`,`${a} nhân ${b} trừ ${p-v}`]}const a=Rn(1,v-1);return[`${a} + ${v-a}`,`${a} cộng ${v-a}`]}},
+ {name:"Lớp 5",em:"🚀",d:"Biểu thức có ngoặc, nhân chia",vals:()=>caroRange(10,99,21),
+  card(v){for(let t=0;t<80;t++){const c=Rn(2,9);if(v%c===0&&v/c>=4){const s=v/c,a=Rn(1,s-1);return[`(${a} + ${s-a}) × ${c}`,`mở ngoặc ${a} cộng ${s-a} đóng ngoặc nhân ${c}`]}
+    const b=Rn(2,9),q=Rn(2,12);if(q*b<200&&v>q){return[`${q*b} : ${b} + ${v-q}`,`${q*b} chia ${b} cộng ${v-q}`]}}const a=Rn(1,v-1);return[`${a} + ${v-a}`,`${a} cộng ${v-a}`]}}];
+function caroHome(){
+  const best=P().done["caro"]||{};
+  render(`
+  <button class="btn ghost sm back" data-go="toan">← Đảo Toán Học</button>
+  <div class="lvhead" style="--c:var(--berry)"><div class="em">⭕</div>
+    <div style="min-width:0;flex:1"><div class="eyebrow">Trò chơi bàn cờ · 2 người hoặc đấu với Cú Bông</div><h1>Cờ caro tính nhẩm</h1>
+    <p class="muted" style="margin:4px 0 0;max-width:62ch">Vừa chơi cờ vừa luyện tính nhẩm. Muốn thắng phải tính đúng và tính nhanh!</p></div></div>
+  <section class="card"><h2 style="font-size:1.2rem">📜 Luật chơi</h2><ol class="tips">
+    <li>Hai người lần lượt rút một <b>thẻ phép tính</b>, ví dụ <b>8 + 11</b>.</li>
+    <li>Tính nhẩm rồi đặt quân (❌ hoặc ⭕) lên <b>một ô có số bằng kết quả</b>, ở đây là ô số <b>19</b>. Có nhiều ô 19 thì chọn ô có lợi nhất.</li>
+    <li>Ô <b>⭐ Tự do</b> ở bốn góc: thẻ nào cũng đặt được.</li>
+    <li>Đặt sai ô thì <b>mất lượt</b>. Ai có <b>5 quân thẳng hàng</b> (ngang, dọc hoặc chéo) trước là thắng!</li></ol></section>
+  <section><h2 style="font-size:1.25rem">1️⃣ Chọn cấp độ và cách chơi</h2>
+  <div class="carolv">${CARO_LV.map((L,i)=>`<div class="card carobox" style="--c:${lvColor(i+1)}"><div class="row" style="gap:8px"><span style="font-size:2rem">${L.em}</span><div style="flex:1;min-width:0"><b>${L.name}</b><br><small class="muted">${L.d}</small></div>${best[i]?'<span class="chip">🏆</span>':""}</div>
+    <div class="row" style="gap:8px;margin-top:10px"><button class="btn sm" style="--c:var(--grape)" data-go="caro-${i}-ai">🦉 Đấu Cú Bông</button><button class="btn sm" style="--c:var(--sky)" data-go="caro-${i}-2p">👫 2 người</button></div></div>`).join("")}</div></section>`);
+}
+function caroGame(li,mode){
+  const L=CARO_LV[li];if(!L)return caroHome();
+  const N=CARO_N,vals=L.vals(),cells=[];
+  const corner=i=>[0,N-1,N*(N-1),N*N-1].includes(i);
+  const pool=shuffle(Array.from({length:N*N-4},(_,i)=>vals[i%vals.length]));let pi=0;
+  for(let i=0;i<N*N;i++)cells.push({v:corner(i)?null:pool[pi++],o:0});
+  const names=mode==="ai"?[esc(P().name)||"Bé","Cú Bông"]:["Người chơi ❌","Người chơi ⭕"],tok=["","❌","⭕"];
+  let turn=1,card=null,over=false,busy=false,moves=0;
+  render(`
+  <div class="gamehead"><button class="btn ghost sm" data-go="caro">✕</button><h2 style="font-size:1.15rem;flex:1;min-width:0">⭕ Cờ caro tính nhẩm · ${L.name}</h2></div>
+  <div class="carobar"><div class="carop" id="cp1">❌ <b>${names[0]}</b></div><div class="carop" id="cp2">⭕ <b>${names[1]}</b></div></div>
+  <div class="card carocard" id="ccard"></div>
+  <div class="caroboard" id="cboard" style="grid-template-columns:repeat(${N},minmax(0,1fr))">${cells.map((c,i)=>`<button class="carocell ${c.v===null?"free":""}" data-i="${i}">${c.v===null?"⭐<small>Tự do</small>":c.v}</button>`).join("")}</div>
+  <div class="row" style="justify-content:center;margin-top:10px"><button class="btn ghost sm" id="cread">🔊 Đọc thẻ</button><button class="btn ghost sm" data-go="caro-${li}-${mode}">↻ Ván mới</button></div>`);
+  const el=[...document.querySelectorAll(".carocell")];
+  const line=(i,o)=>{const r=i/N|0,c=i%N;let best=[];for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]){const run=[i];
+      for(const s of [1,-1]){let rr=r+dr*s,cc=c+dc*s;while(rr>=0&&rr<N&&cc>=0&&cc<N&&cells[rr*N+cc].o===o){run.push(rr*N+cc);rr+=dr*s;cc+=dc*s}}
+      if(run.length>best.length)best=run}return best};
+  const runLen=(i,o)=>{const r=i/N|0,c=i%N;let sc=0;for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]){let n=1,open=0;
+      for(const s of [1,-1]){let rr=r+dr*s,cc=c+dc*s;while(rr>=0&&rr<N&&cc>=0&&cc<N&&cells[rr*N+cc].o===o){n++;rr+=dr*s;cc+=dc*s}if(rr>=0&&rr<N&&cc>=0&&cc<N&&!cells[rr*N+cc].o)open++}
+      sc+=n>=CARO_WIN?1e6:open?10**n*open:n>1?10**(n-1):1}return sc};
+  const valid=i=>!cells[i].o&&(cells[i].v===null||cells[i].v===card.v);
+  const draw=()=>{const free=[...new Set(cells.filter(c=>!c.o&&c.v!==null).map(c=>c.v))];
+    if(!cells.some(c=>!c.o)){over=true;$("#ccard").innerHTML=`<div class="prompt">🤝 Hết ô! Hai bên hòa nhau.</div>`;return}
+    const v=free.length?pk(free):pk(vals),[t,s]=L.card(v);card={v,t,s};
+    $("#cp1").classList.toggle("on",turn===1);$("#cp2").classList.toggle("on",turn===2);
+    $("#ccard").innerHTML=`<div class="row" style="justify-content:space-between;gap:8px"><span class="muted">Lượt của ${tok[turn]} <b>${names[turn-1]}</b></span><span class="muted">Thẻ rút được:</span></div><div class="caroq">${esc(t)} = <span class="blank">?</span></div>`;
+    sayVi(s+" bằng bao nhiêu?");
+    if(mode==="ai"&&turn===2){busy=true;setTimeout(aiMove,1700)}else busy=false};
+  const place=(i,who)=>{cells[i].o=who;moves++;el[i].classList.add("o"+who,"pop");el[i].innerHTML=`<span class="carotok">${tok[who]}</span><small>${cells[i].v===null?"⭐":cells[i].v}</small>`;
+    const ln=line(i,who);if(ln.length>=CARO_WIN){over=true;ln.forEach(k=>el[k].classList.add("win"));
+      const meWin=mode!=="ai"||who===1;if(meWin){sWin();confetti();if(mode==="ai"){const d=P().done;d.caro=d.caro||{};d.caro[li]=1;addStars(5);save()}else addStars(2)}else sBad();
+      const msg=mode==="ai"?(who===1?"Bé thắng rồi! Giỏi quá!":"Cú Bông thắng ván này. Chơi lại nhé!"):`${names[who-1]} thắng!`;sayVi(msg);
+      $("#ccard").innerHTML=`<div class="prompt" style="margin:0">${who===1||mode!=="ai"?"🏆":"🦉"} ${esc(msg)}${mode==="ai"&&who===1?" <b>+5 ⭐</b>":""}</div><div class="row" style="justify-content:center"><button class="btn" style="--c:var(--leaf)" data-go="caro-${li}-${mode}">↻ Ván mới</button></div>`;return true}
+    return false};
+  const next=()=>{if(over)return;turn=3-turn;setTimeout(draw,700)};
+  function aiMove(){if(over)return;const opts=cells.map((c,i)=>i).filter(valid);
+    const real=opts.filter(i=>cells[i].v!==null),cand=real.length?real:opts;
+    let best=cand[0],bs=-1;for(const i of cand){const s=runLen(i,2)+.9*runLen(i,1)+Math.random()*5;if(s>bs){bs=s;best=i}}
+    $("#ccard").insertAdjacentHTML("beforeend",`<div class="prompt" style="margin:6px 0 0">🦉 ${esc(card.t)} = <b>${card.v}</b></div>`);
+    if(!place(best,2))next();busy=false}
+  el.forEach((b,i)=>b.onclick=()=>{if(over||busy||!card||cells[i].o)return;if(mode==="ai"&&turn===2)return;
+    if(valid(i)){sGood();busy=true;$("#ccard").insertAdjacentHTML("beforeend",`<div class="prompt" style="margin:6px 0 0">✅ ${esc(card.t)} = <b>${card.v}</b></div>`);if(!place(i,turn))next()}
+    else{sBad();bump(b);busy=true;$("#ccard").insertAdjacentHTML("beforeend",`<div class="prompt" style="margin:6px 0 0;color:var(--berry)">❌ Sai rồi! ${esc(card.t)} = <b>${card.v}</b>. Mất lượt!</div>`);sayVi("Sai rồi, mất lượt");setTimeout(next,900)}});
+  $("#cread").onclick=()=>card&&!over&&sayVi(card.s+" bằng bao nhiêu?");
+  draw();
+}
+function caroRoute(h){const m=h.match(/^caro-(\d)-(ai|2p)$/);if(m)return caroGame(+m[1],m[2]);caroHome()}
+
+/* ======================================================================
+   ĐẢO TƯ DUY: cờ caro, thả quân 4 hàng, bốc que, tháp Hà Nội, Sudoku, trượt số
+   ====================================================================== */
+const TDY_DONE=(g,k)=>{const d=P().done;d.tdy=d.tdy||{};const was=d.tdy[g+k];d.tdy[g+k]=1;save();return!was};
+const tdyHas=(g,k)=>!!((P().done.tdy||{})[g+k]);
+const TDY_GAMES=[
+ {id:"caro",em:"❌",n:"Cờ caro",age:"Mầm non → THPT",skill:"Tính trước nước đi, phòng thủ",
+  vars:[["3","Bàn 3×3 · 3 quân thẳng hàng","Mầm non – Lớp 1"],["7","Bàn 7×7 · 4 quân thẳng hàng","Lớp 2 – Lớp 5"],["11","Bàn 11×11 · 5 quân thẳng hàng","Lớp 4 – THPT"]],modes:1},
+ {id:"tha",em:"🔴",n:"Thả quân 4 hàng",age:"Lớp 1 → THPT",skill:"Chiến thuật, đoán ý đối thủ",vars:[["d","Bàn 7 cột × 6 hàng","Lớp 1 trở lên"]],modes:1},
+ {id:"que",em:"🥢",n:"Bốc que",age:"Lớp 1 → THCS",skill:"Tìm quy luật thắng",vars:[["1","15 que · bốc 1–2 que","Lớp 1 – Lớp 2"],["2","21 que · bốc 1–3 que","Lớp 3 – Lớp 5"],["3","Số que ngẫu nhiên · bốc 1–4 que","THCS"]]},
+ {id:"hanoi",em:"🗼",n:"Tháp Hà Nội",age:"Lớp 1 → THPT",skill:"Lập kế hoạch, đệ quy",vars:[["3","3 đĩa · ít nhất 7 bước","Lớp 1 – Lớp 2"],["4","4 đĩa · ít nhất 15 bước","Lớp 3 – Lớp 5"],["5","5 đĩa · ít nhất 31 bước","THCS"],["6","6 đĩa · ít nhất 63 bước","THPT"]]},
+ {id:"sudoku",em:"🔢",n:"Sudoku",age:"Mầm non → THPT",skill:"Logic loại trừ",vars:[["4","4×4 bằng hình trái cây","Mầm non – Lớp 2"],["6","6×6 bằng số","Lớp 3 – Lớp 5"],["9","9×9 cổ điển","THCS – THPT"]]},
+ {id:"truot",em:"🧩",n:"Trượt số",age:"Lớp 1 → THPT",skill:"Kiên nhẫn, sắp xếp",vars:[["3","3×3 · số 1–8","Lớp 1 – Lớp 5"],["4","4×4 · số 1–15","THCS – THPT"]]}];
+function tdyHome(){
+  render(`
+  <button class="btn ghost sm back" data-go="">← Trang đầu</button>
+  <div class="lvhead" style="--c:var(--grape)"><div class="em">🧠</div>
+    <div style="min-width:0;flex:1"><div class="eyebrow">Trò chơi tư duy logic · Mầm non đến THPT</div><h1>Đảo Tư Duy</h1>
+    <p class="muted" style="margin:4px 0 0;max-width:62ch">Các trò chơi trí tuệ kinh điển giúp bé tính trước nước đi, lập kế hoạch và suy luận. Chơi với Cú Bông hoặc với bạn bè, người thân trên cùng một máy.</p></div></div>
+  <section class="tdygames">${TDY_GAMES.map(g=>`<div class="card tdyg"><div class="row" style="gap:10px;align-items:flex-start"><span style="font-size:2.6rem;line-height:1">${g.em}</span><div style="flex:1;min-width:0"><h2 style="font-size:1.3rem">${g.n}</h2><small class="muted">${g.age} · ${g.skill}</small></div></div>
+    <div class="tdyvars">${g.vars.map(([k,t,a])=>`<div class="tdyv"><div style="flex:1 1 200px;min-width:0"><b>${tdyHas(g.id,k)?"🏆 ":""}${t}</b><br><small class="muted">${a}</small></div><div class="row" style="gap:6px">${g.modes?`<button class="btn sm" style="--c:var(--grape)" data-go="tdy-${g.id}-${k}-ai">🦉 Đấu Cú Bông</button><button class="btn sm" style="--c:var(--sky)" data-go="tdy-${g.id}-${k}-2p">👫 2 người</button>`:`<button class="btn sm" style="--c:var(--leaf)" data-go="tdy-${g.id}-${k}">▶ Chơi</button>`}</div></div>`).join("")}</div></div>`).join("")}
+  <div class="card tdyg"><div class="row" style="gap:10px"><span style="font-size:2.6rem">⭕</span><div style="flex:1;min-width:0"><h2 style="font-size:1.3rem">Cờ caro tính nhẩm</h2><small class="muted">Lớp 1 – Lớp 5 · Tính đúng mới được đặt quân</small></div><button class="btn sm" style="--c:var(--berry)" data-go="caro">▶ Chơi</button></div></div></section>
+  <section class="card"><h2 style="font-size:1.2rem">Dành cho phụ huynh</h2><ul class="tips">
+    <li><b>Cờ caro, Thả quân 4 hàng:</b> trước mỗi nước đi, hỏi bé: «Đối thủ sắp thắng chưa? Con chặn ở đâu?»</li>
+    <li><b>Bốc que:</b> có một quy luật bí mật để luôn thắng. Chơi nhiều ván rồi cùng bé tìm ra nó.</li>
+    <li><b>Tháp Hà Nội:</b> rèn lập kế hoạch. Muốn chuyển cả tháp thì trước hết phải chuyển tháp nhỏ hơn ở trên.</li>
+    <li><b>Sudoku, Trượt số:</b> rèn suy luận loại trừ và sự kiên nhẫn.</li></ul></section>`);
+}
+function tdyFrame(title,back,body){render(`<div class="gamehead"><button class="btn ghost sm" data-go="${back}">✕</button><h2 style="font-size:1.15rem;flex:1;min-width:0">${title}</h2></div>${body}`)}
+function tdyWin(g,k,msg,stars){sWin();confetti();sayVi(msg);const first=TDY_DONE(g,k);addStars(first?stars:1);return`🏆 ${esc(msg)} <b>+${first?stars:1} ⭐</b>`}
+
+/* ---------- Cờ caro ---------- */
+function tdyCaro(k,mode){
+  const N=+k,W=N===3?3:N===7?4:5,cells=Array(N*N).fill(0),tok=["","❌","⭕"],names=mode==="ai"?[P().name||"Bé","Cú Bông"]:["Người chơi ❌","Người chơi ⭕"];
+  let turn=1,over=false,busy=false,last=-1;
+  tdyFrame(`❌ Cờ caro ${N}×${N} · ${W} quân thẳng hàng`,"tdy",`
+  <div class="carobar"><div class="carop on" id="cp1">❌ <b>${esc(names[0])}</b></div><div class="carop" id="cp2">⭕ <b>${esc(names[1])}</b></div></div>
+  <div class="card carocard" id="cmsg"><div class="prompt" style="margin:0">Lượt của ❌ ${esc(names[0])}</div></div>
+  <div class="caroboard ${N>9?"big":""}" style="grid-template-columns:repeat(${N},minmax(0,1fr));${N===3?"width:min(320px,100%)":""}">${cells.map((_,i)=>`<button class="carocell" data-i="${i}"></button>`).join("")}</div>
+  <div class="row" style="justify-content:center;margin-top:10px"><button class="btn ghost sm" data-go="tdy-caro-${k}-${mode}">↻ Ván mới</button></div>`);
+  const el=[...document.querySelectorAll(".carocell")];
+  const D=[[0,1],[1,0],[1,1],[1,-1]],at=(r,c)=>r>=0&&r<N&&c>=0&&c<N?cells[r*N+c]:-1;
+  const lineAt=(i,o)=>{const r=i/N|0,c=i%N;for(const [dr,dc] of D){const run=[i];for(const s of [1,-1]){let rr=r+dr*s,cc=c+dc*s;while(at(rr,cc)===o){run.push(rr*N+cc);rr+=dr*s;cc+=dc*s}}if(run.length>=W)return run}return null};
+  const evalCell=(i,o)=>{const r=i/N|0,c=i%N;let sc=0;for(const [dr,dc] of D){let n=1,open=0;for(const s of [1,-1]){let rr=r+dr*s,cc=c+dc*s;while(at(rr,cc)===o){n++;rr+=dr*s;cc+=dc*s}if(at(rr,cc)===0)open++}
+    if(n>=W)sc+=1e7;else if(open)sc+=Math.pow(12,n)*(open===2?2:1);}return sc};
+  const winner=()=>{for(let i=0;i<N*N;i++)if(cells[i]&&lineAt(i,cells[i]))return cells[i];return cells.every(Boolean)?3:0};
+  const mm=(who,depth)=>{const w=winner();if(w===2)return 10-depth;if(w===1)return depth-10;if(w===3)return 0;let best=who===2?-99:99;
+    for(let i=0;i<9;i++)if(!cells[i]){cells[i]=who;const s=mm(3-who,depth+1);cells[i]=0;best=who===2?Math.max(best,s):Math.min(best,s)}return best};
+  const aiPick=()=>{const free=cells.map((v,i)=>v?-1:i).filter(i=>i>=0);
+    if(N===3){if(Math.random()<.3)return pk(free);let b=free[0],bs=-99;for(const i of shuffle(free)){cells[i]=2;const s=mm(1,1);cells[i]=0;if(s>bs){bs=s;b=i}}return b}
+    if(cells.every(v=>!v))return(N>>1)*N+(N>>1);
+    const near=free.filter(i=>{const r=i/N|0,c=i%N;for(let dr=-2;dr<=2;dr++)for(let dc=-2;dc<=2;dc++)if(at(r+dr,c+dc)>0)return true;return false});
+    let b=near[0]??free[0],bs=-1;for(const i of near.length?near:free){const s=evalCell(i,2)*1.1+evalCell(i,1)+Math.random()*3;if(s>bs){bs=s;b=i}}return b};
+  const play=(i,who)=>{cells[i]=who;if(last>=0)el[last].classList.remove("last");last=i;el[i].classList.add("o"+who,"pop","last");el[i].innerHTML=`<span class="carotok">${tok[who]}</span>`;
+    const ln=lineAt(i,who);
+    if(ln){over=true;ln.forEach(x=>el[x].classList.add("win"));
+      if(mode==="ai"&&who===2){sBad();$("#cmsg").innerHTML=`<div class="prompt" style="margin:0">🦉 Cú Bông thắng ván này. Chơi lại nhé!</div>`;sayVi("Cú Bông thắng rồi. Chơi lại nhé!")}
+      else $("#cmsg").innerHTML=`<div class="prompt" style="margin:0">${mode==="ai"?tdyWin("caro",k,"Bé thắng Cú Bông rồi!",5):(sWin(),confetti(),`🏆 ${esc(names[who-1])} thắng!`)}</div>`;return}
+    if(cells.every(Boolean)){over=true;$("#cmsg").innerHTML=`<div class="prompt" style="margin:0">🤝 Hòa! Hai bên ngang tài ngang sức.</div>`;return}
+    turn=3-turn;$("#cp1").classList.toggle("on",turn===1);$("#cp2").classList.toggle("on",turn===2);
+    $("#cmsg").innerHTML=`<div class="prompt" style="margin:0">Lượt của ${tok[turn]} ${esc(names[turn-1])}${mode==="ai"&&turn===2?" … 🤔":""}</div>`;
+    if(mode==="ai"&&turn===2){busy=true;setTimeout(()=>{busy=false;if(!over)play(aiPick(),2)},600)}};
+  el.forEach((b,i)=>b.onclick=()=>{if(over||busy||cells[i]||(mode==="ai"&&turn===2))return;play(i,turn)});
+}
+
+/* ---------- Thả quân 4 hàng ---------- */
+function tdyTha(k,mode){
+  const C=7,R=6,g=Array.from({length:R},()=>Array(C).fill(0)),tok=["","🔴","🟡"],names=mode==="ai"?[P().name||"Bé","Cú Bông"]:["Người chơi 🔴","Người chơi 🟡"];
+  let turn=1,over=false,busy=false;
+  tdyFrame("🔴 Thả quân 4 hàng","tdy",`
+  <div class="carobar"><div class="carop on" id="cp1">🔴 <b>${esc(names[0])}</b></div><div class="carop" id="cp2">🟡 <b>${esc(names[1])}</b></div></div>
+  <div class="card carocard" id="cmsg"><div class="prompt" style="margin:0">Chạm vào một cột để thả quân. Quân rơi xuống ô thấp nhất. 4 quân thẳng hàng là thắng!</div></div>
+  <div class="thaboard" id="tb">${Array.from({length:R*C},(_,i)=>`<div class="thac" data-c="${i%C}"></div>`).join("")}</div>
+  <div class="row" style="justify-content:center;margin-top:10px"><button class="btn ghost sm" data-go="tdy-tha-d-${mode}">↻ Ván mới</button></div>`);
+  const el=[...document.querySelectorAll(".thac")],cell=(r,c)=>el[r*C+c];
+  const drop=c=>{for(let r=R-1;r>=0;r--)if(!g[r][c])return r;return -1};
+  const win=(r,c,o)=>{for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]){const run=[[r,c]];for(const s of [1,-1]){let rr=r+dr*s,cc=c+dc*s;while(rr>=0&&rr<R&&cc>=0&&cc<C&&g[rr][cc]===o){run.push([rr,cc]);rr+=dr*s;cc+=dc*s}}if(run.length>=4)return run}return null};
+  const wouldWin=(c,o)=>{const r=drop(c);if(r<0)return false;g[r][c]=o;const w=!!win(r,c,o);g[r][c]=0;return w};
+  const aiPick=()=>{const cols=[...Array(C).keys()].filter(c=>drop(c)>=0);
+    for(const c of cols)if(wouldWin(c,2))return c;for(const c of cols)if(wouldWin(c,1))return c;
+    const safe=cols.filter(c=>{const r=drop(c);g[r][c]=2;const bad=r>0&&wouldWin(c,1);g[r][c]=0;return!bad});
+    const pool=safe.length?safe:cols;let b=pool[0],bs=-1;
+    for(const c of pool){const r=drop(c);let s=10-Math.abs(c-3)*2+Math.random()*4;g[r][c]=2;for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]){let n=1;for(const q of [1,-1]){let rr=r+dr*q,cc=c+dc*q;while(rr>=0&&rr<R&&cc>=0&&cc<C&&g[rr][cc]===2){n++;rr+=dr*q;cc+=dc*q}}s+=n*n*2}g[r][c]=0;if(s>bs){bs=s;b=c}}return b};
+  const play=(c,who)=>{const r=drop(c);if(r<0)return;g[r][c]=who;const x=cell(r,c);x.textContent=tok[who];x.classList.add("pop","in");
+    const w=win(r,c,who);if(w){over=true;w.forEach(([rr,cc])=>cell(rr,cc).classList.add("win"));
+      $("#cmsg").innerHTML=`<div class="prompt" style="margin:0">${mode==="ai"&&who===2?(sBad(),sayVi("Cú Bông thắng rồi. Chơi lại nhé!"),"🦉 Cú Bông thắng ván này. Chơi lại nhé!"):mode==="ai"?tdyWin("tha",k,"Bé thắng Cú Bông rồi!",5):(sWin(),confetti(),`🏆 ${esc(names[who-1])} thắng!`)}</div>`;return}
+    if(g[0].every(Boolean)){over=true;$("#cmsg").innerHTML=`<div class="prompt" style="margin:0">🤝 Hòa!</div>`;return}
+    turn=3-turn;$("#cp1").classList.toggle("on",turn===1);$("#cp2").classList.toggle("on",turn===2);
+    if(mode==="ai"&&turn===2){busy=true;setTimeout(()=>{busy=false;if(!over)play(aiPick(),2)},650)}};
+  el.forEach(x=>x.onclick=()=>{if(over||busy||(mode==="ai"&&turn===2))return;play(+x.dataset.c,turn)});
+}
+
+/* ---------- Bốc que (ai bốc que cuối cùng thì THUA) ---------- */
+function tdyQue(k){
+  const M=k==="1"?2:k==="2"?3:4;let n=k==="1"?15:k==="2"?21:Rn(20,30),turn=1,over=false,busy=false;
+  tdyFrame(`🥢 Bốc que · mỗi lượt bốc 1–${M} que`,"tdy",`
+  <div class="card carocard"><b>Luật:</b> Bé và Cú Bông lần lượt bốc từ 1 đến ${M} que. <b>Ai phải bốc que cuối cùng thì thua.</b> Bé đi trước.</div>
+  <div class="card" id="qmsg" style="text-align:center"></div>
+  <div class="quebox" id="qbox"></div>
+  <div class="row" style="justify-content:center;gap:8px;margin-top:12px" id="qbtn">${Array.from({length:M},(_,i)=>`<button class="btn" style="--c:var(--leaf)" data-t="${i+1}">Bốc ${i+1}</button>`).join("")}</div>
+  <div class="row" style="justify-content:center;margin-top:10px"><button class="btn ghost sm" data-go="tdy-que-${k}">↻ Ván mới</button></div>`);
+  const show=msg=>{$("#qbox").innerHTML=Array.from({length:n},()=>`<span class="que">🥢</span>`).join("");$("#qmsg").innerHTML=`<div class="prompt" style="margin:0">Còn <b>${n}</b> que. ${msg}</div>`;
+    document.querySelectorAll("#qbtn .btn").forEach(b=>b.disabled=over||busy||+b.dataset.t>n)};
+  const ai=()=>{let t=(n-1)%(M+1);if(t===0||Math.random()<(k==="1"?.35:k==="2"?.15:0))t=Rn(1,Math.min(M,n));return Math.min(t,n)};
+  const take=(t,who)=>{n-=t;if(n===0){over=true;
+      if(who===2){$("#qbox").innerHTML="";$("#qmsg").innerHTML=`<div class="prompt" style="margin:0">${tdyWin("que",k,"Cú Bông phải bốc que cuối cùng. Bé thắng!",5)}</div><small class="muted">Bí quyết: luôn để lại cho đối thủ ${[1,2,3,4].map(i=>1+(i-1)*(M+1)).join(", ")}, … que (số chia ${M+1} dư 1).</small>`;}
+      else{sBad();$("#qbox").innerHTML="";$("#qmsg").innerHTML=`<div class="prompt" style="margin:0">🦉 Bé phải bốc que cuối cùng nên Cú Bông thắng. Thử lại nhé!</div><small class="muted">Gợi ý: hãy tìm xem còn bao nhiêu que thì người phải bốc chắc chắn thua.</small>`;sayVi("Cú Bông thắng rồi. Thử lại nhé!")}
+      document.querySelectorAll("#qbtn .btn").forEach(b=>b.disabled=true);return}
+    if(who===1){busy=true;show("Cú Bông đang nghĩ… 🤔");setTimeout(()=>{busy=false;const t2=ai();take(t2,2);if(!over)show(`🦉 Cú Bông bốc ${t2} que. Đến lượt bé!`)},900)}};
+  document.querySelectorAll("#qbtn .btn").forEach(b=>b.onclick=()=>{if(over||busy)return;sGood();take(+b.dataset.t,1)});
+  show("Bé bốc trước nhé!");
+}
+
+/* ---------- Tháp Hà Nội ---------- */
+function tdyHanoi(k){
+  const n=+k,T=[Array.from({length:n},(_,i)=>n-i),[],[]],min=2**n-1,COL=["--berry","--orange","--sun","--leaf","--sky","--grape"];let sel=-1,moves=0,over=false;
+  tdyFrame(`🗼 Tháp Hà Nội · ${n} đĩa`,"tdy",`
+  <div class="card carocard"><b>Luật:</b> Chuyển cả tháp từ cọc A sang cọc C. Mỗi lần chỉ chuyển <b>1 đĩa</b> ở trên cùng. <b>Không được đặt đĩa to lên đĩa nhỏ.</b> Chạm một cọc để nhấc đĩa, chạm cọc khác để đặt xuống.</div>
+  <div class="card" id="hmsg" style="text-align:center"></div><div class="hanoi" id="hn"></div>
+  <div class="row" style="justify-content:center;margin-top:10px"><button class="btn ghost sm" data-go="tdy-hanoi-${k}">↻ Làm lại</button></div>`);
+  const draw=msg=>{$("#hn").innerHTML=T.map((p,i)=>`<button class="peg ${sel===i?"sel":""}" data-p="${i}"><span class="rod"></span>${p.map(d=>`<span class="disk" style="width:${20+d*(70/n)}%;background:var(${COL[(d-1)%6]})">${d}</span>`).reverse().join("")}<b class="pl2">${"ABC"[i]}</b></button>`).join("");
+    $("#hmsg").innerHTML=over?msg:`<div class="prompt" style="margin:0">Số bước: <b>${moves}</b> · Ít nhất: ${min}</div>${msg?`<small style="color:var(--berry)">${msg}</small>`:""}`;
+    document.querySelectorAll(".peg").forEach(b=>b.onclick=()=>click(+b.dataset.p))};
+  const click=i=>{if(over)return;if(sel<0){if(T[i].length){sel=i}draw("");return}
+    if(i===sel){sel=-1;draw("");return}const d=T[sel][T[sel].length-1],top=T[i][T[i].length-1];
+    if(top&&top<d){sBad();const s=sel;sel=-1;draw(`Không được đặt đĩa ${d} lên đĩa nhỏ hơn (đĩa ${top})!`);bump($(`.peg[data-p="${s}"]`)||$("#hn"));return}
+    T[i].push(T[sel].pop());sel=-1;moves++;
+    if(T[2].length===n){over=true;draw(`<div class="prompt" style="margin:0">${tdyWin("hanoi",k,moves===min?"Hoàn hảo! Ít bước nhất có thể!":"Bé đã chuyển xong tháp!",moves===min?6:3)}</div><small class="muted">${moves} bước${moves>min?` · thử lại để đạt ${min} bước nhé`:""}</small>`);return}
+    draw("")};
+  draw("");
+}
+
+/* ---------- Sudoku ---------- */
+function sdkGen(n){const [br,bc]=n===4?[2,2]:n===6?[2,3]:[3,3];
+  const base=(r,c)=>(bc*(r%br)+(r/br|0)+c)%n;
+  const sh=a=>shuffle(a);const rb=sh([...Array(n/br).keys()]),cb=sh([...Array(n/bc).keys()]);
+  const rows=[].concat(...rb.map(b=>sh([...Array(br).keys()]).map(r=>b*br+r))),cols=[].concat(...cb.map(b=>sh([...Array(bc).keys()]).map(c=>b*bc+c))),nums=sh([...Array(n).keys()]);
+  const sol=rows.map(r=>cols.map(c=>nums[base(r,c)]+1));
+  const count=(g,lim)=>{let cnt=0;const f=()=>{const i=g.indexOf(0);if(i<0){cnt++;return}const r=i/n|0,c=i%n;for(let v=1;v<=n&&cnt<lim;v++){let ok=true;
+      for(let k=0;k<n&&ok;k++)if(g[r*n+k]===v||g[k*n+c]===v)ok=false;const r0=r-r%br,c0=c-c%bc;for(let a=0;a<br&&ok;a++)for(let b=0;b<bc&&ok;b++)if(g[(r0+a)*n+c0+b]===v)ok=false;
+      if(ok){g[i]=v;f();g[i]=0}}};f();return cnt};
+  const g=sol.flat(),target=n===4?Rn(7,9):n===6?Rn(16,20):Rn(42,48);let removed=0;
+  for(const i of shuffle([...Array(n*n).keys()])){if(removed>=target)break;const v=g[i];g[i]=0;if(count(g.slice(),2)!==1)g[i]=v;else removed++}
+  return{puz:g,sol:sol.flat(),br,bc}}
+function tdySudoku(k){
+  const n=+k,{puz,sol,br,bc}=sdkGen(n),FR=["🍎","🍌","🍇","🍊"],sym=v=>v?(n===4?FR[v-1]:v):"",g=puz.slice();let sel=-1,errs=0,over=false;
+  tdyFrame(`🔢 Sudoku ${n}×${n}`,"tdy",`
+  <div class="card carocard"><b>Luật:</b> Điền sao cho mỗi <b>hàng</b>, mỗi <b>cột</b> và mỗi <b>vùng ${br}×${bc}</b> (viền đậm) đều có đủ ${n===4?"4 loại quả":`các số từ 1 đến ${n}`}, không lặp lại. Chạm ô trống rồi chọn bên dưới.</div>
+  <div class="card" id="smsg" style="text-align:center"><div class="prompt" style="margin:0">Còn <b id="sleft"></b> ô trống</div></div>
+  <div class="sdk n${n}" style="grid-template-columns:repeat(${n},minmax(0,1fr))">${g.map((v,i)=>{const r=i/n|0,c=i%n;return`<button class="sc ${v?"given":""} ${c%bc===bc-1&&c<n-1?"br":""} ${r%br===br-1&&r<n-1?"bb":""}" data-i="${i}">${sym(v)}</button>`}).join("")}</div>
+  <div class="row sdkpad" style="justify-content:center;gap:6px;margin-top:12px">${Array.from({length:n},(_,i)=>`<button class="btn sm" style="--c:var(--sky);min-width:44px" data-v="${i+1}">${sym(i+1)}</button>`).join("")}<button class="btn sm ghost" data-v="0">⌫</button></div>
+  <div class="row" style="justify-content:center;margin-top:10px"><button class="btn ghost sm" data-go="tdy-sudoku-${k}">↻ Đề mới</button></div>`);
+  const el=[...document.querySelectorAll(".sc")],left=()=>{$("#sleft").textContent=g.filter(v=>!v).length};left();
+  el.forEach((b,i)=>b.onclick=()=>{if(over||puz[i])return;sel=i;el.forEach(x=>x.classList.toggle("sel",x===b));
+    const r=i/n|0,c=i%n;el.forEach((x,j)=>x.classList.toggle("hl",(j/n|0)===r||j%n===c||(((j/n|0)/br|0)===(r/br|0)&&((j%n)/bc|0)===(c/bc|0))))});
+  document.querySelectorAll(".sdkpad .btn").forEach(b=>b.onclick=()=>{if(over||sel<0)return;const v=+b.dataset.v,x=el[sel];
+    if(!v){g[sel]=0;x.textContent="";x.classList.remove("bad");left();return}
+    if(v!==sol[sel]){errs++;sBad();x.textContent=sym(v);x.classList.add("bad");bump(x);g[sel]=0;left();return}
+    g[sel]=v;x.textContent=sym(v);x.classList.remove("bad");x.classList.add("ok","pop");sGood();left();
+    if(g.every((y,i)=>y===sol[i])){over=true;$("#smsg").innerHTML=`<div class="prompt" style="margin:0">${tdyWin("sudoku",k,"Bé giải xong Sudoku rồi!",n===4?3:n===6?5:8)}</div><small class="muted">Số lần điền sai: ${errs}</small>`}});
+}
+
+/* ---------- Trượt số ---------- */
+function tdyTruot(k){
+  const n=+k,b=[...Array(n*n).keys()].map(i=>(i+1)%(n*n));let e=n*n-1,moves=0,over=false;
+  const nb=p=>[p-n,p+n,p%n?p-1:-1,p%n<n-1?p+1:-1].filter(x=>x>=0&&x<n*n);
+  let prev=-1;for(let t=0;t<(n===3?60:150);t++){const o=nb(e).filter(x=>x!==prev);const x=pk(o);b[e]=b[x];b[x]=0;prev=e;e=x}
+  if(b.every((v,i)=>v===(i+1)%(n*n)))return tdyTruot(k);
+  tdyFrame(`🧩 Trượt số ${n}×${n}`,"tdy",`
+  <div class="card carocard"><b>Luật:</b> Chạm vào ô số nằm cạnh ô trống để trượt nó vào. Xếp các số theo thứ tự 1, 2, 3, … từ trái sang phải, từ trên xuống dưới.</div>
+  <div class="card" id="tmsg" style="text-align:center"></div><div class="truot" id="tg" style="grid-template-columns:repeat(${n},1fr)"></div>
+  <div class="row" style="justify-content:center;margin-top:10px"><button class="btn ghost sm" data-go="tdy-truot-${k}">↻ Xáo lại</button></div>`);
+  const draw=()=>{$("#tg").innerHTML=b.map((v,i)=>`<button class="tc ${v?"":"empty"} ${v===i+1?"ok":""}" data-i="${i}">${v||""}</button>`).join("");
+    if(!over)$("#tmsg").innerHTML=`<div class="prompt" style="margin:0">Số bước: <b>${moves}</b></div>`;
+    document.querySelectorAll(".tc").forEach(x=>x.onclick=()=>{if(over)return;const i=+x.dataset.i;if(!nb(i).includes(e))return bump(x);b[e]=b[i];b[i]=0;e=i;moves++;
+      if(b.every((v,j)=>v===(j+1)%(n*n))){over=true;$("#tmsg").innerHTML=`<div class="prompt" style="margin:0">${tdyWin("truot",k,"Bé xếp xong rồi!",n===3?4:8)}</div><small class="muted">${moves} bước</small>`}draw()})};
+  draw();
+}
+function tdyRoute(h){let m;
+  if(m=h.match(/^tdy-(caro)-(3|7|11)-(ai|2p)$/))return tdyCaro(m[2],m[3]);
+  if(m=h.match(/^tdy-tha-d-(ai|2p)$/))return tdyTha("d",m[1]);
+  if(m=h.match(/^tdy-que-([123])$/))return tdyQue(m[1]);
+  if(m=h.match(/^tdy-hanoi-([3-6])$/))return tdyHanoi(m[1]);
+  if(m=h.match(/^tdy-sudoku-(4|6|9)$/))return tdySudoku(m[1]);
+  if(m=h.match(/^tdy-truot-([34])$/))return tdyTruot(m[1]);
+  tdyHome()}
 
 </script>
 </body></html>
